@@ -1,0 +1,12 @@
+stages:
+  - deploy
+
+deploy-container:
+  stage: deploy
+  only:
+    - main
+  script:
+    - cd D:\erp
+    - git fetch origin main
+    - git reset --hard origin/main
+    - docker compose -f docker-compose.hrm.yml up -d --build web

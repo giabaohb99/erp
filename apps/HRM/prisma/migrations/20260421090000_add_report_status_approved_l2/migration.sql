@@ -1,0 +1,2 @@
+-- AddEnumValue
+ALTER TYPE "ReportStatus" ADD VALUE IF NOT EXISTS 'APPROVED_L2';

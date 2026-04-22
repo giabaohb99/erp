@@ -1,0 +1,75 @@
+# ============================================================
+# HRM Only — Minimal Production Stack (Integrated with Gitlab Network)
+# ============================================================
+
+services:
+  # ==================== Web App ====================
+  web:
+    build:
+      context: ./apps/HRM
+      dockerfile: Dockerfile
+    container_name: pod-hrm-web
+    environment:
+      - DATABASE_URL=postgresql://podsoft:podsoft2026@pod-hrm-postgres:5432/erp_1
+      - REDIS_URL=redis://pod-hrm-redis:6379
+      - NEXTAUTH_URL=https://admin.baohuynh.io.vn
+      - AUTH_URL=https://admin.baohuynh.io.vn
+      - AUTH_TRUST_HOST=true
+      - NEXTAUTH_SECRET=PodERP2026SecureKeyForHRMSystem
+      - AUTH_SECRET=PodERP2026SecureKeyForHRMSystem
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ==================== Database ====================
+  postgres:
+    image: postgres:16
+    container_name: pod-hrm-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: podsoft
+      POSTGRES_PASSWORD: podsoft2026
+      POSTGRES_DB: erp
+    volumes:
+      - hrm_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U podsoft -d erp" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== Cache ====================
+  redis:
+    image: redis:7-alpine
+    container_name: pod-hrm-redis
+    volumes:
+      - hrm_redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== Redis GUI ====================
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: pod-hrm-redisinsight
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - hrm_redisinsight_data:/data
+
+# KHAI BÁO MẠNG CHUNG VỚI CLOUDFLARE TUNNEL (setupgitlab)
+networks:
+  default:
+    name: setupgitlab_gitlab-net
+    external: true
+
+volumes:
+  hrm_postgres_data:
+  hrm_redis_data:
+  hrm_redisinsight_data:
