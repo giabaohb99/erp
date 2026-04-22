@@ -4,7 +4,7 @@
 
 ---
 
-**ROLE:** Bạn là Senior Technical Auditor. Thực hiện X-ray toàn diện dự án VietERP MRP.
+**ROLE:** Bạn là Senior Technical Auditor. Thực hiện X-ray toàn diện dự án BaoERP MRP.
 
 **PROJECT:** `/home/claude/vierp-mrp-app` - Next.js 14 + Prisma + PostgreSQL
 

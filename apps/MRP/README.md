@@ -1,4 +1,4 @@
-# VietERP MRP — Hệ thống Hoạch định Nguồn lực Sản xuất
+# BaoERP MRP — Hệ thống Hoạch định Nguồn lực Sản xuất
 
 > **Hệ thống MRP (Material Requirements Planning) toàn diện** dành cho doanh nghiệp sản xuất product và thiết bị công nghệ cao, tích hợp AI/ML để dự báo nhu cầu và tối ưu hoạch định.
 
@@ -23,7 +23,7 @@
 
 ## Tổng quan
 
-VietERP MRP là hệ thống quản lý sản xuất thế hệ mới, được xây dựng trên nền tảng Next.js 15 với kiến trúc App Router hiện đại. Hệ thống cung cấp giải pháp đầu-cuối cho quy trình sản xuất:
+BaoERP MRP là hệ thống quản lý sản xuất thế hệ mới, được xây dựng trên nền tảng Next.js 15 với kiến trúc App Router hiện đại. Hệ thống cung cấp giải pháp đầu-cuối cho quy trình sản xuất:
 
 - **Hoạch định nhu cầu vật tư (MRP)** với ATP/CTP, Pegging, Simulation
 - **Quản lý sản xuất** với Work Orders, Routing, Capacity Planning, OEE

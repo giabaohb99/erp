@@ -1,6 +1,6 @@
 # ============================================================
-# VietERP Terraform Configuration - Example Values
-# Cấu hình Terraform cho VietERP - Giá trị ví dụ
+# BaoERP Terraform Configuration - Example Values
+# Cấu hình Terraform cho BaoERP - Giá trị ví dụ
 # ============================================================
 
 # Sao chép file này thành terraform.tfvars và điền các giá trị thực tế

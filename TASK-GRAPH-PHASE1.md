@@ -1,4 +1,4 @@
-# VietERP — Task Graph Phase 1: Nền tảng Vững chắc
+# BaoERP — Task Graph Phase 1: Nền tảng Vững chắc
 
 > Vibecode Kit v6.0 | Chủ thầu: Claude Chat | Thợ thi công: Claude Code Agents
 

@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - WIDGET SERVICE
+// BaoERP MRP - WIDGET SERVICE
 // Service for fetching and processing widget data
 // =============================================================================
 

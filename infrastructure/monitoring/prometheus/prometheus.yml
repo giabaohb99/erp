@@ -1,6 +1,6 @@
 # ============================================================
 # Prometheus Configuration (TIP-005)
-# Scrapes all VietERP apps + infrastructure services
+# Scrapes all BaoERP apps + infrastructure services
 # ============================================================
 
 global:
@@ -20,7 +20,7 @@ rule_files:
   - /etc/prometheus/alerts/infra-alerts.yml
 
 scrape_configs:
-  # ==================== VietERP Applications ====================
+  # ==================== BaoERP Applications ====================
   - job_name: hrm
     static_configs:
       - targets: ["localhost:3001"]

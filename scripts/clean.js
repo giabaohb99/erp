@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * VietERP — Cross-platform clean script
+ * BaoERP — Cross-platform clean script
  * Removes build artifacts and node_modules
  */
 

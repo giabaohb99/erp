@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - API RESPONSE OPTIMIZATION
+// BaoERP MRP - API RESPONSE OPTIMIZATION
 // Response compression, ETags, and caching headers
 // =============================================================================
 
@@ -42,21 +42,21 @@ export const CachePresets = {
     noStore: true,
     mustRevalidate: true,
   } as CacheControl,
-  
+
   // Private, short cache (user-specific data)
   privateShort: {
     private: true,
     maxAge: 60,
     staleWhileRevalidate: 30,
   } as CacheControl,
-  
+
   // Private, medium cache
   privateMedium: {
     private: true,
     maxAge: 300,
     staleWhileRevalidate: 60,
   } as CacheControl,
-  
+
   // Public, short cache (frequently changing data)
   publicShort: {
     public: true,
@@ -64,7 +64,7 @@ export const CachePresets = {
     sMaxAge: 120,
     staleWhileRevalidate: 60,
   } as CacheControl,
-  
+
   // Public, medium cache (lists, search results)
   publicMedium: {
     public: true,
@@ -72,7 +72,7 @@ export const CachePresets = {
     sMaxAge: 600,
     staleWhileRevalidate: 300,
   } as CacheControl,
-  
+
   // Public, long cache (reference data)
   publicLong: {
     public: true,
@@ -80,7 +80,7 @@ export const CachePresets = {
     sMaxAge: 7200,
     staleWhileRevalidate: 1800,
   } as CacheControl,
-  
+
   // Immutable (static assets)
   immutable: {
     public: true,
@@ -98,14 +98,14 @@ export const CachePresets = {
  */
 export function buildCacheControl(options: CacheControl): string {
   const parts: string[] = [];
-  
+
   if (options.public) parts.push('public');
   if (options.private) parts.push('private');
   if (options.noCache) parts.push('no-cache');
   if (options.noStore) parts.push('no-store');
   if (options.mustRevalidate) parts.push('must-revalidate');
   if (options.immutable) parts.push('immutable');
-  
+
   if (options.maxAge !== undefined) {
     parts.push(`max-age=${options.maxAge}`);
   }
@@ -118,7 +118,7 @@ export function buildCacheControl(options: CacheControl): string {
   if (options.staleIfError !== undefined) {
     parts.push(`stale-if-error=${options.staleIfError}`);
   }
-  
+
   return parts.join(', ');
 }
 
@@ -147,9 +147,9 @@ export function generateWeakETag(data: unknown): string {
  */
 export function checkETag(request: NextRequest, etag: string): boolean {
   const ifNoneMatch = request.headers.get('if-none-match');
-  
+
   if (!ifNoneMatch) return false;
-  
+
   // Handle multiple ETags
   const tags = ifNoneMatch.split(',').map(t => t.trim());
   return tags.includes(etag) || tags.includes('*');
@@ -173,12 +173,12 @@ export function optimizedResponse<T>(
     etag = true,
     headers = {},
   } = options;
-  
+
   // Generate ETag
   let etagValue: string | undefined;
   if (etag) {
     etagValue = generateETag(data);
-    
+
     // Check If-None-Match
     if (checkETag(request, etagValue)) {
       return new NextResponse(null, {
@@ -190,21 +190,21 @@ export function optimizedResponse<T>(
       });
     }
   }
-  
+
   // Build response
   const responseHeaders: Record<string, string> = {
     'Content-Type': 'application/json',
     'Cache-Control': buildCacheControl(cache),
     ...headers,
   };
-  
+
   if (etagValue) {
     responseHeaders['ETag'] = etagValue;
   }
-  
+
   // Add Vary header for proper caching
   responseHeaders['Vary'] = 'Accept-Encoding, Authorization';
-  
+
   return NextResponse.json(data, {
     status,
     headers: responseHeaders,
@@ -226,11 +226,11 @@ export function paginatedResponse<T>(
   options: ResponseOptions = {}
 ): NextResponse {
   const cache = options.cache || (
-    data.page === 1 
-      ? CachePresets.publicShort 
+    data.page === 1
+      ? CachePresets.publicShort
       : CachePresets.privateShort
   );
-  
+
   return optimizedResponse(
     {
       success: true,
@@ -257,12 +257,12 @@ export function streamResponse<T>(
   request: NextRequest
 ): Response {
   const encoder = new TextEncoder();
-  
+
   const stream = new ReadableStream({
     async start(controller) {
       controller.enqueue(encoder.encode('['));
       let first = true;
-      
+
       for await (const item of generator) {
         if (!first) {
           controller.enqueue(encoder.encode(','));
@@ -270,12 +270,12 @@ export function streamResponse<T>(
         controller.enqueue(encoder.encode(JSON.stringify(item)));
         first = false;
       }
-      
+
       controller.enqueue(encoder.encode(']'));
       controller.close();
     },
   });
-  
+
   return new Response(stream, {
     headers: {
       'Content-Type': 'application/json',
@@ -297,9 +297,9 @@ export function checkIfModifiedSince(
   lastModified: Date
 ): boolean {
   const ifModifiedSince = request.headers.get('if-modified-since');
-  
+
   if (!ifModifiedSince) return false;
-  
+
   const modifiedSinceDate = new Date(ifModifiedSince);
   return lastModified <= modifiedSinceDate;
 }
@@ -323,7 +323,7 @@ export function responseWithLastModified<T>(
       },
     });
   }
-  
+
   return optimizedResponse(data, request, {
     ...options,
     headers: {
@@ -363,14 +363,14 @@ export function flattenResponse<T extends Record<string, unknown>>(
 
   for (const [key, value] of Object.entries(obj)) {
     const newKey = prefix ? `${prefix}.${key}` : key;
-    
+
     if (value && typeof value === 'object' && !Array.isArray(value) && !(value instanceof Date)) {
       Object.assign(result, flattenResponse(value as Record<string, unknown>, newKey));
     } else {
       result[newKey] = value;
     }
   }
-  
+
   return result;
 }
 

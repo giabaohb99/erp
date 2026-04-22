@@ -3,7 +3,7 @@
 import { useEffect, useCallback, useRef } from 'react';
 
 // =============================================================================
-// VietERP MRP - KEYBOARD SHORTCUTS
+// BaoERP MRP - KEYBOARD SHORTCUTS
 // Global and component-level keyboard shortcuts
 // =============================================================================
 
@@ -54,14 +54,14 @@ export function parseKeyCombo(combo: string): KeyCombo {
  */
 export function formatKeyCombo(combo: KeyCombo): string {
   const parts: string[] = [];
-  
+
   if (combo.ctrl) parts.push(isMac() ? '⌃' : 'Ctrl');
   if (combo.alt) parts.push(isMac() ? '⌥' : 'Alt');
   if (combo.shift) parts.push(isMac() ? '⇧' : 'Shift');
   if (combo.meta) parts.push(isMac() ? '⌘' : 'Win');
-  
+
   parts.push(formatKey(combo.key));
-  
+
   return parts.join(isMac() ? '' : '+');
 }
 
@@ -81,7 +81,7 @@ function formatKey(key: string): string {
     space: 'Space',
     tab: 'Tab',
   };
-  
+
   return keyMap[key.toLowerCase()] || key.toUpperCase();
 }
 
@@ -98,7 +98,7 @@ function isMac(): boolean {
  */
 export function matchesKeyCombo(event: KeyboardEvent, combo: KeyCombo): boolean {
   const key = event.key.toLowerCase();
-  
+
   return (
     key === combo.key.toLowerCase() &&
     event.ctrlKey === !!combo.ctrl &&
@@ -280,20 +280,20 @@ export const commonShortcuts = {
   goHome: { combo: 'alt+h', description: 'Về trang chủ' },
   goBack: { combo: 'alt+left', description: 'Quay lại' },
   goForward: { combo: 'alt+right', description: 'Đi tiếp' },
-  
+
   // Actions
   save: { combo: 'ctrl+s', description: 'Lưu' },
   new: { combo: 'ctrl+n', description: 'Tạo mới' },
   search: { combo: 'ctrl+k', description: 'Tìm kiếm' },
   refresh: { combo: 'ctrl+r', description: 'Làm mới' },
   delete: { combo: 'delete', description: 'Xóa' },
-  
+
   // UI
   toggleSidebar: { combo: 'ctrl+b', description: 'Ẩn/hiện sidebar' },
   toggleTheme: { combo: 'ctrl+shift+t', description: 'Đổi theme' },
   help: { combo: 'ctrl+/', description: 'Trợ giúp' },
   escape: { combo: 'escape', description: 'Đóng/Hủy' },
-  
+
   // Table navigation
   selectAll: { combo: 'ctrl+a', description: 'Chọn tất cả' },
   nextRow: { combo: 'arrowdown', description: 'Dòng tiếp' },
@@ -306,7 +306,7 @@ export const commonShortcuts = {
 
 export function ShortcutsHelp({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const shortcuts = shortcutsManager.getAll();
-  
+
   // Group by category
   const grouped = shortcuts.reduce((acc, s) => {
     const category = s.category || 'Khác';
@@ -335,7 +335,7 @@ export function ShortcutsHelp({ isOpen, onClose }: { isOpen: boolean; onClose: (
               ✕
             </button>
           </div>
-          
+
           <div className="p-6 overflow-y-auto max-h-[60vh]">
             {Object.entries(grouped).map(([category, items]) => (
               <div key={category} className="mb-6 last:mb-0">

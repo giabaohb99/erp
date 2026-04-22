@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 // scripts/generate-templates.ts
-// Generate Master Data Excel Templates for VietERP MRP
+// Generate Master Data Excel Templates for BaoERP MRP
 // Usage: npx ts-node scripts/generate-templates.ts
 
 import * as XLSX from 'xlsx';

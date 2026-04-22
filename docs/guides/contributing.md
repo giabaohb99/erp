@@ -2,11 +2,11 @@
 
 **Hướng dẫn đóng góp / Contributing Guide**
 
-Thank you for your interest in contributing to VietERP! This guide outlines the process and standards for contributing.
+Thank you for your interest in contributing to BaoERP! This guide outlines the process and standards for contributing.
 
 ## Code of Conduct / Quy tắc ứng xử
 
-VietERP follows the [Contributor Covenant](../CODE_OF_CONDUCT.md). By participating, you agree to uphold this code.
+BaoERP follows the [Contributor Covenant](../CODE_OF_CONDUCT.md). By participating, you agree to uphold this code.
 
 **Key principles:**
 - Be respectful and inclusive
@@ -538,4 +538,4 @@ By contributing, you agree that your contributions will be licensed under the sa
 
 Don't hesitate to ask! Open a discussion or email the team.
 
-Thank you for contributing to VietERP! 🙏
+Thank you for contributing to BaoERP! 🙏

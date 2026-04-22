@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - PERFORMANCE MONITORING
+// BaoERP MRP - PERFORMANCE MONITORING
 // Query profiling, slow query detection, and performance metrics
 // =============================================================================
 
@@ -192,7 +192,7 @@ export async function measureTime<T>(
  */
 export function createTimer(): { stop: () => number } {
   const start = performance.now();
-  
+
   return {
     stop: () => performance.now() - start,
   };
@@ -301,7 +301,7 @@ export function responseTimingMiddleware() {
  */
 export function getMemoryUsage() {
   const usage = process.memoryUsage();
-  
+
   return {
     heapUsed: formatBytes(usage.heapUsed),
     heapTotal: formatBytes(usage.heapTotal),
@@ -318,11 +318,11 @@ export function getMemoryUsage() {
  */
 function formatBytes(bytes: number): string {
   if (bytes === 0) return '0 B';
-  
+
   const k = 1024;
   const sizes = ['B', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  
+
   return `${(bytes / Math.pow(k, i)).toFixed(2)} ${sizes[i]}`;
 }
 
@@ -332,14 +332,14 @@ function formatBytes(bytes: number): string {
 export function checkMemoryLeak(): { warning: boolean; message: string } {
   const usage = process.memoryUsage();
   const heapPercent = (usage.heapUsed / usage.heapTotal) * 100;
-  
+
   if (heapPercent > 90) {
     return {
       warning: true,
       message: `High memory usage: ${heapPercent.toFixed(1)}% of heap used`,
     };
   }
-  
+
   return {
     warning: false,
     message: `Memory OK: ${heapPercent.toFixed(1)}% of heap used`,

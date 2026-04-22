@@ -1,10 +1,10 @@
 # @vierp/rate-limit
 
-Gói giới hạn tỷ lệ (Rate Limiting) cho VietERP, được xây dựng với Redis và hỗ trợ nhiều chiến lược linh hoạt.
+Gói giới hạn tỷ lệ (Rate Limiting) cho BaoERP, được xây dựng với Redis và hỗ trợ nhiều chiến lược linh hoạt.
 
 ---
 
-**Rate limiting package for VietERP, built with Redis and supporting multiple flexible strategies.**
+**Rate limiting package for BaoERP, built with Redis and supporting multiple flexible strategies.**
 
 ## Tính Năng / Features
 
@@ -385,6 +385,6 @@ Middleware will allow requests to proceed if rate limiter fails.
 
 ## Trích Dẫn / License
 
-Dự án này là một phần của VietERP.
+Dự án này là một phần của BaoERP.
 
-This project is part of VietERP.
+This project is part of BaoERP.

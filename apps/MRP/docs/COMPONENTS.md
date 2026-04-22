@@ -1,7 +1,7 @@
 # UI Components | Thư viện Component UI
 
-> Component library documentation for VietERP MRP System  
-> Tài liệu thư viện component cho Hệ thống VietERP MRP
+> Component library documentation for BaoERP MRP System  
+> Tài liệu thư viện component cho Hệ thống BaoERP MRP
 
 ---
 
@@ -22,11 +22,11 @@
 
 ### English
 
-The VietERP MRP UI library is built on top of Tailwind CSS with custom components optimized for manufacturing applications. All components support dark mode, animations, and accessibility.
+The BaoERP MRP UI library is built on top of Tailwind CSS with custom components optimized for manufacturing applications. All components support dark mode, animations, and accessibility.
 
 ### Tiếng Việt
 
-Thư viện UI VietERP MRP được xây dựng trên Tailwind CSS với các component tùy chỉnh được tối ưu cho ứng dụng sản xuất. Tất cả component đều hỗ trợ chế độ tối, hoạt ảnh và khả năng truy cập.
+Thư viện UI BaoERP MRP được xây dựng trên Tailwind CSS với các component tùy chỉnh được tối ưu cho ứng dụng sản xuất. Tất cả component đều hỗ trợ chế độ tối, hoạt ảnh và khả năng truy cập.
 
 ### Component Categories | Danh mục Component
 

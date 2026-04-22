@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - ZOD VALIDATION SCHEMAS
+// BaoERP MRP - ZOD VALIDATION SCHEMAS
 // Input validation for all API endpoints
 // =============================================================================
 

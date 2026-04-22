@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - DATABASE OPTIMIZATION MODULE
+// BaoERP MRP - DATABASE OPTIMIZATION MODULE
 // Production-ready database utilities for high-volume data
 // =============================================================================
 
@@ -72,7 +72,7 @@ export async function batchProcess<T, R>(
 
   for (let i = 0; i < items.length; i += batchSize) {
     const batch = items.slice(i, i + batchSize);
-    
+
     try {
       const batchResults = await processor(batch);
       results.push(...batchResults);
@@ -102,14 +102,14 @@ export async function batchCreate<T extends Record<string, unknown>>(
   options: BatchOptions & { skipDuplicates?: boolean } = {}
 ): Promise<{ created: number; skipped: number; errors: number }> {
   const { batchSize = 100, skipDuplicates = true } = options;
-  
+
   let created = 0;
   let skipped = 0;
   let errors = 0;
 
   for (let i = 0; i < data.length; i += batchSize) {
     const batch = data.slice(i, i + batchSize);
-    
+
     try {
       const result = await model.createMany({
         data: batch,
@@ -131,19 +131,19 @@ export async function batchCreate<T extends Record<string, unknown>>(
 /**
  * Batch update with transactions
  */
-export async function batchUpdate<T extends { id: string; [key: string]: unknown }>(
+export async function batchUpdate<T extends { id: string;[key: string]: unknown }>(
   model: PrismaUpdateDelegate,
   updates: T[],
   options: BatchOptions = {}
 ): Promise<{ updated: number; errors: number }> {
   const { batchSize = 50 } = options;
-  
+
   let updated = 0;
   let errors = 0;
 
   for (let i = 0; i < updates.length; i += batchSize) {
     const batch = updates.slice(i, i + batchSize);
-    
+
     try {
       await prisma.$transaction(
         batch.map(item => {
@@ -172,13 +172,13 @@ export async function batchDelete(
   options: BatchOptions = {}
 ): Promise<{ deleted: number; errors: number }> {
   const { batchSize = 100 } = options;
-  
+
   let deleted = 0;
   let errors = 0;
 
   for (let i = 0; i < ids.length; i += batchSize) {
     const batch = ids.slice(i, i + batchSize);
-    
+
     try {
       const result = await model.deleteMany({
         where: { id: { in: batch } },
@@ -333,7 +333,7 @@ export function buildSearchConditions(
   if (!search || search.length < 2) return {};
 
   const searchTerm = search.trim();
-  
+
   // Use startsWith for short searches (better index usage)
   // Use contains for longer searches (more relevant results)
   const mode = searchTerm.length <= 3 ? 'startsWith' : 'contains';
@@ -402,7 +402,7 @@ export async function checkDatabaseHealth(): Promise<{
   error?: string;
 }> {
   const start = performance.now();
-  
+
   try {
     await prisma.$queryRaw`SELECT 1`;
     return {
@@ -456,9 +456,9 @@ export async function executeWithRetry<T>(
   options: { maxRetries?: number; delay?: number } = {}
 ): Promise<T> {
   const { maxRetries = 3, delay = 100 } = options;
-  
+
   let lastError: Error | undefined;
-  
+
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       return await operation();
@@ -471,16 +471,16 @@ export async function executeWithRetry<T>(
         prismaErr.code === 'P2034' || // Transaction failed due to serialization failure
         prismaErr.code === '40001' || // Serialization failure (PostgreSQL)
         prismaErr.message?.includes('deadlock');
-      
+
       if (!isRetryable || attempt === maxRetries) {
         throw error;
       }
-      
+
       // Exponential backoff
       await new Promise(resolve => setTimeout(resolve, delay * attempt));
     }
   }
-  
+
   throw lastError;
 }
 
@@ -492,7 +492,7 @@ export async function safeTransaction<T>(
   options: { timeout?: number; maxWait?: number } = {}
 ): Promise<T> {
   const { timeout = 10000, maxWait = 5000 } = options;
-  
+
   return prisma.$transaction(operations, {
     timeout,
     maxWait,

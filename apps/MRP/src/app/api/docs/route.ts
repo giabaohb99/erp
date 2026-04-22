@@ -3,9 +3,9 @@ import { NextResponse } from 'next/server';
 const spec = {
   openapi: '3.1.0',
   info: {
-    title: 'VietERP Sản xuất / MRP API',
+    title: 'BaoERP Sản xuất / MRP API',
     version: '1.0.0',
-    description: 'API documentation for VietERP Sản xuất / MRP module / Tài liệu API cho module Sản xuất / MRP của VietERP',
+    description: 'API documentation for BaoERP Sản xuất / MRP module / Tài liệu API cho module Sản xuất / MRP của BaoERP',
   },
   servers: [
     { url: 'http://localhost:3005', description: 'Development / Phát triển' },

@@ -1,4 +1,4 @@
-# VietERP Platform — Lộ trình Nâng cấp Toàn diện / Comprehensive Upgrade Roadmap
+# BaoERP Platform — Lộ trình Nâng cấp Toàn diện / Comprehensive Upgrade Roadmap
 
 > Phiên bản: 2.0 | Cập nhật: 2026-03-28 | Trạng thái: Đã phê duyệt
 
@@ -277,5 +277,5 @@ Tuần 15─16  ██████  Phase 5: Tài liệu & Cộng đồng
 
 ---
 
-*Lộ trình này được xây dựng dựa trên kết quả audit toàn diện codebase VietERP Platform ngày 2026-03-28.*
-*This roadmap is based on a comprehensive codebase audit of VietERP Platform conducted on 2026-03-28.*
+*Lộ trình này được xây dựng dựa trên kết quả audit toàn diện codebase BaoERP Platform ngày 2026-03-28.*
+*This roadmap is based on a comprehensive codebase audit of BaoERP Platform conducted on 2026-03-28.*

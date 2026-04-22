@@ -2,7 +2,7 @@
 
 **Hướng dẫn kiểm thử / Testing Guide**
 
-Comprehensive testing strategy for VietERP including unit, integration, and end-to-end tests.
+Comprehensive testing strategy for BaoERP including unit, integration, and end-to-end tests.
 
 ## Testing Stack / Công nghệ kiểm thử
 

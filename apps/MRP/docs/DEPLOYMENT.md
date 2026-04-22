@@ -1,4 +1,4 @@
-# VietERP MRP System - Deployment Guide
+# BaoERP MRP System - Deployment Guide
 
 ## Prerequisites
 

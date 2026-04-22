@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - RATE LIMITER (Gate 5.2)
+// BaoERP MRP - RATE LIMITER (Gate 5.2)
 // Upstash Redis-based rate limiting with in-memory fallback
 // =============================================================================
 
@@ -12,9 +12,9 @@ import { Redis } from '@upstash/redis';
 
 function isTestEnvironment(): boolean {
   return process.env.NODE_ENV === 'test' ||
-         process.env.PLAYWRIGHT_TEST === 'true' ||
-         process.env.E2E_TEST === 'true' ||
-         process.env.SKIP_RATE_LIMIT === 'true';
+    process.env.PLAYWRIGHT_TEST === 'true' ||
+    process.env.E2E_TEST === 'true' ||
+    process.env.SKIP_RATE_LIMIT === 'true';
 }
 
 const hasRedis = !!(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);

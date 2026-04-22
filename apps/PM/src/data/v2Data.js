@@ -1,5 +1,5 @@
 // ===================================================================
-// VietERP CONTROL TOWER V2 — Data Models & Sample Data
+// BaoERP CONTROL TOWER V2 — Data Models & Sample Data
 // Modules: BOM, Flight Test, Supplier, Decisions
 // ===================================================================
 
@@ -244,7 +244,7 @@ export function calcBomCosts(bomItems) {
 export const FLIGHT_TESTS_DATA = [
   {
     id: "FLT-047", projectId: "PRJ-001", testNumber: 47, date: "2026-02-20",
-    location: "VietERP Test Field Alpha", locationVi: "Bãi bay VietERP Alpha",
+    location: "BaoERP Test Field Alpha", locationVi: "Bãi bay BaoERP Alpha",
     pilot: "Đức Anh", testUnit: "X7-DVT-003",
     testType: "ENDURANCE", testPhase: "DVT", relatedGateCondition: "d2",
     result: "FAIL", duration: 1847, maxAltitude: 120, maxSpeed: 15.2, distanceCovered: 4500,
@@ -265,7 +265,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-046", projectId: "PRJ-001", testNumber: 46, date: "2026-02-18",
-    location: "VietERP Test Field Alpha", locationVi: "Bãi bay VietERP Alpha",
+    location: "BaoERP Test Field Alpha", locationVi: "Bãi bay BaoERP Alpha",
     pilot: "Đức Anh", testUnit: "X7-DVT-003",
     testType: "STABILITY", testPhase: "DVT", relatedGateCondition: "d3",
     result: "PASS", duration: 1335, maxAltitude: 80, maxSpeed: 12.0, distanceCovered: 2100,
@@ -279,7 +279,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-045", projectId: "PRJ-001", testNumber: 45, date: "2026-02-15",
-    location: "VietERP Test Field Bravo", locationVi: "Bãi bay VietERP Bravo",
+    location: "BaoERP Test Field Bravo", locationVi: "Bãi bay BaoERP Bravo",
     pilot: "Thanh Hà", testUnit: "X7-DVT-002",
     testType: "PAYLOAD", testPhase: "DVT", relatedGateCondition: null,
     result: "PASS", duration: 1110, maxAltitude: 60, maxSpeed: 8.5, distanceCovered: 1800,
@@ -293,7 +293,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-044", projectId: "PRJ-001", testNumber: 44, date: "2026-02-12",
-    location: "VietERP Test Field Alpha", locationVi: "Bãi bay VietERP Alpha",
+    location: "BaoERP Test Field Alpha", locationVi: "Bãi bay BaoERP Alpha",
     pilot: "Đức Anh", testUnit: "X7-DVT-003",
     testType: "ENDURANCE", testPhase: "DVT", relatedGateCondition: "d2",
     result: "PASS", duration: 2702, maxAltitude: 100, maxSpeed: 14.0, distanceCovered: 8200,
@@ -307,7 +307,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-043", projectId: "PRJ-001", testNumber: 43, date: "2026-02-10",
-    location: "VietERP Test Field Alpha", locationVi: "Bãi bay VietERP Alpha",
+    location: "BaoERP Test Field Alpha", locationVi: "Bãi bay BaoERP Alpha",
     pilot: "Thanh Hà", testUnit: "X7-DVT-002",
     testType: "SPEED", testPhase: "DVT", relatedGateCondition: null,
     result: "PARTIAL", duration: 525, maxAltitude: 50, maxSpeed: 22.5, distanceCovered: 3500,
@@ -323,7 +323,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-042", projectId: "PRJ-001", testNumber: 42, date: "2026-02-08",
-    location: "VietERP Test Field Alpha", locationVi: "Bãi bay VietERP Alpha",
+    location: "BaoERP Test Field Alpha", locationVi: "Bãi bay BaoERP Alpha",
     pilot: "Đức Anh", testUnit: "X7-DVT-001",
     testType: "INTEGRATION", testPhase: "DVT", relatedGateCondition: null,
     result: "PASS", duration: 900, maxAltitude: 50, maxSpeed: 10.0, distanceCovered: 1200,
@@ -337,7 +337,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-048", projectId: "PRJ-001", testNumber: 48, date: "2026-02-22",
-    location: "VietERP Alpha Field", locationVi: "Bãi bay VietERP Alpha",
+    location: "BaoERP Alpha Field", locationVi: "Bãi bay BaoERP Alpha",
     pilot: "Thanh Hà", testUnit: "X7-DVT-003",
     testType: "ENVIRONMENTAL", testPhase: "DVT", relatedGateCondition: "d9",
     result: "FAIL", duration: 1020, maxAltitude: 80, maxSpeed: 12.0, distanceCovered: 2800,
@@ -415,7 +415,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-006", projectId: "PRJ-002", testNumber: 6, date: "2026-01-15",
-    location: "VietERP Test Field Alpha", locationVi: "Bãi bay VietERP Alpha",
+    location: "BaoERP Test Field Alpha", locationVi: "Bãi bay BaoERP Alpha",
     pilot: "Hồng Phúc", testUnit: "A3-EVT-001",
     testType: "SPEED", testPhase: "EVT", relatedGateCondition: null,
     result: "PASS", duration: 420, maxAltitude: 20, maxSpeed: 8.2, distanceCovered: 1500,
@@ -443,7 +443,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-102", projectId: "PRJ-004", testNumber: 102, date: "2026-01-22",
-    location: "VietERP Test Field Bravo", locationVi: "B\u00E3i bay VietERP Bravo",
+    location: "BaoERP Test Field Bravo", locationVi: "B\u00E3i bay BaoERP Bravo",
     pilot: "V\u0169 \u0110\u00ECnh To\u00E0n", testUnit: "I2-PVT-003",
     testType: "ENDURANCE", testPhase: "PVT", relatedGateCondition: "p5",
     result: "PASS", duration: 2550, maxAltitude: 100, maxSpeed: 14.0, distanceCovered: 6500,
@@ -456,7 +456,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-103", projectId: "PRJ-004", testNumber: 103, date: "2026-02-05",
-    location: "VietERP Test Field Alpha", locationVi: "B\u00E3i bay VietERP Alpha",
+    location: "BaoERP Test Field Alpha", locationVi: "B\u00E3i bay BaoERP Alpha",
     pilot: "L\u00EA Th\u1ECB Ph\u01B0\u01A1ng", testUnit: "I2-PVT-001",
     testType: "ENVIRONMENTAL", testPhase: "PVT", relatedGateCondition: "p3",
     result: "FAIL", duration: 1080, maxAltitude: 50, maxSpeed: 8.0, distanceCovered: 1500,
@@ -502,7 +502,7 @@ export const FLIGHT_TESTS_DATA = [
   },
   {
     id: "FLT-202", projectId: "PRJ-005", testNumber: 202, date: "2026-02-15",
-    location: "VietERP Test Field Alpha", locationVi: "B\u00E3i bay VietERP Alpha",
+    location: "BaoERP Test Field Alpha", locationVi: "B\u00E3i bay BaoERP Alpha",
     pilot: "Tr\u1EA7n Minh Khoa", testUnit: "M3-EVT-001",
     testType: "ENDURANCE", testPhase: "EVT", relatedGateCondition: "e5",
     result: "PASS", duration: 2280, maxAltitude: 120, maxSpeed: 16.0, distanceCovered: 7500,
@@ -684,10 +684,10 @@ export const DECISIONS_DATA = [
       { label: "C: ModuleCAN/ERPCAN", pros: "Modern, CAN-bus native, type-safe", prosVi: "Hi\u1EC7n \u0111\u1EA1i, CAN-bus native, type-safe", cons: "Smaller ecosystem, limited GCS", consVi: "H\u1EC7 sinh th\u00E1i nh\u1ECF h\u01A1n, GCS h\u1EA1n ch\u1EBF" },
     ],
     chosenOption: "B",
-    rationale: "MAVLink v2 is de facto standard. Ecosystem value (QGroundControl, Mission Planner) outweighs any protocol overhead. Applies to all VietERP products.",
-    rationaleVi: "MAVLink v2 l\u00E0 ti\u00EAu chu\u1EA9n th\u1EF1c t\u1EBF. Gi\u00E1 tr\u1ECB h\u1EC7 sinh th\u00E1i v\u01B0\u1EE3t xa overhead. \u00C1p d\u1EE5ng cho t\u1EA5t c\u1EA3 s\u1EA3n ph\u1EA9m VietERP.",
-    impactDescription: "Cross-project decision affecting all VietERP module platforms",
-    impactDescriptionVi: "Quy\u1EBFt \u0111\u1ECBnh xuy\u00EAn d\u1EF1 \u00E1n \u1EA3nh h\u01B0\u1EDFng m\u1ECDi n\u1EC1n t\u1EA3ng module VietERP",
+    rationale: "MAVLink v2 is de facto standard. Ecosystem value (QGroundControl, Mission Planner) outweighs any protocol overhead. Applies to all BaoERP products.",
+    rationaleVi: "MAVLink v2 l\u00E0 ti\u00EAu chu\u1EA9n th\u1EF1c t\u1EBF. Gi\u00E1 tr\u1ECB h\u1EC7 sinh th\u00E1i v\u01B0\u1EE3t xa overhead. \u00C1p d\u1EE5ng cho t\u1EA5t c\u1EA3 s\u1EA3n ph\u1EA9m BaoERP.",
+    impactDescription: "Cross-project decision affecting all BaoERP module platforms",
+    impactDescriptionVi: "Quy\u1EBFt \u0111\u1ECBnh xuy\u00EAn d\u1EF1 \u00E1n \u1EA3nh h\u01B0\u1EDFng m\u1ECDi n\u1EC1n t\u1EA3ng module BaoERP",
     costImpact: "$0 (MAVLink is open source)",
     linkedIssueIds: ["ISS-004"],
     linkedFlightTestIds: [],

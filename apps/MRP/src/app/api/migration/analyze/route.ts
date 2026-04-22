@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - AI Migration API
+// BaoERP MRP - AI Migration API
 // /api/migration/analyze
 // =============================================================================
 
@@ -15,9 +15,9 @@ const migrationEngine = new AIMigrationEngine();
 const dataTransformer = new DataTransformer();
 
 export const POST = withAuth(async (request: NextRequest, context, session) => {
-    // Rate limiting
-    const rateLimitResult = await checkWriteEndpointLimit(request);
-    if (rateLimitResult) return rateLimitResult;
+  // Rate limiting
+  const rateLimitResult = await checkWriteEndpointLimit(request);
+  if (rateLimitResult) return rateLimitResult;
 
   try {
     const formData = await request.formData();
@@ -129,9 +129,9 @@ export const POST = withAuth(async (request: NextRequest, context, session) => {
 // Transform & Preview endpoint
 // =============================================================================
 export const PUT = withAuth(async (request: NextRequest, context, session) => {
-    // Rate limiting
-    const rateLimitResult = await checkWriteEndpointLimit(request);
-    if (rateLimitResult) return rateLimitResult;
+  // Rate limiting
+  const rateLimitResult = await checkWriteEndpointLimit(request);
+  if (rateLimitResult) return rateLimitResult;
 
   try {
     const bodySchema = z.object({

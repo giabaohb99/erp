@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - DATA PROCESSING MODULE
+// BaoERP MRP - DATA PROCESSING MODULE
 // Handle large datasets: import, export, transform, validate
 // =============================================================================
 
@@ -237,13 +237,13 @@ export function generateCSV(
   options: { headers?: string[]; delimiter?: string } = {}
 ): string {
   const { headers, delimiter = ',' } = options;
-  
+
   if (data.length === 0) return '';
-  
+
   const columns = headers || Object.keys(data[0]);
-  
+
   const headerRow = columns.join(delimiter);
-  const rows = data.map(row => 
+  const rows = data.map(row =>
     columns.map(col => {
       const value = row[col];
       if (value === null || value === undefined) return '';
@@ -255,7 +255,7 @@ export function generateCSV(
       return str;
     }).join(delimiter)
   );
-  
+
   return [headerRow, ...rows].join('\n');
 }
 
@@ -271,18 +271,18 @@ export function parseExcel(
   options: { sheet?: string | number; range?: string } = {}
 ): Record<string, unknown>[] {
   const { sheet = 0, range } = options;
-  
+
   const workbook = XLSX.read(buffer, { type: 'buffer', cellDates: true });
-  const sheetName = typeof sheet === 'number' 
-    ? workbook.SheetNames[sheet] 
+  const sheetName = typeof sheet === 'number'
+    ? workbook.SheetNames[sheet]
     : sheet;
-  
+
   if (!sheetName || !workbook.Sheets[sheetName]) {
     throw new Error(`Sheet "${sheet}" not found`);
   }
-  
+
   const worksheet = workbook.Sheets[sheetName];
-  
+
   return XLSX.utils.sheet_to_json(worksheet, {
     range,
     defval: null,
@@ -301,7 +301,7 @@ export function generateExcel(
   } = {}
 ): Buffer {
   const workbook = XLSX.utils.book_new();
-  
+
   // Handle multiple sheets
   if (Array.isArray(data)) {
     const worksheet = XLSX.utils.json_to_sheet(data);
@@ -312,7 +312,7 @@ export function generateExcel(
       XLSX.utils.book_append_sheet(workbook, worksheet, name);
     }
   }
-  
+
   return XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
 }
 
@@ -477,11 +477,11 @@ export async function streamExport(
             writeStream.write(csvHeaders.join(',') + '\n');
             headerWritten = true;
           }
-          line = Object.values(filteredRow).map(v => 
-            v === null || v === undefined ? '' : 
-            typeof v === 'string' && (v.includes(',') || v.includes('"')) 
-              ? `"${v.replace(/"/g, '""')}"` 
-              : String(v)
+          line = Object.values(filteredRow).map(v =>
+            v === null || v === undefined ? '' :
+              typeof v === 'string' && (v.includes(',') || v.includes('"'))
+                ? `"${v.replace(/"/g, '""')}"`
+                : String(v)
           ).join(',');
           break;
         case 'jsonl':
@@ -531,7 +531,7 @@ export function normalizeText(text: string): string {
  */
 export function parseVietnamesePhone(phone: string): string | null {
   const cleaned = phone.replace(/[\s-()]/g, '');
-  
+
   // Remove country code
   let normalized = cleaned;
   if (normalized.startsWith('+84')) {
@@ -539,12 +539,12 @@ export function parseVietnamesePhone(phone: string): string | null {
   } else if (normalized.startsWith('84')) {
     normalized = '0' + normalized.slice(2);
   }
-  
+
   // Validate
   if (!/^0\d{9,10}$/.test(normalized)) {
     return null;
   }
-  
+
   return normalized;
 }
 
@@ -591,14 +591,14 @@ export function findDuplicates<T>(
   keyFn: (item: T) => string
 ): Map<string, T[]> {
   const groups = new Map<string, T[]>();
-  
+
   for (const item of data) {
     const key = keyFn(item);
     const group = groups.get(key) || [];
     group.push(item);
     groups.set(key, group);
   }
-  
+
   // Filter to only duplicates
   const duplicates = new Map<string, T[]>();
   Array.from(groups.entries()).forEach(([key, items]) => {
@@ -606,7 +606,7 @@ export function findDuplicates<T>(
       duplicates.set(key, items);
     }
   });
-  
+
   return duplicates;
 }
 
@@ -619,16 +619,16 @@ export function removeDuplicates<T>(
   keep: 'first' | 'last' = 'first'
 ): T[] {
   const seen = new Map<string, T>();
-  
+
   const items = keep === 'last' ? [...data].reverse() : data;
-  
+
   for (const item of items) {
     const key = keyFn(item);
     if (!seen.has(key)) {
       seen.set(key, item);
     }
   }
-  
+
   const result = Array.from(seen.values());
   return keep === 'last' ? result.reverse() : result;
 }
@@ -640,7 +640,7 @@ export function removeDuplicates<T>(
 export class BatchQueue<T> {
   private queue: T[] = [];
   private processing = false;
-  
+
   constructor(
     private processor: (batch: T[]) => Promise<void>,
     private batchSize: number = 100,
@@ -649,27 +649,27 @@ export class BatchQueue<T> {
     // Auto-flush periodically
     setInterval(() => this.flush(), flushInterval);
   }
-  
+
   async add(item: T): Promise<void> {
     this.queue.push(item);
-    
+
     if (this.queue.length >= this.batchSize) {
       await this.flush();
     }
   }
-  
+
   async addMany(items: T[]): Promise<void> {
     for (const item of items) {
       await this.add(item);
     }
   }
-  
+
   async flush(): Promise<void> {
     if (this.processing || this.queue.length === 0) return;
-    
+
     this.processing = true;
     const batch = this.queue.splice(0, this.batchSize);
-    
+
     try {
       await this.processor(batch);
     } catch (error) {
@@ -680,7 +680,7 @@ export class BatchQueue<T> {
       this.processing = false;
     }
   }
-  
+
   get pending(): number {
     return this.queue.length;
   }

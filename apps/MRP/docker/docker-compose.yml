@@ -1,5 +1,5 @@
 # docker/docker-compose.yml
-# Full stack deployment for VietERP MRP System
+# Full stack deployment for BaoERP MRP System
 
 version: '3.8'
 

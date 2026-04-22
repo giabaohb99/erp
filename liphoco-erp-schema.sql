@@ -5,7 +5,7 @@
 -- Date: 2026-03-28
 -- ============================================================
 -- Chạy: psql -U erp -d liphoco_dev -f schema.sql
--- Hoặc trong VietERP: npm run db:push
+-- Hoặc trong BaoERP: npm run db:push
 -- ============================================================
 
 -- ─── EXTENSIONS ──────────────────────────────────────────────

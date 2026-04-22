@@ -1,6 +1,6 @@
 # @vierp/notifications
 
-Real-time notification system for VietERP with WebSocket support.
+Real-time notification system for BaoERP with WebSocket support.
 
 ---
 
@@ -8,7 +8,7 @@ Real-time notification system for VietERP with WebSocket support.
 
 ## Overview
 
-`@vierp/notifications` provides a complete notification infrastructure for the VietERP platform:
+`@vierp/notifications` provides a complete notification infrastructure for the BaoERP platform:
 
 - **Real-time delivery** via WebSocket
 - **Room-based subscriptions** — each user has their own notification room
@@ -444,11 +444,11 @@ interface NotificationStore {
 
 # @vierp/notifications
 
-Hệ thống thông báo thời gian thực cho VietERP với hỗ trợ WebSocket.
+Hệ thống thông báo thời gian thực cho BaoERP với hỗ trợ WebSocket.
 
 ## Tổng Quan
 
-`@vierp/notifications` cung cấp cơ sở hạ tầng thông báo hoàn chỉnh cho nền tảng VietERP:
+`@vierp/notifications` cung cấp cơ sở hạ tầng thông báo hoàn chỉnh cho nền tảng BaoERP:
 
 - **Gửi thông báo real-time** qua WebSocket
 - **Đăng ký theo phòng** — mỗi người dùng có phòng thông báo riêng

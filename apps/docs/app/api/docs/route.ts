@@ -3,9 +3,9 @@ import { NextResponse } from 'next/server';
 const spec = {
   openapi: '3.1.0',
   info: {
-    title: 'VietERP Tài liệu / Docs API',
+    title: 'BaoERP Tài liệu / Docs API',
     version: '1.0.0',
-    description: 'API documentation for VietERP Tài liệu / Docs module / Tài liệu API cho module Tài liệu / Docs của VietERP',
+    description: 'API documentation for BaoERP Tài liệu / Docs module / Tài liệu API cho module Tài liệu / Docs của BaoERP',
   },
   servers: [
     { url: 'http://localhost:3011', description: 'Development / Phát triển' },

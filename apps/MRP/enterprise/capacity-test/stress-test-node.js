@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // =============================================================================
-// VietERP MRP STRESS & CHAOS TEST (Node.js Version)
+// BaoERP MRP STRESS & CHAOS TEST (Node.js Version)
 // No external dependencies required - runs with Node.js
 // =============================================================================
 
@@ -367,7 +367,7 @@ async function recoveryTest() {
 
 async function main() {
   console.log('╔════════════════════════════════════════════════════════════════════════════╗');
-  console.log('║               VietERP MRP STRESS & CHAOS TEST SUITE                            ║');
+  console.log('║               BaoERP MRP STRESS & CHAOS TEST SUITE                            ║');
   console.log('║                      (Node.js Version)                                      ║');
   console.log('╚════════════════════════════════════════════════════════════════════════════╝');
   console.log(`\nTarget: ${BASE_URL}`);

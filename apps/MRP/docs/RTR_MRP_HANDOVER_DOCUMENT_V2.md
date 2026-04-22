@@ -1,6 +1,6 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 #
-#                    VietERP MRP PROJECT HANDOVER DOCUMENT
+#                    BaoERP MRP PROJECT HANDOVER DOCUMENT
 #                    BẢN CHUYỂN GIAO DỰ ÁN CHI TIẾT
 #
 #                    Version: 2.0 (Updated)
@@ -39,7 +39,7 @@
 
 | Thuộc tính | Giá trị |
 |------------|---------|
-| **Tên dự án** | VietERP MRP (VietERP Unified Intelligent Platform) |
+| **Tên dự án** | BaoERP MRP (BaoERP Unified Intelligent Platform) |
 | **Loại** | Enterprise Manufacturing Resource Planning (MRP) |
 | **Trạng thái** | Production-Ready |
 | **Version** | 2.0 |
@@ -122,7 +122,7 @@ Testing:
 ┌─────────────────────────────────────────────────────────────────┐
 │                    MATURITY COMPARISON                          │
 ├─────────────────────────────────────────────────────────────────┤
-│ Feature              │ VietERP MRP │ SAP/Oracle │ Assessment       │
+│ Feature              │ BaoERP MRP │ SAP/Oracle │ Assessment       │
 ├──────────────────────┼─────────┼────────────┼──────────────────┤
 │ Core MRP             │   80%   │    100%    │ Gap: APS, Multi  │
 │ Financial Integration│   20%   │    100%    │ Gap: GL, AP/AR   │
@@ -133,7 +133,7 @@ Testing:
 │ Cloud Native         │   95%   │    60%     │ ✅ ADVANTAGE     │
 └─────────────────────────────────────────────────────────────────┘
 
-Key Insight: VietERP MRP không cạnh tranh trực tiếp với SAP/Oracle về độ sâu
+Key Insight: BaoERP MRP không cạnh tranh trực tiếp với SAP/Oracle về độ sâu
 chức năng, mà chiến thắng bằng UX và AI Native.
 ```
 

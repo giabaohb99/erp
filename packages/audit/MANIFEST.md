@@ -1,7 +1,7 @@
 # @vierp/audit - Package Manifest
 
 ## Overview
-Complete audit trail implementation for VietERP monorepo. Automatically tracks all data changes across 14+ applications with detailed change history, user activity, and compliance reporting capabilities.
+Complete audit trail implementation for BaoERP monorepo. Automatically tracks all data changes across 14+ applications with detailed change history, user activity, and compliance reporting capabilities.
 
 ## Package Information
 - **Name**: @vierp/audit
@@ -270,7 +270,7 @@ For issues, feature requests, or contributions, refer to CONTRIBUTING.md in the 
 
 ## License
 
-Part of VietERP ecosystem. All rights reserved.
+Part of BaoERP ecosystem. All rights reserved.
 
 ---
 

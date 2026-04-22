@@ -23,7 +23,7 @@ export interface ResolvedEntity {
   actions: string[];
 }
 
-// Barcode pattern definitions for VietERP MRP
+// Barcode pattern definitions for BaoERP MRP
 const BARCODE_PATTERNS: Record<EntityType, RegExp[]> = {
   PART: [
     /^RTR-[A-Z]+-\d{3,}$/i,           // RTR-PART-001
@@ -64,7 +64,7 @@ const BARCODE_PATTERNS: Record<EntityType, RegExp[]> = {
 export function parseBarcode(data: string): ScanResult {
   const cleaned = data.trim().toUpperCase();
   const timestamp = new Date();
-  
+
   // Try to match against known patterns
   for (const [entityType, patterns] of Object.entries(BARCODE_PATTERNS)) {
     for (const pattern of patterns) {
@@ -80,12 +80,12 @@ export function parseBarcode(data: string): ScanResult {
       }
     }
   }
-  
+
   // Check for GS1 barcode format
   if (cleaned.startsWith('01') && cleaned.length >= 14) {
     return parseGS1Barcode(data);
   }
-  
+
   // Unknown format
   return {
     raw: data,
@@ -102,13 +102,13 @@ export function parseBarcode(data: string): ScanResult {
  */
 function parseGS1Barcode(data: string): ScanResult {
   const timestamp = new Date();
-  
+
   // GS1 Application Identifiers
   // 01 = GTIN (Global Trade Item Number)
   // 10 = Batch/Lot
   // 21 = Serial Number
   // 17 = Expiration Date
-  
+
   if (data.startsWith('01')) {
     return {
       raw: data,
@@ -119,7 +119,7 @@ function parseGS1Barcode(data: string): ScanResult {
       confidence: 0.9,
     };
   }
-  
+
   return {
     raw: data,
     format: 'DATA_MATRIX',
@@ -138,22 +138,22 @@ function detectFormat(data: string): BarcodeFormat {
   if (data.length > 50 || data.includes('http') || data.includes('{')) {
     return 'QR_CODE';
   }
-  
+
   // EAN-13 is exactly 13 digits
   if (/^\d{13}$/.test(data)) {
     return 'EAN13';
   }
-  
+
   // UPC-A is exactly 12 digits
   if (/^\d{12}$/.test(data)) {
     return 'UPC_A';
   }
-  
+
   // CODE39 uses limited character set with asterisks
   if (/^[A-Z0-9\-. $/+%*]+$/i.test(data) && data.includes('*')) {
     return 'CODE39';
   }
-  
+
   // Default to CODE128 (most versatile)
   return 'CODE128';
 }
@@ -172,9 +172,9 @@ export function getAvailableActions(type: EntityType, context?: string): string[
     SERIAL: ['view_details', 'trace_history', 'update_status'],
     UNKNOWN: ['manual_lookup', 'create_new'],
   };
-  
+
   let actions = baseActions[type] || [];
-  
+
   // Context-specific actions
   if (context === 'receiving') {
     actions = actions.filter(a => ['receive_items', 'inspect_quality', 'view_details'].includes(a));
@@ -183,7 +183,7 @@ export function getAvailableActions(type: EntityType, context?: string): string[
   } else if (context === 'inventory') {
     actions = actions.filter(a => ['adjust_qty', 'transfer', 'check_inventory', 'view_details'].includes(a));
   }
-  
+
   return actions;
 }
 
@@ -252,14 +252,14 @@ export function validateScan(result: ScanResult): { valid: boolean; error?: stri
   if (!result.raw || result.raw.trim().length === 0) {
     return { valid: false, error: 'Empty scan data' };
   }
-  
+
   if (result.raw.length > 500) {
     return { valid: false, error: 'Scan data too long' };
   }
-  
+
   if (result.confidence < 0.3) {
     return { valid: false, error: 'Low confidence scan' };
   }
-  
+
   return { valid: true };
 }

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// VietERP MRP TAILWIND CONFIG v2.0
+// BaoERP MRP TAILWIND CONFIG v2.0
 // "Industrial Precision" Theme
 // ═══════════════════════════════════════════════════════════════════════════════
 //
@@ -26,7 +26,7 @@ const config: Config = {
       body: ['IBM Plex Sans', 'sans-serif'],
       mono: ['IBM Plex Mono', 'monospace'],
     },
-    
+
     // ═══ FONT SIZES (Compact scale) ═══
     fontSize: {
       'xs': ['11px', { lineHeight: '1.4' }],
@@ -38,7 +38,7 @@ const config: Config = {
       '2xl': ['24px', { lineHeight: '1.2' }],
       '3xl': ['28px', { lineHeight: '1.2' }],
     },
-    
+
     extend: {
       // ═══ COLORS: Industrial Palette ═══
       colors: {
@@ -55,7 +55,7 @@ const config: Config = {
           DEFAULT: '#3D4450',
           light: '#4A5568',
         },
-        
+
         // Status colors (functional, not decorative)
         'production': {
           green: '#22C55E',
@@ -73,7 +73,7 @@ const config: Config = {
           cyan: '#06B6D4',
           'cyan-dim': 'rgba(6, 182, 212, 0.2)',
         },
-        
+
         // Chart colors
         'chart': {
           blue: '#3B82F6',
@@ -81,7 +81,7 @@ const config: Config = {
           violet: '#8B5CF6',
           orange: '#F97316',
         },
-        
+
         // Text colors
         'mrp-text': {
           primary: '#F4F4F5',
@@ -89,7 +89,7 @@ const config: Config = {
           muted: '#71717A',
           disabled: '#52525B',
         },
-        
+
         // Border colors
         'mrp-border': {
           DEFAULT: '#3D4450',
@@ -97,7 +97,7 @@ const config: Config = {
           focus: '#06B6D4',
         },
       },
-      
+
       // ═══ SPACING (4px base, tight) ═══
       spacing: {
         '0.5': '2px',
@@ -114,7 +114,7 @@ const config: Config = {
         '10': '40px',
         '12': '48px',
       },
-      
+
       // ═══ SIZING ═══
       height: {
         'header': '48px',
@@ -125,33 +125,33 @@ const config: Config = {
         'btn': '32px',
         'btn-sm': '28px',
       },
-      
+
       width: {
         'sidebar': '56px',
         'sidebar-expanded': '200px',
       },
-      
+
       // ═══ BORDER RADIUS (Sharp edges - minimal) ═══
       borderRadius: {
         'none': '0',
         'sm': '2px',
         DEFAULT: '0',  // Sharp edges by default
       },
-      
+
       // ═══ BOX SHADOW (Minimal - flat design) ═══
       boxShadow: {
         'none': 'none',
         'subtle': '0 1px 2px rgba(0, 0, 0, 0.2)',
         'dropdown': '0 4px 12px rgba(0, 0, 0, 0.3)',
       },
-      
+
       // ═══ TRANSITIONS ═══
       transitionDuration: {
         'fast': '100ms',
         'base': '150ms',
         'slow': '300ms',
       },
-      
+
       // ═══ KEYFRAMES & ANIMATIONS ═══
       keyframes: {
         'fade-in': {
@@ -174,10 +174,10 @@ const config: Config = {
       },
     },
   },
-  
+
   plugins: [
     // Custom plugin for MRP-specific utilities
-    function({ addUtilities, addComponents, theme }: any) {
+    function ({ addUtilities, addComponents, theme }: any) {
       // ═══ UTILITY CLASSES ═══
       addUtilities({
         // Text utilities
@@ -198,7 +198,7 @@ const config: Config = {
           fontFamily: theme('fontFamily.mono'),
           fontSize: '13px',
         },
-        
+
         // Status dots
         '.status-dot': {
           display: 'inline-flex',
@@ -218,7 +218,7 @@ const config: Config = {
         '.status-dot-overdue': { color: theme('colors.urgent.red') },
         '.status-dot-completed': { color: theme('colors.mrp-text.muted') },
       })
-      
+
       // ═══ COMPONENT CLASSES ═══
       addComponents({
         // Buttons
@@ -277,7 +277,7 @@ const config: Config = {
           padding: '0 8px',
           fontSize: '12px',
         },
-        
+
         // Inputs
         '.input': {
           height: '32px',
@@ -297,7 +297,7 @@ const config: Config = {
             backgroundColor: theme('colors.gunmetal.DEFAULT'),
           },
         },
-        
+
         // Cards
         '.card': {
           backgroundColor: 'rgba(45, 49, 57, 0.5)',
@@ -317,7 +317,7 @@ const config: Config = {
           letterSpacing: '0.05em',
           color: theme('colors.mrp-text.secondary'),
         },
-        
+
         // Badges
         '.badge': {
           display: 'inline-flex',
@@ -344,7 +344,7 @@ const config: Config = {
           backgroundColor: theme('colors.info.cyan-dim'),
           color: theme('colors.info.cyan'),
         },
-        
+
         // KPI Card
         '.kpi-card': {
           backgroundColor: theme('colors.gunmetal.DEFAULT'),

@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | VietERP MRP',
-    default: 'Sign In | VietERP MRP',
+    template: '%s | BaoERP MRP',
+    default: 'Sign In | BaoERP MRP',
   },
-  description: 'Sign in to VietERP MRP manufacturing resource planning system - Đăng nhập vào hệ thống quản lý sản xuất VietERP MRP',
+  description: 'Sign in to BaoERP MRP manufacturing resource planning system - Đăng nhập vào hệ thống quản lý sản xuất BaoERP MRP',
 };
 
 export default function AuthLayout({

@@ -1,4 +1,4 @@
-# 🔧 VietERP MRP CONTEXT DRIFT FIX SUMMARY
+# 🔧 BaoERP MRP CONTEXT DRIFT FIX SUMMARY
 ## Date: 2026-01-09
 
 ---
@@ -113,5 +113,5 @@ npx ts-node migrate.ts --dry-run # Migration tool works
 ---
 
 *Fix Summary - 2026-01-09*
-*Project: VietERP MRP*
+*Project: BaoERP MRP*
 *Resolution: Context Drift Fixed*

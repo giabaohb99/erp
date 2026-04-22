@@ -1,8 +1,8 @@
-# VietERP MRP System - Backup & Restore Procedures
+# BaoERP MRP System - Backup & Restore Procedures
 
 ## Overview
 
-The VietERP MRP System uses automated daily backups with a 30-day retention policy. Backups are stored locally and can optionally be uploaded to S3/cloud storage.
+The BaoERP MRP System uses automated daily backups with a 30-day retention policy. Backups are stored locally and can optionally be uploaded to S3/cloud storage.
 
 ## Backup Types
 
@@ -43,7 +43,7 @@ BACKUP_RETENTION_DAYS=30
 
 ```
 ========================================
-  VietERP MRP Database Backup
+  BaoERP MRP Database Backup
 ========================================
 Backup name: backup-20240115-103045
 Target dir: /opt/vierp-mrp/backups

@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - OPTIMIZATION MODULE INDEX
+// BaoERP MRP - OPTIMIZATION MODULE INDEX
 // Central export for all optimization utilities
 // =============================================================================
 
@@ -124,7 +124,7 @@ export async function getSystemHealth(): Promise<{
   // Determine overall status
   const allHealthy = Object.values(components).every(c => c.healthy);
   const anyUnhealthy = Object.values(components).some(c => !c.healthy);
-  
+
   const status = allHealthy ? 'healthy' : anyUnhealthy ? 'unhealthy' : 'degraded';
 
   return {

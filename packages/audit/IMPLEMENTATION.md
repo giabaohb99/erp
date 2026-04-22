@@ -134,7 +134,7 @@ Optimized indexes on:
 
 ### Project Integration
 
-To integrate into VietERP:
+To integrate into BaoERP:
 
 1. **Add to monorepo root package.json**:
    ```json
@@ -210,4 +210,4 @@ packages/audit/
 - JSON fields for flexible metadata
 
 ---
-Implementation complete. Ready for integration into VietERP.
+Implementation complete. Ready for integration into BaoERP.

@@ -1,6 +1,6 @@
 // =============================================================================
 // AI LIBRARY - INDEX
-// VietERP MRP AI Integration with OpenAI + Anthropic Fallback
+// BaoERP MRP AI Integration with OpenAI + Anthropic Fallback
 // =============================================================================
 
 // Forecast Module
@@ -61,7 +61,7 @@ export async function quickChat(message: string): Promise<{
   const intent = detectIntent(message);
   const executor = getQueryExecutor();
   const queryResult = await executor.execute(intent);
-  
+
   const messages = buildPrompt({
     intent: intent.intent,
     query: message,
@@ -88,7 +88,7 @@ export async function checkAIHealth(): Promise<{
 }> {
   const provider = getAIProvider();
   const health = await provider.healthCheck();
-  
+
   return {
     openai: health.openai.available,
     anthropic: health.anthropic.available,

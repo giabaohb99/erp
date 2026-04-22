@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - PERFORMANCE MONITORING API
+// BaoERP MRP - PERFORMANCE MONITORING API
 // /api/v2/performance/route.ts
 // =============================================================================
 
@@ -21,13 +21,13 @@ import { checkReadEndpointLimit, checkWriteEndpointLimit } from '@/lib/rate-limi
 // =============================================================================
 
 export const GET = withAuth(async (request: NextRequest, context, session) => {
-    // Rate limiting
-    const rateLimitResult = await checkReadEndpointLimit(request);
-    if (rateLimitResult) return rateLimitResult;
+  // Rate limiting
+  const rateLimitResult = await checkReadEndpointLimit(request);
+  if (rateLimitResult) return rateLimitResult;
 
   const { searchParams } = new URL(request.url);
   const type = searchParams.get('type') || 'summary';
-  
+
   try {
     switch (type) {
       case 'full':
@@ -37,7 +37,7 @@ export const GET = withAuth(async (request: NextRequest, context, session) => {
           success: true,
           data: report,
         });
-      
+
       case 'metrics':
         // Just metrics
         const metrics = queryProfiler.getMetrics();
@@ -45,7 +45,7 @@ export const GET = withAuth(async (request: NextRequest, context, session) => {
           success: true,
           data: metrics,
         });
-      
+
       case 'memory':
         // Memory usage
         const memory = getMemoryUsage();
@@ -53,7 +53,7 @@ export const GET = withAuth(async (request: NextRequest, context, session) => {
           success: true,
           data: memory,
         });
-      
+
       case 'cache':
         // Cache statistics
         const cacheStats = getCacheStats();
@@ -61,7 +61,7 @@ export const GET = withAuth(async (request: NextRequest, context, session) => {
           success: true,
           data: cacheStats,
         });
-      
+
       case 'slow-queries':
         // Slow queries
         const slowQueries = queryProfiler.getSlowQueries(
@@ -71,7 +71,7 @@ export const GET = withAuth(async (request: NextRequest, context, session) => {
           success: true,
           data: slowQueries,
         });
-      
+
       case 'recent':
         // Recent queries
         const recentQueries = queryProfiler.getRecentQueries(
@@ -81,13 +81,13 @@ export const GET = withAuth(async (request: NextRequest, context, session) => {
           success: true,
           data: recentQueries,
         });
-      
+
       default:
         // Summary
         const summaryMetrics = queryProfiler.getMetrics();
         const summaryMemory = getMemoryUsage();
         const summaryCacheStats = getCacheStats();
-        
+
         return NextResponse.json({
           success: true,
           data: {
@@ -124,9 +124,9 @@ export const GET = withAuth(async (request: NextRequest, context, session) => {
 // =============================================================================
 
 export const POST = withAuth(async (request: NextRequest, context, session) => {
-    // Rate limiting
-    const rateLimitResult = await checkWriteEndpointLimit(request);
-    if (rateLimitResult) return rateLimitResult;
+  // Rate limiting
+  const rateLimitResult = await checkWriteEndpointLimit(request);
+  if (rateLimitResult) return rateLimitResult;
 
   const bodySchema = z.object({
     action: z.enum(['clear-profiler', 'gc']),
@@ -141,7 +141,7 @@ export const POST = withAuth(async (request: NextRequest, context, session) => {
   }
   const body = parseResult.data;
   const { action } = body;
-  
+
   try {
     switch (action) {
       case 'clear-profiler':
@@ -150,7 +150,7 @@ export const POST = withAuth(async (request: NextRequest, context, session) => {
           success: true,
           message: 'Profiler data cleared',
         });
-      
+
       case 'gc':
         // Trigger garbage collection (if exposed)
         if (global.gc) {
@@ -165,7 +165,7 @@ export const POST = withAuth(async (request: NextRequest, context, session) => {
           success: false,
           error: 'GC not exposed. Start Node with --expose-gc',
         });
-      
+
       default:
         return NextResponse.json(
           { success: false, error: 'Unknown action' },

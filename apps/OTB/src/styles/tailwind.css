@@ -25,7 +25,7 @@
     --radius: 0.25rem;
     --radius-pill: 99px;
 
-    /* Unified Hover - VietERP Gold */
+    /* Unified Hover - BaoERP Gold */
     --hover-bg: rgba(215, 183, 151, 0.08);
     --hover-border: rgba(215, 183, 151, 0.25);
     --hover-text: #D7B797;
@@ -237,7 +237,7 @@
     color: var(--hover-text);
   }
 
-  /* VietERP Primary Button (Pill) */
+  /* BaoERP Primary Button (Pill) */
   .dafc-btn-primary {
     padding: 10px 24px;
     font-family: var(--font-montserrat), 'Montserrat', sans-serif;
@@ -278,7 +278,7 @@
     padding: 12px;
   }
 
-  /* VietERP Card */
+  /* BaoERP Card */
   .dafc-card {
     background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
@@ -339,7 +339,7 @@
     border-color: rgba(26, 93, 201, 0.35);
   }
 
-  /* VietERP Badge (Pill) */
+  /* BaoERP Badge (Pill) */
   .dafc-badge {
     padding: 4px 12px;
     font-family: var(--font-montserrat), 'Montserrat', sans-serif;
@@ -389,7 +389,7 @@
     color: #999999;
   }
 
-  /* VietERP Input (Pill) */
+  /* BaoERP Input (Pill) */
   .dafc-input {
     width: 100%;
     padding: 10px 16px;

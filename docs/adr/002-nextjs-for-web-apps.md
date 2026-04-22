@@ -2,11 +2,11 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP web applications require:
+BaoERP web applications require:
 - Server-side rendering (SSR) for SEO (Admin Dashboard, Public Portal)
 - Built-in API routes without separate backend framework
 - Type-safe frontend-backend contract via TypeScript
@@ -15,7 +15,7 @@ VietERP web applications require:
 - Streaming, incremental static regeneration (ISR)
 - Real-time features via WebSockets for live dashboards
 
-Các ứng dụng web VietERP yêu cầu:
+Các ứng dụng web BaoERP yêu cầu:
 - Kết xuất phía máy chủ (SSR) cho SEO
 - Các tuyến API tích hợp sẵn mà không cần khung backend riêng
 - Hợp đồng frontend-backend an toàn kiểu qua TypeScript
@@ -28,9 +28,9 @@ Next.js 14 (App Router) provides all these with modern server components and API
 
 ## Quyết định / Decision
 
-**Adopt Next.js 14+ with App Router** as the primary web framework for all VietERP web applications.
+**Adopt Next.js 14+ with App Router** as the primary web framework for all BaoERP web applications.
 
-Áp dụng **Next.js 14+ với App Router** làm khung web chính cho tất cả các ứng dụng web VietERP.
+Áp dụng **Next.js 14+ với App Router** làm khung web chính cho tất cả các ứng dụng web BaoERP.
 
 **Configuration**:
 - Next.js 14.0 or higher (with App Router)
@@ -103,7 +103,7 @@ Next.js 14 (App Router) provides all these with modern server components and API
 - [Next.js 14 App Router Docs](https://nextjs.org/docs)
 - [React Server Components RFC](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md)
 - [Next.js API Routes](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
-- VietERP Apps: `apps/admin-dashboard`, `apps/public-portal`, `apps/mobile-web`
+- BaoERP Apps: `apps/admin-dashboard`, `apps/public-portal`, `apps/mobile-web`
 
 ---
 

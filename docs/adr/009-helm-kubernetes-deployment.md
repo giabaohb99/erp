@@ -2,11 +2,11 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP backend services are containerized and deployed to Kubernetes:
+BaoERP backend services are containerized and deployed to Kubernetes:
 - 14+ services with independent scaling requirements
 - Environment-specific configs (dev, staging, production)
 - ConfigMaps for application settings per environment
@@ -19,7 +19,7 @@ VietERP backend services are containerized and deployed to Kubernetes:
 - GitOps workflow for declarative deployments
 - Service mesh integration (future: Istio)
 
-Các dịch vụ backend VietERP được container hóa và triển khai cho Kubernetes:
+Các dịch vụ backend BaoERP được container hóa và triển khai cho Kubernetes:
 - 14+ dịch vụ có yêu cầu mở rộng độc lập
 - Cấu hình cụ thể môi trường (dev, dàn dựng, sản xuất)
 - ConfigMaps cho cài đặt ứng dụng cho mỗi môi trường
@@ -120,7 +120,7 @@ Helm provides templating, versioning, and release management for Kubernetes.
 - [Helm Template Reference](https://helm.sh/docs/chart_template_guide/)
 - [Sealed Secrets for Secret Management](https://github.com/bitnami-labs/sealed-secrets)
 - [External Secrets Operator](https://external-secrets.io/)
-- VietERP Charts: `helm/charts/accounting-service/`, `helm/charts/crm-service/`, etc.
+- BaoERP Charts: `helm/charts/accounting-service/`, `helm/charts/crm-service/`, etc.
 
 ---
 

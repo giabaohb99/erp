@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-// VietERP Project Manager — send-email Edge Function
+// BaoERP Project Manager — send-email Edge Function
 // Sends realtime email notifications via Resend API
 // Invoked by Database Webhook on notifications INSERT
 // ═══════════════════════════════════════════════════════════
@@ -11,7 +11,7 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const APP_URL = Deno.env.get("APP_URL") || "https://rtr-control.vercel.app";
-const FROM_EMAIL = "VietERP Project Manager <noreply@rtr.vn>";
+const FROM_EMAIL = "BaoERP Project Manager <noreply@rtr.vn>";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -78,7 +78,7 @@ serve(async (req) => {
       body: JSON.stringify({
         from: FROM_EMAIL,
         to: [profile.email],
-        subject: `[VietERP] ${record.title}`,
+        subject: `[BaoERP] ${record.title}`,
         html: buildEmailHtml(record, profile),
       }),
     });
@@ -131,7 +131,7 @@ function buildEmailHtml(
 <body style="margin:0;padding:0;background:#f9fafb;">
   <div style="font-family:'Segoe UI',Roboto,sans-serif;max-width:560px;margin:0 auto;padding:24px;">
     <div style="background:${color};color:white;padding:14px 20px;border-radius:8px 8px 0 0;font-weight:600;font-size:15px;">
-      VietERP Project Manager
+      BaoERP Project Manager
     </div>
     <div style="background:white;border:1px solid #e5e7eb;border-top:none;padding:24px;border-radius:0 0 8px 8px;">
       <p style="margin:0 0 8px;color:#374151;">Xin chào <strong>${profile.full_name}</strong>,</p>
@@ -143,7 +143,7 @@ function buildEmailHtml(
       </a>
     </div>
     <p style="color:#9ca3af;font-size:11px;text-align:center;margin-top:16px;">
-      VietERP Project Manager — Quản lý dự án Product<br/>
+      BaoERP Project Manager — Quản lý dự án Product<br/>
       <a href="${APP_URL}" style="color:#9ca3af;">Mở Control Tower</a>
     </p>
   </div>

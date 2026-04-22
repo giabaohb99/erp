@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - THEME PROVIDER
+// BaoERP MRP - THEME PROVIDER
 // Dark/Light mode with system preference detection
 // =============================================================================
 

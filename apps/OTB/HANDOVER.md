@@ -1,4 +1,4 @@
-# HANDOVER - VietERP OTB Platform (Full-Stack)
+# HANDOVER - BaoERP OTB Platform (Full-Stack)
 
 > **Khi quay lai, yeu cau Claude doc file nay de tiep tuc:**
 > ```
@@ -13,7 +13,7 @@
 
 ## TONG QUAN DU AN
 
-**VietERP OTB Platform** - He thong quan ly Open-to-Buy cho nganh thoi trang cao cap
+**BaoERP OTB Platform** - He thong quan ly Open-to-Buy cho nganh thoi trang cao cap
 
 | Thong tin | Chi tiet |
 |-----------|----------|
@@ -35,7 +35,7 @@
 | **origin** | https://github.com/TCDevop/OTB.git | TCDevop (co lich su cu monorepo) |
 | **dafc-otb** | https://github.com/nclamvn/dafc-otb.git | nclamvn - CLEAN (chi 95 files, 1 commit) |
 | **dafc** | https://github.com/nclamvn/dafc.git | nclamvn mirror |
-| **nclamvn** | https://github.com/nclamvn/VietERP-OTB-TCDATA.git | Legacy, khong dung nua |
+| **nclamvn** | https://github.com/nclamvn/BaoERP-OTB-TCDATA.git | Legacy, khong dung nua |
 
 > **Luu y:** `dafc-otb` la repo sach nhat — chi chua code Next.js, khong co file cu tu monorepo (`apps/`, `packages/`, `docs/`...).
 
@@ -316,7 +316,7 @@ Light Theme:
 ### Thay doi chinh
 
 1. **Next.js Migration (tu CRA)**
-   - CRA (reference): `/Users/mac/OTBVietERP/VietERP - OTB - App/`
+   - CRA (reference): `/Users/mac/OTBBaoERP/BaoERP - OTB - App/`
    - Next.js 16, App Router, Tailwind v3, React 19
    - 16 routes (14 static + 2 dynamic), all build OK
    - AuthGuard bao ve dashboard routes
@@ -612,7 +612,7 @@ const { language, setLanguage, t } = useLanguage();
 | DELETE | `/import/session/:sessionId` | Delete import session |
 | DELETE | `/import/clear/:target` | Clear all data for target |
 
-> **Note:** `aiService.js` da bi xoa trong OTBnonAI (non-AI version). Chi co trong VietERP-OTB-NextJS.
+> **Note:** `aiService.js` da bi xoa trong OTBnonAI (non-AI version). Chi co trong BaoERP-OTB-NextJS.
 
 ---
 
@@ -620,7 +620,7 @@ const { language, setLanguage, t } = useLanguage();
 
 ### Location & Tech
 ```
-/Users/mac/OTBVietERP/OTBnonAI/backend/
+/Users/mac/OTBBaoERP/OTBnonAI/backend/
 ├── src/
 │   ├── main.ts                          # Bootstrap + Swagger + CORS + PrismaExceptionFilter
 │   ├── app.module.ts                    # Root (9 feature modules)
@@ -746,7 +746,7 @@ npm run start            # Start production server (standalone)
 npm run lint             # ESLint
 npm run test             # Run Vitest tests
 
-# === BACKEND (VietERP-Backend/dafc-otb-backend/) ===
+# === BACKEND (BaoERP-Backend/dafc-otb-backend/) ===
 docker compose up -d     # Start PostgreSQL
 npm install
 npm run prisma:generate  # Generate Prisma client
@@ -761,13 +761,13 @@ npm run start:dev        # Start NestJS dev (port 4000)
 git push origin main     # Push to TCDevop/OTB
 git push dafc-otb main   # Push to nclamvn/dafc-otb (primary)
 git push dafc main       # Push to nclamvn/dafc
-git push nclamvn main    # Push to nclamvn/VietERP-OTB-TCDATA (legacy)
+git push nclamvn main    # Push to nclamvn/BaoERP-OTB-TCDATA (legacy)
 ```
 
 ### Full Startup Sequence
 ```bash
 # 1. Start database
-cd "/Users/mac/OTBVietERP/VietERP-Backend/dafc-otb-backend"
+cd "/Users/mac/OTBBaoERP/BaoERP-Backend/dafc-otb-backend"
 docker compose up -d
 
 # 2. Start backend
@@ -776,7 +776,7 @@ npm run start:dev
 # API ready at http://localhost:4000/api/v1
 
 # 3. Start frontend (new terminal)
-cd "/Users/mac/OTBVietERP/OTBnonAI"
+cd "/Users/mac/OTBBaoERP/OTBnonAI"
 npm run dev
 # App ready at http://localhost:3006
 ```
@@ -1295,7 +1295,7 @@ backend/src/main.ts                                     # CORS localhost:3003
 ### Thay doi chinh
 
 **SKU Proposal Table Excel Redesign (`d72167f`, `d77a7d4`, `a9d434c`):**
-- Redesigned SKU Proposal table to match W25 VietERP_proposal.xlsx Excel format
+- Redesigned SKU Proposal table to match W25 BaoERP_proposal.xlsx Excel format
 - Added all columns from Excel reference: Image, SKU, Name, Collection, Color, Color Code, Division (L2), Product Type (L3), Dept/Group (L4), FSR, Carry Forward, Composition, Unit Cost, Freight+Ins (3%), Others Tax (2%), Import Tax %, Tax Value, Landed Cost, Landed Cost VND, SRP, Wholesale, R.R.P, Regional RRP, Theme, Total Price, Total Units, Size, plus dynamic store columns
 - Tax fields auto-calculated from unit cost (Freight 3%, Others 2%)
 - Transposed table to Rail-based format (rows = attributes, columns = SKUs)
@@ -1864,7 +1864,7 @@ backend/package.json                      # +@nestjs/config, fix start:prod path
 backend/src/app.module.ts                 # +ConfigModule.forRoot()
 
 # Also updated (standalone backend copy)
-/Users/mac/otbdafc/VietERP-Backend/dafc-otb-backend/  # Same changes applied
+/Users/mac/otbdafc/BaoERP-Backend/dafc-otb-backend/  # Same changes applied
 ```
 
 ---
@@ -2015,8 +2015,8 @@ src/locales/vi.js                             # 105+ new keys
 ## GHI CHU CHO CLAUDE
 
 Khi doc file nay:
-1. **Frontend**: `/Users/mac/OTBVietERP/OTBnonAI/` (TypeScript, Next.js 16, App Router)
-2. **Backend**: `/Users/mac/OTBVietERP/OTBnonAI/backend/` (NestJS — 9 modules)
+1. **Frontend**: `/Users/mac/OTBBaoERP/OTBnonAI/` (TypeScript, Next.js 16, App Router)
+2. **Backend**: `/Users/mac/OTBBaoERP/OTBnonAI/backend/` (NestJS — 9 modules)
 3. **API**: `http://localhost:4000/api/v1` | Swagger: `http://localhost:4000/api/docs`
 4. **Database**: PostgreSQL via Docker (port 5432, user=dafc, db=dafc_otb)
 5. Tat ca file la `.tsx`/`.ts` — TypeScript strict mode

@@ -2,7 +2,7 @@
 
 // =============================================================================
 // TEST SUITE RUNNER
-// VietERP MRP Comprehensive Test Suite
+// BaoERP MRP Comprehensive Test Suite
 // =============================================================================
 
 const { execSync } = require('child_process');
@@ -45,7 +45,7 @@ function runCommand(command, description) {
   log(`\n${'='.repeat(60)}`, 'cyan');
   log(`Running: ${description}`, 'cyan');
   log('='.repeat(60), 'cyan');
-  
+
   try {
     execSync(command, { stdio: 'inherit' });
     log(`✓ ${description} completed`, 'green');
@@ -95,13 +95,13 @@ const testSuites = {
 function main() {
   const args = process.argv.slice(2);
   const suite = args[0] || 'all';
-  
+
   log('\n' + '═'.repeat(60), 'blue');
-  log('VietERP MRP TEST SUITE RUNNER', 'blue');
+  log('BaoERP MRP TEST SUITE RUNNER', 'blue');
   log('═'.repeat(60), 'blue');
-  
+
   createOutputDir();
-  
+
   if (suite === 'help' || suite === '-h' || suite === '--help') {
     log('\nAvailable test suites:', 'yellow');
     Object.entries(testSuites).forEach(([key, value]) => {
@@ -111,20 +111,20 @@ function main() {
     log('Example: node run-tests.js unit', 'yellow');
     return;
   }
-  
+
   if (!testSuites[suite]) {
     log(`Unknown test suite: ${suite}`, 'red');
     log('Run with --help to see available suites', 'yellow');
     process.exit(1);
   }
-  
+
   const testConfig = testSuites[suite];
   log(`\nRunning ${testConfig.name}...`, 'blue');
-  
+
   const startTime = Date.now();
   const success = runCommand(testConfig.command, testConfig.description);
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);
-  
+
   log('\n' + '═'.repeat(60), 'blue');
   if (success) {
     log(`✓ ${testConfig.name} completed successfully in ${duration}s`, 'green');

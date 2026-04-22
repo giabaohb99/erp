@@ -1,4 +1,4 @@
-// ── OpenAPI 3.0 Specification for VietERP CRM ────────────────────────
+// ── OpenAPI 3.0 Specification for BaoERP CRM ────────────────────────
 
 const paginationParams = [
   { name: 'page', in: 'query' as const, schema: { type: 'integer' as const, default: 1, minimum: 1 }, description: 'Page number' },
@@ -19,10 +19,10 @@ const errorResponses = {
 export const openApiSpec = {
   openapi: '3.0.0',
   info: {
-    title: 'VietERP CRM API',
+    title: 'BaoERP CRM API',
     version: '1.0.0',
-    description: 'API documentation for VietERP CRM — Defense-Grade Customer Relationship Management by VietERP.\n\nFeatures: Contact & Company management, Deal pipeline, Quotes & Orders, Support tickets with SLA, Email campaigns, Customer portal, Webhooks, Analytics, Multi-Currency, Document Management, and Compliance.',
-    contact: { name: 'VietERP Team' },
+    description: 'API documentation for BaoERP CRM — Defense-Grade Customer Relationship Management by BaoERP.\n\nFeatures: Contact & Company management, Deal pipeline, Quotes & Orders, Support tickets with SLA, Email campaigns, Customer portal, Webhooks, Analytics, Multi-Currency, Document Management, and Compliance.',
+    contact: { name: 'BaoERP Team' },
   },
   servers: [{ url: '/api', description: 'CRM API' }],
   tags: [

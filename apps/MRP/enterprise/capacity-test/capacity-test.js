@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP ENTERPRISE CAPACITY TESTING SUITE
+// BaoERP MRP ENTERPRISE CAPACITY TESTING SUITE
 // Test system capabilities with millions of records
 // =============================================================================
 
@@ -10,7 +10,7 @@ import { SharedArray } from 'k6/data';
 import { randomIntBetween, randomItem } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 // =============================================================================
-// CONFIGURATION - Matches VietERP MRP actual API routes
+// CONFIGURATION - Matches BaoERP MRP actual API routes
 // =============================================================================
 
 const BASE_URL = __ENV.BASE_URL || 'http://localhost:3000';
@@ -35,13 +35,13 @@ const trends = {
   inventoryList: new Trend('inventory_list_duration'),
   inventoryLowStock: new Trend('inventory_low_stock_duration'),
   dashboardLoad: new Trend('dashboard_load_duration'),
-  
+
   // Write operations
   partsCreate: new Trend('parts_create_duration'),
   partsUpdate: new Trend('parts_update_duration'),
   inventoryAdjust: new Trend('inventory_adjust_duration'),
   workOrderCreate: new Trend('work_order_create_duration'),
-  
+
   // Complex operations
   mrpRun: new Trend('mrp_run_duration'),
   reportGenerate: new Trend('report_generate_duration'),
@@ -178,27 +178,27 @@ export const options = {
   thresholds: {
     // Response time thresholds
     http_req_duration: ['p(95)<1000', 'p(99)<2000'],
-    
+
     // Read operations
     parts_list_duration: ['p(95)<500', 'p(99)<1000'],
     parts_search_duration: ['p(95)<800', 'p(99)<1500'],
     inventory_list_duration: ['p(95)<500', 'p(99)<1000'],
     dashboard_load_duration: ['p(95)<2000', 'p(99)<3000'],
-    
+
     // Write operations
     parts_create_duration: ['p(95)<1000'],
     inventory_adjust_duration: ['p(95)<500'],
     work_order_create_duration: ['p(95)<1500'],
-    
+
     // Complex operations
     mrp_run_duration: ['p(95)<30000'],
     report_generate_duration: ['p(95)<10000'],
-    
+
     // Error rates
     read_errors: ['rate<0.05'],      // < 5%
     write_errors: ['rate<0.02'],     // < 2%
     complex_errors: ['rate<0.10'],   // < 10%
-    
+
     // Throughput
     http_reqs: ['rate>100'],
   },
@@ -218,10 +218,10 @@ function getHeaders() {
 function measureRequest(method, url, body, trend, errorRate, name) {
   const start = Date.now();
   counters.totalRequests.add(1);
-  
+
   let res;
   const params = { headers: getHeaders(), tags: { name } };
-  
+
   if (method === 'GET') {
     res = http.get(url, params);
   } else if (method === 'POST') {
@@ -265,7 +265,7 @@ export function databaseCapacityTest() {
   group('Parts Queries', () => {
     // List with pagination (testing index performance)
     const page = randomIntBetween(1, Math.ceil(TOTAL_PARTS / 50));
-    measureRequest('GET', `${API_V1}/parts?page=${page}&pageSize=50`, null, 
+    measureRequest('GET', `${API_V1}/parts?page=${page}&pageSize=50`, null,
       trends.partsList, errorRates.read, 'parts-paginated');
     sleep(0.5);
 
@@ -418,7 +418,7 @@ export function spikeTest() {
     trends.partsList, errorRates.read, 'spike-parts');
   measureRequest('GET', `${API_V1}/inventory?page=1`, null,
     trends.inventoryList, errorRates.read, 'spike-inventory');
-  
+
   sleep(0.1);
 }
 
@@ -448,7 +448,7 @@ export function enduranceTest() {
 // DEFAULT FUNCTION
 // =============================================================================
 
-export default function() {
+export default function () {
   databaseCapacityTest();
 }
 
@@ -459,7 +459,7 @@ export default function() {
 export function setup() {
   console.log(`
 ╔════════════════════════════════════════════════════════════════╗
-║  VietERP MRP ENTERPRISE CAPACITY TEST                             ║
+║  BaoERP MRP ENTERPRISE CAPACITY TEST                             ║
 ╠════════════════════════════════════════════════════════════════╣
 ║  Target:       ${BASE_URL.padEnd(45)}║
 ║  Parts:        ${TOTAL_PARTS.toLocaleString().padEnd(45)}║
@@ -491,7 +491,7 @@ export function teardown(data) {
 
 export function handleSummary(data) {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  
+
   return {
     'stdout': generateTextReport(data),
     [`enterprise/capacity-test/results/capacity-${timestamp}.json`]: JSON.stringify(data, null, 2),
@@ -502,7 +502,7 @@ export function handleSummary(data) {
 function generateTextReport(data) {
   return `
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                    VietERP MRP ENTERPRISE CAPACITY TEST REPORT                 ║
+║                    BaoERP MRP ENTERPRISE CAPACITY TEST REPORT                 ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 📊 SUMMARY
@@ -529,9 +529,9 @@ Complex Errors:     ${((data.metrics.complex_errors?.values?.rate || 0) * 100).t
 
 ✅ THRESHOLD RESULTS
 ────────────────────────────────────────────────────────────────────────────────
-${Object.entries(data.thresholds || {}).map(([name, result]) => 
-  `${result.ok ? '✓' : '✗'} ${name}: ${result.ok ? 'PASS' : 'FAIL'}`
-).join('\n')}
+${Object.entries(data.thresholds || {}).map(([name, result]) =>
+    `${result.ok ? '✓' : '✗'} ${name}: ${result.ok ? 'PASS' : 'FAIL'}`
+  ).join('\n')}
 `;
 }
 
@@ -539,7 +539,7 @@ function generateHTMLReport(data) {
   return `<!DOCTYPE html>
 <html>
 <head>
-  <title>VietERP MRP Capacity Test Report</title>
+  <title>BaoERP MRP Capacity Test Report</title>
   <style>
     body { font-family: system-ui; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
     .card { background: white; border-radius: 8px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -553,7 +553,7 @@ function generateHTMLReport(data) {
   </style>
 </head>
 <body>
-  <h1>🏭 VietERP MRP Enterprise Capacity Test Report</h1>
+  <h1>🏭 BaoERP MRP Enterprise Capacity Test Report</h1>
   <p>Generated: ${new Date().toISOString()}</p>
   
   <div class="grid">

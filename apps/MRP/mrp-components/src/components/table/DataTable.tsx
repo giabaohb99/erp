@@ -5,7 +5,7 @@ import { ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react'
 import { Checkbox } from '../common/Checkbox'
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   VietERP MRP DATA TABLE
+   BaoERP MRP DATA TABLE
    "Excel-First" Design - PRESERVE ALL EXISTING TABLE STRUCTURE
 
    QUAN TRONG:
@@ -147,16 +147,15 @@ export function DataTable<T extends Record<string, any>>({
       ? sortDirection === 'asc'
         ? ChevronUp
         : sortDirection === 'desc'
-        ? ChevronDown
-        : ChevronsUpDown
+          ? ChevronDown
+          : ChevronsUpDown
       : ChevronsUpDown
 
     return (
       <Icon
         size={14}
-        className={`ml-1 inline-block ${
-          isActive && sortDirection ? 'text-info-cyan' : 'text-mrp-text-muted opacity-50'
-        }`}
+        className={`ml-1 inline-block ${isActive && sortDirection ? 'text-info-cyan' : 'text-mrp-text-muted opacity-50'
+          }`}
       />
     )
   }
@@ -164,9 +163,8 @@ export function DataTable<T extends Record<string, any>>({
   return (
     <div className={`overflow-auto flex-1 ${className}`}>
       <table
-        className={`w-full text-base border-collapse ${
-          bordered ? '' : '[&_th]:border-0 [&_td]:border-0 [&_th]:border-b [&_td]:border-b'
-        }`}
+        className={`w-full text-base border-collapse ${bordered ? '' : '[&_th]:border-0 [&_td]:border-0 [&_th]:border-b [&_td]:border-b'
+          }`}
       >
         {/* ═══ HEADER - STICKY, EXCEL-LIKE ═══ */}
         <thead>
@@ -272,7 +270,7 @@ export function DataTable<T extends Record<string, any>>({
                         handleSelectRow(row)
                       }}
                     >
-                      <Checkbox checked={isSelected} onChange={() => {}} />
+                      <Checkbox checked={isSelected} onChange={() => { }} />
                     </td>
                   )}
 

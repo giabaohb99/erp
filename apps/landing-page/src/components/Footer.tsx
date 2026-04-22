@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
           <div className="lg:col-span-3">
             <div className="mb-4">
-              <span className="font-semibold text-[15px] tracking-[-0.02em] text-text-primary">VietERP</span>
+              <span className="font-semibold text-[15px] tracking-[-0.02em] text-text-primary">BaoERP</span>
             </div>
             <p className="text-[12px] text-text-tertiary leading-[1.7] max-w-[240px] mb-4">
               Nền tảng ERP mã nguồn mở cho doanh nghiệp Việt Nam. 14 modules, MIT License.

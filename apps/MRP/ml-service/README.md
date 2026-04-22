@@ -1,6 +1,6 @@
-# VietERP MRP ML Service
+# BaoERP MRP ML Service
 
-Machine Learning microservice for VietERP MRP System providing:
+Machine Learning microservice for BaoERP MRP System providing:
 - Demand forecasting (Prophet, ARIMA, ETS, Ensemble)
 - Lead time prediction (Gradient Boosting)
 - Anomaly detection (Isolation Forest)

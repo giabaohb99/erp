@@ -1,24 +1,7 @@
-# VietERP Platform
+# BaoERP Platform
 
 **Nền tảng ERP mã nguồn mở cho doanh nghiệp Việt Nam / Open-source ERP platform for Vietnamese enterprises**
 
-[![CI/CD](https://github.com/nclamvn/Viet-ERP/actions/workflows/ci.yml/badge.svg)](https://github.com/nclamvn/Viet-ERP/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-14+-black?logo=next.js)](https://nextjs.org/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql)](https://www.postgresql.org/)
-
-VietERP Platform là hệ sinh thái ERP toàn diện, đạt chuẩn doanh nghiệp, được xây dựng bằng công nghệ web hiện đại. Thiết kế riêng cho thị trường Việt Nam với tuân thủ kế toán VAS (TT200), hoá đơn điện tử NĐ123, bảo hiểm xã hội, và giao diện song ngữ Việt-Anh.
-
-VietERP Platform is a comprehensive, enterprise-grade ERP ecosystem built with modern web technologies. Designed specifically for the Vietnamese market with VAS accounting compliance (TT200), e-Invoice (NĐ123), social insurance, and bilingual Vi-En interface.
-
-### Screenshots
-
-![Hero — VietERP Landing Page](docs/screenshots/landing-hero.png)
-
-![Features — Platform capabilities](docs/screenshots/landing-features.png)
-
-![Stats — 1.4M+ LOC, 16 modules, 980 models](docs/screenshots/landing-stats.png)
 
 ## Quy mô dự án / Project Scale
 
@@ -306,7 +289,7 @@ Viet-ERP/
 
 ## Monitoring & Observability
 
-VietERP đi kèm bộ monitoring production-ready:
+BaoERP đi kèm bộ monitoring production-ready:
 
 - **Prometheus**: Thu thập metrics từ tất cả 14 apps (HTTP latency, error rates, DB queries)
 - **Grafana**: 6 dashboards (Overview, Per-App, Database, NATS, Business KPIs, Alerts)
@@ -349,7 +332,7 @@ Xem [docs/guides/deployment.md](./docs/guides/deployment.md) để biết chi ti
 
 ## Cá nhân hoá thương hiệu / White-Label
 
-VietERP được thiết kế để dễ dàng cá nhân hoá thương hiệu:
+BaoERP được thiết kế để dễ dàng cá nhân hoá thương hiệu:
 
 ```bash
 # 1. Sửa cấu hình thương hiệu

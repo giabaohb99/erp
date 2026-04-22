@@ -1,4 +1,4 @@
-# 📦 VietERP MRP UI REDESIGN PACKAGE
+# 📦 BaoERP MRP UI REDESIGN PACKAGE
 ## "Industrial Precision" Theme
 
 ---
@@ -9,7 +9,7 @@
 
 ### Bước 2: Paste toàn bộ nội dung file `THO-XAY-MASTER-PROMPT.md`
 
-### Bước 3: Trả lời path đến thư mục dự án VietERP MRP
+### Bước 3: Trả lời path đến thư mục dự án BaoERP MRP
 
 ### Bước 4: Để thợ tự động thực hiện 4 Phase
 

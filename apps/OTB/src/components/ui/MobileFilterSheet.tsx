@@ -77,15 +77,13 @@ export default function MobileFilterSheet({
         return (
           <button
             onClick={() => handleChange(filter.key, !value)}
-            className={`relative w-12 h-7 rounded-full transition-colors duration-200 ${
-              value
-                ? 'bg-vietErp-gold'
+            className={`relative w-12 h-7 rounded-full transition-colors duration-200 ${value
+                ? 'bg-BaoERP-gold'
                 : 'bg-gray-200'
-            }`}
+              }`}
           >
-            <div className={`absolute top-0.5 w-6 h-6 rounded-full bg-white shadow transition-transform duration-200 ${
-              value ? 'translate-x-5' : 'translate-x-0.5'
-            }`} />
+            <div className={`absolute top-0.5 w-6 h-6 rounded-full bg-white shadow transition-transform duration-200 ${value ? 'translate-x-5' : 'translate-x-0.5'
+              }`} />
           </button>
         );
 
@@ -118,7 +116,7 @@ export default function MobileFilterSheet({
         </button>
         <button
           onClick={handleApply}
-          className="flex-1 py-3 rounded-xl text-sm font-semibold font-['Montserrat'] bg-vietErp-gold text-[#0A0A0A] active:bg-vietErp-gold-dark transition-colors"
+          className="flex-1 py-3 rounded-xl text-sm font-semibold font-['Montserrat'] bg-BaoERP-gold text-[#0A0A0A] active:bg-BaoERP-gold-dark transition-colors"
         >
           Apply Filters
         </button>

@@ -1,8 +1,8 @@
 # Architecture Decision Records (ADR) / Hồ sơ Quyết định Kiến trúc
 
-This directory contains the Architecture Decision Records for VietERP, documenting critical technical decisions and their trade-offs.
+This directory contains the Architecture Decision Records for BaoERP, documenting critical technical decisions and their trade-offs.
 
-Thư mục này chứa các Hồ sơ Quyết định Kiến trúc cho VietERP, ghi lại các quyết định kỹ thuật quan trọng và sự cân bằng của chúng.
+Thư mục này chứa các Hồ sơ Quyết định Kiến trúc cho BaoERP, ghi lại các quyết định kỹ thuật quan trọng và sự cân bằng của chúng.
 
 ## Index / Mục lục
 
@@ -38,5 +38,5 @@ Thư mục này chứa các Hồ sơ Quyết định Kiến trúc cho VietERP, g
 
 ---
 
-**Người phụ trách / Owner**: VietERP Core Team
+**Người phụ trách / Owner**: BaoERP Core Team
 **Lần cập nhật cuối / Last Updated**: 2026-03-29

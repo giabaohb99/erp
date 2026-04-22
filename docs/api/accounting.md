@@ -2,7 +2,7 @@
 
 **Tham chiếu API kế toán / Accounting API Reference**
 
-Comprehensive API reference for the VietERP Accounting module. Full compliance with Vietnamese Accounting Standards (VAS) per Thông tư 200/2014/TT-BTC.
+Comprehensive API reference for the BaoERP Accounting module. Full compliance with Vietnamese Accounting Standards (VAS) per Thông tư 200/2014/TT-BTC.
 
 ## Base URL / URL cơ sở
 

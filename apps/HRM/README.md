@@ -1,10 +1,10 @@
-# VietERP-HRM — Hệ thống Quản lý Nhân sự
+# BaoERP-HRM — Hệ thống Quản lý Nhân sự
 
-Ứng dụng quản lý nhân sự toàn diện cho Công ty CP VietERP Việt Nam, bao quát toàn bộ vòng đời nhân viên từ tuyển dụng đến nghỉ việc.
+Ứng dụng quản lý nhân sự toàn diện cho Công ty CP BaoERP Việt Nam, bao quát toàn bộ vòng đời nhân viên từ tuyển dụng đến nghỉ việc.
 
 ## Tổng quan
 
-VietERP-HRM là hệ thống HRM nội bộ với phân quyền 6 vai trò (RBAC), tích hợp AI Copilot hỗ trợ nghiệp vụ HR. Hệ thống xử lý tuyển dụng, hợp đồng, chấm công, tính lương (thuế TNCN Việt Nam), KPI, đánh giá hiệu suất và xuất tài liệu tự động.
+BaoERP-HRM là hệ thống HRM nội bộ với phân quyền 6 vai trò (RBAC), tích hợp AI Copilot hỗ trợ nghiệp vụ HR. Hệ thống xử lý tuyển dụng, hợp đồng, chấm công, tính lương (thuế TNCN Việt Nam), KPI, đánh giá hiệu suất và xuất tài liệu tự động.
 
 ## Công nghệ
 
@@ -86,4 +86,4 @@ Hướng dẫn triển khai chi tiết (cấu hình server, Nginx, backup, bảo
 
 ## Giấy phép
 
-Private — Chỉ sử dụng nội bộ tại VietERP Việt Nam.
+Private — Chỉ sử dụng nội bộ tại BaoERP Việt Nam.

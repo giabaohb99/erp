@@ -1,11 +1,11 @@
-# 🚀 VietERP MRP LOAD TESTING GUIDE
+# 🚀 BaoERP MRP LOAD TESTING GUIDE
 ## K6 & Artillery Performance Benchmarks
 
 ---
 
 ## 📋 OVERVIEW
 
-Comprehensive load testing suite for VietERP MRP using:
+Comprehensive load testing suite for BaoERP MRP using:
 - **K6** - Modern load testing tool (JavaScript-based)
 - **Artillery** - Cloud-native performance testing
 
@@ -399,4 +399,4 @@ k6 run --no-vu-connection-reuse load-tests/k6/main.js
 
 ---
 
-*VietERP MRP Load Testing Suite v1.0*
+*BaoERP MRP Load Testing Suite v1.0*

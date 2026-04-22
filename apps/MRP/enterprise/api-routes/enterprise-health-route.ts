@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP ENTERPRISE HEALTH CHECK API
+// BaoERP MRP ENTERPRISE HEALTH CHECK API
 // Comprehensive system diagnostics
 // =============================================================================
 

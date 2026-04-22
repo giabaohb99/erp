@@ -1,4 +1,4 @@
-# 🔬 VietERP MRP SCHEMA INVESTIGATION REPORT
+# 🔬 BaoERP MRP SCHEMA INVESTIGATION REPORT
 ## Chief Architect Deep Analysis - 2026-01-09
 
 ---
@@ -300,5 +300,5 @@ Sau khi thống nhất schema, verify:
 ---
 
 *Investigation Report - Chief Architect*
-*VietERP MRP Schema Deep Analysis*
+*BaoERP MRP Schema Deep Analysis*
 *2026-01-09*

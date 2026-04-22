@@ -1,8 +1,8 @@
-# RRI FULL AUDIT REPORT - VietERP MRP PROJECT
+# RRI FULL AUDIT REPORT - BaoERP MRP PROJECT
 ## Doi Chieu Tai Lieu RRI Methodology voi Thuc Trang Du An
 
 **Date:** 2026-02-20
-**Project:** VietERP MRP (Manufacturing Resource Planning)
+**Project:** BaoERP MRP (Manufacturing Resource Planning)
 **Method:** Reverse Requirements Interview (RRI) - 3 Personas x 6 Parallel Agents
 **Previous Audit:** 2026-02-18 (147 issues)
 **This Audit:** 2026-02-20 (Deep verification + new findings)
@@ -513,9 +513,9 @@ Progress  ~45%       ~55%       ~65%       ~75%       ~85%       ~92%       ~98%
 
 ## KET LUAN
 
-### So Sanh Voi RRI Methodology Gaps (Tu Case Study VietERP OTB)
+### So Sanh Voi RRI Methodology Gaps (Tu Case Study BaoERP OTB)
 
-| RRI Gap | VietERP OTB | VietERP MRP | Status |
+| RRI Gap | BaoERP OTB | BaoERP MRP | Status |
 |---------|----------|---------|--------|
 | Navigation | Missing → Fixed | 98% pages, 76 missing not-found | PARTIAL |
 | Progress tracking | Missing → Fixed | Loading states 98% | OK |

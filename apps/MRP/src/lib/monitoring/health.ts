@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - HEALTH CHECK UTILITIES
+// BaoERP MRP - HEALTH CHECK UTILITIES
 // Liveness, Readiness, and Dependency Health Checks
 // =============================================================================
 
@@ -45,11 +45,11 @@ const config = {
  */
 export async function checkDatabase(): Promise<HealthCheck> {
   const start = Date.now();
-  
+
   try {
     // Simple query to check connection
     await prisma.$queryRaw`SELECT 1`;
-    
+
     return {
       name: 'database',
       status: 'pass',
@@ -91,7 +91,7 @@ export async function checkRedis(): Promise<HealthCheck> {
  */
 export async function checkStorage(): Promise<HealthCheck> {
   const start = Date.now();
-  
+
   try {
     // Check if S3 is configured
     if (!process.env.AWS_ACCESS_KEY_ID || !process.env.S3_BUCKET) {
@@ -102,7 +102,7 @@ export async function checkStorage(): Promise<HealthCheck> {
         duration: Date.now() - start,
       };
     }
-    
+
     // S3 check disabled in build - would need @aws-sdk installed
     return {
       name: 'storage',
@@ -128,11 +128,11 @@ export function checkMemory(): HealthCheck {
   const heapUsedMB = Math.round(used.heapUsed / 1024 / 1024);
   const heapTotalMB = Math.round(used.heapTotal / 1024 / 1024);
   const rssMB = Math.round(used.rss / 1024 / 1024);
-  
+
   // Warn if heap usage > 80%
   const heapPercentage = (used.heapUsed / used.heapTotal) * 100;
   const status = heapPercentage > 90 ? 'fail' : heapPercentage > 80 ? 'warn' : 'pass';
-  
+
   return {
     name: 'memory',
     status,
@@ -153,11 +153,11 @@ export function checkCPU(): HealthCheck {
   const cpus = os.cpus();
   const loadAvg = os.loadavg();
   const numCPUs = cpus.length;
-  
+
   // Normalize load average by number of CPUs
   const normalizedLoad = loadAvg[0] / numCPUs;
   const status = normalizedLoad > 0.9 ? 'fail' : normalizedLoad > 0.7 ? 'warn' : 'pass';
-  
+
   return {
     name: 'cpu',
     status,
@@ -178,13 +178,13 @@ export function checkDisk(): HealthCheck {
     // Check temp directory
     const tempDir = process.env.TEMP || '/tmp';
     const stats = fs.statfsSync(tempDir);
-    
+
     const totalGB = (stats.blocks * stats.bsize) / (1024 * 1024 * 1024);
     const freeGB = (stats.bfree * stats.bsize) / (1024 * 1024 * 1024);
     const usedPercentage = ((totalGB - freeGB) / totalGB) * 100;
-    
+
     const status = usedPercentage > 95 ? 'fail' : usedPercentage > 85 ? 'warn' : 'pass';
-    
+
     return {
       name: 'disk',
       status,
@@ -228,23 +228,23 @@ export function checkLiveness(): HealthStatus {
  */
 export async function checkReadiness(): Promise<HealthStatus> {
   const checks: HealthCheck[] = [];
-  
+
   // Check critical dependencies
   checks.push(await checkDatabase());
   checks.push(await checkRedis());
   checks.push(checkMemory());
-  
+
   // Determine overall status
   const hasFailure = checks.some(c => c.status === 'fail');
   const hasWarning = checks.some(c => c.status === 'warn');
-  
+
   let status: 'healthy' | 'unhealthy' | 'degraded' = 'healthy';
   if (hasFailure) {
     status = 'unhealthy';
   } else if (hasWarning) {
     status = 'degraded';
   }
-  
+
   return {
     status,
     timestamp: new Date().toISOString(),
@@ -260,32 +260,32 @@ export async function checkReadiness(): Promise<HealthStatus> {
  */
 export async function checkHealth(): Promise<HealthStatus> {
   const checks: HealthCheck[] = [];
-  
+
   // Run all checks in parallel
   const [database, redis, storage] = await Promise.all([
     checkDatabase(),
     checkRedis(),
     checkStorage(),
   ]);
-  
+
   checks.push(database);
   checks.push(redis);
   checks.push(storage);
   checks.push(checkMemory());
   checks.push(checkCPU());
   checks.push(checkDisk());
-  
+
   // Determine overall status
   const hasFailure = checks.some(c => c.status === 'fail');
   const hasWarning = checks.some(c => c.status === 'warn');
-  
+
   let status: 'healthy' | 'unhealthy' | 'degraded' = 'healthy';
   if (hasFailure) {
     status = 'unhealthy';
   } else if (hasWarning) {
     status = 'degraded';
   }
-  
+
   return {
     status,
     timestamp: new Date().toISOString(),

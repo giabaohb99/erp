@@ -2,7 +2,7 @@
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Screen: LoginScreen | API: /auth/login | Status: COMPLETE
-// Design: VietERP Login V2 (light theme, fashion icons, glassmorphism)
+// Design: BaoERP Login V2 (light theme, fashion icons, glassmorphism)
 // ═══════════════════════════════════════════════════════════════════════════
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
@@ -18,60 +18,60 @@ const FashionIcons = () => (
     {/* Handbag */}
     <svg className="absolute w-20 h-20 top-[10%] right-[8%] opacity-[0.25]"
       viewBox="0 0 50 50" fill="none" stroke="#A69076" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22 C12 16, 18 12, 25 12 C32 12, 38 16, 38 22 L38 40 C38 43, 34 45, 25 45 C16 45, 12 43, 12 40 Z"/>
-      <path d="M18 12 C18 6, 21 4, 25 4 C29 4, 32 6, 32 12"/>
-      <circle cx="25" cy="30" r="3"/>
+      <path d="M12 22 C12 16, 18 12, 25 12 C32 12, 38 16, 38 22 L38 40 C38 43, 34 45, 25 45 C16 45, 12 43, 12 40 Z" />
+      <path d="M18 12 C18 6, 21 4, 25 4 C29 4, 32 6, 32 12" />
+      <circle cx="25" cy="30" r="3" />
     </svg>
     {/* Watch */}
     <svg className="absolute w-[65px] h-20 top-[22%] left-[10%] opacity-20"
       viewBox="0 0 40 50" fill="none" stroke="#A69076" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="10" y="12" width="20" height="26" rx="3"/>
-      <circle cx="20" cy="25" r="8"/>
-      <line x1="20" y1="25" x2="20" y2="19"/>
-      <line x1="20" y1="25" x2="25" y2="25"/>
-      <path d="M13 12 L13 5 L27 5 L27 12"/>
-      <path d="M13 38 L13 45 L27 45 L27 38"/>
+      <rect x="10" y="12" width="20" height="26" rx="3" />
+      <circle cx="20" cy="25" r="8" />
+      <line x1="20" y1="25" x2="20" y2="19" />
+      <line x1="20" y1="25" x2="25" y2="25" />
+      <path d="M13 12 L13 5 L27 5 L27 12" />
+      <path d="M13 38 L13 45 L27 45 L27 38" />
     </svg>
     {/* Dress */}
     <svg className="absolute w-[70px] h-[100px] bottom-[25%] right-[6%] opacity-20"
       viewBox="0 0 50 70" fill="none" stroke="#A69076" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 5 C20 3, 22 2, 25 2 C28 2, 30 3, 30 5"/>
-      <path d="M20 5 L17 15 L10 60 C10 63, 15 65, 25 65 C35 65, 40 63, 40 60 L33 15 L30 5"/>
-      <path d="M20 5 L22 8 L25 5 L28 8 L30 5"/>
-      <ellipse cx="25" cy="25" rx="8" ry="3"/>
+      <path d="M20 5 C20 3, 22 2, 25 2 C28 2, 30 3, 30 5" />
+      <path d="M20 5 L17 15 L10 60 C10 63, 15 65, 25 65 C35 65, 40 63, 40 60 L33 15 L30 5" />
+      <path d="M20 5 L22 8 L25 5 L28 8 L30 5" />
+      <ellipse cx="25" cy="25" rx="8" ry="3" />
     </svg>
     {/* Sunglasses */}
     <svg className="absolute w-[75px] h-10 top-[55%] right-[12%] opacity-[0.18]"
       viewBox="0 0 60 30" fill="none" stroke="#A69076" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-      <ellipse cx="15" cy="17" rx="12" ry="10"/>
-      <ellipse cx="45" cy="17" rx="12" ry="10"/>
-      <path d="M27 17 C29 14, 31 14, 33 17"/>
-      <path d="M3 15 L0 12"/>
-      <path d="M57 15 L60 12"/>
+      <ellipse cx="15" cy="17" rx="12" ry="10" />
+      <ellipse cx="45" cy="17" rx="12" ry="10" />
+      <path d="M27 17 C29 14, 31 14, 33 17" />
+      <path d="M3 15 L0 12" />
+      <path d="M57 15 L60 12" />
     </svg>
     {/* Jacket */}
     <svg className="absolute w-[85px] h-[90px] bottom-[12%] right-[25%] opacity-[0.18]"
       viewBox="0 0 60 65" fill="none" stroke="#A69076" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 5 L15 8 L8 60 L25 60 L25 25 L30 15 L35 25 L35 60 L52 60 L45 8 L40 5"/>
-      <path d="M20 5 C20 2, 25 0, 30 0 C35 0, 40 2, 40 5"/>
-      <path d="M25 15 L30 25 L35 15"/>
-      <line x1="30" y1="30" x2="30" y2="55"/>
-      <circle cx="30" cy="35" r="2"/>
-      <circle cx="30" cy="45" r="2"/>
+      <path d="M20 5 L15 8 L8 60 L25 60 L25 25 L30 15 L35 25 L35 60 L52 60 L45 8 L40 5" />
+      <path d="M20 5 C20 2, 25 0, 30 0 C35 0, 40 2, 40 5" />
+      <path d="M25 15 L30 25 L35 15" />
+      <line x1="30" y1="30" x2="30" y2="55" />
+      <circle cx="30" cy="35" r="2" />
+      <circle cx="30" cy="45" r="2" />
     </svg>
     {/* T-Shirt */}
     <svg className="absolute w-[70px] h-[65px] top-[42%] left-[5%] opacity-[0.16]"
       viewBox="0 0 55 50" fill="none" stroke="#A69076" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 5 L12 8 L2 15 L8 22 L15 18 L15 45 L40 45 L40 18 L47 22 L53 15 L43 8 L37 5"/>
-      <path d="M18 5 C18 2, 23 0, 27.5 0 C32 0, 37 2, 37 5"/>
-      <ellipse cx="27.5" cy="6" rx="5" ry="3"/>
+      <path d="M18 5 L12 8 L2 15 L8 22 L15 18 L15 45 L40 45 L40 18 L47 22 L53 15 L43 8 L37 5" />
+      <path d="M18 5 C18 2, 23 0, 27.5 0 C32 0, 37 2, 37 5" />
+      <ellipse cx="27.5" cy="6" rx="5" ry="3" />
     </svg>
     {/* Pants */}
     <svg className="absolute w-[60px] h-[85px] bottom-[15%] left-[8%] opacity-[0.18]"
       viewBox="0 0 45 65" fill="none" stroke="#A69076" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M8 2 L37 2 L37 8 L40 60 L28 60 L25 25 L22.5 8 L20 25 L17 60 L5 60 L8 8 Z"/>
-      <path d="M8 2 L37 2 L37 8 L8 8 Z"/>
-      <line x1="22.5" y1="8" x2="22.5" y2="20"/>
+      <path d="M8 2 L37 2 L37 8 L40 60 L28 60 L25 25 L22.5 8 L20 25 L17 60 L5 60 L8 8 Z" />
+      <path d="M8 2 L37 2 L37 8 L8 8 Z" />
+      <line x1="22.5" y1="8" x2="22.5" y2="20" />
     </svg>
   </div>
 );
@@ -161,7 +161,7 @@ const LoginScreen = () => {
 
         {/* Logo Section */}
         <div className="text-center mb-10">
-          <img src="/vietErp-logo.png" alt="VietERP" className="h-16 mx-auto mb-2 object-contain" />
+          <img src="/BaoERP-logo.png" alt="BaoERP" className="h-16 mx-auto mb-2 object-contain" />
           <p className="text-[15px] font-semibold tracking-[0.08em] text-[#5C4A3A] mb-1"
             style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
             Hệ Thống Quản Lý OTB
@@ -215,7 +215,7 @@ const LoginScreen = () => {
                 }}
               />
               <svg className="absolute right-[18px] top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B7A6B] pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
 
@@ -264,7 +264,7 @@ const LoginScreen = () => {
                 >
                   {rememberMe && (
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2.5 6L5 8.5L9.5 3.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2.5 6L5 8.5L9.5 3.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </div>
@@ -319,10 +319,10 @@ const LoginScreen = () => {
             }}
           >
             <svg width="20" height="20" viewBox="0 0 21 21" fill="none">
-              <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
-              <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
-              <rect x="1" y="11" width="9" height="9" fill="#00A4EF"/>
-              <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
+              <rect x="1" y="1" width="9" height="9" fill="#F25022" />
+              <rect x="11" y="1" width="9" height="9" fill="#7FBA00" />
+              <rect x="1" y="11" width="9" height="9" fill="#00A4EF" />
+              <rect x="11" y="11" width="9" height="9" fill="#FFB900" />
             </svg>
             Sign in with Microsoft
           </button>
@@ -363,7 +363,8 @@ const LoginScreen = () => {
       </div>
 
       {/* Keyframe animations - using dangerouslySetInnerHTML to avoid jsx type issues */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .login-input::placeholder {
           color: #8B7A6B;
           font-weight: 300;

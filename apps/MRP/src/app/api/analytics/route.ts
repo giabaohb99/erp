@@ -8,13 +8,13 @@ import { withAuth } from '@/lib/api/with-auth';
 
 // =============================================================================
 // ANALYTICS DASHBOARD API
-// Comprehensive metrics and chart data for VietERP MRP System
+// Comprehensive metrics and chart data for BaoERP MRP System
 // =============================================================================
 
 export const GET = withAuth(async (request: NextRequest, _context, _session) => {
-    // Rate limiting
-    const rateLimitResult = await checkReadEndpointLimit(request);
-    if (rateLimitResult) return rateLimitResult;
+  // Rate limiting
+  const rateLimitResult = await checkReadEndpointLimit(request);
+  if (rateLimitResult) return rateLimitResult;
 
   const startTime = Date.now();
   try {

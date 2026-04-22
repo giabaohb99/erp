@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - ROOT PROVIDERS
+// BaoERP MRP - ROOT PROVIDERS
 // Wraps app with all necessary providers including Theme
 // =============================================================================
 

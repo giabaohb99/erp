@@ -30,7 +30,7 @@ import {
 import { cn } from '@/lib/utils';
 
 // =============================================================================
-// VietERP MRP - CHART COMPONENTS
+// BaoERP MRP - CHART COMPONENTS
 // Reusable chart components with Vietnamese labels
 // =============================================================================
 

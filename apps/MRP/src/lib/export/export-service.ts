@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - EXPORT SERVICE
+// BaoERP MRP - EXPORT SERVICE
 // Excel and PDF export functionality
 // =============================================================================
 
@@ -20,13 +20,13 @@ import { logger } from '@/lib/logger';
 // =============================================================================
 
 export type ExportFormat = 'xlsx' | 'csv' | 'pdf';
-export type ExportEntity = 
-  | 'sales-orders' 
-  | 'parts' 
-  | 'inventory' 
-  | 'suppliers' 
-  | 'customers' 
-  | 'work-orders' 
+export type ExportEntity =
+  | 'sales-orders'
+  | 'parts'
+  | 'inventory'
+  | 'suppliers'
+  | 'customers'
+  | 'work-orders'
   | 'quality-records'
   | 'mrp-results';
 
@@ -157,31 +157,31 @@ const statusTranslations: Record<string, string> = {
   SHIPPED: 'Đã giao',
   DELIVERED: 'Đã nhận',
   CANCELLED: 'Đã hủy',
-  
+
   // Work Order Status
   PLANNED: 'Kế hoạch',
   RELEASED: 'Đã phát hành',
   IN_PROGRESS: 'Đang thực hiện',
   ON_HOLD: 'Tạm dừng',
   COMPLETED: 'Hoàn thành',
-  
+
   // Priority
   URGENT: 'Khẩn cấp',
   HIGH: 'Cao',
   NORMAL: 'Bình thường',
   LOW: 'Thấp',
-  
+
   // Severity
   CRITICAL: 'Nghiêm trọng',
   MAJOR: 'Lớn',
   MINOR: 'Nhỏ',
   OBSERVATION: 'Quan sát',
-  
+
   // Quality Status
   OPEN: 'Mở',
   PENDING_APPROVAL: 'Chờ duyệt',
   CLOSED: 'Đã đóng',
-  
+
   // Part Category
   FINISHED_GOOD: 'Thành phẩm',
   SEMI_FINISHED: 'Bán thành phẩm',
@@ -189,7 +189,7 @@ const statusTranslations: Record<string, string> = {
   RAW_MATERIAL: 'Nguyên vật liệu',
   CONSUMABLE: 'Vật tư tiêu hao',
   PACKAGING: 'Bao bì',
-  
+
   // Inventory Status
   STOCK_OK: 'Đủ hàng',
   STOCK_LOW: 'Sắp hết',
@@ -254,7 +254,7 @@ async function transformSalesOrders(): Promise<Record<string, any>[]> {
 async function transformParts(): Promise<Record<string, any>[]> {
   const parts = await dataService.getParts();
   const suppliers = await dataService.getSuppliers();
-  
+
   return parts.map(p => {
     const supplier = suppliers.find(s => s.id === p.supplierId);
     return {
@@ -272,7 +272,7 @@ async function transformParts(): Promise<Record<string, any>[]> {
 
 async function transformInventory(): Promise<Record<string, any>[]> {
   const inventory = await dataService.getInventory();
-  
+
   return inventory.map(inv => ({
     partNumber: inv.part?.partNumber || '',
     partName: inv.part?.partName || '',
@@ -289,7 +289,7 @@ async function transformInventory(): Promise<Record<string, any>[]> {
 
 async function transformSuppliers(): Promise<Record<string, any>[]> {
   const suppliers = await dataService.getSuppliers();
-  
+
   return suppliers.map(s => ({
     code: s.code,
     name: s.name,
@@ -305,7 +305,7 @@ async function transformSuppliers(): Promise<Record<string, any>[]> {
 
 async function transformCustomers(): Promise<Record<string, any>[]> {
   const customers = await dataService.getCustomers();
-  
+
   return customers.map(c => ({
     code: c.code,
     name: c.name,
@@ -322,7 +322,7 @@ async function transformCustomers(): Promise<Record<string, any>[]> {
 async function transformWorkOrders(): Promise<Record<string, any>[]> {
   const workOrders = await dataService.getWorkOrders();
   const parts = await dataService.getParts();
-  
+
   return workOrders.map(wo => {
     const part = parts.find(p => p.id === wo.productPartId);
     return {
@@ -341,7 +341,7 @@ async function transformWorkOrders(): Promise<Record<string, any>[]> {
 
 async function transformQualityRecords(): Promise<Record<string, any>[]> {
   const records = await dataService.getQualityRecords();
-  
+
   return records.map(r => ({
     recordNumber: r.recordNumber,
     type: r.type,
@@ -361,14 +361,14 @@ async function transformQualityRecords(): Promise<Record<string, any>[]> {
 
 function generateCSV(data: Record<string, any>[], columns: { key: string; label: string }[]): string {
   const headers = columns.map(c => `"${c.label}"`).join(',');
-  const rows = data.map(row => 
+  const rows = data.map(row =>
     columns.map(c => {
       const value = row[c.key] ?? '';
       // Escape quotes and wrap in quotes
       return `"${String(value).replace(/"/g, '""')}"`;
     }).join(',')
   );
-  
+
   // Add BOM for Excel to recognize UTF-8
   return '\ufeff' + [headers, ...rows].join('\n');
 }
@@ -381,7 +381,7 @@ function generateXLSXData(data: Record<string, any>[], columns: { key: string; l
   // Generate XML-based XLSX (SpreadsheetML format that Excel can open)
   const headers = columns.map(c => c.label);
   const rows = data.map(row => columns.map(c => row[c.key] ?? ''));
-  
+
   // Create worksheet XML
   const worksheetRows = [
     // Title row
@@ -391,15 +391,15 @@ function generateXLSXData(data: Record<string, any>[], columns: { key: string; l
     // Header row
     `<Row>${headers.map(h => `<Cell ss:StyleID="Header"><Data ss:Type="String">${escapeXml(h)}</Data></Cell>`).join('')}</Row>`,
     // Data rows
-    ...rows.map(row => 
+    ...rows.map(row =>
       `<Row>${row.map(cell => `<Cell><Data ss:Type="String">${escapeXml(String(cell))}</Data></Cell>`).join('')}</Row>`
     )
   ].join('\n');
-  
-  const columnDefs = columns.map(c => 
+
+  const columnDefs = columns.map(c =>
     `<Column ss:Width="${(c.width || 15) * 7}"/>`
   ).join('\n');
-  
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
@@ -428,7 +428,7 @@ function generateXLSXData(data: Record<string, any>[], columns: { key: string; l
     </Table>
   </Worksheet>
 </Workbook>`;
-  
+
   return xml;
 }
 
@@ -447,10 +447,10 @@ function escapeXml(str: string): string {
 
 function generatePDFData(data: Record<string, any>[], columns: { key: string; label: string }[], title: string): string {
   const headerCells = columns.map(c => `<th>${escapeHtml(c.label)}</th>`).join('');
-  const dataRows = data.map(row => 
+  const dataRows = data.map(row =>
     `<tr>${columns.map(c => `<td>${escapeHtml(String(row[c.key] ?? ''))}</td>`).join('')}</tr>`
   ).join('\n');
-  
+
   const html = `
 <!DOCTYPE html>
 <html>
@@ -484,11 +484,11 @@ function generatePDFData(data: Record<string, any>[], columns: { key: string; la
     </tbody>
   </table>
   <div class="footer">
-    VietERP MRP System - Báo cáo được tạo tự động
+    BaoERP MRP System - Báo cáo được tạo tự động
   </div>
 </body>
 </html>`;
-  
+
   return html;
 }
 
@@ -506,14 +506,14 @@ function escapeHtml(str: string): string {
 
 export async function exportData(options: ExportOptions): Promise<ExportResult> {
   const { format, entity, title } = options;
-  
+
   // Get column definitions
   const columns = columnDefinitions[entity] || [];
-  
+
   // Transform data based on entity
   let data: Record<string, any>[];
   let exportTitle: string;
-  
+
   switch (entity) {
     case 'sales-orders':
       data = await transformSalesOrders();
@@ -546,12 +546,12 @@ export async function exportData(options: ExportOptions): Promise<ExportResult> 
     default:
       throw new Error(`Unknown entity: ${entity}`);
   }
-  
+
   // Generate file based on format
   let content: string;
   let mimeType: string;
   let extension: string;
-  
+
   switch (format) {
     case 'csv':
       content = generateCSV(data, columns);
@@ -571,14 +571,14 @@ export async function exportData(options: ExportOptions): Promise<ExportResult> 
     default:
       throw new Error(`Unknown format: ${format}`);
   }
-  
+
   // Generate filename
   const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
   const filename = `${entity}_${timestamp}.${extension}`;
-  
+
   // Encode to base64
   const base64Data = Buffer.from(content, 'utf-8').toString('base64');
-  
+
   return {
     success: true,
     filename,
@@ -650,7 +650,7 @@ export function generateDashboardPDF(options: DashboardExportOptions): string {
     if (widget.kpiData) {
       // KPI Widget
       const statusColor = widget.kpiData.status === 'critical' ? '#EF4444' :
-                         widget.kpiData.status === 'warning' ? '#F59E0B' : '#10B981';
+        widget.kpiData.status === 'warning' ? '#F59E0B' : '#10B981';
       content = `
         <div class="kpi-widget">
           <div class="kpi-value" style="color: ${statusColor}">${escapeHtml(widget.kpiData.value)}</div>
@@ -816,7 +816,7 @@ export function generateDashboardPDF(options: DashboardExportOptions): string {
   </div>
 
   <div class="footer">
-    VietERP MRP System - Báo cáo Dashboard được tạo tự động
+    BaoERP MRP System - Báo cáo Dashboard được tạo tự động
   </div>
 </body>
 </html>`;
@@ -870,7 +870,7 @@ export interface EmailDeliveryOptions {
  *   SMTP_PORT     - SMTP server port (e.g. 587)
  *   SMTP_USER     - SMTP authentication username
  *   SMTP_PASS     - SMTP authentication password
- *   SMTP_FROM     - Sender address (e.g. "VietERP MRP <noreply@rtr.vn>")
+ *   SMTP_FROM     - Sender address (e.g. "BaoERP MRP <noreply@rtr.vn>")
  */
 export async function deliverReportByEmail(options: EmailDeliveryOptions): Promise<{ success: boolean; error?: string }> {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM } = process.env;

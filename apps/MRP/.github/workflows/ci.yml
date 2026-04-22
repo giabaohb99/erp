@@ -1,5 +1,5 @@
 # .github/workflows/ci.yml
-# Continuous Integration workflow for VietERP MRP System
+# Continuous Integration workflow for BaoERP MRP System
 
 name: CI
 

@@ -1,6 +1,6 @@
 /**
- * VietERP Dashboard Package - Main entry point
- * Gói Dashboard VietERP - Điểm vào chính
+ * BaoERP Dashboard Package - Main entry point
+ * Gói Dashboard BaoERP - Điểm vào chính
  */
 
 // Components

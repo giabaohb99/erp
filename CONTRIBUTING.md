@@ -1,12 +1,12 @@
-# Hướng dẫn Đóng góp / Contributing to VietERP Platform
+# Hướng dẫn Đóng góp / Contributing to BaoERP Platform
 
-Cảm ơn bạn đã quan tâm đến VietERP! Tài liệu này sẽ giúp bạn bắt đầu đóng góp vào dự án.
+Cảm ơn bạn đã quan tâm đến BaoERP! Tài liệu này sẽ giúp bạn bắt đầu đóng góp vào dự án.
 
-Thank you for your interest in contributing to VietERP! This guide will help you get started contributing to the project.
+Thank you for your interest in contributing to BaoERP! This guide will help you get started contributing to the project.
 
 ## Chào mừng / Welcome
 
-VietERP Platform là một dự án mã nguồn mở hướng tới cộng đồng. Chúng tôi hoan nghênh mọi đóng góp từ:
+BaoERP Platform là một dự án mã nguồn mở hướng tới cộng đồng. Chúng tôi hoan nghênh mọi đóng góp từ:
 - 🐛 Báo cáo và sửa lỗi / Bug reports and fixes
 - ✨ Tính năng mới / New features
 - 📚 Cải tiến tài liệu / Documentation improvements
@@ -14,7 +14,7 @@ VietERP Platform là một dự án mã nguồn mở hướng tới cộng đồ
 - 🌍 Dịch và bản địa hoá / Translations
 - 💬 Feedback về thiết kế / Design feedback
 
-VietERP Platform is an open-source community-driven project. We welcome contributions of all kinds:
+BaoERP Platform is an open-source community-driven project. We welcome contributions of all kinds:
 - Bug reports and fixes
 - New features and enhancements
 - Documentation improvements
@@ -485,7 +485,7 @@ Chúng tôi vinh danh tất cả những đóng góp! Contributors sẽ được
 - 💬 [GitHub Discussions](https://github.com/lacviet-erp/Viet-ERP/discussions)
 - 🤝 [Discord Community](https://discord.gg/vierp)
 - 📧 Email: hello@vierp.dev
-- 🐦 Twitter: [@VietERPDev](https://twitter.com/VietERPDev)
+- 🐦 Twitter: [@BaoERPDev](https://twitter.com/BaoERPDev)
 
 ### Quy tắc Ứng xử / Code of Conduct
 
@@ -495,7 +495,7 @@ Tóm tắt: Hãy tôn trọng nhau, không có hành vi quấy rối hoặc kỳ
 
 ## Câu hỏi Thường gặp / FAQs
 
-**Q: Tôi có thể đóng góp nếu lần đầu tiên sử dụng VietERP không?**
+**Q: Tôi có thể đóng góp nếu lần đầu tiên sử dụng BaoERP không?**
 A: Chắc chắn! Chúng tôi mong chờ nhất những đóng góp từ người dùng thực tế. Hãy bắt đầu với tài liệu hoặc bug reports nhỏ.
 
 **Q: Tôi cần phải xin phép trước khi bắt đầu làm việc?**
@@ -509,6 +509,6 @@ A: Hãy mở Discussion trước để đề xuất. Chúng tôi thích thảo l
 
 ## Cảm ơn! / Thank You!
 
-Cảm ơn bạn đã dành thời gian để đóng góp vào VietERP Platform! 🙏
+Cảm ơn bạn đã dành thời gian để đóng góp vào BaoERP Platform! 🙏
 
-Contributions are what make VietERP better for everyone. We truly appreciate your effort!
+Contributions are what make BaoERP better for everyone. We truly appreciate your effort!

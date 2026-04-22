@@ -2,11 +2,11 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP customers may deploy infrastructure on different clouds:
+BaoERP customers may deploy infrastructure on different clouds:
 - Some prefer AWS (largest market)
 - Some require GCP (Google Cloud preferred for analytics)
 - Some mandate Azure (Microsoft enterprise agreements)
@@ -18,7 +18,7 @@ VietERP customers may deploy infrastructure on different clouds:
 - Infrastructure as Code (IaC) for repeatability
 - Version control of all infrastructure changes
 
-Các khách hàng VietERP có thể triển khai cơ sở hạ tầng trên các đám mây khác nhau:
+Các khách hàng BaoERP có thể triển khai cơ sở hạ tầng trên các đám mây khác nhau:
 - Một số ưa thích AWS
 - Một số yêu cầu GCP
 - Một số bắt buộc Azure
@@ -119,7 +119,7 @@ Terraform provides cloud-agnostic IaC with module-based abstractions.
 - [AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 - [GCP Provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
 - [Azure Provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
-- VietERP Infrastructure: `terraform/aws/`, `terraform/gcp/`, `terraform/modules/`
+- BaoERP Infrastructure: `terraform/aws/`, `terraform/gcp/`, `terraform/modules/`
 
 ---
 

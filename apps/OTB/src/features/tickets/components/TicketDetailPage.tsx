@@ -13,7 +13,7 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 import { useConfirmDialog } from '@/hooks/useConfirmDialog';
 
 /* =========================
-   VietERP DESIGN SYSTEM COLORS
+   BaoERP DESIGN SYSTEM COLORS
 ========================= */
 
 // Chart colors: REX = Champagne Gold, TTP = Forest Green
@@ -29,14 +29,16 @@ const EMPTY_BUDGET_DATA = {
   brandName: '-',
   totalBudget: 0,
   budgetName: '-',
-  status: 'DRAFT'};
+  status: 'DRAFT'
+};
 
 const EMPTY_SEASON_DATA = {
   seasonGroup: '-',
   Season: '-',
   rex: 0,
   ttp: 0,
-  finalVersion: 0};
+  finalVersion: 0
+};
 
 /* =========================
    GROUPED BAR CHARTS
@@ -122,7 +124,8 @@ const PremiumSKUCard = ({ item, block, prevItem }: { item: any; block: any; prev
               className="absolute inset-0 opacity-[0.03]"
               style={{
                 backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)',
-                backgroundSize: '12px 12px'}}
+                backgroundSize: '12px 12px'
+              }}
             />
             <div className="relative z-[1]">
               <ProductImage subCategory={block.subCategory || ''} sku={item.sku || ''} size={140} rounded="rounded-xl" />
@@ -223,8 +226,7 @@ const PremiumSKUCard = ({ item, block, prevItem }: { item: any; block: any; prev
               ].map(({ label, value }) => (
                 <div key={label} className={`rounded-lg px-2 py-1.5 text-center ${'bg-[rgba(160,120,75,0.04)] border border-[rgba(160,120,75,0.1)]'}`}>
                   <div className={`text-[8px] uppercase tracking-wider font-semibold ${'text-gray-400'}`}>{label}</div>
-                  <div className={`text-xs font-bold font-['JetBrains_Mono'] mt-0.5 ${
-                    label === 'Margin' ? (marginPct >= 50 ? 'text-[#2A9E6A]' :'text-gray-800') :'text-gray-800'}`}>{value}</div>
+                  <div className={`text-xs font-bold font-['JetBrains_Mono'] mt-0.5 ${label === 'Margin' ? (marginPct >= 50 ? 'text-[#2A9E6A]' : 'text-gray-800') : 'text-gray-800'}`}>{value}</div>
                 </div>
               ))}
             </div>
@@ -278,9 +280,8 @@ const PremiumSKUCard = ({ item, block, prevItem }: { item: any; block: any; prev
                         <tr className={'border-t border-gray-100'}>
                           <td className={`px-1.5 py-1 font-semibold ${'text-gray-500'}`}>ST%</td>
                           {item.sizing.sellThrough.map((v: number, i: number) => (
-                            <td key={i} className={`px-1 py-1 text-center font-['JetBrains_Mono'] ${
-                              v >= 60 ? 'text-[#2A9E6A] font-bold' :
-                              v < 40 ? ('text-red-500') :'text-gray-700'}`}>{v}</td>
+                            <td key={i} className={`px-1 py-1 text-center font-['JetBrains_Mono'] ${v >= 60 ? 'text-[#2A9E6A] font-bold' :
+                                v < 40 ? ('text-red-500') : 'text-gray-700'}`}>{v}</td>
                           ))}
                         </tr>
                       )}
@@ -351,30 +352,27 @@ const ApprovalProgressBar = ({ currentStep, approvalHistory, t }: any) => (
         return (
           <React.Fragment key={step.id}>
             <div className="flex items-center gap-1.5 shrink-0">
-              <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${
-                status === 'approved' ? 'bg-[#127749] text-white' :
-                status === 'rejected' ? 'bg-[#F85149] text-white' :
-                status === 'current' ? 'bg-[#D7B797] text-white' :'bg-gray-100 border border-gray-200 text-gray-400'}`}>
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${status === 'approved' ? 'bg-[#127749] text-white' :
+                  status === 'rejected' ? 'bg-[#F85149] text-white' :
+                    status === 'current' ? 'bg-[#D7B797] text-white' : 'bg-gray-100 border border-gray-200 text-gray-400'}`}>
                 {status === 'approved' ? <Check size={12} strokeWidth={3} /> :
-                 status === 'rejected' ? <X size={12} strokeWidth={3} /> :
-                 status === 'current' ? <Clock size={12} /> :
-                 index + 1}
+                  status === 'rejected' ? <X size={12} strokeWidth={3} /> :
+                    status === 'current' ? <Clock size={12} /> :
+                      index + 1}
               </div>
               <div className="flex flex-col">
-                <span className={`text-[11px] font-medium leading-tight ${
-                  status === 'approved' ? 'text-[#2A9E6A]' :
-                  status === 'rejected' ? 'text-[#FF7B72]' :
-                  status === 'current' ? ('text-[#6B4D30]') :'text-gray-400'}`}>{step.label}</span>
+                <span className={`text-[11px] font-medium leading-tight ${status === 'approved' ? 'text-[#2A9E6A]' :
+                    status === 'rejected' ? 'text-[#FF7B72]' :
+                      status === 'current' ? ('text-[#6B4D30]') : 'text-gray-400'}`}>{step.label}</span>
                 {status === 'approved' && <span className="text-[9px] font-semibold text-[#2A9E6A]">Approved</span>}
                 {status === 'rejected' && <span className="text-[9px] font-semibold text-[#FF7B72]">Rejected</span>}
                 {status === 'current' && <span className={`text-[9px] font-semibold ${'text-amber-600'}`}>In Review</span>}
               </div>
             </div>
             {index < APPROVAL_STEPS.length - 1 && (
-              <div className={`flex-1 h-px mx-2 min-w-[16px] ${
-                getApprovalStepStatus(APPROVAL_STEPS[index + 1].id, currentStep, approvalHistory) !== 'waiting'
+              <div className={`flex-1 h-px mx-2 min-w-[16px] ${getApprovalStepStatus(APPROVAL_STEPS[index + 1].id, currentStep, approvalHistory) !== 'waiting'
                   ? 'bg-[#127749]'
-                  :'bg-gray-200'}`} />
+                  : 'bg-gray-200'}`} />
             )}
           </React.Fragment>
         );
@@ -389,11 +387,10 @@ const StatusTrackingPanel = ({ approvalHistory, ticket, t }: any) => (
       <span className={`text-[10px] font-semibold uppercase tracking-wider font-['Montserrat'] ${'text-gray-400'}`}>
         {t ? t('common.status') : 'Status'}
       </span>
-      <span className={`px-2 py-0.5 text-[10px] font-bold rounded ${
-        ['APPROVED', 'LEVEL2_APPROVED', 'FINAL'].includes(ticket?.status?.toUpperCase())
-          ?'bg-emerald-50 text-emerald-700': ['REJECTED', 'LEVEL1_REJECTED', 'LEVEL2_REJECTED'].includes(ticket?.status?.toUpperCase())
-          ?'bg-red-50 text-red-700': ['SUBMITTED', 'LEVEL1_APPROVED'].includes(ticket?.status?.toUpperCase())
-          ?'bg-amber-50 text-amber-700':'bg-gray-100 text-gray-600'}`}>
+      <span className={`px-2 py-0.5 text-[10px] font-bold rounded ${['APPROVED', 'LEVEL2_APPROVED', 'FINAL'].includes(ticket?.status?.toUpperCase())
+          ? 'bg-emerald-50 text-emerald-700' : ['REJECTED', 'LEVEL1_REJECTED', 'LEVEL2_REJECTED'].includes(ticket?.status?.toUpperCase())
+            ? 'bg-red-50 text-red-700' : ['SUBMITTED', 'LEVEL1_APPROVED'].includes(ticket?.status?.toUpperCase())
+              ? 'bg-amber-50 text-amber-700' : 'bg-gray-100 text-gray-600'}`}>
         {ticket?.status?.replace(/_/g, ' ') || 'Draft'}
       </span>
     </div>
@@ -402,19 +399,17 @@ const StatusTrackingPanel = ({ approvalHistory, ticket, t }: any) => (
         approvalHistory.map((item: any, index: any) => (
           <div key={index} className="flex gap-2">
             <div className="flex flex-col items-center">
-              <div className={`w-2 h-2 rounded-full mt-1 shrink-0 ${
-                item.action === 'approved' ? 'bg-[#2A9E6A]' :
-                item.action === 'rejected' ? 'bg-[#F85149]' :
-                item.action === 'submitted' ? 'bg-[#D7B797]' :'bg-gray-300'}`} />
+              <div className={`w-2 h-2 rounded-full mt-1 shrink-0 ${item.action === 'approved' ? 'bg-[#2A9E6A]' :
+                  item.action === 'rejected' ? 'bg-[#F85149]' :
+                    item.action === 'submitted' ? 'bg-[#D7B797]' : 'bg-gray-300'}`} />
               {index < approvalHistory.length - 1 && (
                 <div className={`w-px flex-1 min-h-[12px] ${'bg-gray-200'}`} />
               )}
             </div>
             <div className="flex-1 pb-2">
               <div className="flex items-center gap-1.5">
-                <span className={`text-[10px] font-semibold ${
-                  item.action === 'approved' ? 'text-[#2A9E6A]' :
-                  item.action === 'rejected' ? 'text-[#FF7B72]' :'text-amber-700'}`}>
+                <span className={`text-[10px] font-semibold ${item.action === 'approved' ? 'text-[#2A9E6A]' :
+                    item.action === 'rejected' ? 'text-[#FF7B72]' : 'text-amber-700'}`}>
                   {item.action.charAt(0).toUpperCase() + item.action.slice(1)}
                 </span>
                 <span className={`text-[10px] ${'text-gray-400'}`}>
@@ -427,9 +422,8 @@ const StatusTrackingPanel = ({ approvalHistory, ticket, t }: any) => (
                 </div>
               )}
               {item.comment && (
-                <div className={`mt-0.5 text-[10px] px-2 py-1 rounded ${
-                  item.action === 'rejected'
-                    ?'bg-red-50 text-red-600 border border-red-100':'bg-gray-50 text-gray-500'}`}>
+                <div className={`mt-0.5 text-[10px] px-2 py-1 rounded ${item.action === 'rejected'
+                    ? 'bg-red-50 text-red-600 border border-red-100' : 'bg-gray-50 text-gray-500'}`}>
                   {item.comment}
                 </div>
               )}
@@ -555,7 +549,8 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
         } finally {
           setActionLoading(false);
         }
-      }});
+      }
+    });
   };
 
   // Approval history — derive from ticket status
@@ -733,7 +728,9 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
                   order: 1,
                   rex: storeName.toUpperCase().includes('REX') ? 1 : 0,
                   ttp: storeName.toUpperCase().includes('TTP') ? 1 : 0,
-                  ttlValue: Number(d.budgetAmount) || 0}))});
+                  ttlValue: Number(d.budgetAmount) || 0
+                }))
+              });
             });
             setSkuData(budgetBlocks);
           }
@@ -771,7 +768,9 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
                   order: Number(d.quantity) || 0,
                   rex: Math.floor((Number(d.quantity) || 0) / 2),
                   ttp: Math.ceil((Number(d.quantity) || 0) / 2),
-                  ttlValue: Number(d.otbValue) || 0}))});
+                  ttlValue: Number(d.otbValue) || 0
+                }))
+              });
             });
             setSkuData(planningBlocks);
           } else if (data?.budgetDetail) {
@@ -800,7 +799,9 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
                 order: 1,
                 rex: storeName.toUpperCase().includes('REX') ? 1 : 0,
                 ttp: storeName.toUpperCase().includes('TTP') ? 1 : 0,
-                ttlValue: budgetAmt}]};
+                ttlValue: budgetAmt
+              }]
+            };
             setSkuData([planningBlock]);
           }
         }
@@ -893,7 +894,9 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
                 order: Number(d.quantity) || 0,
                 rex: Math.floor((Number(d.quantity) || 0) / 2),
                 ttp: Math.ceil((Number(d.quantity) || 0) / 2),
-                ttlValue: Number(d.otbValue) || 0}))});
+                ttlValue: Number(d.otbValue) || 0
+              }))
+            });
           });
           setPreviousSkuData(planningBlocks);
         } else {
@@ -1019,7 +1022,9 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
         Season: proposalBudget.seasonType || '-',
         rex: 0,
         ttp: 0,
-        finalVersion: 0}};
+        finalVersion: 0
+      }
+    };
   }, [detailData, ticket]);
 
   const rexNum = Number(budgetSeasonData.rex) || 0;
@@ -1067,13 +1072,12 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
             <div className="min-w-0">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-semibold font-['Montserrat'] text-white">{t('ticketDetail.title')}</span>
-                <span className={`px-1.5 py-px text-[9px] font-bold rounded ${
-                  ['APPROVED', 'LEVEL2_APPROVED', 'FINAL'].includes(ticket?.status?.toUpperCase())
+                <span className={`px-1.5 py-px text-[9px] font-bold rounded ${['APPROVED', 'LEVEL2_APPROVED', 'FINAL'].includes(ticket?.status?.toUpperCase())
                     ? 'bg-white/20 text-white'
-                  : ['REJECTED', 'LEVEL1_REJECTED', 'LEVEL2_REJECTED'].includes(ticket?.status?.toUpperCase())
-                    ? 'bg-[#F85149]/30 text-white'
-                  : 'bg-white/15 text-white/80'
-                }`}>
+                    : ['REJECTED', 'LEVEL1_REJECTED', 'LEVEL2_REJECTED'].includes(ticket?.status?.toUpperCase())
+                      ? 'bg-[#F85149]/30 text-white'
+                      : 'bg-white/15 text-white/80'
+                  }`}>
                   {ticket?.status?.replace(/_/g, ' ') || 'DRAFT'}
                 </span>
               </div>
@@ -1083,9 +1087,8 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
           <div className="flex items-center gap-1.5 shrink-0">
             <button
               onClick={handleToggleDiff}
-              className={`flex items-center gap-1.5 px-2.5 py-1 font-medium rounded text-[11px] border transition-all ${
-                showDiff ? 'bg-[#D7B797]/30 text-white border-[#D7B797]/50' : 'bg-white/10 hover:bg-white/20 text-white/80 border-white/15'
-              }`}
+              className={`flex items-center gap-1.5 px-2.5 py-1 font-medium rounded text-[11px] border transition-all ${showDiff ? 'bg-[#D7B797]/30 text-white border-[#D7B797]/50' : 'bg-white/10 hover:bg-white/20 text-white/80 border-white/15'
+                }`}
             >
               <GitCompare size={12} />
               {t('ticketDetail.viewChanges')}
@@ -1177,8 +1180,8 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
               {ticket?.entityType === 'budget'
                 ? (t('ticketDetail.budgetDetails') || 'Budget Allocation Details')
                 : ticket?.entityType === 'planning'
-                ? (t('ticketDetail.planningDetails') || 'Planning Details')
-                : (t('ticketDetail.skuProposalDetails') || 'SKU Proposal Details')
+                  ? (t('ticketDetail.planningDetails') || 'Planning Details')
+                  : (t('ticketDetail.skuProposalDetails') || 'SKU Proposal Details')
               }
             </h3>
           </div>
@@ -1209,16 +1212,16 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
 
         {/* Summary bar (visible even when collapsed on mobile) */}
         {displaySkuData.length > 0 && (
-        <div className={`sm:hidden flex items-center gap-3 px-4 py-1.5 border-t ${'border-[rgba(215,183,151,0.15)] bg-[#FDFCFB]'}`}>
-          <span className={`inline-flex items-center gap-1 text-[10px] font-semibold ${'text-[#6B4D30]'}`}>
-            <Package size={10} />
-            {displaySkuData.reduce((sum: any, b: any) => sum + b.items.length, 0)} SKUs
-          </span>
-          <span className={`inline-flex items-center gap-1 text-[10px] font-semibold font-['JetBrains_Mono'] ${'text-[#127749]'}`}>
-            <DollarSign size={10} />
-            {formatCurrency(displaySkuData.reduce((s: any, b: any) => s + b.items.reduce((ss: any, i: any) => ss + (i.ttlValue || (i.order || 0) * (i.srp || 0)), 0), 0))}
-          </span>
-        </div>
+          <div className={`sm:hidden flex items-center gap-3 px-4 py-1.5 border-t ${'border-[rgba(215,183,151,0.15)] bg-[#FDFCFB]'}`}>
+            <span className={`inline-flex items-center gap-1 text-[10px] font-semibold ${'text-[#6B4D30]'}`}>
+              <Package size={10} />
+              {displaySkuData.reduce((sum: any, b: any) => sum + b.items.length, 0)} SKUs
+            </span>
+            <span className={`inline-flex items-center gap-1 text-[10px] font-semibold font-['JetBrains_Mono'] ${'text-[#127749]'}`}>
+              <DollarSign size={10} />
+              {formatCurrency(displaySkuData.reduce((s: any, b: any) => s + b.items.reduce((ss: any, i: any) => ss + (i.ttlValue || (i.order || 0) * (i.srp || 0)), 0), 0))}
+            </span>
+          </div>
         )}
 
         {!collapsed._skuSection && displaySkuData.length === 0 && (
@@ -1231,347 +1234,346 @@ export default function TicketDetailPage({ ticket, onBack, showApprovalActions =
               {ticket?.entityType === 'budget'
                 ? (t('ticketDetail.createProposalHint') || 'Create an SKU proposal from the SKU Proposal screen to link it to this budget')
                 : ticket?.entityType === 'planning'
-                ? (t('ticketDetail.createProposalFromPlanning') || 'SKU proposals linked to this planning will appear here')
-                : (t('ticketDetail.addSkuHint') || 'Add SKUs to this proposal to see them here')
+                  ? (t('ticketDetail.createProposalFromPlanning') || 'SKU proposals linked to this planning will appear here')
+                  : (t('ticketDetail.addSkuHint') || 'Add SKUs to this proposal to see them here')
               }
             </p>
           </div>
         )}
 
         {!collapsed._skuSection && displaySkuData.length > 0 && (
-        <div className="space-y-3 md:space-y-5 p-3 md:p-4">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          {/* View Mode Toggle (hidden on mobile - always card view) */}
-          <div className={`hidden md:flex items-center gap-1 rounded-lg p-1 ${'bg-[rgba(160,120,75,0.12)] border border-[rgba(160,120,75,0.3)]'}`}>
-            <button
-              type="button"
-              onClick={() => setSkuViewMode('card')}
-              className={`p-2 rounded-md transition-all ${
-                skuViewMode === 'card'
-                  ?'bg-white text-[#6B4D30] shadow-sm':'text-[#999999] hover:text-[#666666]'}`}
-              title="Card View"
-            >
-              <LayoutGrid size={16} />
-            </button>
-            <button
-              type="button"
-              onClick={() => setSkuViewMode('table')}
-              className={`p-2 rounded-md transition-all ${
-                skuViewMode === 'table'
-                  ?'bg-white text-[#6B4D30] shadow-sm':'text-[#999999] hover:text-[#666666]'}`}
-              title="Table View"
-            >
-              <List size={16} />
-            </button>
-          </div>
+          <div className="space-y-3 md:space-y-5 p-3 md:p-4">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              {/* View Mode Toggle (hidden on mobile - always card view) */}
+              <div className={`hidden md:flex items-center gap-1 rounded-lg p-1 ${'bg-[rgba(160,120,75,0.12)] border border-[rgba(160,120,75,0.3)]'}`}>
+                <button
+                  type="button"
+                  onClick={() => setSkuViewMode('card')}
+                  className={`p-2 rounded-md transition-all ${skuViewMode === 'card'
+                      ? 'bg-white text-[#6B4D30] shadow-sm' : 'text-[#999999] hover:text-[#666666]'}`}
+                  title="Card View"
+                >
+                  <LayoutGrid size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSkuViewMode('table')}
+                  className={`p-2 rounded-md transition-all ${skuViewMode === 'table'
+                      ? 'bg-white text-[#6B4D30] shadow-sm' : 'text-[#999999] hover:text-[#666666]'}`}
+                  title="Table View"
+                >
+                  <List size={16} />
+                </button>
+              </div>
 
-          {/* Link to full SKU Proposal */}
-          {ticket?.entityType === 'proposal' && (
-            <a
-              href="/sku-proposal"
-              className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-medium rounded-lg border transition-colors ${'border-[rgba(215,183,151,0.3)] text-[#6B4D30] hover:bg-[rgba(160,120,75,0.08)]'}`}
-            >
-              <ExternalLink size={11} />
-              {t('ticketDetail.viewFullProposal') || 'View Full Proposal'}
-            </a>
-          )}
-        </div>
-        {/* Diff Legend */}
-        {showDiff && (
-          <div className={`flex items-center gap-4 px-4 py-2 rounded-xl text-xs font-['Montserrat'] ${'bg-amber-50 border border-amber-200'}`}>
-            {diffLoading ? (
-              <span className={`flex items-center gap-2 ${'text-[#6B4D30]'}`}>
-                <Loader2 size={12} className="animate-spin" />
-                {t('ticketDetail.loadingChanges') || 'Loading previous version...'}
-              </span>
-            ) : noPreviousVersion ? (
-              <span className={'text-gray-500'}>
-                <GitCompare size={12} className="inline mr-1" />
-                {t('ticketDetail.noPreviousVersion') || 'No previous version available for comparison'}
-              </span>
-            ) : (
-              <>
-                <span className={'text-[#6B4D30]'}>
-                  <GitCompare size={12} className="inline mr-1" />
-                  {t('ticketDetail.comparingVersions') || 'Comparing with previous version'}
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className={`w-3 h-3 rounded ${'bg-emerald-100 ring-1 ring-emerald-300'}`} />
-                  <span className={'text-gray-600'}>{t('ticketDetail.increased') || 'Increased'}</span>
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className={`w-3 h-3 rounded ${'bg-red-100 ring-1 ring-red-300'}`} />
-                  <span className={'text-gray-600'}>{t('ticketDetail.decreased') || 'Decreased'}</span>
-                </span>
-              </>
-            )}
-          </div>
-        )}
-
-        {/* === TABLE VIEW (desktop only) — Transposed: fields as rows, SKUs as columns === */}
-        {skuViewMode === 'table' && !isMobile && displaySkuData.map((block: any) => {
-          const blockKey = `${block.gender}_${block.productType}`;
-          const isBlockCollapsed = collapsed[blockKey];
-          const hlBg ='bg-[rgba(160,120,75,0.1)]';
-          const hlLabel ='bg-[#ede4d8]';
-          const labelBg ='bg-white';
-          const labelBorder ='!border-r-[rgba(160,120,75,0.4)]';
-          const toggleHl = (rowId: string) => setHighlightedRow(prev => prev === `${blockKey}_${rowId}` ? '' : `${blockKey}_${rowId}`);
-          const isHl = (rowId: string) => highlightedRow === `${blockKey}_${rowId}`;
-          const trCls = (rowId: string, extra?: string) => `${isHl(rowId) ? hlBg : ''} ${extra || ''}`;
-          const tdLabel = (rowId: string, extra?: string) => `px-3 py-1.5 text-xs font-semibold whitespace-nowrap sticky left-0 z-10 cursor-pointer select-none ${isHl(rowId) ? hlLabel : labelBg} ${labelBorder} border-r ${'text-[#666] hover:text-[#6B4D30]'} ${extra || ''}`;
-
-          // Diff helpers per item
-          const itemDiff = (item: any) => {
-            const prev = showDiff ? getPreviousItem(item.sku) : null;
-            const diffCls = (field: string) => {
-              if (!showDiff || !prev) return '';
-              const c = Number(item[field]) || 0;
-              const p = Number(prev[field]) || 0;
-              if (c === p) return '';
-              return c > p
-                ? ('bg-emerald-50 ring-1 ring-inset ring-emerald-300 rounded')
-                : ('bg-red-50 ring-1 ring-inset ring-red-300 rounded');
-            };
-            const diffLabel = (field: string) => {
-              if (!showDiff || !prev) return null;
-              const c = Number(item[field]) || 0;
-              const p = Number(prev[field]) || 0;
-              if (c === p) return null;
-              const d = c - p;
-              return <span className={`text-[9px] ml-1 ${d > 0 ? 'text-[#2A9E6A]' : 'text-[#F85149]'}`}>{d > 0 ? `+${d}` : d}</span>;
-            };
-            const isNew = showDiff && !prev;
-            return { diffCls, diffLabel, isNew };
-          };
-
-          return (
-            <div key={blockKey} className={`border rounded-2xl shadow-sm overflow-hidden ${'bg-white border-gray-300'}`}>
-              {/* Block Header */}
-              <button
-                type="button"
-                onClick={() => setCollapsed((p: any) => ({ ...p, [blockKey]: !p[blockKey] }))}
-                className={`w-full flex items-center gap-3 px-4 py-2 transition-colors ${'bg-gradient-to-r from-[#6B4D30] via-[#8B7355] to-[#6B4D30] text-white hover:from-[#7A5A3A]'}`}
-              >
-                <ChevronDown size={16} className={`transition-transform duration-200 shrink-0 ${isBlockCollapsed ? '-rotate-90' : ''} ${'text-[#F5E6D3]'}`} />
-                <div className="text-left flex-1 min-w-0">
-                  <span className="font-semibold text-sm font-['Montserrat']">{block.subCategory}</span>
-                  <span className={`ml-2 text-xs ${'text-[#E8D5BE]'}`}>
-                    {block.gender} • <span className="font-['JetBrains_Mono']">{block.items.length}</span> SKUs
-                  </span>
-                </div>
-                <div className="flex items-center gap-4 shrink-0">
-                  <span className={`text-xs font-['JetBrains_Mono'] font-bold ${'text-white'}`}>
-                    {formatCurrency(block.items.reduce((s: any, i: any) => s + (i.ttlValue || 0), 0))}
-                  </span>
-                </div>
-              </button>
-
-              {/* Transposed Table */}
-              {!isBlockCollapsed && (
-                <div className="overflow-x-auto">
-                  <table className={`w-full text-xs border-separate border-spacing-0 [&_td]:border ${'[&_td]:border-[rgba(215,183,151,0.2)]'}`}>
-                    <tbody>
-                      {/* Image row */}
-                      <tr className={trCls('image')}>
-                        <td className={tdLabel('image', 'py-2')} onClick={() => toggleHl('image')}>Image</td>
-                        {block.items.map((item: any, idx: number) => {
-                          const { isNew } = itemDiff(item);
-                          return (
-                            <td key={idx} className={`px-3 py-2 text-center min-w-[140px] ${isNew ? ('bg-emerald-50/50') : ''}`}>
-                              <div className="relative inline-block">
-                                <ProductImage subCategory={block.subCategory || ''} sku={item.sku || ''} size={48} rounded="rounded-lg" />
-                                {isNew && <span className="absolute -top-1 -right-1 px-1 py-0.5 text-[7px] font-bold rounded bg-[#2A9E6A] text-white">NEW</span>}
-                              </div>
-                            </td>
-                          );
-                        })}
-                      </tr>
-                      {/* SKU row */}
-                      <tr className={trCls('sku')}>
-                        <td className={tdLabel('sku')} onClick={() => toggleHl('sku')}>SKU</td>
-                        {block.items.map((item: any, idx: number) => (
-                          <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-semibold ${'text-[#6B4D30]'}`}>{item.sku}</td>
-                        ))}
-                      </tr>
-                      {/* Name row */}
-                      <tr className={trCls('name')}>
-                        <td className={tdLabel('name')} onClick={() => toggleHl('name')}>Name</td>
-                        {block.items.map((item: any, idx: number) => (
-                          <td key={idx} className={`px-3 py-1.5 text-center font-medium max-w-[160px] truncate ${'text-gray-800'}`} title={item.name}>{item.name}</td>
-                        ))}
-                      </tr>
-                      {/* Theme row */}
-                      <tr className={trCls('theme')}>
-                        <td className={tdLabel('theme')} onClick={() => toggleHl('theme')}>Theme</td>
-                        {block.items.map((item: any, idx: number) => (
-                          <td key={idx} className={`px-3 py-1.5 text-center ${'text-gray-600'}`}>{item.theme || '-'}</td>
-                        ))}
-                      </tr>
-                      {/* Color row */}
-                      <tr className={trCls('color')}>
-                        <td className={tdLabel('color')} onClick={() => toggleHl('color')}>Color</td>
-                        {block.items.map((item: any, idx: number) => (
-                          <td key={idx} className={`px-3 py-1.5 text-center ${'text-gray-600'}`}>{item.color || '-'}</td>
-                        ))}
-                      </tr>
-                      {/* Composition row */}
-                      <tr className={trCls('composition')}>
-                        <td className={tdLabel('composition')} onClick={() => toggleHl('composition')}>Composition</td>
-                        {block.items.map((item: any, idx: number) => (
-                          <td key={idx} className={`px-3 py-1.5 text-center max-w-[160px] truncate ${'text-gray-600'}`} title={item.composition}>{item.composition || '-'}</td>
-                        ))}
-                      </tr>
-                      {/* Unit Cost row */}
-                      <tr className={trCls('unitCost')}>
-                        <td className={tdLabel('unitCost')} onClick={() => toggleHl('unitCost')}>Unit Cost</td>
-                        {block.items.map((item: any, idx: number) => (
-                          <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] ${'text-gray-800'}`}>{formatCurrency(item.unitCost || 0)}</td>
-                        ))}
-                      </tr>
-                      {/* SRP row */}
-                      <tr className={trCls('srp')}>
-                        <td className={tdLabel('srp')} onClick={() => toggleHl('srp')}>SRP</td>
-                        {block.items.map((item: any, idx: number) => {
-                          const { diffCls, diffLabel } = itemDiff(item);
-                          return (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-semibold ${'text-[#127749]'} ${diffCls('srp')}`}>
-                              {formatCurrency(item.srp || 0)}{diffLabel('srp')}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                      {/* REX row */}
-                      <tr className={trCls('rex','bg-[rgba(160,120,75,0.03)]')}>
-                        <td className={tdLabel('rex')} onClick={() => toggleHl('rex')}>
-                          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#D7B797]" /> REX</span>
-                        </td>
-                        {block.items.map((item: any, idx: number) => {
-                          const { diffCls, diffLabel } = itemDiff(item);
-                          return (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-bold ${'text-[#6B4D30]'} ${diffCls('rex')}`}>
-                              {item.rex || 0}{diffLabel('rex')}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                      {/* TTP row */}
-                      <tr className={trCls('ttp','bg-[rgba(18,119,73,0.02)]')}>
-                        <td className={tdLabel('ttp')} onClick={() => toggleHl('ttp')}>
-                          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#127749]" /> TTP</span>
-                        </td>
-                        {block.items.map((item: any, idx: number) => {
-                          const { diffCls, diffLabel } = itemDiff(item);
-                          return (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-bold text-[#127749] ${diffCls('ttp')}`}>
-                              {item.ttp || 0}{diffLabel('ttp')}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                      {/* Total Order row — always highlighted */}
-                      <tr className={trCls('order','bg-[rgba(160,120,75,0.06)]')}>
-                        <td className={tdLabel('order')} onClick={() => toggleHl('order')}>
-                          <span className="font-bold">{t('proposal.totalQty') || 'Total Qty'}</span>
-                        </td>
-                        {block.items.map((item: any, idx: number) => {
-                          const { diffCls, diffLabel } = itemDiff(item);
-                          return (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-bold text-base ${'text-gray-800'} ${diffCls('order')}`}>
-                              {item.order || ((item.rex || 0) + (item.ttp || 0))}{diffLabel('order')}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                      {/* TTL Value row — always highlighted */}
-                      <tr className={trCls('ttlValue','bg-[rgba(160,120,75,0.06)]')}>
-                        <td className={tdLabel('ttlValue')} onClick={() => toggleHl('ttlValue')}>
-                          <span className="font-bold">{t('proposal.totalValue') || 'TTL Value'}</span>
-                        </td>
-                        {block.items.map((item: any, idx: number) => {
-                          const { diffCls, diffLabel } = itemDiff(item);
-                          return (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-bold ${'text-[#127749]'} ${diffCls('ttlValue')}`}>
-                              {formatCurrency(item.ttlValue || 0)}{diffLabel('ttlValue')}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                      {/* Customer Target row */}
-                      <tr className={trCls('customerTarget')}>
-                        <td className={tdLabel('customerTarget')} onClick={() => toggleHl('customerTarget')}>Target</td>
-                        {block.items.map((item: any, idx: number) => (
-                          <td key={idx} className={`px-3 py-1.5 text-center ${'text-gray-600'}`}>{item.customerTarget || '-'}</td>
-                        ))}
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+              {/* Link to full SKU Proposal */}
+              {ticket?.entityType === 'proposal' && (
+                <a
+                  href="/sku-proposal"
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-medium rounded-lg border transition-colors ${'border-[rgba(215,183,151,0.3)] text-[#6B4D30] hover:bg-[rgba(160,120,75,0.08)]'}`}
+                >
+                  <ExternalLink size={11} />
+                  {t('ticketDetail.viewFullProposal') || 'View Full Proposal'}
+                </a>
               )}
             </div>
-          );
-        })}
+            {/* Diff Legend */}
+            {showDiff && (
+              <div className={`flex items-center gap-4 px-4 py-2 rounded-xl text-xs font-['Montserrat'] ${'bg-amber-50 border border-amber-200'}`}>
+                {diffLoading ? (
+                  <span className={`flex items-center gap-2 ${'text-[#6B4D30]'}`}>
+                    <Loader2 size={12} className="animate-spin" />
+                    {t('ticketDetail.loadingChanges') || 'Loading previous version...'}
+                  </span>
+                ) : noPreviousVersion ? (
+                  <span className={'text-gray-500'}>
+                    <GitCompare size={12} className="inline mr-1" />
+                    {t('ticketDetail.noPreviousVersion') || 'No previous version available for comparison'}
+                  </span>
+                ) : (
+                  <>
+                    <span className={'text-[#6B4D30]'}>
+                      <GitCompare size={12} className="inline mr-1" />
+                      {t('ticketDetail.comparingVersions') || 'Comparing with previous version'}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className={`w-3 h-3 rounded ${'bg-emerald-100 ring-1 ring-emerald-300'}`} />
+                      <span className={'text-gray-600'}>{t('ticketDetail.increased') || 'Increased'}</span>
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className={`w-3 h-3 rounded ${'bg-red-100 ring-1 ring-red-300'}`} />
+                      <span className={'text-gray-600'}>{t('ticketDetail.decreased') || 'Decreased'}</span>
+                    </span>
+                  </>
+                )}
+              </div>
+            )}
 
-        {/* === CARD VIEW (always on mobile, or when card mode selected) === */}
-        {(skuViewMode === 'card' || isMobile) && displaySkuData.map((block: any) => {
-          const key = `${block.gender}_${block.productType}`;
-          const isCollapsed = collapsed[key];
-          const totalSrp = block.items.reduce((sum: any, i: any) => sum + i.srp, 0);
-          return (
-            <div key={key} className={`border rounded-2xl shadow-sm overflow-hidden ${'bg-white border-gray-300'}`}>
-              <button
-                type="button"
-                onClick={() => setCollapsed((p: any) => ({ ...p, [key]: !p[key] }))}
-                className={`w-full flex flex-wrap items-center gap-3 md:gap-4 px-3 md:px-5 py-0.5 md:py-1 transition-all ${'bg-gradient-to-r from-[#6B4D30] via-[#8B7355] to-[#6B4D30] text-white hover:from-[#7A5A3A] hover:via-[#9A8060] hover:to-[#7A5A3A]'}`}
-              >
-                <ChevronDown size={18} className={`transition-transform shrink-0 ${isCollapsed ? '-rotate-90' : ''} ${'text-[#F5E6D3]'}`} />
-                <div className="text-left flex-1 min-w-0">
-                  <div className="font-semibold text-sm font-['Montserrat']">{block.subCategory}</div>
-                  <div className={`text-sm mt-0.5 ${'text-[#E8D5BE]'}`}>
-                    {block.gender} • {block.productType} • <span className="font-['JetBrains_Mono']">{block.items.length}</span> SKUs
-                  </div>
-                </div>
-                <div className="hidden md:flex items-center gap-6 shrink-0">
-                  <div className="text-right">
-                    <div className={`text-xs uppercase tracking-wide ${'text-[#E8D5BE]'}`}>% Buy propose</div>
-                    <div className={`text-sm font-bold font-['JetBrains_Mono'] ${'text-white'}`}>{block.pctBuyPropose}%</div>
-                  </div>
-                  <div className={`w-px h-8 ${'bg-[rgba(255,255,255,0.2)]'}`} />
-                  <div className="text-right">
-                    <div className={`text-xs uppercase tracking-wide ${'text-[#E8D5BE]'}`}>OTB propose</div>
-                    <div className={`text-sm font-bold font-['JetBrains_Mono'] ${'text-white'}`}>{formatCurrency(block.otbPropose)}</div>
-                  </div>
-                  <div className={`w-px h-8 ${'bg-[rgba(255,255,255,0.2)]'}`} />
-                  <div className="text-right">
-                    <div className={`text-xs uppercase tracking-wide ${'text-[#E8D5BE]'}`}>Total SRP</div>
-                    <div className={`text-sm font-semibold font-['JetBrains_Mono'] ${'text-white'}`}>{formatCurrency(totalSrp)}</div>
-                  </div>
-                </div>
-              </button>
+            {/* === TABLE VIEW (desktop only) — Transposed: fields as rows, SKUs as columns === */}
+            {skuViewMode === 'table' && !isMobile && displaySkuData.map((block: any) => {
+              const blockKey = `${block.gender}_${block.productType}`;
+              const isBlockCollapsed = collapsed[blockKey];
+              const hlBg = 'bg-[rgba(160,120,75,0.1)]';
+              const hlLabel = 'bg-[#ede4d8]';
+              const labelBg = 'bg-white';
+              const labelBorder = '!border-r-[rgba(160,120,75,0.4)]';
+              const toggleHl = (rowId: string) => setHighlightedRow(prev => prev === `${blockKey}_${rowId}` ? '' : `${blockKey}_${rowId}`);
+              const isHl = (rowId: string) => highlightedRow === `${blockKey}_${rowId}`;
+              const trCls = (rowId: string, extra?: string) => `${isHl(rowId) ? hlBg : ''} ${extra || ''}`;
+              const tdLabel = (rowId: string, extra?: string) => `px-3 py-1.5 text-xs font-semibold whitespace-nowrap sticky left-0 z-10 cursor-pointer select-none ${isHl(rowId) ? hlLabel : labelBg} ${labelBorder} border-r ${'text-[#666] hover:text-[#6B4D30]'} ${extra || ''}`;
 
-              {!isCollapsed && (
-                <div
-                  className="premium-card-scroll flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 py-5"
-                  style={{
-                    scrollbarWidth: 'thin',
-                    scrollbarColor:'#C9A84C #F5F0EA'}}
-                >
-                  <style>{`
+              // Diff helpers per item
+              const itemDiff = (item: any) => {
+                const prev = showDiff ? getPreviousItem(item.sku) : null;
+                const diffCls = (field: string) => {
+                  if (!showDiff || !prev) return '';
+                  const c = Number(item[field]) || 0;
+                  const p = Number(prev[field]) || 0;
+                  if (c === p) return '';
+                  return c > p
+                    ? ('bg-emerald-50 ring-1 ring-inset ring-emerald-300 rounded')
+                    : ('bg-red-50 ring-1 ring-inset ring-red-300 rounded');
+                };
+                const diffLabel = (field: string) => {
+                  if (!showDiff || !prev) return null;
+                  const c = Number(item[field]) || 0;
+                  const p = Number(prev[field]) || 0;
+                  if (c === p) return null;
+                  const d = c - p;
+                  return <span className={`text-[9px] ml-1 ${d > 0 ? 'text-[#2A9E6A]' : 'text-[#F85149]'}`}>{d > 0 ? `+${d}` : d}</span>;
+                };
+                const isNew = showDiff && !prev;
+                return { diffCls, diffLabel, isNew };
+              };
+
+              return (
+                <div key={blockKey} className={`border rounded-2xl shadow-sm overflow-hidden ${'bg-white border-gray-300'}`}>
+                  {/* Block Header */}
+                  <button
+                    type="button"
+                    onClick={() => setCollapsed((p: any) => ({ ...p, [blockKey]: !p[blockKey] }))}
+                    className={`w-full flex items-center gap-3 px-4 py-2 transition-colors ${'bg-gradient-to-r from-[#6B4D30] via-[#8B7355] to-[#6B4D30] text-white hover:from-[#7A5A3A]'}`}
+                  >
+                    <ChevronDown size={16} className={`transition-transform duration-200 shrink-0 ${isBlockCollapsed ? '-rotate-90' : ''} ${'text-[#F5E6D3]'}`} />
+                    <div className="text-left flex-1 min-w-0">
+                      <span className="font-semibold text-sm font-['Montserrat']">{block.subCategory}</span>
+                      <span className={`ml-2 text-xs ${'text-[#E8D5BE]'}`}>
+                        {block.gender} • <span className="font-['JetBrains_Mono']">{block.items.length}</span> SKUs
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4 shrink-0">
+                      <span className={`text-xs font-['JetBrains_Mono'] font-bold ${'text-white'}`}>
+                        {formatCurrency(block.items.reduce((s: any, i: any) => s + (i.ttlValue || 0), 0))}
+                      </span>
+                    </div>
+                  </button>
+
+                  {/* Transposed Table */}
+                  {!isBlockCollapsed && (
+                    <div className="overflow-x-auto">
+                      <table className={`w-full text-xs border-separate border-spacing-0 [&_td]:border ${'[&_td]:border-[rgba(215,183,151,0.2)]'}`}>
+                        <tbody>
+                          {/* Image row */}
+                          <tr className={trCls('image')}>
+                            <td className={tdLabel('image', 'py-2')} onClick={() => toggleHl('image')}>Image</td>
+                            {block.items.map((item: any, idx: number) => {
+                              const { isNew } = itemDiff(item);
+                              return (
+                                <td key={idx} className={`px-3 py-2 text-center min-w-[140px] ${isNew ? ('bg-emerald-50/50') : ''}`}>
+                                  <div className="relative inline-block">
+                                    <ProductImage subCategory={block.subCategory || ''} sku={item.sku || ''} size={48} rounded="rounded-lg" />
+                                    {isNew && <span className="absolute -top-1 -right-1 px-1 py-0.5 text-[7px] font-bold rounded bg-[#2A9E6A] text-white">NEW</span>}
+                                  </div>
+                                </td>
+                              );
+                            })}
+                          </tr>
+                          {/* SKU row */}
+                          <tr className={trCls('sku')}>
+                            <td className={tdLabel('sku')} onClick={() => toggleHl('sku')}>SKU</td>
+                            {block.items.map((item: any, idx: number) => (
+                              <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-semibold ${'text-[#6B4D30]'}`}>{item.sku}</td>
+                            ))}
+                          </tr>
+                          {/* Name row */}
+                          <tr className={trCls('name')}>
+                            <td className={tdLabel('name')} onClick={() => toggleHl('name')}>Name</td>
+                            {block.items.map((item: any, idx: number) => (
+                              <td key={idx} className={`px-3 py-1.5 text-center font-medium max-w-[160px] truncate ${'text-gray-800'}`} title={item.name}>{item.name}</td>
+                            ))}
+                          </tr>
+                          {/* Theme row */}
+                          <tr className={trCls('theme')}>
+                            <td className={tdLabel('theme')} onClick={() => toggleHl('theme')}>Theme</td>
+                            {block.items.map((item: any, idx: number) => (
+                              <td key={idx} className={`px-3 py-1.5 text-center ${'text-gray-600'}`}>{item.theme || '-'}</td>
+                            ))}
+                          </tr>
+                          {/* Color row */}
+                          <tr className={trCls('color')}>
+                            <td className={tdLabel('color')} onClick={() => toggleHl('color')}>Color</td>
+                            {block.items.map((item: any, idx: number) => (
+                              <td key={idx} className={`px-3 py-1.5 text-center ${'text-gray-600'}`}>{item.color || '-'}</td>
+                            ))}
+                          </tr>
+                          {/* Composition row */}
+                          <tr className={trCls('composition')}>
+                            <td className={tdLabel('composition')} onClick={() => toggleHl('composition')}>Composition</td>
+                            {block.items.map((item: any, idx: number) => (
+                              <td key={idx} className={`px-3 py-1.5 text-center max-w-[160px] truncate ${'text-gray-600'}`} title={item.composition}>{item.composition || '-'}</td>
+                            ))}
+                          </tr>
+                          {/* Unit Cost row */}
+                          <tr className={trCls('unitCost')}>
+                            <td className={tdLabel('unitCost')} onClick={() => toggleHl('unitCost')}>Unit Cost</td>
+                            {block.items.map((item: any, idx: number) => (
+                              <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] ${'text-gray-800'}`}>{formatCurrency(item.unitCost || 0)}</td>
+                            ))}
+                          </tr>
+                          {/* SRP row */}
+                          <tr className={trCls('srp')}>
+                            <td className={tdLabel('srp')} onClick={() => toggleHl('srp')}>SRP</td>
+                            {block.items.map((item: any, idx: number) => {
+                              const { diffCls, diffLabel } = itemDiff(item);
+                              return (
+                                <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-semibold ${'text-[#127749]'} ${diffCls('srp')}`}>
+                                  {formatCurrency(item.srp || 0)}{diffLabel('srp')}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                          {/* REX row */}
+                          <tr className={trCls('rex', 'bg-[rgba(160,120,75,0.03)]')}>
+                            <td className={tdLabel('rex')} onClick={() => toggleHl('rex')}>
+                              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#D7B797]" /> REX</span>
+                            </td>
+                            {block.items.map((item: any, idx: number) => {
+                              const { diffCls, diffLabel } = itemDiff(item);
+                              return (
+                                <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-bold ${'text-[#6B4D30]'} ${diffCls('rex')}`}>
+                                  {item.rex || 0}{diffLabel('rex')}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                          {/* TTP row */}
+                          <tr className={trCls('ttp', 'bg-[rgba(18,119,73,0.02)]')}>
+                            <td className={tdLabel('ttp')} onClick={() => toggleHl('ttp')}>
+                              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#127749]" /> TTP</span>
+                            </td>
+                            {block.items.map((item: any, idx: number) => {
+                              const { diffCls, diffLabel } = itemDiff(item);
+                              return (
+                                <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-bold text-[#127749] ${diffCls('ttp')}`}>
+                                  {item.ttp || 0}{diffLabel('ttp')}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                          {/* Total Order row — always highlighted */}
+                          <tr className={trCls('order', 'bg-[rgba(160,120,75,0.06)]')}>
+                            <td className={tdLabel('order')} onClick={() => toggleHl('order')}>
+                              <span className="font-bold">{t('proposal.totalQty') || 'Total Qty'}</span>
+                            </td>
+                            {block.items.map((item: any, idx: number) => {
+                              const { diffCls, diffLabel } = itemDiff(item);
+                              return (
+                                <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-bold text-base ${'text-gray-800'} ${diffCls('order')}`}>
+                                  {item.order || ((item.rex || 0) + (item.ttp || 0))}{diffLabel('order')}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                          {/* TTL Value row — always highlighted */}
+                          <tr className={trCls('ttlValue', 'bg-[rgba(160,120,75,0.06)]')}>
+                            <td className={tdLabel('ttlValue')} onClick={() => toggleHl('ttlValue')}>
+                              <span className="font-bold">{t('proposal.totalValue') || 'TTL Value'}</span>
+                            </td>
+                            {block.items.map((item: any, idx: number) => {
+                              const { diffCls, diffLabel } = itemDiff(item);
+                              return (
+                                <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] font-bold ${'text-[#127749]'} ${diffCls('ttlValue')}`}>
+                                  {formatCurrency(item.ttlValue || 0)}{diffLabel('ttlValue')}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                          {/* Customer Target row */}
+                          <tr className={trCls('customerTarget')}>
+                            <td className={tdLabel('customerTarget')} onClick={() => toggleHl('customerTarget')}>Target</td>
+                            {block.items.map((item: any, idx: number) => (
+                              <td key={idx} className={`px-3 py-1.5 text-center ${'text-gray-600'}`}>{item.customerTarget || '-'}</td>
+                            ))}
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* === CARD VIEW (always on mobile, or when card mode selected) === */}
+            {(skuViewMode === 'card' || isMobile) && displaySkuData.map((block: any) => {
+              const key = `${block.gender}_${block.productType}`;
+              const isCollapsed = collapsed[key];
+              const totalSrp = block.items.reduce((sum: any, i: any) => sum + i.srp, 0);
+              return (
+                <div key={key} className={`border rounded-2xl shadow-sm overflow-hidden ${'bg-white border-gray-300'}`}>
+                  <button
+                    type="button"
+                    onClick={() => setCollapsed((p: any) => ({ ...p, [key]: !p[key] }))}
+                    className={`w-full flex flex-wrap items-center gap-3 md:gap-4 px-3 md:px-5 py-0.5 md:py-1 transition-all ${'bg-gradient-to-r from-[#6B4D30] via-[#8B7355] to-[#6B4D30] text-white hover:from-[#7A5A3A] hover:via-[#9A8060] hover:to-[#7A5A3A]'}`}
+                  >
+                    <ChevronDown size={18} className={`transition-transform shrink-0 ${isCollapsed ? '-rotate-90' : ''} ${'text-[#F5E6D3]'}`} />
+                    <div className="text-left flex-1 min-w-0">
+                      <div className="font-semibold text-sm font-['Montserrat']">{block.subCategory}</div>
+                      <div className={`text-sm mt-0.5 ${'text-[#E8D5BE]'}`}>
+                        {block.gender} • {block.productType} • <span className="font-['JetBrains_Mono']">{block.items.length}</span> SKUs
+                      </div>
+                    </div>
+                    <div className="hidden md:flex items-center gap-6 shrink-0">
+                      <div className="text-right">
+                        <div className={`text-xs uppercase tracking-wide ${'text-[#E8D5BE]'}`}>% Buy propose</div>
+                        <div className={`text-sm font-bold font-['JetBrains_Mono'] ${'text-white'}`}>{block.pctBuyPropose}%</div>
+                      </div>
+                      <div className={`w-px h-8 ${'bg-[rgba(255,255,255,0.2)]'}`} />
+                      <div className="text-right">
+                        <div className={`text-xs uppercase tracking-wide ${'text-[#E8D5BE]'}`}>OTB propose</div>
+                        <div className={`text-sm font-bold font-['JetBrains_Mono'] ${'text-white'}`}>{formatCurrency(block.otbPropose)}</div>
+                      </div>
+                      <div className={`w-px h-8 ${'bg-[rgba(255,255,255,0.2)]'}`} />
+                      <div className="text-right">
+                        <div className={`text-xs uppercase tracking-wide ${'text-[#E8D5BE]'}`}>Total SRP</div>
+                        <div className={`text-sm font-semibold font-['JetBrains_Mono'] ${'text-white'}`}>{formatCurrency(totalSrp)}</div>
+                      </div>
+                    </div>
+                  </button>
+
+                  {!isCollapsed && (
+                    <div
+                      className="premium-card-scroll flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 py-5"
+                      style={{
+                        scrollbarWidth: 'thin',
+                        scrollbarColor: '#C9A84C #F5F0EA'
+                      }}
+                    >
+                      <style>{`
                     .premium-card-scroll::-webkit-scrollbar { height: 6px; }
                     .premium-card-scroll::-webkit-scrollbar-track { background: ${'#F5F0EA'}; border-radius: 3px; }
                     .premium-card-scroll::-webkit-scrollbar-thumb { background: ${'#C9A84C'}; border-radius: 3px; }
                     .premium-card-scroll::-webkit-scrollbar-thumb:hover { background: ${'#B8973C'}; }
                   `}</style>
-                  {block.items.map((item: any, idx: number) => (
-                    <PremiumSKUCard key={idx} item={item} block={block} prevItem={showDiff ? getPreviousItem(item.sku) : undefined} />
-                  ))}
+                      {block.items.map((item: any, idx: number) => (
+                        <PremiumSKUCard key={idx} item={item} block={block} prevItem={showDiff ? getPreviousItem(item.sku) : undefined} />
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-      )}
+              );
+            })}
+          </div>
+        )}
       </div>
       <ConfirmDialog {...dialogProps} />
     </div>

@@ -1,4 +1,4 @@
-# HANDOVER - VietERP MRP Project
+# HANDOVER - BaoERP MRP Project
 
 > **Ngày cập nhật:** 2026-01-21
 > **Commit cuối:** 592a821

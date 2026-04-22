@@ -1,5 +1,5 @@
 # 🔥 DISASTER RECOVERY PROCEDURES
-## VietERP MRP Business Continuity Plan
+## BaoERP MRP Business Continuity Plan
 
 ---
 

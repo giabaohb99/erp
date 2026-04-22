@@ -1,5 +1,5 @@
 # 📷 BARCODE SCANNER - QUICK REFERENCE
-## VietERP MRP Mobile
+## BaoERP MRP Mobile
 
 ---
 

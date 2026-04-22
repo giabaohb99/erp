@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - API OPTIMIZATION MODULE
+// BaoERP MRP - API OPTIMIZATION MODULE
 // Rate limiting, validation, compression, caching headers
 // =============================================================================
 
@@ -36,9 +36,9 @@ export function rateLimit(config: RateLimitConfig) {
     windowMs = 60000,
     maxRequests = 100,
     message = 'Too many requests, please try again later',
-    keyGenerator = (req) => req.headers.get('x-forwarded-for') || 
-                           req.headers.get('x-real-ip') || 
-                           'anonymous',
+    keyGenerator = (req) => req.headers.get('x-forwarded-for') ||
+      req.headers.get('x-real-ip') ||
+      'anonymous',
   } = config;
 
   return async function rateLimitMiddleware(
@@ -47,9 +47,9 @@ export function rateLimit(config: RateLimitConfig) {
   ): Promise<NextResponse> {
     const key = keyGenerator(req);
     const now = Date.now();
-    
+
     let record = rateLimitStore.get(key);
-    
+
     if (!record || record.resetTime < now) {
       record = { count: 0, resetTime: now + windowMs };
       rateLimitStore.set(key, record);
@@ -63,7 +63,7 @@ export function rateLimit(config: RateLimitConfig) {
     if (record.count > maxRequests) {
       return NextResponse.json(
         { error: message, retryAfter: resetIn },
-        { 
+        {
           status: 429,
           headers: {
             'X-RateLimit-Limit': maxRequests.toString(),
@@ -76,12 +76,12 @@ export function rateLimit(config: RateLimitConfig) {
     }
 
     const response = await handler();
-    
+
     // Add rate limit headers to response
     response.headers.set('X-RateLimit-Limit', maxRequests.toString());
     response.headers.set('X-RateLimit-Remaining', remaining.toString());
     response.headers.set('X-RateLimit-Reset', record.resetTime.toString());
-    
+
     return response;
   };
 }
@@ -90,20 +90,20 @@ export function rateLimit(config: RateLimitConfig) {
 export const rateLimiters = {
   // Standard API: 100 requests per minute
   standard: rateLimit({ windowMs: 60000, maxRequests: 100 }),
-  
+
   // Strict: 20 requests per minute (for expensive operations)
   strict: rateLimit({ windowMs: 60000, maxRequests: 20 }),
-  
+
   // Relaxed: 500 requests per minute (for read-only endpoints)
   relaxed: rateLimit({ windowMs: 60000, maxRequests: 500 }),
-  
+
   // Auth: 10 attempts per 15 minutes
-  auth: rateLimit({ 
-    windowMs: 900000, 
+  auth: rateLimit({
+    windowMs: 900000,
     maxRequests: 10,
     message: 'Too many login attempts, please try again later',
   }),
-  
+
   // Export: 5 requests per hour
   export: rateLimit({
     windowMs: 3600000,
@@ -132,11 +132,11 @@ export async function validateBody<T>(
   try {
     const body = await req.json();
     const result = schema.safeParse(body);
-    
+
     if (result.success) {
       return { success: true, data: result.data };
     }
-    
+
     return { success: false, errors: result.error.issues };
   } catch (error) {
     return {
@@ -155,17 +155,17 @@ export function validateQuery<T>(
 ): ValidationResult<T> {
   const { searchParams } = new URL(req.url);
   const params: Record<string, string> = {};
-  
+
   searchParams.forEach((value, key) => {
     params[key] = value;
   });
-  
+
   const result = schema.safeParse(params);
-  
+
   if (result.success) {
     return { success: true, data: result.data };
   }
-  
+
   return { success: false, errors: result.error.issues };
 }
 
@@ -177,17 +177,17 @@ export const commonSchemas = {
     sortBy: z.string().optional(),
     sortOrder: z.enum(['asc', 'desc']).default('desc'),
   }),
-  
+
   search: z.object({
     search: z.string().max(200).optional(),
     filter: z.string().optional(),
   }),
-  
+
   dateRange: z.object({
     from: z.string().datetime().optional(),
     to: z.string().datetime().optional(),
   }),
-  
+
   id: z.object({
     id: z.string().uuid(),
   }),
@@ -223,21 +223,21 @@ export function successResponse<T>(
   } = {}
 ): NextResponse {
   const { status = 200, meta, cache, etag } = options;
-  
+
   const response = NextResponse.json(
     { success: true, data, ...(meta && { meta }) },
     { status }
   );
-  
+
   // Add cache headers
   if (cache) {
     response.headers.set('Cache-Control', cache);
   }
-  
+
   if (etag) {
     response.headers.set('ETag', etag);
   }
-  
+
   return response;
 }
 
@@ -258,9 +258,9 @@ export function errorResponse(
       { status: 400 }
     );
   }
-  
+
   const message = error instanceof Error ? error.message : error;
-  
+
   return NextResponse.json(
     { success: false, error: message },
     { status }
@@ -295,16 +295,16 @@ export function paginatedResponse<T>(
 export const cacheHeaders = {
   // No caching for dynamic data
   noCache: 'no-store, no-cache, must-revalidate',
-  
+
   // Private cache (user-specific data)
   privateShort: 'private, max-age=60, stale-while-revalidate=30',
   privateMedium: 'private, max-age=300, stale-while-revalidate=60',
-  
+
   // Public cache (shared data)
   publicShort: 'public, max-age=60, stale-while-revalidate=30',
   publicMedium: 'public, max-age=300, stale-while-revalidate=60',
   publicLong: 'public, max-age=3600, stale-while-revalidate=300',
-  
+
   // Static assets
   immutable: 'public, max-age=31536000, immutable',
 };
@@ -341,14 +341,14 @@ export function conditionalResponse<T>(
   options: { cache?: string } = {}
 ): NextResponse {
   const etag = generateETag(data);
-  
+
   if (checkETag(req, etag)) {
-    return new NextResponse(null, { 
+    return new NextResponse(null, {
       status: 304,
       headers: { 'ETag': etag },
     });
   }
-  
+
   return successResponse(data, { etag, cache: options.cache });
 }
 
@@ -381,7 +381,7 @@ export function getPagination(req: NextRequest): {
   const { searchParams } = new URL(req.url);
   const page = Math.max(1, parseInt(searchParams.get('page') || '1'));
   const pageSize = Math.min(100, Math.max(1, parseInt(searchParams.get('pageSize') || '20')));
-  
+
   return {
     page,
     pageSize,
@@ -402,10 +402,10 @@ export function getSort(
   const { searchParams } = new URL(req.url);
   const sortBy = searchParams.get('sortBy') || defaultField;
   const sortOrder = (searchParams.get('sortOrder') || defaultOrder) as 'asc' | 'desc';
-  
+
   // Validate sort field to prevent injection
   const field = allowedFields.includes(sortBy) ? sortBy : defaultField;
-  
+
   return { [field]: sortOrder };
 }
 
@@ -432,23 +432,23 @@ export function withOptimizations(
 ): (req: NextRequest) => Promise<NextResponse> {
   return async (req: NextRequest) => {
     const startTime = performance.now();
-    
+
     try {
       // Apply rate limiting
       if (options.rateLimit) {
         const limiter = typeof options.rateLimit === 'string'
           ? rateLimiters[options.rateLimit]
           : rateLimit(options.rateLimit);
-        
+
         const rateLimitCheck = await limiter(req, async () => {
           return new NextResponse(null, { status: 200 });
         });
-        
+
         if (rateLimitCheck.status === 429) {
           return rateLimitCheck;
         }
       }
-      
+
       // Validate body
       let body: unknown;
       if (options.validateBody && ['POST', 'PUT', 'PATCH'].includes(req.method)) {
@@ -458,7 +458,7 @@ export function withOptimizations(
         }
         body = validation.data;
       }
-      
+
       // Validate query
       let query: unknown;
       if (options.validateQuery) {
@@ -468,21 +468,21 @@ export function withOptimizations(
         }
         query = validation.data;
       }
-      
+
       // Execute handler
       const response = await handler(req, { body, query });
-      
+
       // Add performance timing
       const duration = performance.now() - startTime;
       response.headers.set('X-Response-Time', `${duration.toFixed(2)}ms`);
-      
+
       // Add cache headers
       if (options.cache) {
         response.headers.set('Cache-Control', options.cache);
       }
-      
+
       return response;
-      
+
     } catch (error) {
       logger.logError(error instanceof Error ? error : new Error(String(error)), { context: 'api-optimization', operation: 'apiHandler' });
       return errorResponse(

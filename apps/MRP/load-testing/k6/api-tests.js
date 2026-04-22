@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - K6 API ENDPOINT TESTS
+// BaoERP MRP - K6 API ENDPOINT TESTS
 // Individual endpoint performance tests
 // Run: k6 run load-tests/k6/api-tests.js
 // =============================================================================
@@ -13,7 +13,7 @@ import { Rate, Trend } from 'k6/metrics';
 // =============================================================================
 
 const BASE_URL = __ENV.BASE_URL || 'http://localhost:3000';
-const API_URL = `${BASE_URL}/api`; // VietERP MRP uses /api without version prefix
+const API_URL = `${BASE_URL}/api`; // BaoERP MRP uses /api without version prefix
 
 // =============================================================================
 // METRICS
@@ -65,12 +65,12 @@ export const options = {
 
 function makeRequest(method, url, body, trend, name) {
   const start = Date.now();
-  
+
   const params = {
     headers: { 'Content-Type': 'application/json' },
     tags: { name },
   };
-  
+
   let res;
   if (method === 'GET') {
     res = http.get(url, params);
@@ -81,17 +81,17 @@ function makeRequest(method, url, body, trend, name) {
   } else if (method === 'DELETE') {
     res = http.del(url, null, params);
   }
-  
+
   const duration = Date.now() - start;
   trend.add(duration);
-  
+
   const success = check(res, {
     [`${name} status ok`]: (r) => r.status >= 200 && r.status < 400,
     [`${name} response time ok`]: () => duration < 1000,
   });
-  
+
   errorRate.add(!success);
-  
+
   return { res, duration, success };
 }
 
@@ -99,11 +99,11 @@ function makeRequest(method, url, body, trend, name) {
 // TEST SCENARIOS
 // =============================================================================
 
-export default function() {
+export default function () {
   // -------------------------------------------------------------------------
   // HEALTH CHECK
   // -------------------------------------------------------------------------
-  group('Health Endpoints', function() {
+  group('Health Endpoints', function () {
     makeRequest('GET', `${BASE_URL}/api/health`, null, trends.health, 'health-basic');
     makeRequest('GET', `${BASE_URL}/api/health/live`, null, trends.health, 'health-live');
     makeRequest('GET', `${BASE_URL}/api/health/ready`, null, trends.health, 'health-ready');
@@ -113,7 +113,7 @@ export default function() {
   // -------------------------------------------------------------------------
   // PARTS API
   // -------------------------------------------------------------------------
-  group('Parts API', function() {
+  group('Parts API', function () {
     // List parts
     makeRequest('GET', `${API_URL}/parts?page=1&limit=20`, null, trends.parts, 'parts-list');
     sleep(0.3);
@@ -138,7 +138,7 @@ export default function() {
   // -------------------------------------------------------------------------
   // INVENTORY API
   // -------------------------------------------------------------------------
-  group('Inventory API', function() {
+  group('Inventory API', function () {
     // List inventory
     makeRequest('GET', `${API_URL}/inventory`, null, trends.inventory, 'inventory-list');
     sleep(0.3);
@@ -155,7 +155,7 @@ export default function() {
   // -------------------------------------------------------------------------
   // PRODUCTION API
   // -------------------------------------------------------------------------
-  group('Production API', function() {
+  group('Production API', function () {
     // List work orders
     makeRequest('GET', `${API_URL}/production/work-orders?page=1&limit=20`, null, trends.production, 'production-list');
     sleep(0.3);
@@ -175,7 +175,7 @@ export default function() {
   // -------------------------------------------------------------------------
   // SALES API
   // -------------------------------------------------------------------------
-  group('Sales API', function() {
+  group('Sales API', function () {
     // List sales orders
     makeRequest('GET', `${API_URL}/sales-orders?page=1&limit=20`, null, trends.sales, 'sales-list');
     sleep(0.3);
@@ -188,7 +188,7 @@ export default function() {
   // -------------------------------------------------------------------------
   // DASHBOARD API
   // -------------------------------------------------------------------------
-  group('Dashboard API', function() {
+  group('Dashboard API', function () {
     // Main dashboard/home
     makeRequest('GET', `${API_URL}/home`, null, trends.dashboard, 'dashboard-main');
     sleep(0.3);
@@ -201,7 +201,7 @@ export default function() {
   // -------------------------------------------------------------------------
   // OTHER APIs
   // -------------------------------------------------------------------------
-  group('Other APIs', function() {
+  group('Other APIs', function () {
     // Suppliers
     makeRequest('GET', `${API_URL}/suppliers`, null, trends.dashboard, 'suppliers-list');
     sleep(0.3);
@@ -225,12 +225,12 @@ export default function() {
 export function setup() {
   console.log('🧪 Starting API Endpoint Tests');
   console.log(`📍 Testing: ${BASE_URL}`);
-  
+
   const health = http.get(`${BASE_URL}/api/health`);
   if (health.status !== 200) {
     throw new Error('Health check failed');
   }
-  
+
   return {};
 }
 

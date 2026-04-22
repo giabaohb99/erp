@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | VietERP MRP',
+    template: '%s | BaoERP MRP',
     default: 'Kho hàng',
   },
   description: 'Quản lý tồn kho, xuất nhập kho và kiểm kê',

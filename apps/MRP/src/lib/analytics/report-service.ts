@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - REPORT SERVICE
+// BaoERP MRP - REPORT SERVICE
 // Service for report generation and management
 // =============================================================================
 

@@ -85,25 +85,23 @@ export default function MobileBottomNav({ currentScreen }: any) {
                     <button
                       key={item.id}
                       onClick={() => navigateTo(item.id)}
-                      className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl transition-colors ${
-                        active
+                      className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl transition-colors ${active
                           ? 'bg-[rgba(215,183,151,0.15)]'
                           : 'active:bg-gray-100'
-                      }`}
+                        }`}
                     >
                       <Icon
                         size={20}
                         strokeWidth={active ? 2.5 : 2}
                         className={active
-                          ? 'text-vietErp-gold'
+                          ? 'text-BaoERP-gold'
                           : 'text-gray-500'
                         }
                       />
-                      <span className={`text-[10px] font-medium font-['Montserrat'] text-center leading-tight ${
-                        active
-                          ? 'text-vietErp-gold'
+                      <span className={`text-[10px] font-medium font-['Montserrat'] text-center leading-tight ${active
+                          ? 'text-BaoERP-gold'
                           : 'text-gray-600'
-                      }`}>
+                        }`}>
                         {t(item.labelKey, item.labelKey.split('.').pop())}
                       </span>
                     </button>
@@ -133,26 +131,23 @@ export default function MobileBottomNav({ currentScreen }: any) {
                 onClick={() => navigateTo(tab.id)}
                 className="flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors"
               >
-                <div className={`p-1 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center ${
-                  active
+                <div className={`p-1 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center ${active
                     ? 'bg-[rgba(215,183,151,0.2)]'
                     : ''
-                }`}>
+                  }`}>
                   <Icon
                     size={20}
                     strokeWidth={active ? 2.5 : 2}
-                    className={`transition-colors ${
-                      active
-                        ? 'text-vietErp-gold'
+                    className={`transition-colors ${active
+                        ? 'text-BaoERP-gold'
                         : 'text-gray-400'
-                    }`}
+                      }`}
                   />
                 </div>
-                <span className={`text-[10px] font-medium font-['Montserrat'] ${
-                  active
-                    ? 'text-vietErp-gold'
+                <span className={`text-[10px] font-medium font-['Montserrat'] ${active
+                    ? 'text-BaoERP-gold'
                     : 'text-gray-400'
-                }`}>
+                  }`}>
                   {tab.shortLabel}
                 </span>
               </button>
@@ -164,26 +159,23 @@ export default function MobileBottomNav({ currentScreen }: any) {
             onClick={() => setShowMore(!showMore)}
             className="flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors"
           >
-            <div className={`p-1 rounded-lg transition-colors ${
-              showMore || isMoreActive
+            <div className={`p-1 rounded-lg transition-colors ${showMore || isMoreActive
                 ? 'bg-[rgba(215,183,151,0.2)]'
                 : ''
-            }`}>
+              }`}>
               <MoreHorizontal
                 size={20}
                 strokeWidth={showMore || isMoreActive ? 2.5 : 2}
-                className={`transition-colors ${
-                  showMore || isMoreActive
-                    ? 'text-vietErp-gold'
+                className={`transition-colors ${showMore || isMoreActive
+                    ? 'text-BaoERP-gold'
                     : 'text-gray-400'
-                }`}
+                  }`}
               />
             </div>
-            <span className={`text-[10px] font-medium font-['Montserrat'] ${
-              showMore || isMoreActive
-                ? 'text-vietErp-gold'
+            <span className={`text-[10px] font-medium font-['Montserrat'] ${showMore || isMoreActive
+                ? 'text-BaoERP-gold'
                 : 'text-gray-400'
-            }`}>
+              }`}>
               More
             </span>
           </button>

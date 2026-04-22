@@ -1,4 +1,4 @@
-# VietERP MRP - Project Handover Document
+# BaoERP MRP - Project Handover Document
 
 ## Handover Date: 2026-01-17
 

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     default: "POD HRM",
     template: "%s | POD HRM",
   },
-  description: "VietERP Vietnam - Human Resource Management",
+  description: "BaoERP Vietnam - Human Resource Management",
 }
 
 export default function RootLayout({

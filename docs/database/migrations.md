@@ -1,8 +1,8 @@
 # Database Migration Guide / Hướng dẫn Migration Cơ sở dữ liệu
 
-Hướng dẫn toàn diện về quản lý database migrations trong VietERP Platform sử dụng Prisma.
+Hướng dẫn toàn diện về quản lý database migrations trong BaoERP Platform sử dụng Prisma.
 
-Comprehensive guide to managing database migrations in VietERP Platform using Prisma.
+Comprehensive guide to managing database migrations in BaoERP Platform using Prisma.
 
 ## Giới thiệu / Introduction
 

@@ -1,6 +1,6 @@
 // =============================================================================
 // TEST SETUP & UTILITIES
-// VietERP MRP Test Suite
+// BaoERP MRP Test Suite
 // =============================================================================
 
 import '@testing-library/jest-dom';

@@ -2,11 +2,11 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP is positioned as a Vietnam-first ERP solution. Vietnamese businesses require compliance with:
+BaoERP is positioned as a Vietnam-first ERP solution. Vietnamese businesses require compliance with:
 - Thông tư 200/2014/TT-BCT (TT200): Accounting software requirements
   - Digital signature capability
   - Invoice numbering and archival
@@ -27,7 +27,7 @@ VietERP is positioned as a Vietnam-first ERP solution. Vietnamese businesses req
 - Language: Vietnamese UI and documentation
 - Business Registration: Integration with Vietnam Business Registry (future)
 
-VietERP được định vị là giải pháp ERP hướng tới Việt Nam. Các doanh nghiệp Việt Nam yêu cầu tuân thủ với:
+BaoERP được định vị là giải pháp ERP hướng tới Việt Nam. Các doanh nghiệp Việt Nam yêu cầu tuân thủ với:
 - Thông tư 200/2014/TT-BCT (TT200): Yêu cầu phần mềm kế toán
   - Khả năng ký chữ ký kỹ thuật số
   - Đánh số hóa đơn và lưu trữ
@@ -51,9 +51,9 @@ Building compliance into the core product rather than as add-ons ensures reliabi
 
 ## Quyết định / Decision
 
-**Build Vietnamese compliance features directly into VietERP** rather than as optional plugins.
+**Build Vietnamese compliance features directly into BaoERP** rather than as optional plugins.
 
-Xây dựng **các tính năng tuân thủ tiếng Việt trực tiếp vào VietERP** thay vì làm plugin tùy chọn.
+Xây dựng **các tính năng tuân thủ tiếng Việt trực tiếp vào BaoERP** thay vì làm plugin tùy chọn.
 
 **Implementation**:
 - TT200 Module: Digital signature service, invoice storage, account code mapping
@@ -91,7 +91,7 @@ Xây dựng **các tính năng tuân thủ tiếng Việt trực tiếp vào Vie
 ### Third-Party Compliance API
 - Pros: Don't maintain compliance; delegated to specialists
 - Cons: Vendor lock-in, additional cost per organization, API latency
-- **Rejected**: VietERP's competitive advantage includes compliance expertise
+- **Rejected**: BaoERP's competitive advantage includes compliance expertise
 
 ### Manual Compliance Workflows
 - Pros: Simplest MVP
@@ -134,7 +134,7 @@ Xây dựng **các tính năng tuân thủ tiếng Việt trực tiếp vào Vie
 - [Thông tư 78/2014/TT-BTC (VAT)](https://thuvienphapluat.vn/van-ban/Thue/Thong-tu-78-2014-TT-BTC-huong-dan-Luat-Gia-tri-gia-tang-4558.aspx)
 - [Nghị định 123/2020/NĐ-CP (NĐ123 - E-Invoice)](https://thuvienphapluat.vn/van-ban/Thue/Nghi-dinh-123-2020-ND-CP-hoa-don-dien-tu-467246.aspx)
 - [BHXH Integration Guidelines](https://www.bhxh.gov.vn/)
-- VietERP Compliance: `packages/compliance-vn/`, `apps/accounting/`, `libs/vn-localization/`
+- BaoERP Compliance: `packages/compliance-vn/`, `apps/accounting/`, `libs/vn-localization/`
 
 ---
 

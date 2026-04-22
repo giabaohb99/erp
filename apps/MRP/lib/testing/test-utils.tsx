@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - TESTING UTILITIES
+// BaoERP MRP - TESTING UTILITIES
 // Test helpers, mocks, and sample test files
 // =============================================================================
 
@@ -30,7 +30,7 @@ export function createMock<T extends (...args: any[]) => any>(
     return jest.fn(implementation) as MockFunction<T>;
   }
   // Fallback for non-test environments
-  return (implementation || (() => {})) as MockFunction<T>;
+  return (implementation || (() => { })) as MockFunction<T>;
 }
 
 /**

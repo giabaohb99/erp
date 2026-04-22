@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - MRP QUEUE
+// BaoERP MRP - MRP QUEUE
 // In-memory queue implementation (BullMQ disabled for Render compatibility)
 // =============================================================================
 

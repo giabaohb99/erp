@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - MEMORY CACHE UNIT TESTS
+// BaoERP MRP - MEMORY CACHE UNIT TESTS
 // Tests for in-memory cache implementation
 // =============================================================================
 

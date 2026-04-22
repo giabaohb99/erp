@@ -122,7 +122,7 @@ const SAFETY_CONFIG = {
 };
 
 // MRP-specific system prompt
-const MRP_SYSTEM_PROMPT = `You are RTR AI Copilot, an intelligent assistant for VietERP MRP (Manufacturing Resource Planning) system.
+const MRP_SYSTEM_PROMPT = `You are RTR AI Copilot, an intelligent assistant for BaoERP MRP (Manufacturing Resource Planning) system.
 
 CORE PRINCIPLES:
 1. ACCURACY: Always base responses on actual data. Never make up numbers or facts.
@@ -158,7 +158,7 @@ SAFETY RULES:
 - Recommend verification for critical decisions
 
 CURRENT CONTEXT:
-The user is working in the VietERP MRP system. Use the provided context to give relevant, contextual responses.`;
+The user is working in the BaoERP MRP system. Use the provided context to give relevant, contextual responses.`;
 
 // Module-specific prompts
 const MODULE_PROMPTS: Record<string, string> = {
@@ -236,7 +236,7 @@ export class AIService {
         return { safe: false, reason: 'Blocked pattern detected' };
       }
     }
-    
+
     // Check for excessive length (potential attack)
     if (input.length > 10000) {
       return { safe: false, reason: 'Input too long' };
@@ -249,11 +249,11 @@ export class AIService {
   private checkRateLimit(userId: string): boolean {
     const key = `${userId}_${Math.floor(Date.now() / 60000)}`;
     const count = this.messageCount.get(key) || 0;
-    
+
     if (count >= SAFETY_CONFIG.rateLimits.messagesPerMinute) {
       return false;
     }
-    
+
     this.messageCount.set(key, count + 1);
     return true;
   }
@@ -312,7 +312,7 @@ export class AIService {
   // Build context-aware prompt
   private buildPrompt(context: AIContext, query: string, history: AIMessage[]): string {
     const modulePrompt = MODULE_PROMPTS[context.module] || '';
-    
+
     const contextInfo = `
 CURRENT USER CONTEXT:
 - User: ${context.userName} (${context.userRole})
@@ -324,7 +324,7 @@ ${context.filters ? `- Active Filters: ${JSON.stringify(context.filters)}` : ''}
 ${context.recentActions?.length ? `- Recent Actions: ${context.recentActions.join(', ')}` : ''}
 `;
 
-    const historyText = history.slice(-10).map(m => 
+    const historyText = history.slice(-10).map(m =>
       `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`
     ).join('\n');
 
@@ -353,7 +353,7 @@ Please provide a helpful, accurate, and safe response.`;
 
     // Extract suggested actions
     const suggestedActions: AIAction[] = [];
-    
+
     // Look for action patterns in response
     const actionPatterns = [
       { pattern: /tạo PO|create PO/i, type: 'create' as const, label: 'Create PO', labelVi: 'Tạo PO' },
@@ -413,7 +413,7 @@ Please provide a helpful, accurate, and safe response.`;
     const safetyCheck = this.checkPromptSafety(query);
     if (!safetyCheck.safe) {
       return {
-        message: context.language === 'vi' 
+        message: context.language === 'vi'
           ? 'Xin lỗi, tôi không thể xử lý yêu cầu này vì lý do an toàn.'
           : 'Sorry, I cannot process this request for safety reasons.',
         confidence: 0,
@@ -454,8 +454,8 @@ Please provide a helpful, accurate, and safe response.`;
         ],
       });
 
-      const rawResponse = response.content[0].type === 'text' 
-        ? response.content[0].text 
+      const rawResponse = response.content[0].type === 'text'
+        ? response.content[0].text
         : '';
 
       // Validate response
@@ -534,7 +534,7 @@ Please provide a helpful, accurate, and safe response.`;
   // Fallback response when API is not available
   private getFallbackResponse(query: string, context: AIContext): AIResponse {
     const intent = this.detectIntent(query);
-    
+
     const fallbackMessages: Record<string, { en: string; vi: string }> = {
       stock_alert_query: {
         en: 'To check low stock items, I would analyze your inventory data. Based on typical patterns, you should review items where current stock is below the reorder point. Would you like me to show you the low stock report?',
@@ -571,11 +571,11 @@ Please provide a helpful, accurate, and safe response.`;
   // Get audit logs
   getAuditLogs(userId?: string, limit = 100): AuditLogEntry[] {
     let logs = this.auditLogs;
-    
+
     if (userId) {
       logs = logs.filter(l => l.userId === userId);
     }
-    
+
     return logs.slice(-limit);
   }
 

@@ -61,18 +61,16 @@ const SettingsScreen = ({ darkMode = true, setDarkMode, user }: any) => {
   };
 
   const SettingSection = ({ title, description, children }: any) => (
-    <div className={`rounded-xl border overflow-hidden ${
-      darkMode ? 'border-[#2E2E2E]' : 'border-gray-300'
-    }`} style={{
-      background: darkMode
-        ? 'linear-gradient(135deg, #121212 0%, rgba(215,183,151,0.03) 40%, rgba(215,183,151,0.08) 100%)'
-        : 'linear-gradient(135deg, #ffffff 0%, rgba(215,183,151,0.04) 35%, rgba(215,183,151,0.10) 100%)',
-      boxShadow: `inset 0 -1px 0 ${darkMode ? 'rgba(215,183,151,0.06)' : 'rgba(215,183,151,0.04)'}`,
-    }}>
+    <div className={`rounded-xl border overflow-hidden ${darkMode ? 'border-[#2E2E2E]' : 'border-gray-300'
+      }`} style={{
+        background: darkMode
+          ? 'linear-gradient(135deg, #121212 0%, rgba(215,183,151,0.03) 40%, rgba(215,183,151,0.08) 100%)'
+          : 'linear-gradient(135deg, #ffffff 0%, rgba(215,183,151,0.04) 35%, rgba(215,183,151,0.10) 100%)',
+        boxShadow: `inset 0 -1px 0 ${darkMode ? 'rgba(215,183,151,0.06)' : 'rgba(215,183,151,0.04)'}`,
+      }}>
       <div className={`px-5 py-4 border-b ${darkMode ? 'border-[#2E2E2E]' : 'border-gray-200'}`}>
-        <h3 className={`text-base font-semibold font-['Montserrat'] ${
-          darkMode ? 'text-[#F2F2F2]' : 'text-gray-900'
-        }`}>
+        <h3 className={`text-base font-semibold font-['Montserrat'] ${darkMode ? 'text-[#F2F2F2]' : 'text-gray-900'
+          }`}>
           {title}
         </h3>
         {description && (
@@ -90,13 +88,11 @@ const SettingsScreen = ({ darkMode = true, setDarkMode, user }: any) => {
   const SettingRow = ({ icon: Icon, label, description, children, onClick }: any) => (
     <div
       onClick={onClick}
-      className={`flex items-center gap-4 p-3 rounded-lg transition-all ${
-        onClick ? 'cursor-pointer' : ''
-      } ${
-        darkMode
+      className={`flex items-center gap-4 p-3 rounded-lg transition-all ${onClick ? 'cursor-pointer' : ''
+        } ${darkMode
           ? 'hover:bg-[rgba(215,183,151,0.05)]'
           : 'hover:bg-gray-50'
-      }`}
+        }`}
     >
       <div className={`p-2 rounded-lg ${darkMode ? 'bg-[#1A1A1A]' : 'bg-gray-100'}`}>
         <Icon size={18} className={darkMode ? 'text-[#D7B797]' : 'text-[#6B4D30]'} />
@@ -118,47 +114,42 @@ const SettingsScreen = ({ darkMode = true, setDarkMode, user }: any) => {
   const Toggle = ({ enabled, onChange }: any) => (
     <button
       onClick={() => onChange(!enabled)}
-      className={`relative w-11 h-6 rounded-full transition-all duration-200 ${
-        enabled
+      className={`relative w-11 h-6 rounded-full transition-all duration-200 ${enabled
           ? 'bg-[#127749]'
           : darkMode ? 'bg-[#2E2E2E]' : 'bg-gray-300'
-      }`}
+        }`}
     >
-      <div className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 ${
-        enabled ? 'left-6' : 'left-1'
-      }`} />
+      <div className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 ${enabled ? 'left-6' : 'left-1'
+        }`} />
     </button>
   );
 
   const ThemeOption = ({ value, icon: Icon, label, current }: any) => (
     <button
       onClick={() => updateSetting(null, 'theme', value)}
-      className={`flex-1 flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${
-        current === value
+      className={`flex-1 flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${current === value
           ? darkMode
             ? 'border-[#D7B797] bg-[rgba(215,183,151,0.1)]'
             : 'border-[#8A6340] bg-[rgba(215,183,151,0.15)]'
           : darkMode
             ? 'border-[#2E2E2E] hover:border-[#3E3E3E]'
             : 'border-gray-300 hover:border-gray-400'
-      }`}
+        }`}
     >
       <Icon size={24} className={
         current === value
           ? darkMode ? 'text-[#D7B797]' : 'text-[#6B4D30]'
           : darkMode ? 'text-[#666666]' : 'text-gray-600'
       } />
-      <span className={`text-sm font-medium ${
-        current === value
+      <span className={`text-sm font-medium ${current === value
           ? darkMode ? 'text-[#D7B797]' : 'text-[#6B4D30]'
           : darkMode ? 'text-[#999999]' : 'text-gray-600'
-      }`}>
+        }`}>
         {label}
       </span>
       {current === value && (
-        <div className={`absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center ${
-          darkMode ? 'bg-[#D7B797]' : 'bg-[#8A6340]'
-        }`}>
+        <div className={`absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center ${darkMode ? 'bg-[#D7B797]' : 'bg-[#8A6340]'
+          }`}>
           <Check size={12} className="text-white" />
         </div>
       )}
@@ -169,9 +160,8 @@ const SettingsScreen = ({ darkMode = true, setDarkMode, user }: any) => {
     <div className="space-y-3 md:space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className={`text-lg font-semibold font-['Montserrat'] ${
-          darkMode ? 'text-[#F2F2F2]' : 'text-gray-900'
-        }`}>
+        <h1 className={`text-lg font-semibold font-['Montserrat'] ${darkMode ? 'text-[#F2F2F2]' : 'text-gray-900'
+          }`}>
           {t('settings.title')}
         </h1>
         <p className={`text-xs mt-0.5 ${darkMode ? 'text-[#666666]' : 'text-gray-700'}`}>
@@ -182,9 +172,8 @@ const SettingsScreen = ({ darkMode = true, setDarkMode, user }: any) => {
       {/* Appearance */}
       <SettingSection title={t('settings.appearance')} description={t('settings.customizeAppLooks')}>
         <div className="p-3">
-          <div className={`text-xs font-medium uppercase tracking-wider mb-3 ${
-            darkMode ? 'text-[#666666]' : 'text-gray-700'
-          }`}>
+          <div className={`text-xs font-medium uppercase tracking-wider mb-3 ${darkMode ? 'text-[#666666]' : 'text-gray-700'
+            }`}>
             {t('settings.theme')}
           </div>
           <div className="flex gap-3">
@@ -229,11 +218,10 @@ const SettingsScreen = ({ darkMode = true, setDarkMode, user }: any) => {
           <select
             value={language}
             onChange={(e) => updateSetting(null, 'language', e.target.value)}
-            className={`pl-3 pr-8 py-1.5 rounded-lg text-sm font-medium border outline-none cursor-pointer ${
-              darkMode
+            className={`pl-3 pr-8 py-1.5 rounded-lg text-sm font-medium border outline-none cursor-pointer ${darkMode
                 ? 'bg-[#1A1A1A] border-[#2E2E2E] text-[#F2F2F2]'
                 : 'bg-gray-100 border-gray-300 text-gray-900'
-            }`}
+              }`}
           >
             <option value="vi">{t('settings.vietnamese')}</option>
             <option value="en">{t('settings.english')}</option>
@@ -339,41 +327,37 @@ const SettingsScreen = ({ darkMode = true, setDarkMode, user }: any) => {
             });
           }}
         >
-          <span className={`text-xs font-medium px-2 py-1 rounded ${
-            darkMode
+          <span className={`text-xs font-medium px-2 py-1 rounded ${darkMode
               ? 'bg-[rgba(248,81,73,0.1)] text-[#FF7B72]'
               : 'bg-red-100 text-red-600'
-          }`}>
+            }`}>
             {t('common.irreversible')}
           </span>
         </SettingRow>
       </SettingSection>
 
       {/* App Info */}
-      <div className={`rounded-xl border p-5 ${
-        darkMode ? 'bg-[#0A0A0A] border-[#1A1A1A]' : 'bg-gray-50 border-gray-300'
-      }`}>
+      <div className={`rounded-xl border p-5 ${darkMode ? 'bg-[#0A0A0A] border-[#1A1A1A]' : 'bg-gray-50 border-gray-300'
+        }`}>
         <div className="flex items-center gap-3">
           <img
-            src="/vietErp-logo.png"
-            alt="VietERP"
+            src="/BaoERP-logo.png"
+            alt="BaoERP"
             className="h-10 w-auto object-contain"
           />
           <div className="flex-1">
-            <div className={`text-sm font-semibold font-['Montserrat'] ${
-              darkMode ? 'text-[#F2F2F2]' : 'text-gray-900'
-            }`}>
+            <div className={`text-sm font-semibold font-['Montserrat'] ${darkMode ? 'text-[#F2F2F2]' : 'text-gray-900'
+              }`}>
               {t('settings.otbSystem')}
             </div>
             <div className={`text-xs ${darkMode ? 'text-[#666666]' : 'text-gray-700'}`}>
               {t('settings.versionLabel')}
             </div>
           </div>
-          <div className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-xs ${
-            darkMode
+          <div className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-xs ${darkMode
               ? 'bg-[rgba(42,158,106,0.15)] text-[#2A9E6A]'
               : 'bg-green-100 text-green-700'
-          }`}>
+            }`}>
             <Check size={12} />
             {t('settings.upToDate')}
           </div>

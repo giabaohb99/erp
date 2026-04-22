@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - ADVANCED ANALYTICS MODULE
+// BaoERP MRP - ADVANCED ANALYTICS MODULE
 // Barrel export for analytics services
 // =============================================================================
 

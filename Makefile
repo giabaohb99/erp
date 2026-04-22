@@ -2,7 +2,7 @@
 
 ## help - Display all available commands
 help:
-	@echo "VietERP Platform - Available Commands"
+	@echo "BaoERP Platform - Available Commands"
 	@echo "======================================"
 	@echo ""
 	@echo "  NOTE: All commands also work via npm scripts (cross-platform):"

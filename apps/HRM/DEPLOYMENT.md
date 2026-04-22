@@ -1,6 +1,6 @@
-# HƯỚNG DẪN TRIỂN KHAI (DEPLOYMENT GUIDE) — VietERP-HRM
+# HƯỚNG DẪN TRIỂN KHAI (DEPLOYMENT GUIDE) — BaoERP-HRM
 
-> Tài liệu dành cho phòng IT — Triển khai hệ thống Quản lý Nhân sự VietERP-HRM lên môi trường production.
+> Tài liệu dành cho phòng IT — Triển khai hệ thống Quản lý Nhân sự BaoERP-HRM lên môi trường production.
 
 ---
 
@@ -26,7 +26,7 @@
 
 ## 1. Tổng quan ứng dụng
 
-**VietERP-HRM** là hệ thống Quản lý Nhân sự (Human Resource Management) được phát triển cho Công ty Cổ phần VietERP Việt Nam.
+**BaoERP-HRM** là hệ thống Quản lý Nhân sự (Human Resource Management) được phát triển cho Công ty Cổ phần BaoERP Việt Nam.
 
 ### Tech Stack
 
@@ -863,5 +863,5 @@ crontab -e
 ---
 
 > **Tài liệu được tạo ngày 14/03/2026.**
-> Phiên bản ứng dụng: VietERP-HRM v0.1.0 | Next.js 14 | Prisma 7 | PostgreSQL 16+
+> Phiên bản ứng dụng: BaoERP-HRM v0.1.0 | Next.js 14 | Prisma 7 | PostgreSQL 16+
 > Liên hệ đội phát triển nếu cần hỗ trợ thêm.

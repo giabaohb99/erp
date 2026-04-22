@@ -2,11 +2,11 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP requires identity and access management for:
+BaoERP requires identity and access management for:
 - Multi-tenant architecture (100+ organizations)
 - Role-based access control (RBAC) with 50+ roles
 - Single Sign-On (SSO) across all 14 applications
@@ -17,7 +17,7 @@ VietERP requires identity and access management for:
 - Audit logging of all authentication events
 - Vietnamese language support for user-facing flows
 
-VietERP yêu cầu quản lý danh tính và truy cập cho:
+BaoERP yêu cầu quản lý danh tính và truy cập cho:
 - Kiến trúc đa thuê (100+ tổ chức)
 - Kiểm soát truy cập dựa trên vai trò (RBAC) với 50+ vai trò
 - Đăng nhập một lần (SSO) trên tất cả 14 ứng dụng
@@ -32,9 +32,9 @@ Keycloak provides self-hosted, flexible IAM with strong compliance and customiza
 
 ## Quyết định / Decision
 
-**Adopt Keycloak** as the primary identity and access management system for VietERP.
+**Adopt Keycloak** as the primary identity and access management system for BaoERP.
 
-Áp dụng **Keycloak** làm hệ thống quản lý danh tính và truy cập chính cho VietERP.
+Áp dụng **Keycloak** làm hệ thống quản lý danh tính và truy cập chính cho BaoERP.
 
 **Configuration**:
 - Keycloak 24.x (latest stable)
@@ -61,16 +61,16 @@ Keycloak provides self-hosted, flexible IAM with strong compliance and customiza
 ### Auth0
 - Pros: Managed service, excellent UX, global scale
 - Cons: Vendor lock-in, higher cost, limited self-hosting
-- **Rejected**: VietERP needs self-hosting flexibility and cost control
+- **Rejected**: BaoERP needs self-hosting flexibility and cost control
 
 ### Clerk
 - Pros: Modern UX, embedded auth, fast setup
 - Cons: Newer, limited compliance certifications, only cloud
-- **Rejected**: VietERP enterprise needs require self-hosted, SAML support
+- **Rejected**: BaoERP enterprise needs require self-hosted, SAML support
 
 ### Okta
 - Pros: Enterprise-grade, extensive integrations, compliance
-- Cons: Extremely expensive, overkill for VietERP initially
+- Cons: Extremely expensive, overkill for BaoERP initially
 - **Rejected**: Keycloak meets needs at fraction of cost
 
 ### Custom JWT Solution
@@ -114,7 +114,7 @@ Keycloak provides self-hosted, flexible IAM with strong compliance and customiza
 - [Keycloak Server Administration Guide](https://www.keycloak.org/docs/latest/server_admin/)
 - [OIDC/OAuth2 Configuration](https://www.keycloak.org/docs/latest/server_admin/#_client_credentials_grant_access_token_request)
 - [Keycloak on Kubernetes](https://www.keycloak.org/operator/installation)
-- VietERP Clients: `admin-dashboard`, `public-portal`, `mobile-app`, etc.
+- BaoERP Clients: `admin-dashboard`, `public-portal`, `mobile-app`, etc.
 
 ---
 

@@ -2,18 +2,18 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP is a complex, multi-module enterprise resource planning system with:
+BaoERP is a complex, multi-module enterprise resource planning system with:
 - 14 distinct applications (CRM, Accounting, HRM, Inventory, Ecommerce, etc.)
 - Significant shared code (utilities, UI components, types, validations)
 - Need for coordinated versioning and releases
 - High dependency on internal packages
 - Multiple development teams working in parallel
 
-VietERP là một hệ thống lập kế hoạch tài nguyên doanh nghiệp phức tạp, đa mô-đun với:
+BaoERP là một hệ thống lập kế hoạch tài nguyên doanh nghiệp phức tạp, đa mô-đun với:
 - 14 ứng dụng riêng biệt (CRM, Kế toán, HRM, Quản lý tồn kho, Ecommerce, v.v.)
 - Lượng lớn mã chia sẻ (tiện ích, thành phần UI, kiểu, xác thực)
 - Cần phối hợp phiên bản và phát hành
@@ -24,9 +24,9 @@ Monorepo structure enables unified dependency management and simplifies cross-mo
 
 ## Quyết định / Decision
 
-**Adopt npm Workspaces with Turborepo** as the monorepo strategy for VietERP.
+**Adopt npm Workspaces with Turborepo** as the monorepo strategy for BaoERP.
 
-Áp dụng **npm Workspaces với Turborepo** làm chiến lược monorepo cho VietERP.
+Áp dụng **npm Workspaces với Turborepo** làm chiến lược monorepo cho BaoERP.
 
 **Configuration**:
 - Root `package.json` with `"workspaces"` array
@@ -52,12 +52,12 @@ Monorepo structure enables unified dependency management and simplifies cross-mo
 ### Nx
 - Pros: Powerful task graph, plugins for many frameworks
 - Cons: Steep learning curve, opinionated constraints
-- **Rejected**: Added complexity not justified for VietERP's needs; npm Workspaces simpler
+- **Rejected**: Added complexity not justified for BaoERP's needs; npm Workspaces simpler
 
 ### Separate Repositories (Polyrepo)
 - Pros: Independent versioning, separate deploy cycles
 - Cons: Code duplication, complex shared code management, harder cross-module testing
-- **Rejected**: VietERP has too much shared code; monorepo needed for DRY principle
+- **Rejected**: BaoERP has too much shared code; monorepo needed for DRY principle
 
 ### pnpm Workspaces
 - Pros: Faster disk usage, strict hoisting rules
@@ -99,7 +99,7 @@ Monorepo structure enables unified dependency management and simplifies cross-mo
 - [npm Workspaces Documentation](https://docs.npmjs.com/cli/v10/using-npm/workspaces)
 - [Turborepo Official Docs](https://turbo.build/repo/docs)
 - [Monorepo Best Practices](https://turbo.build/repo/docs/handbook)
-- VietERP Package Structure: `apps/`, `packages/`, `tools/`
+- BaoERP Package Structure: `apps/`, `packages/`, `tools/`
 
 ---
 

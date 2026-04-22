@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard, Package, Truck, FileText, BarChart3,
-  Bell, User, LogOut, Menu, X, ChevronRight, Building2, 
+  Bell, User, LogOut, Menu, X, ChevronRight, Building2,
   ShoppingCart, MessageSquare, HelpCircle
 } from 'lucide-react';
 
@@ -56,12 +56,12 @@ export function PortalLayoutClient({ children }: { children: React.ReactNode }) 
 
   // Detect portal type based on pathname
   const isCustomerPortal = pathname.startsWith('/customer');
-  
+
   const config: PortalConfig = useMemo(() => {
     if (isCustomerPortal) {
       return {
         navItems: customerNavItems,
-        title: 'VietERP MRP',
+        title: 'BaoERP MRP',
         subtitle: 'Customer Portal',
         baseUrl: '/customer',
         userName: 'ABC Manufacturing',
@@ -74,7 +74,7 @@ export function PortalLayoutClient({ children }: { children: React.ReactNode }) 
     }
     return {
       navItems: supplierNavItems,
-      title: 'VietERP MRP',
+      title: 'BaoERP MRP',
       subtitle: 'Supplier Portal',
       baseUrl: '/supplier',
       userName: 'Vina Parts',
@@ -149,11 +149,10 @@ export function PortalLayoutClient({ children }: { children: React.ReactNode }) 
             <Link
               key={item.id}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-                isActive(item.href)
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${isActive(item.href)
                   ? `bg-${accentColor}-50 dark:bg-${accentColor}-900/30 text-${accentColor}-600 dark:text-${accentColor}-400 font-medium`
                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-[rgb(var(--sidebar-item-hover))]'
-              }`}
+                }`}
             >
               {item.icon}
               <span>{item.label}</span>
@@ -196,11 +195,10 @@ export function PortalLayoutClient({ children }: { children: React.ReactNode }) 
                   key={item.id}
                   href={item.href}
                   onClick={() => setSidebarOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-                    isActive(item.href)
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${isActive(item.href)
                       ? `bg-${accentColor}-50 dark:bg-${accentColor}-900/30 text-${accentColor}-600 font-medium`
                       : 'text-gray-600 hover:bg-gray-100'
-                  }`}
+                    }`}
                 >
                   {item.icon}
                   <span>{item.label}</span>

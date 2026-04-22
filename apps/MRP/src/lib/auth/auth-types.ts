@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - AUTHENTICATION TYPES & CONFIG
+// BaoERP MRP - AUTHENTICATION TYPES & CONFIG
 // Type definitions and configuration for authentication system
 // =============================================================================
 

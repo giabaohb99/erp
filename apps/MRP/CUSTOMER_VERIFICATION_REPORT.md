@@ -1,5 +1,5 @@
 # CUSTOMER VERIFICATION REPORT
-## VietERP MRP - Ngày 2026-01-10
+## BaoERP MRP - Ngày 2026-01-10
 ## Góc nhìn: Người vận hành thực tế
 
 ---
@@ -268,6 +268,6 @@ URL: https://vierp-mrp.onrender.com
 
 ---
 
-*VietERP MRP Customer Verification Report*
+*BaoERP MRP Customer Verification Report*
 *Generated: 2026-01-10*
 *Commit: d08eea9*

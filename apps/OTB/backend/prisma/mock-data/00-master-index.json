@@ -1,9 +1,9 @@
 {
   "masterDataIndex": {
-    "name": "VietERP OTB Master Data - 3 Year Dataset",
-    "nameVi": "Bộ dữ liệu Master VietERP OTB - 3 năm",
+    "name": "BaoERP OTB Master Data - 3 Year Dataset",
+    "nameVi": "Bộ dữ liệu Master BaoERP OTB - 3 năm",
     "version": "1.0.0",
-    "description": "Complete mock dataset for VietERP OTB luxury fashion buying platform",
+    "description": "Complete mock dataset for BaoERP OTB luxury fashion buying platform",
     "dateRange": {
       "from": "2023-01-01",
       "to": "2025-12-31"
@@ -15,91 +15,145 @@
       "file": "01-brands.json",
       "description": "Luxury brand master data",
       "records": 8,
-      "tables": ["brands"]
+      "tables": [
+        "brands"
+      ]
     },
     {
       "file": "02-categories.json",
       "description": "Product categories and subcategories",
       "records": 38,
-      "tables": ["categories", "subcategories"]
+      "tables": [
+        "categories",
+        "subcategories"
+      ]
     },
     {
       "file": "03-size-sets.json",
       "description": "Size configurations for all product types",
       "records": 10,
-      "tables": ["sizeSets"]
+      "tables": [
+        "sizeSets"
+      ]
     },
     {
       "file": "04-seasons.json",
       "description": "Fiscal years, seasons, and phases",
       "records": 12,
-      "tables": ["fiscalYears", "seasons", "seasonGroups"]
+      "tables": [
+        "fiscalYears",
+        "seasons",
+        "seasonGroups"
+      ]
     },
     {
       "file": "05-stores-channels.json",
       "description": "Retail channels and store locations",
       "records": 15,
-      "tables": ["channels", "stores", "storeGroups"]
+      "tables": [
+        "channels",
+        "stores",
+        "storeGroups"
+      ]
     },
     {
       "file": "06-budget-groups-plans.json",
       "description": "Budget groups, types, and allocation plans",
       "records": 15,
-      "tables": ["budgetGroups", "budgetTypes", "budgetPlans"]
+      "tables": [
+        "budgetGroups",
+        "budgetTypes",
+        "budgetPlans"
+      ]
     },
     {
       "file": "07-skus.json",
       "description": "Product SKU master data",
       "records": 30,
-      "tables": ["skus"]
+      "tables": [
+        "skus"
+      ]
     },
     {
       "file": "08-otb-analysis.json",
       "description": "Open-to-Buy analysis records",
       "records": 10,
-      "tables": ["otbRecords", "otbSummaryByYear"]
+      "tables": [
+        "otbRecords",
+        "otbSummaryByYear"
+      ]
     },
     {
       "file": "09-sales-history.json",
       "description": "Monthly sales, category, brand breakdown",
       "records": 26,
-      "tables": ["salesSummaryByMonth", "salesByCategory", "salesByBrand", "topSellingSkus"]
+      "tables": [
+        "salesSummaryByMonth",
+        "salesByCategory",
+        "salesByBrand",
+        "topSellingSkus"
+      ]
     },
     {
       "file": "10-inventory.json",
       "description": "Current inventory status and alerts",
       "records": 10,
-      "tables": ["inventorySummary", "inventoryDetails", "lowStockAlerts", "overstockAlerts"]
+      "tables": [
+        "inventorySummary",
+        "inventoryDetails",
+        "lowStockAlerts",
+        "overstockAlerts"
+      ]
     },
     {
       "file": "11-purchase-orders.json",
       "description": "Purchase order history",
       "records": 11,
-      "tables": ["purchaseOrders", "poSummaryByYear"]
+      "tables": [
+        "purchaseOrders",
+        "poSummaryByYear"
+      ]
     },
     {
       "file": "12-sku-proposals.json",
       "description": "SKU proposals and buying recommendations",
       "records": 3,
-      "tables": ["proposals", "proposalHistory"]
+      "tables": [
+        "proposals",
+        "proposalHistory"
+      ]
     },
     {
       "file": "13-users.json",
       "description": "Users, roles, and permissions",
       "records": 14,
-      "tables": ["users", "roles"]
+      "tables": [
+        "users",
+        "roles"
+      ]
     },
     {
       "file": "14-financial-settings.json",
       "description": "Exchange rates and financial configurations",
       "records": 3,
-      "tables": ["exchangeRates", "financialSettings", "markdownSchedule"]
+      "tables": [
+        "exchangeRates",
+        "financialSettings",
+        "markdownSchedule"
+      ]
     },
     {
       "file": "15-kpis-metrics.json",
       "description": "KPI dashboard and performance metrics",
       "records": 8,
-      "tables": ["annualKPIs", "monthlyTrends", "channelPerformance", "brandPerformance", "categoryPerformance", "alerts"]
+      "tables": [
+        "annualKPIs",
+        "monthlyTrends",
+        "channelPerformance",
+        "brandPerformance",
+        "categoryPerformance",
+        "alerts"
+      ]
     }
   ],
   "statistics": {

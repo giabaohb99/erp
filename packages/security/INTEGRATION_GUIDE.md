@@ -1,6 +1,6 @@
 # TIP-015 Integration Guide
 
-Complete integration guide for implementing security headers, CORS, CSRF protection, and input sanitization across VietERP applications.
+Complete integration guide for implementing security headers, CORS, CSRF protection, and input sanitization across BaoERP applications.
 
 ## Table of Contents
 

@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - HEALTH CHECK API ENDPOINTS
+// BaoERP MRP - HEALTH CHECK API ENDPOINTS
 // /api/health/live, /api/health/ready, /api/health
 // =============================================================================
 
@@ -18,23 +18,23 @@ import { logger } from '@/lib/logger';
  */
 export async function GET(request: NextRequest) {
   const { pathname } = new URL(request.url);
-  
+
   try {
     // Route to appropriate health check
     if (pathname.endsWith('/live')) {
       const health = checkLiveness();
       return NextResponse.json(health, { status: 200 });
     }
-    
+
     if (pathname.endsWith('/ready')) {
       const health = await checkReadiness();
       return NextResponse.json(health, { status: getHealthHttpStatus(health) });
     }
-    
+
     // Full health check
     const health = await checkHealth();
     return NextResponse.json(health, { status: getHealthHttpStatus(health) });
-    
+
   } catch (error) {
     logger.logError(error instanceof Error ? error : new Error(String(error)), { context: 'GET /api/health/[check]' });
     return NextResponse.json(

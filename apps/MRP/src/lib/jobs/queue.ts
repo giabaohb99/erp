@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - BACKGROUND JOBS
+// BaoERP MRP - BACKGROUND JOBS
 // In-memory queue implementation (BullMQ disabled for Render compatibility)
 // =============================================================================
 
@@ -178,13 +178,13 @@ export const queues = {
 
 // Fake queue events for compatibility
 export const queueEvents = {
-  mrp: { close: async () => {} },
-  reports: { close: async () => {} },
-  notifications: { close: async () => {} },
-  exports: { close: async () => {} },
-  imports: { close: async () => {} },
-  emails: { close: async () => {} },
-  scheduled: { close: async () => {} },
+  mrp: { close: async () => { } },
+  reports: { close: async () => { } },
+  notifications: { close: async () => { } },
+  exports: { close: async () => { } },
+  imports: { close: async () => { } },
+  emails: { close: async () => { } },
+  scheduled: { close: async () => { } },
 };
 
 // =============================================================================

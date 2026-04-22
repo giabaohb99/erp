@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - K6 SMOKE TEST (Gate 4)
+// BaoERP MRP - K6 SMOKE TEST (Gate 4)
 // Warm-up + 1→3→5 users with auth validation
 // =============================================================================
 
@@ -130,7 +130,7 @@ export default function () {
 // =============================================================================
 
 export function setup() {
-  console.log('🚀 Starting VietERP MRP Smoke Test (Gate 4)');
+  console.log('🚀 Starting BaoERP MRP Smoke Test (Gate 4)');
   console.log(`📍 Base URL: ${BASE_URL}`);
   console.log(`🔐 Cookie: ${COOKIE ? 'PROVIDED' : 'MISSING'}`);
 

@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - REAL-TIME SERVICE
+// BaoERP MRP - REAL-TIME SERVICE
 // WebSocket event types and server-side utilities
 // =============================================================================
 
@@ -11,41 +11,41 @@ export type RTREventType =
   // Dashboard events
   | 'dashboard:stats_updated'
   | 'dashboard:kpi_changed'
-  
+
   // Order events
   | 'order:created'
   | 'order:updated'
   | 'order:status_changed'
   | 'order:deleted'
-  
+
   // Inventory events
   | 'inventory:updated'
   | 'inventory:low_stock'
   | 'inventory:out_of_stock'
   | 'inventory:received'
-  
+
   // Production events
   | 'production:started'
   | 'production:progress'
   | 'production:completed'
   | 'production:issue'
-  
+
   // Quality events
   | 'quality:ncr_created'
   | 'quality:ncr_updated'
   | 'quality:ncr_closed'
-  
+
   // MRP events
   | 'mrp:run_started'
   | 'mrp:run_completed'
   | 'mrp:suggestions_ready'
-  
+
   // System events
   | 'system:user_connected'
   | 'system:user_disconnected'
   | 'system:broadcast'
   | 'system:maintenance'
-  
+
   // Notification events
   | 'notification:new'
   | 'notification:read'

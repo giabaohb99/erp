@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - OFFLINE PAGE
+// BaoERP MRP - OFFLINE PAGE
 // Fallback page shown when user is offline
 // =============================================================================
 
@@ -45,7 +45,7 @@ export default function OfflinePage() {
 
         {/* Description */}
         <p className="text-gray-600 dark:text-neutral-400 mb-8">
-          It looks like you've lost your internet connection. 
+          It looks like you've lost your internet connection.
           Some features may be unavailable until you're back online.
         </p>
 

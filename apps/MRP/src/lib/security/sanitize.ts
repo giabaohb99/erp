@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - SANITIZATION UTILITIES
+// BaoERP MRP - SANITIZATION UTILITIES
 // XSS prevention and input sanitization
 // =============================================================================
 
@@ -81,8 +81,8 @@ export function sanitizeObject<T extends Record<string, any>>(obj: T): T {
     } else if (Array.isArray(value)) {
       sanitized[key] = value.map(item =>
         typeof item === 'string' ? sanitize(item) :
-        typeof item === 'object' && item !== null ? sanitizeObject(item) :
-        item
+          typeof item === 'object' && item !== null ? sanitizeObject(item) :
+            item
       );
     } else if (typeof value === 'object' && value !== null && !(value instanceof Date)) {
       sanitized[key] = sanitizeObject(value);

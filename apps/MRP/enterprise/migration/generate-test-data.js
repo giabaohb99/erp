@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // =============================================================================
-// VietERP MRP TEST DATA GENERATOR
+// BaoERP MRP TEST DATA GENERATOR
 // Generate sample CSV files for migration testing
 // =============================================================================
 
@@ -24,7 +24,7 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 // Helper functions
 const randomFrom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-const randomFloat = (min, max, decimals = 2) => 
+const randomFloat = (min, max, decimals = 2) =>
   parseFloat((Math.random() * (max - min) + min).toFixed(decimals));
 
 // Data generators
@@ -32,7 +32,7 @@ const CATEGORIES = ['COMPONENT', 'ASSEMBLY', 'RAW_MATERIAL', 'FINISHED_GOOD', 'C
 const UNITS = ['pcs', 'kg', 'm', 'l', 'set', 'box', 'roll'];
 const PREFIXES = ['MTL', 'CMP', 'ASM', 'FIN', 'TOL', 'CON'];
 const PART_NAMES = [
-  'Bolt', 'Nut', 'Screw', 'Washer', 'Bearing', 'Gear', 'Motor', 'Valve', 
+  'Bolt', 'Nut', 'Screw', 'Washer', 'Bearing', 'Gear', 'Motor', 'Valve',
   'Pump', 'Sensor', 'Switch', 'Connector', 'Cable', 'Housing', 'Bracket',
   'Plate', 'Shaft', 'Spring', 'Gasket', 'Seal', 'Filter', 'Actuator'
 ];
@@ -81,14 +81,14 @@ function generateTaxCode() {
 
 function generateParts(count) {
   console.log(`Generating ${count.toLocaleString()} parts...`);
-  
+
   const headers = [
-    'partNumber', 'partName', 'description', 'category', 'unit', 
+    'partNumber', 'partName', 'description', 'category', 'unit',
     'unitCost', 'sellingPrice', 'leadTime', 'minOrderQty', 'isActive'
   ];
-  
+
   const lines = [headers.join(',')];
-  
+
   for (let i = 1; i <= count; i++) {
     const partNumber = generatePartNumber(i);
     const partName = generatePartName();
@@ -99,7 +99,7 @@ function generateParts(count) {
     const leadTime = randomInt(1, 30);
     const minOrderQty = randomFrom([1, 5, 10, 25, 50, 100]);
     const isActive = Math.random() > 0.05; // 95% active
-    
+
     lines.push([
       partNumber,
       `"${partName}"`,
@@ -112,18 +112,18 @@ function generateParts(count) {
       minOrderQty,
       isActive
     ].join(','));
-    
+
     if (i % 10000 === 0) {
-      process.stdout.write(`\r  Progress: ${((i/count)*100).toFixed(1)}%`);
+      process.stdout.write(`\r  Progress: ${((i / count) * 100).toFixed(1)}%`);
     }
   }
-  
+
   console.log('\r  Progress: 100%   ');
-  
+
   const filePath = path.join(OUTPUT_DIR, 'parts.csv');
   fs.writeFileSync(filePath, lines.join('\n'));
   console.log(`  ✓ Saved to ${filePath} (${(lines.length * 100 / 1024 / 1024).toFixed(1)} MB estimated)`);
-  
+
   return count;
 }
 
@@ -133,15 +133,15 @@ function generateParts(count) {
 
 function generateCustomers(count) {
   console.log(`Generating ${count.toLocaleString()} customers...`);
-  
+
   const headers = [
-    'code', 'name', 'contactPerson', 'email', 'phone', 
+    'code', 'name', 'contactPerson', 'email', 'phone',
     'address', 'city', 'taxCode', 'paymentTerms', 'isActive'
   ];
-  
+
   const lines = [headers.join(',')];
   const paymentTerms = ['Net 30', 'Net 45', 'Net 60', 'COD', 'Prepaid'];
-  
+
   for (let i = 1; i <= count; i++) {
     const code = `CUST-${String(i).padStart(5, '0')}`;
     const name = generateCompanyName('Customer', i);
@@ -153,7 +153,7 @@ function generateCustomers(count) {
     const taxCode = generateTaxCode();
     const payment = randomFrom(paymentTerms);
     const isActive = Math.random() > 0.02; // 98% active
-    
+
     lines.push([
       code,
       `"${name}"`,
@@ -166,18 +166,18 @@ function generateCustomers(count) {
       payment,
       isActive
     ].join(','));
-    
+
     if (i % 1000 === 0) {
-      process.stdout.write(`\r  Progress: ${((i/count)*100).toFixed(1)}%`);
+      process.stdout.write(`\r  Progress: ${((i / count) * 100).toFixed(1)}%`);
     }
   }
-  
+
   console.log('\r  Progress: 100%   ');
-  
+
   const filePath = path.join(OUTPUT_DIR, 'customers.csv');
   fs.writeFileSync(filePath, lines.join('\n'));
   console.log(`  ✓ Saved to ${filePath}`);
-  
+
   return count;
 }
 
@@ -187,14 +187,14 @@ function generateCustomers(count) {
 
 function generateSuppliers(count) {
   console.log(`Generating ${count.toLocaleString()} suppliers...`);
-  
+
   const headers = [
-    'code', 'name', 'contactPerson', 'email', 'phone', 
+    'code', 'name', 'contactPerson', 'email', 'phone',
     'address', 'taxCode', 'isActive'
   ];
-  
+
   const lines = [headers.join(',')];
-  
+
   for (let i = 1; i <= count; i++) {
     const code = `SUP-${String(i).padStart(4, '0')}`;
     const name = generateCompanyName('Supplier', i);
@@ -205,7 +205,7 @@ function generateSuppliers(count) {
     const address = `${randomInt(1, 999)} Industrial Road ${randomInt(1, 20)}`;
     const taxCode = generateTaxCode();
     const isActive = Math.random() > 0.03; // 97% active
-    
+
     lines.push([
       code,
       `"${name}"`,
@@ -216,18 +216,18 @@ function generateSuppliers(count) {
       taxCode,
       isActive
     ].join(','));
-    
+
     if (i % 1000 === 0) {
-      process.stdout.write(`\r  Progress: ${((i/count)*100).toFixed(1)}%`);
+      process.stdout.write(`\r  Progress: ${((i / count) * 100).toFixed(1)}%`);
     }
   }
-  
+
   console.log('\r  Progress: 100%   ');
-  
+
   const filePath = path.join(OUTPUT_DIR, 'suppliers.csv');
   fs.writeFileSync(filePath, lines.join('\n'));
   console.log(`  ✓ Saved to ${filePath}`);
-  
+
   return count;
 }
 
@@ -237,17 +237,17 @@ function generateSuppliers(count) {
 
 function generateInventory(count) {
   console.log(`Generating ${count.toLocaleString()} inventory records...`);
-  
+
   const headers = [
-    'partNumber', 'onHand', 'onOrder', 'allocated', 
-    'safetyStock', 'reorderPoint', 'maxStock', 
+    'partNumber', 'onHand', 'onOrder', 'allocated',
+    'safetyStock', 'reorderPoint', 'maxStock',
     'warehouseLocation', 'binLocation', 'lotNumber'
   ];
-  
+
   const lines = [headers.join(',')];
   const warehouses = ['WH-A', 'WH-B', 'WH-C', 'MAIN'];
   const rows = ['A', 'B', 'C', 'D', 'E', 'F'];
-  
+
   for (let i = 1; i <= count; i++) {
     const partNumber = generatePartNumber(i);
     const onHand = randomInt(0, 5000);
@@ -260,7 +260,7 @@ function generateInventory(count) {
     const row = randomFrom(rows);
     const bin = `${row}-${String(randomInt(1, 50)).padStart(2, '0')}-${String(randomInt(1, 10)).padStart(2, '0')}`;
     const lotNumber = Math.random() > 0.5 ? `LOT-${Date.now()}-${i}` : '';
-    
+
     lines.push([
       partNumber,
       onHand,
@@ -273,18 +273,18 @@ function generateInventory(count) {
       bin,
       lotNumber
     ].join(','));
-    
+
     if (i % 10000 === 0) {
-      process.stdout.write(`\r  Progress: ${((i/count)*100).toFixed(1)}%`);
+      process.stdout.write(`\r  Progress: ${((i / count) * 100).toFixed(1)}%`);
     }
   }
-  
+
   console.log('\r  Progress: 100%   ');
-  
+
   const filePath = path.join(OUTPUT_DIR, 'inventory.csv');
   fs.writeFileSync(filePath, lines.join('\n'));
   console.log(`  ✓ Saved to ${filePath}`);
-  
+
   return count;
 }
 
@@ -294,7 +294,7 @@ function generateInventory(count) {
 
 console.log(`
 ╔════════════════════════════════════════════════════════════════╗
-║  VietERP MRP TEST DATA GENERATOR                                   ║
+║  BaoERP MRP TEST DATA GENERATOR                                   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 Output Directory: ${OUTPUT_DIR}

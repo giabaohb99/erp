@@ -1,6 +1,6 @@
 # @vierp/openapi
 
-OpenAPI 3.1 specification generator and Swagger UI integration for VietERP applications.
+OpenAPI 3.1 specification generator and Swagger UI integration for BaoERP applications.
 
 > **Available in**: [English](#english) | [Tiếng Việt](#tiếng-việt)
 
@@ -17,7 +17,7 @@ OpenAPI 3.1 specification generator and Swagger UI integration for VietERP appli
 - Type-safe endpoint and schema management
 - Swagger UI integration via CDN (no additional dependencies)
 - Next.js API route helpers
-- VietERP branding support
+- BaoERP branding support
 
 ### Installation
 
@@ -42,7 +42,7 @@ import {
 import { createOpenAPISpec, addTagGroup, addEndpoint, addSchema } from '@vierp/openapi';
 
 const spec = createOpenAPISpec({
-  title: 'VietERP API',
+  title: 'BaoERP API',
   version: '1.0.0',
   description: 'Enterprise Resource Planning API',
   basePath: 'https://api.vierp.local',
@@ -200,7 +200,7 @@ import {
 } from '@vierp/openapi';
 
 export const spec = createOpenAPISpec({
-  title: 'VietERP API',
+  title: 'BaoERP API',
   version: '1.0.0',
   description: 'Enterprise Resource Planning System',
   basePath: process.env.API_BASE_URL || 'http://localhost:3000/api',
@@ -354,7 +354,7 @@ Creates a Next.js GET handler for the Swagger UI endpoint.
 - Quản lý điểm cuối và sơ đồ an toàn về kiểu
 - Tích hợp Swagger UI qua CDN (không có phụ thuộc bổ sung)
 - Trợ giúp tuyến đường API Next.js
-- Hỗ trợ thương hiệu VietERP
+- Hỗ trợ thương hiệu BaoERP
 
 ### Cài Đặt
 
@@ -379,7 +379,7 @@ import {
 import { createOpenAPISpec, addTagGroup, addEndpoint, addSchema } from '@vierp/openapi';
 
 const spec = createOpenAPISpec({
-  title: 'VietERP API',
+  title: 'BaoERP API',
   version: '1.0.0',
   description: 'API Hệ thống Quản lý Tài nguyên Doanh nghiệp',
   basePath: 'https://api.vierp.local',
@@ -537,7 +537,7 @@ import {
 } from '@vierp/openapi';
 
 export const spec = createOpenAPISpec({
-  title: 'VietERP API',
+  title: 'BaoERP API',
   version: '1.0.0',
   description: 'Hệ Thống Quản Lý Tài Nguyên Doanh Nghiệp',
   basePath: process.env.API_BASE_URL || 'http://localhost:3000/api',

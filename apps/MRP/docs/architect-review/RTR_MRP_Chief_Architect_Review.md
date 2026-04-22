@@ -2,7 +2,7 @@
 
 **Từ:** Kiến Trúc Sư Trưởng & Tổng Thầu
 **Ngày:** 01/01/2026
-**Dự án:** VietERP MRP Performance Enhancement
+**Dự án:** BaoERP MRP Performance Enhancement
 **Phiên bản:** 1.0 - FINAL REVIEW
 
 ---
@@ -722,7 +722,7 @@ alerts:
 #!/bin/bash
 # performance-test.sh
 
-echo "=== VietERP MRP Performance Test ==="
+echo "=== BaoERP MRP Performance Test ==="
 
 # Baseline
 echo "Running baseline tests..."

@@ -1,5 +1,5 @@
 # 🚀 PERFORMANCE OPTIMIZATION GUIDE
-## VietERP MRP Query Optimization & Caching
+## BaoERP MRP Query Optimization & Caching
 
 ---
 
@@ -367,4 +367,4 @@ ORDER BY ratio DESC NULLS LAST;
 
 ---
 
-*VietERP MRP Performance Guide v1.0*
+*BaoERP MRP Performance Guide v1.0*

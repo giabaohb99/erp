@@ -8,10 +8,10 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | VietERP MRP',
+    template: '%s | BaoERP MRP',
     default: 'Tổng quan',
   },
-  description: 'Bảng điều khiển quản lý sản xuất VietERP MRP',
+  description: 'Bảng điều khiển quản lý sản xuất BaoERP MRP',
 };
 
 export default async function DashboardLayout({

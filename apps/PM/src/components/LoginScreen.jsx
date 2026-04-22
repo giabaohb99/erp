@@ -13,27 +13,27 @@ const ROLE_COLORS = { admin: "#EF4444", pm: "#3B82F6", engineer: "#F59E0B", view
 
 const LANG = {
   vi: {
-    title: "VietERP Project Manager",
-    sub: "VietERP • Qu\u1EA3n l\u00FD D\u1EF1 \u00E1n Module",
+    title: "BaoERP Project Manager",
+    sub: "BaoERP • Qu\u1EA3n l\u00FD D\u1EF1 \u00E1n Module",
     email: "Email",
     password: "M\u1EADt kh\u1EA9u",
     login: "\u0110\u0103ng nh\u1EADp",
     or: "ho\u1EB7c",
     quickLogin: "\u0110\u0103ng nh\u1EADp nhanh (Demo)",
     invalidCredentials: "Email ho\u1EB7c m\u1EADt kh\u1EA9u kh\u00F4ng \u0111\u00FAng",
-    footer: "VietERP \u00A9 2026",
+    footer: "BaoERP \u00A9 2026",
     role: { admin: "Qu\u1EA3n tr\u1ECB", pm: "Qu\u1EA3n l\u00FD DA", engineer: "K\u1EF9 s\u01B0", viewer: "Xem" },
   },
   en: {
-    title: "VietERP Project Manager",
-    sub: "VietERP • Project Management",
+    title: "BaoERP Project Manager",
+    sub: "BaoERP • Project Management",
     email: "Email",
     password: "Password",
     login: "Sign In",
     or: "or",
     quickLogin: "Quick Login (Demo)",
     invalidCredentials: "Invalid email or password",
-    footer: "VietERP \u00A9 2026",
+    footer: "BaoERP \u00A9 2026",
     role: { admin: "Admin", pm: "PM", engineer: "Engineer", viewer: "Viewer" },
   },
 };

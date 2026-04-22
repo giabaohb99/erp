@@ -1,5 +1,5 @@
 # 🗄️ DATABASE INTEGRATION GUIDE
-## VietERP MRP - Hướng dẫn kết nối Database thật
+## BaoERP MRP - Hướng dẫn kết nối Database thật
 
 **Trạng thái hiện tại:** APIs đã có Prisma queries hoàn chỉnh, chỉ cần kết nối database thật
 **Thời gian ước tính:** 1-2 ngày
@@ -1050,4 +1050,4 @@ npx prisma migrate deploy
 ---
 
 *Document created: 05/01/2026*
-*VietERP MRP Database Integration Guide v1.0*
+*BaoERP MRP Database Integration Guide v1.0*

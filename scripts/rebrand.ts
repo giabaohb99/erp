@@ -1,6 +1,6 @@
 #!/usr/bin/env npx ts-node
 // ============================================================
-// VietERP Platform — Automated Rebrand Script
+// BaoERP Platform — Automated Rebrand Script
 // ============================================================
 //
 // Script tự động thay thế thương hiệu / Automated brand replacement
@@ -41,10 +41,10 @@ interface BrandValues {
   copyright: string;
 }
 
-// ─── Default brand values (VietERP Open-Source) ─────────────
+// ─── Default brand values (BaoERP Open-Source) ─────────────
 const DEFAULT_BRAND: BrandValues = {
-  platformName: 'VietERP Platform',
-  platformShortName: 'VietERP',
+  platformName: 'BaoERP Platform',
+  platformShortName: 'BaoERP',
   companyName: 'Your Company',
   companyLegalName: 'Your Company LLC',
   domain: 'your-domain.com',
@@ -421,7 +421,7 @@ function main() {
   const rootDir = path.resolve(__dirname, '..');
 
   console.log('╔══════════════════════════════════════════════════╗');
-  console.log('║    VietERP Platform — Automated Rebrand Tool    ║');
+  console.log('║    BaoERP Platform — Automated Rebrand Tool    ║');
   console.log('║    Công cụ tái thương hiệu tự động              ║');
   console.log('╚══════════════════════════════════════════════════╝');
   console.log();

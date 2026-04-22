@@ -1,4 +1,4 @@
-// ═══ VietERP Project Manager — Shared Constants ═══
+// ═══ BaoERP Project Manager — Shared Constants ═══
 
 export const PHASES = ["CONCEPT", "EVT", "DVT", "PVT", "MP"];
 export const PHASE_COLORS = { CONCEPT: "#6B7280", EVT: "#F59E0B", DVT: "#3B82F6", PVT: "#8B5CF6", MP: "#10B981" };

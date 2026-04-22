@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - RESILIENCE MODULE
+// BaoERP MRP - RESILIENCE MODULE
 // Circuit breaker, retry logic, timeout, fallbacks
 // =============================================================================
 
@@ -118,7 +118,7 @@ export class CircuitBreaker {
   private transitionTo(newState: CircuitState): void {
     const oldState = this.state;
     this.state = newState;
-    
+
     if (newState === 'CLOSED') {
       this.failureCount = 0;
       this.successCount = 0;
@@ -209,7 +209,7 @@ export async function withRetry<T>(
       const actualDelay = Math.floor(delay + jitter);
 
       onRetry?.(attempt, lastError, actualDelay);
-      
+
       await new Promise(resolve => setTimeout(resolve, actualDelay));
     }
   }
@@ -324,11 +324,11 @@ export class Bulkhead {
   constructor(
     private maxConcurrent: number,
     private maxQueue: number = 100
-  ) {}
+  ) { }
 
   async execute<T>(operation: () => Promise<T>): Promise<T> {
     await this.acquire();
-    
+
     try {
       return await operation();
     } finally {
@@ -353,7 +353,7 @@ export class Bulkhead {
 
   private release(): void {
     this.running--;
-    
+
     const next = this.queue.shift();
     if (next) {
       this.running++;
@@ -395,12 +395,12 @@ export class TokenBucket {
 
   async acquire(tokens = 1): Promise<boolean> {
     this.refill();
-    
+
     if (this.tokens >= tokens) {
       this.tokens -= tokens;
       return true;
     }
-    
+
     return false;
   }
 
@@ -416,7 +416,7 @@ export class TokenBucket {
     const now = Date.now();
     const elapsed = (now - this.lastRefill) / 1000;
     const tokensToAdd = elapsed * this.refillRate;
-    
+
     this.tokens = Math.min(this.capacity, this.tokens + tokensToAdd);
     this.lastRefill = now;
   }
@@ -434,7 +434,7 @@ export class TokenBucket {
 export class CacheWithFallback<T> {
   private cache = new Map<string, { value: T; expiry: number }>();
 
-  constructor(private defaultTTL: number = 60000) {}
+  constructor(private defaultTTL: number = 60000) { }
 
   async getOrFetch(
     key: string,
@@ -442,7 +442,7 @@ export class CacheWithFallback<T> {
     options: { ttl?: number; fallback?: T } = {}
   ): Promise<T> {
     const { ttl = this.defaultTTL, fallback } = options;
-    
+
     // Check cache
     const cached = this.cache.get(key);
     if (cached && cached.expiry > Date.now()) {
@@ -460,12 +460,12 @@ export class CacheWithFallback<T> {
         logger.warn(`Using stale cache for ${key} due to error`, { context: 'resilience', error: String(error) });
         return cached.value;
       }
-      
+
       // Return fallback if provided
       if (fallback !== undefined) {
         return fallback;
       }
-      
+
       throw error;
     }
   }

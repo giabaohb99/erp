@@ -14,7 +14,7 @@ export function PortalMagicLinkEmail({
   expiresIn,
 }: PortalMagicLinkEmailProps) {
   return (
-    <BaseLayout preview="Đăng nhập vào VietERP CRM Portal">
+    <BaseLayout preview="Đăng nhập vào BaoERP CRM Portal">
       <Heading style={heading}>Đăng nhập Portal</Heading>
       <Text style={text}>Xin chào {customerName},</Text>
       <Text style={text}>

@@ -477,4 +477,4 @@ export function AuditFeed() {
 
 ---
 
-These examples demonstrate common patterns for integrating @vierp/audit into a VietERP application.
+These examples demonstrate common patterns for integrating @vierp/audit into a BaoERP application.

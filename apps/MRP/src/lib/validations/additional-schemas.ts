@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - ADDITIONAL VALIDATION SCHEMAS
+// BaoERP MRP - ADDITIONAL VALIDATION SCHEMAS
 // Schemas for entities not covered in the main schemas file
 // =============================================================================
 
@@ -507,70 +507,70 @@ export const AdditionalSchemas = {
   // Base
   BaseQuery: BaseQuerySchema,
   DateFilter: DateFilterSchema,
-  
+
   // Equipment
   EquipmentQuery: EquipmentQuerySchema,
   EquipmentCreate: EquipmentCreateSchema,
-  
+
   // Maintenance
   MaintenanceQuery: MaintenanceQuerySchema,
   MaintenanceCreate: MaintenanceCreateSchema,
-  
+
   // Downtime
   DowntimeQuery: DowntimeQuerySchema,
   DowntimeCreate: DowntimeCreateSchema,
-  
+
   // Employee
   EmployeeQuery: EmployeeQuerySchema,
   EmployeeCreate: EmployeeCreateSchema,
-  
+
   // Skill
   SkillQuery: SkillQuerySchema,
   SkillCreate: SkillCreateSchema,
-  
+
   // Shift
   ShiftQuery: ShiftQuerySchema,
   ShiftCreate: ShiftCreateSchema,
-  
+
   // Work Center
   WorkCenterQuery: WorkCenterQuerySchema,
   WorkCenterCreate: WorkCenterCreateSchema,
-  
+
   // OEE
   OEEQuery: OEEQuerySchema,
   OEERecord: OEERecordSchema,
-  
+
   // Capacity
   CapacityQuery: CapacityQuerySchema,
-  
+
   // Alert
   AlertQuery: AlertQuerySchema,
   AlertCreate: AlertCreateSchema,
-  
+
   // Report
   ReportQuery: ReportQuerySchema,
-  
+
   // Customer
   CustomerQuery: CustomerQuerySchema,
   CustomerCreate: CustomerCreateSchema,
-  
+
   // Supplier
   SupplierQuery: SupplierQuerySchema,
   SupplierCreate: SupplierCreateSchema,
-  
+
   // AI
   AIChat: AIChatSchema,
-  
+
   // Mobile
   MobileInventoryAction: MobileInventoryActionSchema,
   MobileQuality: MobileQualitySchema,
-  
+
   // Technician
   TechnicianQuery: TechnicianQuerySchema,
-  
+
   // Dashboard
   DashboardQuery: DashboardQuerySchema,
-  
+
   // MRP
   MRPRun: MRPRunSchema,
 

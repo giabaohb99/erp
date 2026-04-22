@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - OFFLINE STORAGE
+// BaoERP MRP - OFFLINE STORAGE
 // IndexedDB wrapper for offline data persistence
 // =============================================================================
 
@@ -74,20 +74,20 @@ function openDatabase(): Promise<IDBDatabase> {
 export async function savePendingAction(action: Omit<PendingAction, 'id' | 'timestamp' | 'retries'>): Promise<string> {
   const db = await openDatabase();
   const id = `action-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('pendingActions', 'readwrite');
     const store = transaction.objectStore('pendingActions');
-    
+
     const pendingAction: PendingAction = {
       ...action,
       id,
       timestamp: Date.now(),
       retries: 0,
     };
-    
+
     const request = store.add(pendingAction);
-    
+
     request.onsuccess = () => resolve(id);
     request.onerror = () => reject(new Error('Failed to save pending action'));
   });
@@ -95,12 +95,12 @@ export async function savePendingAction(action: Omit<PendingAction, 'id' | 'time
 
 export async function getPendingActions(): Promise<PendingAction[]> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('pendingActions', 'readonly');
     const store = transaction.objectStore('pendingActions');
     const request = store.getAll();
-    
+
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(new Error('Failed to get pending actions'));
   });
@@ -108,12 +108,12 @@ export async function getPendingActions(): Promise<PendingAction[]> {
 
 export async function removePendingAction(id: string): Promise<void> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('pendingActions', 'readwrite');
     const store = transaction.objectStore('pendingActions');
     const request = store.delete(id);
-    
+
     request.onsuccess = () => resolve();
     request.onerror = () => reject(new Error('Failed to remove pending action'));
   });
@@ -121,12 +121,12 @@ export async function removePendingAction(id: string): Promise<void> {
 
 export async function updatePendingActionRetries(id: string): Promise<void> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('pendingActions', 'readwrite');
     const store = transaction.objectStore('pendingActions');
     const getRequest = store.get(id);
-    
+
     getRequest.onsuccess = () => {
       const action = getRequest.result;
       if (action) {
@@ -135,7 +135,7 @@ export async function updatePendingActionRetries(id: string): Promise<void> {
       }
       resolve();
     };
-    
+
     getRequest.onerror = () => reject(new Error('Failed to update pending action'));
   });
 }
@@ -146,20 +146,20 @@ export async function updatePendingActionRetries(id: string): Promise<void> {
 
 export async function setCachedData(key: string, data: unknown, ttl: number = 3600000): Promise<void> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('cache', 'readwrite');
     const store = transaction.objectStore('cache');
-    
+
     const cachedData: CachedData = {
       key,
       data,
       timestamp: Date.now(),
       ttl,
     };
-    
+
     const request = store.put(cachedData);
-    
+
     request.onsuccess = () => resolve();
     request.onerror = () => reject(new Error('Failed to cache data'));
   });
@@ -167,20 +167,20 @@ export async function setCachedData(key: string, data: unknown, ttl: number = 36
 
 export async function getCachedData<T>(key: string): Promise<T | null> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('cache', 'readonly');
     const store = transaction.objectStore('cache');
     const request = store.get(key);
-    
+
     request.onsuccess = () => {
       const result = request.result as CachedData | undefined;
-      
+
       if (!result) {
         resolve(null);
         return;
       }
-      
+
       // Check if expired
       if (Date.now() - result.timestamp > result.ttl) {
         // Data expired, remove it
@@ -188,22 +188,22 @@ export async function getCachedData<T>(key: string): Promise<T | null> {
         resolve(null);
         return;
       }
-      
+
       resolve(result.data as T);
     };
-    
+
     request.onerror = () => reject(new Error('Failed to get cached data'));
   });
 }
 
 export async function removeCachedData(key: string): Promise<void> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('cache', 'readwrite');
     const store = transaction.objectStore('cache');
     const request = store.delete(key);
-    
+
     request.onsuccess = () => resolve();
     request.onerror = () => reject(new Error('Failed to remove cached data'));
   });
@@ -211,12 +211,12 @@ export async function removeCachedData(key: string): Promise<void> {
 
 export async function clearExpiredCache(): Promise<void> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('cache', 'readwrite');
     const store = transaction.objectStore('cache');
     const request = store.openCursor();
-    
+
     request.onsuccess = () => {
       const cursor = request.result;
       if (cursor) {
@@ -229,7 +229,7 @@ export async function clearExpiredCache(): Promise<void> {
         resolve();
       }
     };
-    
+
     request.onerror = () => reject(new Error('Failed to clear expired cache'));
   });
 }
@@ -240,19 +240,19 @@ export async function clearExpiredCache(): Promise<void> {
 
 export async function saveDraft(key: string, data: unknown): Promise<void> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('drafts', 'readwrite');
     const store = transaction.objectStore('drafts');
-    
+
     const draft = {
       key,
       data,
       timestamp: Date.now(),
     };
-    
+
     const request = store.put(draft);
-    
+
     request.onsuccess = () => resolve();
     request.onerror = () => reject(new Error('Failed to save draft'));
   });
@@ -260,29 +260,29 @@ export async function saveDraft(key: string, data: unknown): Promise<void> {
 
 export async function getDraft<T>(key: string): Promise<T | null> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('drafts', 'readonly');
     const store = transaction.objectStore('drafts');
     const request = store.get(key);
-    
+
     request.onsuccess = () => {
       const result = request.result;
       resolve(result?.data as T ?? null);
     };
-    
+
     request.onerror = () => reject(new Error('Failed to get draft'));
   });
 }
 
 export async function removeDraft(key: string): Promise<void> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('drafts', 'readwrite');
     const store = transaction.objectStore('drafts');
     const request = store.delete(key);
-    
+
     request.onsuccess = () => resolve();
     request.onerror = () => reject(new Error('Failed to remove draft'));
   });
@@ -294,14 +294,14 @@ export async function removeDraft(key: string): Promise<void> {
 
 export async function clearAllOfflineData(): Promise<void> {
   const db = await openDatabase();
-  
+
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(['pendingActions', 'cache', 'drafts'], 'readwrite');
-    
+
     transaction.objectStore('pendingActions').clear();
     transaction.objectStore('cache').clear();
     transaction.objectStore('drafts').clear();
-    
+
     transaction.oncomplete = () => resolve();
     transaction.onerror = () => reject(new Error('Failed to clear offline data'));
   });
@@ -310,14 +310,14 @@ export async function clearAllOfflineData(): Promise<void> {
 export async function getOfflineDataSize(): Promise<number> {
   const db = await openDatabase();
   let totalSize = 0;
-  
+
   const stores = ['pendingActions', 'cache', 'drafts'];
-  
+
   for (const storeName of stores) {
     const transaction = db.transaction(storeName, 'readonly');
     const store = transaction.objectStore(storeName);
     const request = store.getAll();
-    
+
     await new Promise<void>((resolve) => {
       request.onsuccess = () => {
         const data = request.result;
@@ -326,7 +326,7 @@ export async function getOfflineDataSize(): Promise<number> {
       };
     });
   }
-  
+
   return totalSize;
 }
 

@@ -114,7 +114,7 @@ bypasses it with custom SQL.
 
 ## Biện pháp Bảo mật / Security Measures
 
-VietERP Platform được thiết kế với các biện pháp bảo mật sau:
+BaoERP Platform được thiết kế với các biện pháp bảo mật sau:
 
 ### Xác thực & Phân quyền / Authentication & Authorization
 
@@ -426,5 +426,5 @@ Nếu bạn tìm thấy lỗ hổng và báo cáo có trách nhiệm, vui lòng 
 - **Discord:** [Security Channel](https://discord.gg/vierp)
 - **Response:** Xác nhận trong 24 giờ / Acknowledged within 24 hours
 
-Cảm ơn bạn đã giúp VietERP Platform an toàn hơn!
-Thank you for helping make VietERP Platform more secure!
+Cảm ơn bạn đã giúp BaoERP Platform an toàn hơn!
+Thank you for helping make BaoERP Platform more secure!

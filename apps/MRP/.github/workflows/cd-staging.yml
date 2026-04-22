@@ -1,5 +1,5 @@
 # .github/workflows/cd-staging.yml
-# Continuous Deployment to Staging for VietERP MRP System
+# Continuous Deployment to Staging for BaoERP MRP System
 
 name: CD Staging
 

@@ -1,5 +1,5 @@
 # RRI COMPREHENSIVE AUDIT REPORT
-## POD HRM System — VietERP Vietnam
+## POD HRM System — BaoERP Vietnam
 **Date:** 2026-03-09 | **Methodology:** RRI-T + RRI-UX + RRI-UI Combined
 **Scope:** Full codebase (148 TSX files, 30+ Prisma models, 50+ API routes)
 

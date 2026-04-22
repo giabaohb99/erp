@@ -2,9 +2,9 @@
 
 ## Overview / Tổng Quan
 
-VietERP GCP infrastructure as code using Terraform. Supports both standard GKE and GKE Autopilot cluster modes.
+BaoERP GCP infrastructure as code using Terraform. Supports both standard GKE and GKE Autopilot cluster modes.
 
-Cơ sở hạ tầng VietERP GCP dưới dạng code Terraform. Hỗ trợ cả hai chế độ cluster GKE tiêu chuẩn và GKE Autopilot.
+Cơ sở hạ tầng BaoERP GCP dưới dạng code Terraform. Hỗ trợ cả hai chế độ cluster GKE tiêu chuẩn và GKE Autopilot.
 
 ## Architecture / Kiến Trúc
 
@@ -342,5 +342,5 @@ Lưu ý: Một số tài nguyên như snapshots Cloud SQL có thể cần dọn 
 
 ## License / Giấy phép
 
-This module is part of VietERP project.
-Mô-đun này là một phần của dự án VietERP.
+This module is part of BaoERP project.
+Mô-đun này là một phần của dự án BaoERP.

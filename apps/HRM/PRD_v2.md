@@ -15,13 +15,13 @@ Product Requirements Document --- v2.0
   -----------------------------------------------------------------------
   **Thuộc Tính**     **Giá Trị**
   ------------------ ----------------------------------------------------
-  Dự án              POD HRM --- VietERP Vietnam
+  Dự án              POD HRM --- BaoERP Vietnam
 
   Phiên bản          v2.0 --- Field-Verified (bổ sung từ Excel thực tế)
 
   Ngày cập nhật      Tháng 3, 2026
 
-  Tác giả            Lâm Nguyễn --- AI Officer, VietERP
+  Tác giả            Lâm Nguyễn --- AI Officer, BaoERP
 
   Phương pháp        Vibecode Kit v5.0 --- Agentic Edition
 
@@ -1018,4 +1018,4 @@ lặp lại những gì đã có.
   Technical Lead                              \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_   
   --------------------------------------------------------------------------------------------
 
-*© 2026 VietERP Vietnam --- CONFIDENTIAL*
+*© 2026 BaoERP Vietnam --- CONFIDENTIAL*

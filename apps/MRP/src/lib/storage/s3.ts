@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - S3 FILE STORAGE
+// BaoERP MRP - S3 FILE STORAGE
 // Tenant-isolated file storage using AWS S3
 // NOTE: Install AWS SDK before using: npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
 // =============================================================================

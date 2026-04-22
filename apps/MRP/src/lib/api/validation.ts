@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - API VALIDATION WRAPPER
+// BaoERP MRP - API VALIDATION WRAPPER
 // Reusable validation middleware for API routes
 // =============================================================================
 
@@ -56,11 +56,11 @@ export function errorResponse(
     code,
     timestamp: new Date().toISOString(),
   };
-  
+
   if (details !== undefined) {
     body.details = details;
   }
-  
+
   return NextResponse.json(body, { status });
 }
 
@@ -103,11 +103,11 @@ export function successResponse<T>(
     data,
     timestamp: new Date().toISOString(),
   };
-  
+
   if (meta !== undefined) {
     body.meta = meta;
   }
-  
+
   return NextResponse.json(body);
 }
 
@@ -151,13 +151,13 @@ export function withValidation<TBody = unknown, TQuery = unknown>(
       // Parse query params
       const searchParams = request.nextUrl.searchParams;
       let query: TQuery = {} as TQuery;
-      
+
       if (config.querySchema) {
         const queryObj: Record<string, string> = {};
         searchParams.forEach((value, key) => {
           queryObj[key] = value;
         });
-        
+
         const queryResult = config.querySchema.safeParse(queryObj);
         if (!queryResult.success) {
           return validationError(queryResult.error);
@@ -167,7 +167,7 @@ export function withValidation<TBody = unknown, TQuery = unknown>(
 
       // Parse body
       let body: TBody = {} as TBody;
-      
+
       if (config.bodySchema && ['POST', 'PUT', 'PATCH'].includes(request.method)) {
         try {
           const rawBody = await request.json();
@@ -201,11 +201,11 @@ export function withValidation<TBody = unknown, TQuery = unknown>(
       return successResponse(result);
     } catch (error) {
       logger.logError(error instanceof Error ? error : new Error(String(error)), { context: 'api-validation' });
-      
+
       if (error instanceof ZodError) {
         return validationError(error);
       }
-      
+
       const message = error instanceof Error ? error.message : 'Internal server error';
       return serverError(message);
     }

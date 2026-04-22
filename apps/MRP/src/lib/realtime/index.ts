@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - REALTIME MODULE INDEX
+// BaoERP MRP - REALTIME MODULE INDEX
 // Export all real-time related functionality
 // =============================================================================
 

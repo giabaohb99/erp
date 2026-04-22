@@ -2,11 +2,11 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP requires a primary relational database with:
+BaoERP requires a primary relational database with:
 - ACID compliance for financial transactions
 - Support for 970+ models with complex relationships
 - Vietnamese full-text search and proper collation
@@ -18,7 +18,7 @@ VietERP requires a primary relational database with:
 - Streaming replication for backups and failover
 - Extensions: `uuid-ossp`, `unaccent`, `pgtrgm` for Vietnamese text handling
 
-VietERP yêu cầu cơ sở dữ liệu quan hệ chính có:
+BaoERP yêu cầu cơ sở dữ liệu quan hệ chính có:
 - Tuân thủ ACID cho các giao dịch tài chính
 - Hỗ trợ 970+ mô hình có quan hệ phức tạp
 - Tìm kiếm toàn văn tiếng Việt và sắp xếp thích hợp
@@ -33,9 +33,9 @@ PostgreSQL provides all these with mature ecosystem and performance.
 
 ## Quyết định / Decision
 
-**Adopt PostgreSQL 16** as the primary relational database for VietERP.
+**Adopt PostgreSQL 16** as the primary relational database for BaoERP.
 
-Áp dụng **PostgreSQL 16** làm cơ sở dữ liệu quan hệ chính cho VietERP.
+Áp dụng **PostgreSQL 16** làm cơ sở dữ liệu quan hệ chính cho BaoERP.
 
 **Configuration**:
 - PostgreSQL 16.x (latest stable)
@@ -64,12 +64,12 @@ PostgreSQL provides all these with mature ecosystem and performance.
 ### MySQL 8.0
 - Pros: Fast, simpler setup, good JSON support
 - Cons: Weaker ACID (before recent versions), less advanced features
-- **Rejected**: PostgreSQL's row-level security, extensions essential for VietERP
+- **Rejected**: PostgreSQL's row-level security, extensions essential for BaoERP
 
 ### MongoDB
 - Pros: Flexible schema, horizontal scaling, JSON-native
 - Cons: No ACID transactions (limited), harder joins, not suited for relational data
-- **Rejected**: VietERP's financial data requires strong ACID guarantees
+- **Rejected**: BaoERP's financial data requires strong ACID guarantees
 
 ### CockroachDB
 - Pros: Distributed, ACID, PostgreSQL-compatible
@@ -120,7 +120,7 @@ PostgreSQL provides all these with mature ecosystem and performance.
 - [PostgreSQL JSON Types](https://www.postgresql.org/docs/16/datatype-json.html)
 - [PostgreSQL Row-Level Security](https://www.postgresql.org/docs/16/ddl-rowsecurity.html)
 - [PostgreSQL Replication Guide](https://www.postgresql.org/docs/16/warm-standby.html)
-- VietERP Database: `viertp_prod`, `viertp_staging`
+- BaoERP Database: `viertp_prod`, `viertp_staging`
 
 ---
 

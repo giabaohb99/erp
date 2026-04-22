@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ###############################################################################
-# VietERP Terraform Configuration Validation Script
-# Kiểm tra cấu hình Terraform VietERP
+# BaoERP Terraform Configuration Validation Script
+# Kiểm tra cấu hình Terraform BaoERP
 #
 # Usage: ./validate.sh
 ###############################################################################
@@ -49,7 +49,7 @@ check_command() {
 
 # Main validation
 main() {
-    echo -e "\n${BLUE}VietERP Terraform Configuration Validator${NC}\n"
+    echo -e "\n${BLUE}BaoERP Terraform Configuration Validator${NC}\n"
 
     # Check prerequisites
     print_header "Checking Prerequisites"

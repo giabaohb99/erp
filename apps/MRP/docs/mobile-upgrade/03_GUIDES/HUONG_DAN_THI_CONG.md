@@ -1,12 +1,12 @@
 # 📱 HƯỚNG DẪN THI CÔNG - NÂNG CẤP GIAO DIỆN MOBILE
-## VietERP MRP Manufacturing System
+## BaoERP MRP Manufacturing System
 
 ---
 
 ## 📋 TỔNG QUAN DỰ ÁN
 
 ### Mục tiêu
-Nâng cấp hệ thống VietERP MRP để hỗ trợ:
+Nâng cấp hệ thống BaoERP MRP để hỗ trợ:
 - **PWA (Progressive Web App)** - Cài đặt như app native
 - **Quét barcode bằng camera** - Không cần máy quét cầm tay
 - **Chế độ Offline** - Hoạt động không cần mạng

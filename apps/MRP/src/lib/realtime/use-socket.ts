@@ -1,7 +1,7 @@
 'use client';
 
 // =============================================================================
-// VietERP MRP - USE SOCKET HOOK
+// BaoERP MRP - USE SOCKET HOOK
 // Client-side real-time connection management
 // Uses Server-Sent Events (SSE) for simplicity - no additional server needed
 // =============================================================================

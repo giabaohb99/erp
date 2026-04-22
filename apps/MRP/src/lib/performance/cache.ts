@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - ADVANCED CACHING LAYER
+// BaoERP MRP - ADVANCED CACHING LAYER
 // Multi-tier caching with Redis and in-memory cache
 // =============================================================================
 
@@ -36,19 +36,19 @@ export interface CacheStats {
 export const CACHE_TTL = {
   // Very short - frequently changing data
   REALTIME: 5,           // 5 seconds
-  
+
   // Short - session data, user state
   SHORT: 60,             // 1 minute
-  
+
   // Medium - lists, search results
   MEDIUM: 300,           // 5 minutes
-  
+
   // Long - reference data
   LONG: 1800,            // 30 minutes
-  
+
   // Extended - rarely changing data
   EXTENDED: 3600,        // 1 hour
-  
+
   // Static - almost never changes
   STATIC: 86400,         // 24 hours
 };
@@ -68,12 +68,12 @@ class LRUCache<T> {
 
   get(key: string): T | null {
     const entry = this.cache.get(key);
-    
+
     if (!entry) {
       this.stats.misses++;
       return null;
     }
-    
+
     // Check expiration
     if (Date.now() > entry.expires) {
       // Check stale-while-revalidate
@@ -81,38 +81,38 @@ class LRUCache<T> {
         this.stats.hits++;
         return entry.value;
       }
-      
+
       this.cache.delete(key);
       this.stats.misses++;
       return null;
     }
-    
+
     // Move to end (most recently used)
     this.cache.delete(key);
     this.cache.set(key, entry);
-    
+
     this.stats.hits++;
     return entry.value;
   }
 
   set(key: string, value: T, options: CacheOptions = {}): void {
     const { ttl = CACHE_TTL.MEDIUM, tags = [], staleWhileRevalidate } = options;
-    
+
     // Evict oldest if at capacity
     if (this.cache.size >= this.maxSize) {
       const firstKey = this.cache.keys().next().value;
       if (firstKey) this.cache.delete(firstKey);
     }
-    
+
     const entry: CacheEntry<T> = {
       value,
       expires: Date.now() + (ttl * 1000),
       tags,
-      staleUntil: staleWhileRevalidate 
+      staleUntil: staleWhileRevalidate
         ? Date.now() + ((ttl + staleWhileRevalidate) * 1000)
         : undefined,
     };
-    
+
     this.cache.set(key, entry);
   }
 
@@ -180,34 +180,34 @@ export const CacheKeys = {
   part: (id: string) => `part:${id}`,
   partList: (tenantId: string, filters: string) => `tenant:${tenantId}:parts:${filters}`,
   partCount: (tenantId: string) => `tenant:${tenantId}:parts:count`,
-  
+
   // Inventory
   inventory: (partId: string, warehouseId: string) => `inventory:${partId}:${warehouseId}`,
   inventoryList: (tenantId: string, filters: string) => `tenant:${tenantId}:inventory:${filters}`,
   lowStock: (tenantId: string) => `tenant:${tenantId}:inventory:lowstock`,
-  
+
   // Work Orders
   workOrder: (id: string) => `workorder:${id}`,
   workOrderList: (tenantId: string, filters: string) => `tenant:${tenantId}:workorders:${filters}`,
   workOrdersByStatus: (tenantId: string) => `tenant:${tenantId}:workorders:bystatus`,
-  
+
   // Sales
   salesOrder: (id: string) => `salesorder:${id}`,
   salesOrderList: (tenantId: string, filters: string) => `tenant:${tenantId}:sales:${filters}`,
-  
+
   // Dashboard
   dashboardKPIs: (tenantId: string) => `tenant:${tenantId}:dashboard:kpis`,
   dashboardCharts: (tenantId: string, chartType: string) => `tenant:${tenantId}:dashboard:${chartType}`,
-  
+
   // MRP
   mrpSuggestions: (tenantId: string, runId: string) => `tenant:${tenantId}:mrp:${runId}:suggestions`,
   mrpLatest: (tenantId: string) => `tenant:${tenantId}:mrp:latest`,
-  
+
   // Reference Data
   categories: (tenantId: string) => `tenant:${tenantId}:ref:categories`,
   warehouses: (tenantId: string) => `tenant:${tenantId}:ref:warehouses`,
   workCenters: (tenantId: string) => `tenant:${tenantId}:ref:workcenters`,
-  
+
   // User
   userPreferences: (userId: string) => `user:${userId}:preferences`,
   userPermissions: (userId: string) => `user:${userId}:permissions`,
@@ -221,7 +221,7 @@ export function filtersToKey(filters: Record<string, unknown>): string {
     .sort()
     .map(k => `${k}:${filters[k]}`)
     .join('|');
-  
+
   // Create short hash
   let hash = 0;
   for (let i = 0; i < sorted.length; i++) {
@@ -229,7 +229,7 @@ export function filtersToKey(filters: Record<string, unknown>): string {
     hash = ((hash << 5) - hash) + char;
     hash = hash & hash;
   }
-  
+
   return Math.abs(hash).toString(36);
 }
 
@@ -246,11 +246,11 @@ export async function cacheGet<T>(key: string): Promise<T | null> {
   if (memValue !== null) {
     return memValue as T;
   }
-  
+
   // Redis support disabled - would need ioredis installed
   // To enable: npm install ioredis
   // Then import from '@/lib/cache/redis'
-  
+
   return null;
 }
 
@@ -263,10 +263,10 @@ export async function cacheSet<T>(
   options: CacheOptions = {}
 ): Promise<void> {
   const { ttl = CACHE_TTL.MEDIUM, tags = [] } = options;
-  
+
   // Set in memory cache
   memoryCache.set(key, value, { ttl, tags });
-  
+
   // Redis support disabled - would need ioredis installed
 }
 
@@ -275,7 +275,7 @@ export async function cacheSet<T>(
  */
 export async function cacheDelete(key: string): Promise<void> {
   memoryCache.delete(key);
-  
+
   // Redis support disabled - would need ioredis installed
 }
 
@@ -284,7 +284,7 @@ export async function cacheDelete(key: string): Promise<void> {
  */
 export async function cacheDeletePattern(pattern: string): Promise<void> {
   memoryCache.deleteByPattern(pattern);
-  
+
   // Redis support disabled - would need ioredis installed
 }
 
@@ -319,13 +319,13 @@ export async function cacheAside<T>(
   if (cached !== null) {
     return cached;
   }
-  
+
   // Fetch from source
   const value = await fetchFn();
-  
+
   // Store in cache
   await cacheSet(key, value, options);
-  
+
   return value;
 }
 

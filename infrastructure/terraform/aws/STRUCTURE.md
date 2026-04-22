@@ -1,8 +1,8 @@
 # Terraform AWS Infrastructure - File Structure
 
-## TIP-016 Implementation for VietERP
+## TIP-016 Implementation for BaoERP
 
-This directory contains the complete Infrastructure-as-Code (IaC) configuration for VietERP's AWS deployment using Terraform.
+This directory contains the complete Infrastructure-as-Code (IaC) configuration for BaoERP's AWS deployment using Terraform.
 
 ### File Organization
 

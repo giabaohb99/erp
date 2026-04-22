@@ -1,7 +1,7 @@
 # API Reference | Tài liệu API
 
-> REST API documentation for VietERP MRP System  
-> Tài liệu REST API cho Hệ thống VietERP MRP
+> REST API documentation for BaoERP MRP System  
+> Tài liệu REST API cho Hệ thống BaoERP MRP
 
 ---
 

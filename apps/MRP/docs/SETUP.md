@@ -1,7 +1,7 @@
 # Setup Guide | Hướng dẫn Cài đặt
 
-> Installation and configuration guide for VietERP MRP System  
-> Hướng dẫn cài đặt và cấu hình Hệ thống VietERP MRP
+> Installation and configuration guide for BaoERP MRP System  
+> Hướng dẫn cài đặt và cấu hình Hệ thống BaoERP MRP
 
 ---
 

@@ -2,7 +2,7 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-console.log('=== VietERP OTB Frontend - Azure Startup ===');
+console.log('=== BaoERP OTB Frontend - Azure Startup ===');
 console.log(`Node version: ${process.version}`);
 console.log(`PORT: ${process.env.PORT || 3000}`);
 console.log(`Environment: ${process.env.NODE_ENV || 'production'}`);

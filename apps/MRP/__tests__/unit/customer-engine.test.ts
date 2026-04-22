@@ -1,6 +1,6 @@
 // =============================================================================
 // CUSTOMER PORTAL ENGINE UNIT TESTS
-// VietERP MRP Test Suite
+// BaoERP MRP Test Suite
 // =============================================================================
 
 import { CustomerPortalEngine } from '@/lib/customer/customer-engine';
@@ -167,7 +167,7 @@ describe('CustomerPortalEngine', () => {
     it('should return OVERDUE for past dates', () => {
       const pastDate = new Date(Date.now() - 5 * 86400000).toISOString();
       const result = CustomerPortalEngine.getDaysUntilDue(pastDate);
-      
+
       expect(result.status).toBe('OVERDUE');
       expect(result.days).toBeLessThan(0);
     });
@@ -175,7 +175,7 @@ describe('CustomerPortalEngine', () => {
     it('should return DUE_SOON for dates within 7 days', () => {
       const soonDate = new Date(Date.now() + 3 * 86400000).toISOString();
       const result = CustomerPortalEngine.getDaysUntilDue(soonDate);
-      
+
       expect(result.status).toBe('DUE_SOON');
       expect(result.days).toBeGreaterThan(0);
       expect(result.days).toBeLessThanOrEqual(7);
@@ -184,7 +184,7 @@ describe('CustomerPortalEngine', () => {
     it('should return OK for dates more than 7 days away', () => {
       const futureDate = new Date(Date.now() + 15 * 86400000).toISOString();
       const result = CustomerPortalEngine.getDaysUntilDue(futureDate);
-      
+
       expect(result.status).toBe('OK');
       expect(result.days).toBeGreaterThan(7);
     });
@@ -192,7 +192,7 @@ describe('CustomerPortalEngine', () => {
     it('should handle edge case of exactly 7 days', () => {
       const exactlySevenDays = new Date(Date.now() + 7 * 86400000).toISOString();
       const result = CustomerPortalEngine.getDaysUntilDue(exactlySevenDays);
-      
+
       expect(result.status).toBe('DUE_SOON');
     });
   });
@@ -207,9 +207,9 @@ describe('CustomerPortalEngine', () => {
         { quantity: 100, producedQty: 50 },
         { quantity: 200, producedQty: 200 },
       ] as any[];
-      
+
       const progress = CustomerPortalEngine.calculateOrderProgress(items);
-      
+
       expect(progress).toBe(83); // (50 + 200) / (100 + 200) * 100 = 83.33
     });
 
@@ -222,7 +222,7 @@ describe('CustomerPortalEngine', () => {
       const items = [
         { quantity: 0, producedQty: 0 },
       ] as any[];
-      
+
       const progress = CustomerPortalEngine.calculateOrderProgress(items);
       expect(progress).toBe(0);
     });
@@ -232,7 +232,7 @@ describe('CustomerPortalEngine', () => {
         { quantity: 100, producedQty: 100 },
         { quantity: 50, producedQty: 50 },
       ] as any[];
-      
+
       const progress = CustomerPortalEngine.calculateOrderProgress(items);
       expect(progress).toBe(100);
     });
@@ -241,7 +241,7 @@ describe('CustomerPortalEngine', () => {
       const items = [
         { quantity: 100, producedQty: 150 },
       ] as any[];
-      
+
       const progress = CustomerPortalEngine.calculateOrderProgress(items);
       expect(progress).toBe(150);
     });
@@ -262,7 +262,7 @@ describe('CustomerPortalEngine', () => {
 
     it('should return incremental steps for normal flow', () => {
       const statuses = ['DRAFT', 'PENDING', 'CONFIRMED', 'IN_PRODUCTION', 'READY', 'SHIPPED', 'DELIVERED', 'COMPLETED'] as const;
-      
+
       for (let i = 1; i < statuses.length; i++) {
         const currentStep = CustomerPortalEngine.getOrderStep(statuses[i]);
         const prevStep = CustomerPortalEngine.getOrderStep(statuses[i - 1]);

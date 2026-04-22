@@ -1,4 +1,4 @@
-# 📱 VietERP MRP MOBILE UPGRADE PACKAGE
+# 📱 BaoERP MRP MOBILE UPGRADE PACKAGE
 ## Gói Nâng Cấp Giao Diện Mobile - Shop Floor
 
 ---
@@ -187,8 +187,8 @@ Khi hoàn thành, hệ thống phải có:
 
 **Version:** 1.0  
 **Ngày tạo:** 01/01/2026  
-**Dự án:** VietERP MRP Manufacturing System
+**Dự án:** BaoERP MRP Manufacturing System
 
 ---
 
-🏭 **VietERP - VietERP MRP**
+🏭 **BaoERP - BaoERP MRP**

@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - DATA SYNC & BACKUP SERVICE
+// BaoERP MRP - DATA SYNC & BACKUP SERVICE
 // Auto-save, conflict resolution, export/import, backup scheduling
 // =============================================================================
 
@@ -444,7 +444,7 @@ class BackupService {
   // List backups
   async listBackups(): Promise<BackupInfo[]> {
     const backups = await this.storage.getAll<BackupInfo>(STORES.backups);
-    return backups.sort((a, b) => 
+    return backups.sort((a, b) =>
       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     );
   }

@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - QUERY BUILDER
+// BaoERP MRP - QUERY BUILDER
 // Flexible query builder for analytics aggregations
 // =============================================================================
 

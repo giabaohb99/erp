@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# VietERP Platform — Kịch bản Triển khai Sản Xuất
+# BaoERP Platform — Kịch bản Triển khai Sản Xuất
 # Deployment Script for Production Deployment
 # ============================================================
 # Cách sử dụng / Usage: ./scripts/deploy-prod.sh [pull|build]
@@ -299,8 +299,8 @@ health_check() {
 show_summary() {
     log_info ""
     log_info "╔════════════════════════════════════════════════════════════╗"
-    log_info "║         VietERP Production Deployment Summary              ║"
-    log_info "║  Tóm tắt Triển khai Sản Xuất VietERP                      ║"
+    log_info "║         BaoERP Production Deployment Summary              ║"
+    log_info "║  Tóm tắt Triển khai Sản Xuất BaoERP                      ║"
     log_info "╚════════════════════════════════════════════════════════════╝"
     log_info ""
     log_info "Repository: ${REPO_ROOT}"
@@ -352,8 +352,8 @@ main() {
 
     log_info ""
     log_info "╔════════════════════════════════════════════════════════════╗"
-    log_info "║      VietERP Platform — Production Deployment              ║"
-    log_info "║   Triển khai Sản Xuất Nền tảng VietERP                    ║"
+    log_info "║      BaoERP Platform — Production Deployment              ║"
+    log_info "║   Triển khai Sản Xuất Nền tảng BaoERP                    ║"
     log_info "╚════════════════════════════════════════════════════════════╝"
     log_info ""
     log_info "Bắt đầu / Starting: $(date '+%Y-%m-%d %H:%M:%S')"

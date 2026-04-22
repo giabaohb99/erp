@@ -134,7 +134,9 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
             seasonGroupName: ba.season_group?.name || ba.seasonGroup?.name || '',
             seasonId: String(ba.season_id || ba.season?.id || ba.seasonId || ''),
             seasonName: ba.season?.name || ba.season?.name || '',
-            storeId: String(ba.store_id || ba.store?.id || ba.storeId || '')}))}));
+            storeId: String(ba.store_id || ba.store?.id || ba.storeId || '')
+          }))
+        }));
         // Use first allocate header's brand as the primary brand for this budget (for backward compat)
         const primaryAH = allocateHeaders[0];
         return {
@@ -329,7 +331,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
       fiscalYear: (selectedYear as number) - 1,
       seasonGroup: selectedSeasonGroup,
       season: selectedSeason,
-      label: `${(selectedYear as number) - 1} ${selectedSeasonGroup} ${selectedSeason}`};
+      label: `${(selectedYear as number) - 1} ${selectedSeasonGroup} ${selectedSeason}`
+    };
   }, [selectedYear, selectedSeasonGroup, selectedSeason]);
 
   // Category tab filter states
@@ -387,7 +390,10 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                 // API returns snake_case sub_categories; fall back to camelCase for compatibility
                 subCategories: (cat.sub_categories || cat.subCategories || []).map((sub: any) => ({
                   id: sub.id || sub.subCategoryId,
-                  name: sub.name || sub.subCategoryName}))}))}));
+                  name: sub.name || sub.subCategoryName
+                }))
+              }))
+            }));
             setCategoryStructure(structure);
           } else {
             // Flat list: each item is a category with gender ref
@@ -617,7 +623,7 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
       // Close version dropdown portal on outside click
       if (openVersionBrandId) {
         if (!(event.target as any).closest?.('.brand-version-dropdown') &&
-            !(event.target as any).closest?.('.brand-version-portal')) {
+          !(event.target as any).closest?.('.brand-version-portal')) {
           setOpenVersionBrandId(null);
           setDropdownAnchorEl(null);
         }
@@ -676,7 +682,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
           updated[brandId] = updated[brandId].map((v: any) => ({
             ...v,
             isFinal: String(v.id) === String(versionId),
-            label: `V${v.version}${String(v.id) === String(versionId) ? ' ★' : ''}`}));
+            label: `V${v.version}${String(v.id) === String(versionId) ? ' ★' : ''}`
+          }));
         }
         return updated;
       });
@@ -711,7 +718,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
             otbProposed: Number(pc.otb_proposed_amount) || 0,
             varPct: pc.var_lastyear_pct || 0,
             otbSubmitted: Number(pc.otb_actual_amount) || 0,
-            buyActual: pc.otb_actual_buy_pct || 0};
+            buyActual: pc.otb_actual_buy_pct || 0
+          };
         });
       }
       // Build baseline lookup for this brand to override actual values with previous year data
@@ -760,7 +768,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
             otbProposedAmount: otbProposed / count,
             varLastyearPct: varPct / count,
             otbActualAmount: otbSubmitted / count,
-            otbActualBuyPct: buyActual / count});
+            otbActualBuyPct: buyActual / count
+          });
         });
       });
 
@@ -780,7 +789,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
             actualMoc: colBl.moc || d.moc || 0,
             proposedBuyPct: d.userBuyPct || 0,
             otbProposedAmount: d.otbValue || 0,
-            pctVarVsLast: d.varPct || 0});
+            pctVarVsLast: d.varPct || 0
+          });
         });
       });
 
@@ -802,7 +812,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
             actualStPct: genBl.stPct || d.stPct || 0,
             proposedBuyPct: d.userBuyPct || 0,
             otbProposedAmount: d.otbValue || 0,
-            pctVarVsLast: d.varPct || 0});
+            pctVarVsLast: d.varPct || 0
+          });
         });
       });
 
@@ -824,7 +835,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
           label: `V${v.version}${v.is_final_version ? ' ★' : ''}`,
           status: v.status || 'DRAFT',
           isFinal: v.is_final_version || false,
-          version: v.version}));
+          version: v.version
+        }));
         setBrandPlanningVersions(prev => ({ ...prev, [brandId]: mapped }));
         if (selectVersionId) {
           setBrandSelectedVersion(prev => ({ ...prev, [brandId]: selectVersionId }));
@@ -1007,7 +1019,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
   const brandOptions = useMemo(() => {
     return apiBrands.map((b: any) => ({
       value: String(b.id),
-      label: b.name || b.code || 'Unknown'}));
+      label: b.name || b.code || 'Unknown'
+    }));
   }, [apiBrands]);
 
   // Brands to display as sections — all brands when none selected, filtered otherwise
@@ -1050,7 +1063,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
           fiscalYear: baselinePeriod.fiscalYear,
           seasonGroupName: baselinePeriod.seasonGroup,
           seasonName: baselinePeriod.season,
-          brandId});
+          brandId
+        });
       }));
       if (!cancelled) setBaselineData(result);
     };
@@ -1082,7 +1096,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
           label: `V${v.version}${v.is_final_version ? ' ★' : ''}`,
           status: v.status || 'DRAFT',
           isFinal: v.is_final_version || false,
-          version: v.version}));
+          version: v.version
+        }));
         setBrandPlanningVersions(prev => ({ ...prev, [brandId]: mapped }));
         setBrandSelectedVersion(prev => {
           if (prev[brandId] !== undefined) return prev;
@@ -1127,10 +1142,11 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
         brandName: selectedBudget?.brandName || budgetContext?.brandName,
         brandIds: selectedBrandIds.length > 0 ? selectedBrandIds : undefined,
         seasonGroup: selectedSeasonGroup,
-        season: selectedSeason});
+        season: selectedSeason
+      });
     }
   }, [selectedSeasonGroup, selectedSeason, displayBrands, brandPlanningVersions,
-      onOpenSkuProposal, selectedBudgetId, selectedBudget, budgetContext, selectedBrandIds]);
+    onOpenSkuProposal, selectedBudgetId, selectedBudget, budgetContext, selectedBrandIds]);
 
   const handleBrandToggle = (brandId: string) => {
     setSelectedBrandIds(prev =>
@@ -1138,14 +1154,14 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
     );
   };
 
-  // Common table styles - VietERP Design System (compact)
+  // Common table styles - BaoERP Design System (compact)
   const headerCellClass = "px-3 py-2 text-center text-xs font-semibold tracking-wide font-['Montserrat']";
-  const headerDarkCell ='bg-gray-100 text-gray-700';
-  const headerGoldCell ='bg-[rgba(215,183,151,0.3)] text-[#6B4D30]';
-  const headerBrownCell ='bg-[rgba(139,115,85,0.2)] text-[#5C4033]';
-  const headerDarkBrownCell ='bg-[rgba(92,64,51,0.2)] text-[#5C4033]';
-  const groupRowClass ="bg-gradient-to-r from-[rgba(215,183,151,0.15)] to-[rgba(215,183,151,0.08)] border-l-2 border-[#D7B797]";
-  const sumRowClass ="bg-gradient-to-r from-[rgba(215,183,151,0.25)] to-[rgba(215,183,151,0.2)] text-[#5C4A32] font-semibold";
+  const headerDarkCell = 'bg-gray-100 text-gray-700';
+  const headerGoldCell = 'bg-[rgba(215,183,151,0.3)] text-[#6B4D30]';
+  const headerBrownCell = 'bg-[rgba(139,115,85,0.2)] text-[#5C4033]';
+  const headerDarkBrownCell = 'bg-[rgba(92,64,51,0.2)] text-[#5C4033]';
+  const groupRowClass = "bg-gradient-to-r from-[rgba(215,183,151,0.15)] to-[rgba(215,183,151,0.08)] border-l-2 border-[#D7B797]";
+  const sumRowClass = "bg-gradient-to-r from-[rgba(215,183,151,0.25)] to-[rgba(215,183,151,0.2)] text-[#5C4A32] font-semibold";
 
   // Transform categoryStructure (Gender->Cat->SubCat) into categoryFirstStructure (Cat->SubCat->Gender)
   const categoryFirstStructure = useMemo(() => {
@@ -1162,14 +1178,16 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
           }
           catMap[cat.id].subCategories[subCat.id].genders.push({
             gender: genderGroup.gender,
-            dataKey: `${genderGroup.gender.id}_${cat.id}_${subCat.id}`});
+            dataKey: `${genderGroup.gender.id}_${cat.id}_${subCat.id}`
+          });
         });
       });
     });
 
     return Object.values(catMap).map(entry => ({
       ...entry.category,
-      subCategories: Object.values(entry.subCategories)}));
+      subCategories: Object.values(entry.subCategories)
+    }));
   }, [categoryStructure]);
 
   // Transform categoryStructure (Gender->Cat->SubCat) into genderFirstStructure (Gender->Cat->SubCat with dataKeys)
@@ -1261,7 +1279,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
           otbProposed: Number(pc.otb_proposed_amount) || 0,
           varPct: pc.var_lastyear_pct || 0,
           otbSubmitted: Number(pc.otb_actual_amount) || 0,
-          buyActual: pc.otb_actual_buy_pct || 0};
+          buyActual: pc.otb_actual_buy_pct || 0
+        };
       });
     }
 
@@ -1330,8 +1349,10 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
           .filter((catEntry: any) => categoryFilter === 'all' || catEntry.category.id === categoryFilter)
           .map((catEntry: any) => ({
             ...catEntry,
-            subCategories: catEntry.subCategories.filter((sub: any) => subCategoryFilter === 'all' || sub.subCategory.id === subCategoryFilter)}))
-          .filter((catEntry: any) => catEntry.subCategories.length > 0)}))
+            subCategories: catEntry.subCategories.filter((sub: any) => subCategoryFilter === 'all' || sub.subCategory.id === subCategoryFilter)
+          }))
+          .filter((catEntry: any) => catEntry.subCategories.length > 0)
+      }))
       .filter((gEntry: any) => gEntry.categories.length > 0);
 
     if (isLoadingPlanningData) {
@@ -1420,12 +1441,12 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                                 {historicalPeriods
                                   .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                                   .map((period) => (
-                                  <React.Fragment key={`col_hist_${period.label}`}>
-                                    <col style={{ width: '60px' }} />
-                                    <col style={{ width: '60px' }} />
-                                    <col style={{ width: '60px' }} />
-                                  </React.Fragment>
-                                ))}
+                                    <React.Fragment key={`col_hist_${period.label}`}>
+                                      <col style={{ width: '60px' }} />
+                                      <col style={{ width: '60px' }} />
+                                      <col style={{ width: '60px' }} />
+                                    </React.Fragment>
+                                  ))}
                                 <col style={{ width: '90px' }} />{/* %Proposed */}
                                 <col style={{ width: '100px' }} />{/* $OTB */}
                                 <col style={{ width: '80px' }} />{/* Variance */}
@@ -1443,10 +1464,10 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                                     {historicalPeriods
                                       .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                                       .map((period) => (
-                                      <th key={`cat_grp_${period.label}`} colSpan={3} className={`px-2 py-0.5 text-center text-[9px] italic font-normal font-['Montserrat'] whitespace-nowrap border-l-2 border-[#D7B797] ${'text-[#777] bg-[rgba(150,130,110,0.08)]'}`}>
-                                        {period.label}
-                                      </th>
-                                    ))}
+                                        <th key={`cat_grp_${period.label}`} colSpan={3} className={`px-2 py-0.5 text-center text-[9px] italic font-normal font-['Montserrat'] whitespace-nowrap border-l-2 border-[#D7B797] ${'text-[#777] bg-[rgba(150,130,110,0.08)]'}`}>
+                                          {period.label}
+                                        </th>
+                                      ))}
                                     <th colSpan={6} className={`${headerDarkCell}`} />
                                   </tr>
                                 )}
@@ -1458,12 +1479,12 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                                   {historicalPeriods
                                     .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                                     .map((period) => (
-                                    <React.Fragment key={`cat_hdr_${period.label}`}>
-                                      <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] border-l-2 border-[#D7B797] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Buy</th>
-                                      <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Sales</th>
-                                      <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%ST</th>
-                                    </React.Fragment>
-                                  ))}
+                                      <React.Fragment key={`cat_hdr_${period.label}`}>
+                                        <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] border-l-2 border-[#D7B797] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Buy</th>
+                                        <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Sales</th>
+                                        <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%ST</th>
+                                      </React.Fragment>
+                                    ))}
                                   <th className={`px-2 py-1 text-center text-[11px] font-semibold font-['Montserrat'] ${headerGoldCell}`}>{t('otbAnalysis.pctProposed')}</th>
                                   <th className={`px-2 py-1 text-center text-[11px] font-semibold font-['Montserrat'] ${headerBrownCell}`}>{t('otbAnalysis.dollarOTB')}</th>
                                   <th className={`px-2 py-1 text-center text-[11px] font-semibold font-['Montserrat'] ${headerDarkBrownCell}`}>{t('otbAnalysis.variance')}</th>
@@ -1496,16 +1517,16 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                                       {historicalPeriods
                                         .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                                         .map((period) => {
-                                        const hLookup = buildHistoricalLookup(brandId || '', period.label);
-                                        const hData = hLookup.bySub[subCatId] || {};
-                                        return (
-                                          <React.Fragment key={`cat_data_${period.label}_${cellKey}`}>
-                                            <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.buyPct || 0}%</td>
-                                            <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.salesPct || 0}%</td>
-                                            <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.stPct || 0}%</td>
-                                          </React.Fragment>
-                                        );
-                                      })}
+                                          const hLookup = buildHistoricalLookup(brandId || '', period.label);
+                                          const hData = hLookup.bySub[subCatId] || {};
+                                          return (
+                                            <React.Fragment key={`cat_data_${period.label}_${cellKey}`}>
+                                              <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.buyPct || 0}%</td>
+                                              <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.salesPct || 0}%</td>
+                                              <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.stPct || 0}%</td>
+                                            </React.Fragment>
+                                          );
+                                        })}
                                       <td className={`px-3 py-0.5 ${'bg-[rgba(160,120,75,0.12)]'}`}>
                                         <EditableCell
                                           cellKey={cellKey}
@@ -1521,9 +1542,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                                       <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${'text-[#1A1A1A]'}`}>
                                         {(rowData.otbProposed || 0).toLocaleString()}
                                       </td>
-                                      <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${
-                                        (rowData.varPct || 0) < 0 ? 'text-[#F85149]' : 'text-[#2A9E6A]'
-                                      }`}>
+                                      <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${(rowData.varPct || 0) < 0 ? 'text-[#F85149]' : 'text-[#2A9E6A]'
+                                        }`}>
                                         {(rowData.varPct || 0) > 0 ? '+' : ''}{rowData.varPct || 0}%
                                       </td>
                                       <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] ${'text-[#666666]'}`}>
@@ -1567,16 +1587,15 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                                   {historicalPeriods
                                     .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                                     .map((period) => (
-                                    <React.Fragment key={`cat_sub_${period.label}`}>
-                                      <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>-</td>
-                                      <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>-</td>
-                                      <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>-</td>
-                                    </React.Fragment>
-                                  ))}
+                                      <React.Fragment key={`cat_sub_${period.label}`}>
+                                        <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>-</td>
+                                        <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>-</td>
+                                        <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>-</td>
+                                      </React.Fragment>
+                                    ))}
                                   <td className={`px-3 py-0.5 text-center bg-[rgba(160,120,75,0.18)] font-bold font-['JetBrains_Mono'] ${'text-[#6B4D30]'}`}>{catTotals.buyProposed}%</td>
                                   <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${'text-[#5C4A32]'}`}>{catTotals.otbProposed.toLocaleString()}</td>
-                                  <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${
-                                    catTotals.varPct < 0 ? 'text-[#FF7B72]' :'text-[#5C4A32]'}`}>
+                                  <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${catTotals.varPct < 0 ? 'text-[#FF7B72]' : 'text-[#5C4A32]'}`}>
                                     {catTotals.varPct > 0 ? '+' : ''}{catTotals.varPct}%
                                   </td>
                                   <td className={`px-3 py-0.5 text-center font-['JetBrains_Mono'] ${'text-[#5C4A32]'}`}>{catTotals.otbSubmitted.toLocaleString()}</td>
@@ -1685,10 +1704,10 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                           {historicalPeriods
                             .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                             .map((period) => (
-                            <th key={`col_grp_${period.label}`} colSpan={4} className={`px-2 py-0.5 text-center text-[9px] italic font-normal font-['Montserrat'] whitespace-nowrap border-l-2 border-[#D7B797] ${'text-[#777] bg-[rgba(150,130,110,0.08)]'}`}>
-                              {period.label}
-                            </th>
-                          ))}
+                              <th key={`col_grp_${period.label}`} colSpan={4} className={`px-2 py-0.5 text-center text-[9px] italic font-normal font-['Montserrat'] whitespace-nowrap border-l-2 border-[#D7B797] ${'text-[#777] bg-[rgba(150,130,110,0.08)]'}`}>
+                                {period.label}
+                              </th>
+                            ))}
                           <th colSpan={3} className={`${headerDarkCell}`} />
                         </tr>
                       )}
@@ -1701,13 +1720,13 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                         {historicalPeriods
                           .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                           .map((period) => (
-                          <React.Fragment key={`col_hdr_${period.label}`}>
-                            <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] border-l-2 border-[#D7B797] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Buy</th>
-                            <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Sales</th>
-                            <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%ST</th>
-                            <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>MOC</th>
-                          </React.Fragment>
-                        ))}
+                            <React.Fragment key={`col_hdr_${period.label}`}>
+                              <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] border-l-2 border-[#D7B797] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Buy</th>
+                              <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Sales</th>
+                              <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%ST</th>
+                              <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>MOC</th>
+                            </React.Fragment>
+                          ))}
                         <th className={`${headerCellClass} ${headerGoldCell}`}>{t('otbAnalysis.pctProposed')}</th>
                         <th className={`${headerCellClass} ${headerBrownCell}`}>{t('otbAnalysis.dollarOTB')}</th>
                         <th className={`${headerCellClass} ${headerDarkBrownCell}`}>{t('otbAnalysis.variance')}</th>
@@ -1738,17 +1757,17 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                             {historicalPeriods
                               .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                               .map((period) => {
-                              const hLookup = buildHistoricalLookup(colBrandId || '', period.label);
-                              const hData = hLookup.bySeasonType[cellKey] || {};
-                              return (
-                                <React.Fragment key={`col_data_${period.label}_${cellKey}`}>
-                                  <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.buyPct || 0}%</td>
-                                  <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.salesPct || 0}%</td>
-                                  <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.stPct || 0}%</td>
-                                  <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.moc || 0}</td>
-                                </React.Fragment>
-                              );
-                            })}
+                                const hLookup = buildHistoricalLookup(colBrandId || '', period.label);
+                                const hData = hLookup.bySeasonType[cellKey] || {};
+                                return (
+                                  <React.Fragment key={`col_data_${period.label}_${cellKey}`}>
+                                    <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.buyPct || 0}%</td>
+                                    <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.salesPct || 0}%</td>
+                                    <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.stPct || 0}%</td>
+                                    <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.moc || 0}</td>
+                                  </React.Fragment>
+                                );
+                              })}
                             <td className={`px-3 py-0.5 ${'bg-[rgba(160,120,75,0.12)]'}`}>
                               <EditableCell
                                 cellKey={cellKey}
@@ -1764,9 +1783,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                             <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${'text-[#1A1A1A]'}`}>
                               {formatCurrency(rowData.otbValue || 0)}
                             </td>
-                            <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${
-                              (rowData.varPct || 0) < 0 ? 'text-[#F85149]' : 'text-[#2A9E6A]'
-                            }`}>
+                            <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${(rowData.varPct || 0) < 0 ? 'text-[#F85149]' : 'text-[#2A9E6A]'
+                              }`}>
                               {(rowData.varPct || 0) > 0 ? '+' : ''}{rowData.varPct || 0}%
                             </td>
                           </tr>
@@ -1782,25 +1800,24 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                         {historicalPeriods
                           .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                           .map((period) => {
-                          const hLookup = buildHistoricalLookup(colBrandId || '', period.label);
-                          let hBuy = 0, hSales = 0, hSt = 0, hMoc = 0, hCount = 0;
-                          activeStores.forEach((store: any) => {
-                            const hData = hLookup.bySeasonType[`seasonType_${section.id}_${store.id}`] || {};
-                            hBuy += hData.buyPct || 0; hSales += hData.salesPct || 0; hSt += hData.stPct || 0; hMoc += hData.moc || 0; hCount++;
-                          });
-                          return (
-                            <React.Fragment key={`col_sub_${period.label}`}>
-                              <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hBuy}%</td>
-                              <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hSales}%</td>
-                              <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hCount > 0 ? Math.round((hSales / (hBuy || 1)) * 100) : 0}%</td>
-                              <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hCount > 0 ? Math.round((hMoc / hCount) * 10) / 10 : 0}</td>
-                            </React.Fragment>
-                          );
-                        })}
+                            const hLookup = buildHistoricalLookup(colBrandId || '', period.label);
+                            let hBuy = 0, hSales = 0, hSt = 0, hMoc = 0, hCount = 0;
+                            activeStores.forEach((store: any) => {
+                              const hData = hLookup.bySeasonType[`seasonType_${section.id}_${store.id}`] || {};
+                              hBuy += hData.buyPct || 0; hSales += hData.salesPct || 0; hSt += hData.stPct || 0; hMoc += hData.moc || 0; hCount++;
+                            });
+                            return (
+                              <React.Fragment key={`col_sub_${period.label}`}>
+                                <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hBuy}%</td>
+                                <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hSales}%</td>
+                                <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hCount > 0 ? Math.round((hSales / (hBuy || 1)) * 100) : 0}%</td>
+                                <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hCount > 0 ? Math.round((hMoc / hCount) * 10) / 10 : 0}</td>
+                              </React.Fragment>
+                            );
+                          })}
                         <td className={`px-3 py-0.5 text-center bg-[rgba(160,120,75,0.18)] font-bold font-['JetBrains_Mono'] ${'text-[#6B4D30]'}`}>{sectionTotals.userBuyPct}%</td>
                         <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${'text-[#5C4A32]'}`}>{formatCurrency(sectionTotals.otbValue)}</td>
-                        <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${
-                          sectionTotals.varPct < 0 ? 'text-[#FF7B72]' :'text-[#5C4A32]'}`}>
+                        <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${sectionTotals.varPct < 0 ? 'text-[#FF7B72]' : 'text-[#5C4A32]'}`}>
                           {sectionTotals.varPct > 0 ? '+' : ''}{sectionTotals.varPct}%
                         </td>
                       </tr>
@@ -1881,10 +1898,10 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                           {historicalPeriods
                             .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                             .map((period) => (
-                            <th key={`gen_grp_${period.label}`} colSpan={3} className={`px-2 py-0.5 text-center text-[9px] italic font-normal font-['Montserrat'] whitespace-nowrap border-l-2 border-[#D7B797] ${'text-[#777] bg-[rgba(150,130,110,0.08)]'}`}>
-                              {period.label}
-                            </th>
-                          ))}
+                              <th key={`gen_grp_${period.label}`} colSpan={3} className={`px-2 py-0.5 text-center text-[9px] italic font-normal font-['Montserrat'] whitespace-nowrap border-l-2 border-[#D7B797] ${'text-[#777] bg-[rgba(150,130,110,0.08)]'}`}>
+                                {period.label}
+                              </th>
+                            ))}
                           <th colSpan={3} className={`${headerDarkCell}`} />
                         </tr>
                       )}
@@ -1896,12 +1913,12 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                         {historicalPeriods
                           .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                           .map((period) => (
-                          <React.Fragment key={`gen_hdr_${period.label}`}>
-                            <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] border-l-2 border-[#D7B797] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Buy</th>
-                            <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Sales</th>
-                            <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%ST</th>
-                          </React.Fragment>
-                        ))}
+                            <React.Fragment key={`gen_hdr_${period.label}`}>
+                              <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] border-l-2 border-[#D7B797] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Buy</th>
+                              <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%Sales</th>
+                              <th className={`px-2 py-1 text-center text-[10px] font-semibold font-['Montserrat'] ${'bg-[rgba(150,130,110,0.12)] text-[#777]'}`}>%ST</th>
+                            </React.Fragment>
+                          ))}
                         <th className={`${headerCellClass} ${headerGoldCell}`}>{t('otbAnalysis.pctProposed')}</th>
                         <th className={`${headerCellClass} ${headerBrownCell}`}>{t('otbAnalysis.dollarOTB')}</th>
                         <th className={`${headerCellClass} ${headerDarkBrownCell}`}>{t('otbAnalysis.variance')}</th>
@@ -1931,16 +1948,16 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                             {historicalPeriods
                               .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                               .map((period) => {
-                              const hLookup = buildHistoricalLookup(genBrandId || '', period.label);
-                              const hData = hLookup.byGender[cellKey] || {};
-                              return (
-                                <React.Fragment key={`gen_data_${period.label}_${cellKey}`}>
-                                  <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.buyPct || 0}%</td>
-                                  <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.salesPct || 0}%</td>
-                                  <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.stPct || 0}%</td>
-                                </React.Fragment>
-                              );
-                            })}
+                                const hLookup = buildHistoricalLookup(genBrandId || '', period.label);
+                                const hData = hLookup.byGender[cellKey] || {};
+                                return (
+                                  <React.Fragment key={`gen_data_${period.label}_${cellKey}`}>
+                                    <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.buyPct || 0}%</td>
+                                    <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.salesPct || 0}%</td>
+                                    <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777] bg-[rgba(150,130,110,0.04)]'}`}>{hData.stPct || 0}%</td>
+                                  </React.Fragment>
+                                );
+                              })}
                             <td className={`px-3 py-0.5 ${'bg-[rgba(160,120,75,0.12)]'}`}>
                               <EditableCell
                                 cellKey={cellKey}
@@ -1956,9 +1973,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                             <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${'text-[#1A1A1A]'}`}>
                               {formatCurrency(rowData.otbValue || 0)}
                             </td>
-                            <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${
-                              (rowData.varPct || 0) < 0 ? 'text-[#F85149]' : 'text-[#2A9E6A]'
-                            }`}>
+                            <td className={`px-3 py-0.5 text-center font-medium font-['JetBrains_Mono'] ${(rowData.varPct || 0) < 0 ? 'text-[#F85149]' : 'text-[#2A9E6A]'
+                              }`}>
                               {(rowData.varPct || 0) > 0 ? '+' : ''}{rowData.varPct || 0}%
                             </td>
                           </tr>
@@ -1973,25 +1989,24 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                         {historicalPeriods
                           .filter(p => !(baselinePeriod && p.fiscalYear === baselinePeriod.fiscalYear && p.seasonGroup === baselinePeriod.seasonGroup && p.season === baselinePeriod.season))
                           .map((period) => {
-                          const hLookup = buildHistoricalLookup(genBrandId || '', period.label);
-                          let hBuy = 0, hSales = 0, hSt = 0, hCount = 0;
-                          activeStores.forEach((store: any) => {
-                            const hData = hLookup.byGender[`gender_${gender.id}_${store.id}`] || {};
-                            hBuy += hData.buyPct || 0; hSales += hData.salesPct || 0; hCount++;
-                          });
-                          hSt = hSales > 0 ? Math.round((hSales / (hBuy || 1)) * 100) : 0;
-                          return (
-                            <React.Fragment key={`gen_sub_${period.label}`}>
-                              <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hBuy}%</td>
-                              <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hSales}%</td>
-                              <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hSt}%</td>
-                            </React.Fragment>
-                          );
-                        })}
+                            const hLookup = buildHistoricalLookup(genBrandId || '', period.label);
+                            let hBuy = 0, hSales = 0, hSt = 0, hCount = 0;
+                            activeStores.forEach((store: any) => {
+                              const hData = hLookup.byGender[`gender_${gender.id}_${store.id}`] || {};
+                              hBuy += hData.buyPct || 0; hSales += hData.salesPct || 0; hCount++;
+                            });
+                            hSt = hSales > 0 ? Math.round((hSales / (hBuy || 1)) * 100) : 0;
+                            return (
+                              <React.Fragment key={`gen_sub_${period.label}`}>
+                                <td className={`border-l-2 border-[#D7B797] px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hBuy}%</td>
+                                <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hSales}%</td>
+                                <td className={`px-2 py-0.5 text-center font-['JetBrains_Mono'] text-[10px] ${'text-[#777]'}`}>{hSt}%</td>
+                              </React.Fragment>
+                            );
+                          })}
                         <td className={`px-3 py-0.5 text-center bg-[rgba(160,120,75,0.18)] font-bold font-['JetBrains_Mono'] ${'text-[#6B4D30]'}`}>{genderTotals.userBuyPct}%</td>
                         <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${'text-[#5C4A32]'}`}>{formatCurrency(genderTotals.otbValue)}</td>
-                        <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${
-                          genderTotals.varPct < 0 ? 'text-[#FF7B72]' :'text-[#5C4A32]'}`}>
+                        <td className={`px-3 py-0.5 text-center font-bold font-['JetBrains_Mono'] ${genderTotals.varPct < 0 ? 'text-[#FF7B72]' : 'text-[#5C4A32]'}`}>
                           {genderTotals.varPct > 0 ? '+' : ''}{genderTotals.varPct}%
                         </td>
                       </tr>
@@ -2086,10 +2101,9 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                         setDropdownAnchorEl(e.currentTarget);
                       }
                     }}
-                    className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium transition-colors ${
-                      selectedHeader
+                    className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium transition-colors ${selectedHeader
                         ? selectedIsFinal
-                          ?'bg-[rgba(215,183,151,0.25)] text-[#6B4D30]':'bg-[rgba(18,119,73,0.15)] text-[#127749]':'bg-[rgba(215,183,151,0.15)] text-[#666666] hover:text-[#333333]'}`}
+                          ? 'bg-[rgba(215,183,151,0.25)] text-[#6B4D30]' : 'bg-[rgba(18,119,73,0.15)] text-[#127749]' : 'bg-[rgba(215,183,151,0.15)] text-[#666666] hover:text-[#333333]'}`}
                   >
                     <ChevronDown size={11} className={`shrink-0 transition-transform ${openVersionBrandId === brandId ? 'rotate-180' : ''}`} />
                     {selectedHeader ? (
@@ -2134,14 +2148,14 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                   const icons: Record<string, React.ReactNode> = {
                     category: <Tag size={13} />,
                     seasonType: <Bookmark size={13} />,
-                    gender: <Users size={13} />};
+                    gender: <Users size={13} />
+                  };
                   return (
                     <button
                       key={tab}
                       onClick={(e) => { e.stopPropagation(); setBrandActiveTabs(prev => ({ ...prev, [brandId]: tab })); }}
-                      className={`flex items-center gap-1.5 px-4 md:px-6 py-2.5 text-xs md:text-sm font-semibold font-['Montserrat'] uppercase tracking-wide border-b-2 -mb-px transition-all ${
-                        isActive
-                          ?'border-[#6B4D30] text-[#6B4D30] bg-[rgba(215,183,151,0.08)]':'border-transparent text-[#999999] hover:text-[#6B4D30] hover:bg-[rgba(215,183,151,0.04)]'}`}
+                      className={`flex items-center gap-1.5 px-4 md:px-6 py-2.5 text-xs md:text-sm font-semibold font-['Montserrat'] uppercase tracking-wide border-b-2 -mb-px transition-all ${isActive
+                          ? 'border-[#6B4D30] text-[#6B4D30] bg-[rgba(215,183,151,0.08)]' : 'border-transparent text-[#999999] hover:text-[#6B4D30] hover:bg-[rgba(215,183,151,0.04)]'}`}
                     >
                       {icons[tab]}
                       {labels[tab]}
@@ -2208,7 +2222,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                           groupBrandId: groupBrandId,
                           brandId: brandId,
                           seasonGroupId: selectedSeasonGroup !== 'all' ? selectedSeasonGroup : null,
-                          seasonId: selectedSeason !== 'all' ? selectedSeason : null});
+                          seasonId: selectedSeason !== 'all' ? selectedSeason : null
+                        });
                         router.push('/planning');
                       }}
                       className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold font-['Montserrat'] border transition-all ${'bg-[#6B4D30] border-[#6B4D30] text-white hover:bg-[#5C4028] hover:border-[#5C4028]'}`}
@@ -2256,10 +2271,10 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
 
         {/* ===== FILTER CONTENT ===== */}
         <div>
-        <div>
-              {/* Mobile Filter Button */}
-              {isMobile && (
-                <div className="px-3 md:px-6 py-1.5">
+          <div>
+            {/* Mobile Filter Button */}
+            {isMobile && (
+              <div className="px-3 md:px-6 py-1.5">
                 <button
                   onClick={openFilter}
                   className={`flex items-center gap-1.5 px-3 py-1 border rounded-lg text-xs font-medium ${'bg-white border-[#C4B5A5] text-[#6B4D30]'}`}
@@ -2270,10 +2285,10 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                     <span className="w-2 h-2 rounded-full bg-[#D7B797]" />
                   )}
                 </button>
-                </div>
-              )}
-              {/* Desktop Filters */}
-              {!isMobile && (
+              </div>
+            )}
+            {/* Desktop Filters */}
+            {!isMobile && (
               <div className="flex flex-wrap items-end gap-2.5 px-3 md:px-6 py-1.5 relative z-[100]">
                 {/* Year Filter */}
                 <div className="relative shrink-0" ref={setDropdownRef('year')}>
@@ -2284,44 +2299,41 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                       setOpenDropdown((prev: any) => (prev === 'year' ? null : 'year'));
                       setOpenCategoryDropdown(null);
                     }}
-                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${
-                      openDropdown === 'year'
+                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${openDropdown === 'year'
                         ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30]'
                         : selectedYear !== 'all'
                           ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30] hover:border-[#D7B797]'
                           : 'bg-white border-[#C4B5A5] text-[#0A0A0A] hover:border-[rgba(215,183,151,0.4)] hover:bg-[rgba(160,120,75,0.18)]'}`}
                   >
-                      <Calendar size={12} className="shrink-0" />
-                      <span>{selectedYear === 'all' ? (t('common.all') || 'All') : `FY ${selectedYear}`}</span>
+                    <Calendar size={12} className="shrink-0" />
+                    <span>{selectedYear === 'all' ? (t('common.all') || 'All') : `FY ${selectedYear}`}</span>
                     <ChevronDown size={12} className={`shrink-0 transition-transform duration-200 ${openDropdown === 'year' ? 'rotate-180' : ''}`} />
                   </button>
                   {openDropdown === 'year' && (
-                    <div className={`absolute top-full left-0 mt-1.5 whitespace-nowrap w-max min-w-full border rounded-lg z-[9999] overflow-hidden animate-slideDown ${'bg-white border-[#D4CCC2]'}`} style={{ boxShadow:'0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06)'}}>
-                      <div className="h-[1.5px]" style={{ background:'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)'}} />
+                    <div className={`absolute top-full left-0 mt-1.5 whitespace-nowrap w-max min-w-full border rounded-lg z-[9999] overflow-hidden animate-slideDown ${'bg-white border-[#D4CCC2]'}`} style={{ boxShadow: '0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06)' }}>
+                      <div className="h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)' }} />
                       <div className="py-1">
-                      <div
-                        onClick={() => { setSelectedYear('all'); setOpenDropdown(null); }}
-                        className={`relative px-3 py-1.5 flex items-center justify-between cursor-pointer text-sm transition-all duration-150 ${
-                          selectedYear === 'all'
-                            ?'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]':'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
-                      >
-                        {selectedYear === 'all' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background:'#8B6E4E'}} />}
-                        <span className={selectedYear === 'all' ? 'font-semibold' : 'font-medium'}>{t('common.all') || 'All Years'}</span>
-                        {selectedYear === 'all' && <Check size={13} strokeWidth={2.5} className={'text-[#6B4D30]'} />}
-                      </div>
-                      {availableYears.map((year: number) => (
                         <div
-                          key={year}
-                          onClick={() => { setSelectedYear(year); setOpenDropdown(null); }}
-                          className={`relative px-3 py-1.5 flex items-center justify-between cursor-pointer text-sm transition-all duration-150 ${
-                            selectedYear === year
-                              ?'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]':'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
+                          onClick={() => { setSelectedYear('all'); setOpenDropdown(null); }}
+                          className={`relative px-3 py-1.5 flex items-center justify-between cursor-pointer text-sm transition-all duration-150 ${selectedYear === 'all'
+                              ? 'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]' : 'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
                         >
-                          {selectedYear === year && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background:'#8B6E4E'}} />}
-                          <span className={selectedYear === year ? 'font-semibold' : 'font-medium'}>FY {year}</span>
-                          {selectedYear === year && <Check size={13} strokeWidth={2.5} className={'text-[#6B4D30]'} />}
+                          {selectedYear === 'all' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background: '#8B6E4E' }} />}
+                          <span className={selectedYear === 'all' ? 'font-semibold' : 'font-medium'}>{t('common.all') || 'All Years'}</span>
+                          {selectedYear === 'all' && <Check size={13} strokeWidth={2.5} className={'text-[#6B4D30]'} />}
                         </div>
-                      ))}
+                        {availableYears.map((year: number) => (
+                          <div
+                            key={year}
+                            onClick={() => { setSelectedYear(year); setOpenDropdown(null); }}
+                            className={`relative px-3 py-1.5 flex items-center justify-between cursor-pointer text-sm transition-all duration-150 ${selectedYear === year
+                                ? 'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]' : 'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
+                          >
+                            {selectedYear === year && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background: '#8B6E4E' }} />}
+                            <span className={selectedYear === year ? 'font-semibold' : 'font-medium'}>FY {year}</span>
+                            {selectedYear === year && <Check size={13} strokeWidth={2.5} className={'text-[#6B4D30]'} />}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )}
@@ -2439,35 +2451,33 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                       setOpenDropdown((prev: any) => (prev === 'seasonCount' ? null : 'seasonCount'));
                       setOpenCategoryDropdown(null);
                     }}
-                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${
-                      openDropdown === 'seasonCount'
+                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${openDropdown === 'seasonCount'
                         ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30]'
                         : 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30] hover:border-[#D7B797]'}`}
                   >
-                      <Calendar size={12} className="shrink-0" />
-                      <span>{seasonCount}</span>
+                    <Calendar size={12} className="shrink-0" />
+                    <span>{seasonCount}</span>
                     <ChevronDown size={12} className={`shrink-0 transition-transform duration-200 ${openDropdown === 'seasonCount' ? 'rotate-180' : ''}`} />
                   </button>
                   {openDropdown === 'seasonCount' && (
-                    <div className={`absolute top-full left-0 mt-1.5 whitespace-nowrap w-max min-w-full border rounded-lg z-[9999] overflow-hidden animate-slideDown ${'bg-white border-[#D4CCC2]'}`} style={{ boxShadow:'0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06)'}}>
-                      <div className="h-[1.5px]" style={{ background:'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)'}} />
+                    <div className={`absolute top-full left-0 mt-1.5 whitespace-nowrap w-max min-w-full border rounded-lg z-[9999] overflow-hidden animate-slideDown ${'bg-white border-[#D4CCC2]'}`} style={{ boxShadow: '0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06)' }}>
+                      <div className="h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)' }} />
                       <div className="py-1">
-                      {[1, 2, 3].map((n) => (
-                        <div
-                          key={n}
-                          onClick={() => {
-                            setSeasonCount(n);
-                            setOpenDropdown(null);
-                          }}
-                          className={`relative px-3 py-1.5 flex items-center justify-between cursor-pointer text-sm transition-all duration-150 ${
-                            seasonCount === n
-                              ?'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]':'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
-                        >
-                          {seasonCount === n && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background:'#8B6E4E'}} />}
-                          <span className={seasonCount === n ? 'font-semibold' : 'font-medium'}>{n}</span>
-                          {seasonCount === n && <Check size={13} strokeWidth={2.5} className={'text-[#6B4D30]'} />}
-                        </div>
-                      ))}
+                        {[1, 2, 3].map((n) => (
+                          <div
+                            key={n}
+                            onClick={() => {
+                              setSeasonCount(n);
+                              setOpenDropdown(null);
+                            }}
+                            className={`relative px-3 py-1.5 flex items-center justify-between cursor-pointer text-sm transition-all duration-150 ${seasonCount === n
+                                ? 'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]' : 'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
+                          >
+                            {seasonCount === n && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background: '#8B6E4E' }} />}
+                            <span className={seasonCount === n ? 'font-semibold' : 'font-medium'}>{n}</span>
+                            {seasonCount === n && <Check size={13} strokeWidth={2.5} className={'text-[#6B4D30]'} />}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )}
@@ -2475,103 +2485,100 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
 
                 {/* Brand Filter — multi-select brands */}
                 {brandOptions.length >= 1 && (
-                <>
-                <div className={`self-stretch w-px hidden sm:block rounded-full ${'bg-gradient-to-b from-transparent via-[#C4B5A5]/40 to-transparent'}`} />
-                <div className="relative shrink-0" ref={setDropdownRef('brand')}>
-                  <label className="block text-[10px] uppercase tracking-[0.06em] font-bold mb-0.5 text-[#8A6340]">Brand</label>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setOpenDropdown((prev: any) => (prev === 'brand' ? null : 'brand'));
-                      setOpenCategoryDropdown(null);
-                    }}
-                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${
-                      openDropdown === 'brand'
-                        ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30]'
-                        : selectedBrandIds.length > 0
-                          ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30] hover:border-[#D7B797]'
-                          : 'bg-white border-[#C4B5A5] text-[#0A0A0A] hover:border-[rgba(215,183,151,0.4)] hover:bg-[rgba(160,120,75,0.18)]'}`}
-                  >
-                    <Tag size={12} className="shrink-0" />
-                    <span className="truncate max-w-[120px]">
-                      {(() => {
-                        const selectedBrands = brandOptions.filter((b: any) => selectedBrandIds.includes(b.value));
-                        if (selectedBrands.length === 0) return 'All Brands';
-                        if (selectedBrands.length === 1) return selectedBrands[0].label;
-                        return `${selectedBrands.length} brands`;
-                      })()}
-                    </span>
-                    {selectedBrandIds.length > 1 && (
-                      <span className={`px-1.5 text-[10px] leading-[16px] font-bold rounded-md ${'bg-[#6B4D30] text-white'}`}>{selectedBrandIds.length}</span>
-                    )}
-                    <ChevronDown size={12} className={`shrink-0 transition-transform duration-200 ${openDropdown === 'brand' ? 'rotate-180' : ''}`} />
-                  </button>
-                  {openDropdown === 'brand' && (
-                    <div
-                      className={`absolute top-full left-0 mt-1.5 whitespace-nowrap w-max min-w-[220px] border rounded-lg z-[9999] overflow-hidden animate-slideDown ${'bg-white border-[#D4CCC2]'}`}
-                      style={{
-                        boxShadow:'0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06), inset 0 1px 0 rgba(215,183,151,0.15)'}}
-                    >
-                      <div className="h-[1.5px]" style={{ background:'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)'}} />
-                      <div className={`px-3 py-2 border-b flex items-center justify-between ${'bg-[#FDFCFB] border-[#E8E0D8]'}`}>
-                        <span className={`text-[10px] font-semibold uppercase tracking-[0.12em] font-['Montserrat'] ${'text-[#999999]'}`}>
-                          Select Brands
+                  <>
+                    <div className={`self-stretch w-px hidden sm:block rounded-full ${'bg-gradient-to-b from-transparent via-[#C4B5A5]/40 to-transparent'}`} />
+                    <div className="relative shrink-0" ref={setDropdownRef('brand')}>
+                      <label className="block text-[10px] uppercase tracking-[0.06em] font-bold mb-0.5 text-[#8A6340]">Brand</label>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setOpenDropdown((prev: any) => (prev === 'brand' ? null : 'brand'));
+                          setOpenCategoryDropdown(null);
+                        }}
+                        className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${openDropdown === 'brand'
+                            ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30]'
+                            : selectedBrandIds.length > 0
+                              ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30] hover:border-[#D7B797]'
+                              : 'bg-white border-[#C4B5A5] text-[#0A0A0A] hover:border-[rgba(215,183,151,0.4)] hover:bg-[rgba(160,120,75,0.18)]'}`}
+                      >
+                        <Tag size={12} className="shrink-0" />
+                        <span className="truncate max-w-[120px]">
+                          {(() => {
+                            const selectedBrands = brandOptions.filter((b: any) => selectedBrandIds.includes(b.value));
+                            if (selectedBrands.length === 0) return 'All Brands';
+                            if (selectedBrands.length === 1) return selectedBrands[0].label;
+                            return `${selectedBrands.length} brands`;
+                          })()}
                         </span>
-                        {selectedBrandIds.length > 0 && (
-                          <button
-                            onClick={() => setSelectedBrandIds([])}
-                            className={`text-[10px] px-2 py-0.5 rounded-md font-medium transition-colors ${'text-[#F85149] hover:bg-[rgba(248,81,73,0.08)]'}`}
-                          >
-                            {t('common.clearAll') || 'Clear'}
-                          </button>
+                        {selectedBrandIds.length > 1 && (
+                          <span className={`px-1.5 text-[10px] leading-[16px] font-bold rounded-md ${'bg-[#6B4D30] text-white'}`}>{selectedBrandIds.length}</span>
                         )}
-                      </div>
-                      <div className="filter-select-scroll max-h-60 overflow-y-auto py-1">
-                        {/* All Brands option */}
+                        <ChevronDown size={12} className={`shrink-0 transition-transform duration-200 ${openDropdown === 'brand' ? 'rotate-180' : ''}`} />
+                      </button>
+                      {openDropdown === 'brand' && (
                         <div
-                          onClick={() => { setSelectedBrandIds([]); setOpenDropdown(null); }}
-                          className={`relative px-3 py-2 cursor-pointer transition-all duration-150 ${
-                            selectedBrandIds.length === 0
-                              ?'bg-[rgba(215,183,151,0.1)]':'hover:bg-[rgba(215,183,151,0.06)]'}`}
+                          className={`absolute top-full left-0 mt-1.5 whitespace-nowrap w-max min-w-[220px] border rounded-lg z-[9999] overflow-hidden animate-slideDown ${'bg-white border-[#D4CCC2]'}`}
+                          style={{
+                            boxShadow: '0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06), inset 0 1px 0 rgba(215,183,151,0.15)'
+                          }}
                         >
-                          {selectedBrandIds.length === 0 && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-5 rounded-full" style={{ background:'#8B6E4E'}} />}
-                          <div className="flex items-center justify-between gap-3">
-                            <span className={`text-sm ${selectedBrandIds.length === 0 ? ('text-[#6B4D30] font-semibold') : ('text-[#1A1A1A]')}`}>
-                              All Brands
+                          <div className="h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)' }} />
+                          <div className={`px-3 py-2 border-b flex items-center justify-between ${'bg-[#FDFCFB] border-[#E8E0D8]'}`}>
+                            <span className={`text-[10px] font-semibold uppercase tracking-[0.12em] font-['Montserrat'] ${'text-[#999999]'}`}>
+                              Select Brands
                             </span>
-                            {selectedBrandIds.length === 0 && <Check size={13} strokeWidth={2.5} className={'text-[#6B4D30]'} />}
+                            {selectedBrandIds.length > 0 && (
+                              <button
+                                onClick={() => setSelectedBrandIds([])}
+                                className={`text-[10px] px-2 py-0.5 rounded-md font-medium transition-colors ${'text-[#F85149] hover:bg-[rgba(248,81,73,0.08)]'}`}
+                              >
+                                {t('common.clearAll') || 'Clear'}
+                              </button>
+                            )}
                           </div>
-                        </div>
-                        {brandOptions.map((brand: any) => {
-                          const isSelected = selectedBrandIds.includes(brand.value);
-                          return (
+                          <div className="filter-select-scroll max-h-60 overflow-y-auto py-1">
+                            {/* All Brands option */}
                             <div
-                              key={brand.value}
-                              onClick={() => handleBrandToggle(brand.value)}
-                              className={`relative px-3 py-2 cursor-pointer transition-all duration-150 ${
-                                isSelected
-                                  ?'bg-[rgba(215,183,151,0.1)]':'hover:bg-[rgba(215,183,151,0.06)]'}`}
+                              onClick={() => { setSelectedBrandIds([]); setOpenDropdown(null); }}
+                              className={`relative px-3 py-2 cursor-pointer transition-all duration-150 ${selectedBrandIds.length === 0
+                                  ? 'bg-[rgba(215,183,151,0.1)]' : 'hover:bg-[rgba(215,183,151,0.06)]'}`}
                             >
-                              {isSelected && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-5 rounded-full" style={{ background:'#8B6E4E'}} />}
-                              <div className="flex items-center gap-3">
-                                <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all ${
-                                  isSelected
-                                    ? 'bg-[#D7B797] border-[#D7B797]'
-                                    :'border-[#C4B5A5]'}`}>
-                                  {isSelected && <Check size={10} className="text-[#1A1A1A]" strokeWidth={3} />}
-                                </div>
-                                <span className={`text-sm ${isSelected ? ('text-[#6B4D30] font-semibold') : ('text-[#1A1A1A]')}`}>
-                                  {brand.label}
+                              {selectedBrandIds.length === 0 && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-5 rounded-full" style={{ background: '#8B6E4E' }} />}
+                              <div className="flex items-center justify-between gap-3">
+                                <span className={`text-sm ${selectedBrandIds.length === 0 ? ('text-[#6B4D30] font-semibold') : ('text-[#1A1A1A]')}`}>
+                                  All Brands
                                 </span>
+                                {selectedBrandIds.length === 0 && <Check size={13} strokeWidth={2.5} className={'text-[#6B4D30]'} />}
                               </div>
                             </div>
-                          );
-                        })}
-                      </div>
+                            {brandOptions.map((brand: any) => {
+                              const isSelected = selectedBrandIds.includes(brand.value);
+                              return (
+                                <div
+                                  key={brand.value}
+                                  onClick={() => handleBrandToggle(brand.value)}
+                                  className={`relative px-3 py-2 cursor-pointer transition-all duration-150 ${isSelected
+                                      ? 'bg-[rgba(215,183,151,0.1)]' : 'hover:bg-[rgba(215,183,151,0.06)]'}`}
+                                >
+                                  {isSelected && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-5 rounded-full" style={{ background: '#8B6E4E' }} />}
+                                  <div className="flex items-center gap-3">
+                                    <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all ${isSelected
+                                        ? 'bg-[#D7B797] border-[#D7B797]'
+                                        : 'border-[#C4B5A5]'}`}>
+                                      {isSelected && <Check size={10} className="text-[#1A1A1A]" strokeWidth={3} />}
+                                    </div>
+                                    <span className={`text-sm ${isSelected ? ('text-[#6B4D30] font-semibold') : ('text-[#1A1A1A]')}`}>
+                                      {brand.label}
+                                    </span>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                </>
+                  </>
                 )}
 
                 {/* Season Group Filter */}
@@ -2584,49 +2591,47 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                       setOpenDropdown((prev: any) => (prev === 'seasonGroup' ? null : 'seasonGroup'));
                       setOpenCategoryDropdown(null);
                     }}
-                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${
-                      openDropdown === 'seasonGroup'
+                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${openDropdown === 'seasonGroup'
                         ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30]'
                         : selectedSeasonGroup !== 'all'
                           ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30] hover:border-[#D7B797]'
                           : 'bg-white border-[#C4B5A5] text-[#0A0A0A] hover:border-[rgba(215,183,151,0.4)] hover:bg-[rgba(160,120,75,0.18)]'}`}
                   >
-                      <Calendar size={12} className="shrink-0" />
-                      <span className="truncate">{selectedSeasonGroup === 'all' ? (t('planning.allSeasonGroups') || 'All') : (seasonGroupOptions.find((s: any) => s.id === selectedSeasonGroup)?.label || selectedSeasonGroup)}</span>
+                    <Calendar size={12} className="shrink-0" />
+                    <span className="truncate">{selectedSeasonGroup === 'all' ? (t('planning.allSeasonGroups') || 'All') : (seasonGroupOptions.find((s: any) => s.id === selectedSeasonGroup)?.label || selectedSeasonGroup)}</span>
                     <ChevronDown size={12} className={`shrink-0 transition-transform duration-200 ${openDropdown === 'seasonGroup' ? 'rotate-180' : ''}`} />
                   </button>
                   {openDropdown === 'seasonGroup' && (
                     <div
                       className={`absolute top-full left-0 mt-1.5 whitespace-nowrap w-max min-w-full border rounded-lg z-[9999] overflow-hidden animate-slideDown ${'bg-white border-[#D4CCC2]'}`}
                       style={{
-                        boxShadow:'0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06), inset 0 1px 0 rgba(215,183,151,0.15)'}}
+                        boxShadow: '0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06), inset 0 1px 0 rgba(215,183,151,0.15)'
+                      }}
                     >
                       {/* Golden top accent */}
-                      <div className="h-[1.5px]" style={{ background:'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)'}} />
+                      <div className="h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)' }} />
                       <div className="py-1">
-                      <div
-                        onClick={() => { setSelectedSeasonGroup('all'); setOpenDropdown(null); }}
-                        className={`relative px-3 py-[6px] flex items-center justify-between gap-2.5 cursor-pointer text-sm transition-all duration-150 ${
-                          selectedSeasonGroup === 'all'
-                            ?'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]':'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
-                      >
-                        {selectedSeasonGroup === 'all' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background:'#8B6E4E'}} />}
-                        <span className={selectedSeasonGroup === 'all' ? 'font-semibold' : 'font-normal'}>{t('planning.allSeasonGroups') || 'All Season Groups'}</span>
-                        {selectedSeasonGroup === 'all' && <Check size={13} strokeWidth={2.5} className={`shrink-0 ${'text-[#6B4D30]'}`} />}
-                      </div>
-                      {seasonGroupOptions.map((season: any) => (
                         <div
-                          key={season.id}
-                          onClick={() => { setSelectedSeasonGroup(season.id); setOpenDropdown(null); }}
-                          className={`relative px-3 py-[6px] flex items-center justify-between gap-2.5 cursor-pointer text-sm transition-all duration-150 ${
-                            selectedSeasonGroup === season.id
-                              ?'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]':'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
+                          onClick={() => { setSelectedSeasonGroup('all'); setOpenDropdown(null); }}
+                          className={`relative px-3 py-[6px] flex items-center justify-between gap-2.5 cursor-pointer text-sm transition-all duration-150 ${selectedSeasonGroup === 'all'
+                              ? 'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]' : 'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
                         >
-                          {selectedSeasonGroup === season.id && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background:'#8B6E4E'}} />}
-                          <span className={selectedSeasonGroup === season.id ? 'font-semibold' : 'font-normal'}>{season.label}</span>
-                          {selectedSeasonGroup === season.id && <Check size={13} strokeWidth={2.5} className={`shrink-0 ${'text-[#6B4D30]'}`} />}
+                          {selectedSeasonGroup === 'all' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background: '#8B6E4E' }} />}
+                          <span className={selectedSeasonGroup === 'all' ? 'font-semibold' : 'font-normal'}>{t('planning.allSeasonGroups') || 'All Season Groups'}</span>
+                          {selectedSeasonGroup === 'all' && <Check size={13} strokeWidth={2.5} className={`shrink-0 ${'text-[#6B4D30]'}`} />}
                         </div>
-                      ))}
+                        {seasonGroupOptions.map((season: any) => (
+                          <div
+                            key={season.id}
+                            onClick={() => { setSelectedSeasonGroup(season.id); setOpenDropdown(null); }}
+                            className={`relative px-3 py-[6px] flex items-center justify-between gap-2.5 cursor-pointer text-sm transition-all duration-150 ${selectedSeasonGroup === season.id
+                                ? 'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]' : 'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
+                          >
+                            {selectedSeasonGroup === season.id && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background: '#8B6E4E' }} />}
+                            <span className={selectedSeasonGroup === season.id ? 'font-semibold' : 'font-normal'}>{season.label}</span>
+                            {selectedSeasonGroup === season.id && <Check size={13} strokeWidth={2.5} className={`shrink-0 ${'text-[#6B4D30]'}`} />}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )}
@@ -2641,49 +2646,47 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                       setOpenDropdown((prev: any) => (prev === 'season' ? null : 'season'));
                       setOpenCategoryDropdown(null);
                     }}
-                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${
-                      openDropdown === 'season'
+                    className={`px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center gap-1.5 text-xs transition-all duration-200 ${openDropdown === 'season'
                         ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30]'
                         : selectedSeason !== 'all'
                           ? 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.4)] text-[#6B4D30] hover:border-[#D7B797]'
                           : 'bg-white border-[#C4B5A5] text-[#0A0A0A] hover:border-[rgba(215,183,151,0.4)] hover:bg-[rgba(160,120,75,0.18)]'}`}
                   >
-                      <Clock size={12} className="shrink-0" />
-                      <span className="whitespace-nowrap">{selectedSeason === 'all' ? (t('otbAnalysis.allSeasons') || 'All') : (availableSeasons.find((s: any) => s.id === selectedSeason)?.label || selectedSeason)}</span>
+                    <Clock size={12} className="shrink-0" />
+                    <span className="whitespace-nowrap">{selectedSeason === 'all' ? (t('otbAnalysis.allSeasons') || 'All') : (availableSeasons.find((s: any) => s.id === selectedSeason)?.label || selectedSeason)}</span>
                     <ChevronDown size={12} className={`shrink-0 transition-transform duration-200 ${openDropdown === 'season' ? 'rotate-180' : ''}`} />
                   </button>
                   {openDropdown === 'season' && (
                     <div
                       className={`absolute top-full left-0 mt-1.5 whitespace-nowrap w-max min-w-full border rounded-lg z-[9999] overflow-hidden animate-slideDown ${'bg-white border-[#D4CCC2]'}`}
                       style={{
-                        boxShadow:'0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06), inset 0 1px 0 rgba(215,183,151,0.15)'}}
+                        boxShadow: '0 8px 32px rgba(107,77,48,0.08), 0 2px 8px rgba(107,77,48,0.06), inset 0 1px 0 rgba(215,183,151,0.15)'
+                      }}
                     >
                       {/* Golden top accent */}
-                      <div className="h-[1.5px]" style={{ background:'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)'}} />
+                      <div className="h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent 5%, rgba(184,153,112,0.4) 50%, transparent 95%)' }} />
                       <div className="py-1">
-                      <div
-                        onClick={() => { setSelectedSeason('all'); setOpenDropdown(null); }}
-                        className={`relative px-3 py-[6px] flex items-center justify-between gap-2.5 cursor-pointer text-sm transition-all duration-150 ${
-                          selectedSeason === 'all'
-                            ?'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]':'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
-                      >
-                        {selectedSeason === 'all' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background:'#8B6E4E'}} />}
-                        <span className={selectedSeason === 'all' ? 'font-semibold' : 'font-normal'}>{t('otbAnalysis.allSeasons') || 'All Seasons'}</span>
-                        {selectedSeason === 'all' && <Check size={13} strokeWidth={2.5} className={`shrink-0 ${'text-[#6B4D30]'}`} />}
-                      </div>
-                      {availableSeasons.map((season: any) => (
                         <div
-                          key={season.id}
-                          onClick={() => { setSelectedSeason(season.id); setOpenDropdown(null); }}
-                          className={`relative px-3 py-[6px] flex items-center justify-between gap-2.5 cursor-pointer text-sm transition-all duration-150 ${
-                            selectedSeason === season.id
-                              ?'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]':'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
+                          onClick={() => { setSelectedSeason('all'); setOpenDropdown(null); }}
+                          className={`relative px-3 py-[6px] flex items-center justify-between gap-2.5 cursor-pointer text-sm transition-all duration-150 ${selectedSeason === 'all'
+                              ? 'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]' : 'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
                         >
-                          {selectedSeason === season.id && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background:'#8B6E4E'}} />}
-                          <span className={selectedSeason === season.id ? 'font-semibold' : 'font-normal'}>{season.label}</span>
-                          {selectedSeason === season.id && <Check size={13} strokeWidth={2.5} className={`shrink-0 ${'text-[#6B4D30]'}`} />}
+                          {selectedSeason === 'all' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background: '#8B6E4E' }} />}
+                          <span className={selectedSeason === 'all' ? 'font-semibold' : 'font-normal'}>{t('otbAnalysis.allSeasons') || 'All Seasons'}</span>
+                          {selectedSeason === 'all' && <Check size={13} strokeWidth={2.5} className={`shrink-0 ${'text-[#6B4D30]'}`} />}
                         </div>
-                      ))}
+                        {availableSeasons.map((season: any) => (
+                          <div
+                            key={season.id}
+                            onClick={() => { setSelectedSeason(season.id); setOpenDropdown(null); }}
+                            className={`relative px-3 py-[6px] flex items-center justify-between gap-2.5 cursor-pointer text-sm transition-all duration-150 ${selectedSeason === season.id
+                                ? 'bg-[rgba(215,183,151,0.1)] text-[#6B4D30]' : 'hover:bg-[rgba(215,183,151,0.06)] text-[#444444] hover:text-[#1A1A1A]'}`}
+                          >
+                            {selectedSeason === season.id && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full" style={{ background: '#8B6E4E' }} />}
+                            <span className={selectedSeason === season.id ? 'font-semibold' : 'font-normal'}>{season.label}</span>
+                            {selectedSeason === season.id && <Check size={13} strokeWidth={2.5} className={`shrink-0 ${'text-[#6B4D30]'}`} />}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )}
@@ -2716,8 +2719,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                   </button>
                 )}
               </div>
-              )}
-        </div>{/* end overflow-hidden min-h-0 */}
+            )}
+          </div>{/* end overflow-hidden min-h-0 */}
         </div>{/* end grid animation wrapper */}
       </div>
 
@@ -2775,7 +2778,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
             key: 'year',
             label: t('budget.fiscalYear') || 'Fiscal Year',
             type: 'single',
-            options: availableYears.map((y: number) => ({ label: `FY ${y}`, value: String(y) }))},
+            options: availableYears.map((y: number) => ({ label: `FY ${y}`, value: String(y) }))
+          },
           {
             key: 'type',
             label: t('otbAnalysis.comparisonType') || 'Comparison Type',
@@ -2783,7 +2787,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
             options: [
               { label: 'Same Season', value: 'same' },
               { label: 'Different Season', value: 'different' },
-            ]},
+            ]
+          },
           {
             key: 'seasonCount',
             label: t('otbAnalysis.numberOfSeasons') || 'Number of Seasons',
@@ -2792,27 +2797,32 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
               { label: '1', value: '1' },
               { label: '2', value: '2' },
               { label: '3', value: '3' },
-            ]},
+            ]
+          },
           {
             key: 'budget',
             label: t('otbAnalysis.budgetSeason') || 'Budget Season',
             type: 'single',
-            options: filteredBudgets.map((b: any) => ({ label: `${b.budgetName} (${formatCurrency(b.totalBudget)})`, value: b.id }))},
+            options: filteredBudgets.map((b: any) => ({ label: `${b.budgetName} (${formatCurrency(b.totalBudget)})`, value: b.id }))
+          },
           {
             key: 'seasonGroup',
             label: t('otbAnalysis.seasonGroup'),
             type: 'single',
-            options: seasonGroupOptions.map((s: any) => ({ label: s.label, value: s.id }))},
+            options: seasonGroupOptions.map((s: any) => ({ label: s.label, value: s.id }))
+          },
           {
             key: 'season',
             label: t('otbAnalysis.season'),
             type: 'single',
-            options: availableSeasons.map((s: any) => ({ label: s.label, value: s.id }))},
+            options: availableSeasons.map((s: any) => ({ label: s.label, value: s.id }))
+          },
           {
             key: 'version',
             label: 'Version',
             type: 'single',
-            options: versions.map((v: any) => ({ label: `${v.name}${v.isFinal ? ' (FINAL)' : ''}`, value: v.id }))},
+            options: versions.map((v: any) => ({ label: `${v.name}${v.isFinal ? ' (FINAL)' : ''}`, value: v.id }))
+          },
         ]}
         values={mobileFilterValues}
         onChange={(key, value) => setMobileFilterValues(prev => ({ ...prev, [key]: value }))}
@@ -2857,7 +2867,8 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
               right: overflowRight ? Math.max(8, window.innerWidth - rect.right) : undefined,
               left: overflowRight ? undefined : rect.left,
               zIndex: 99999,
-              minWidth: dropdownW}}
+              minWidth: dropdownW
+            }}
           >
             <div className={`border rounded-lg shadow-xl overflow-hidden ${'bg-white border-[#C4B5A5]'}`}>
               <div className={`px-2 py-1 border-b ${'border-[#D4C8BB] bg-[rgba(160,120,75,0.08)]'}`}>
@@ -2876,17 +2887,15 @@ const OTBAnalysisScreen = ({ otbContext, onOpenSkuProposal }: any) => {
                         setOpenVersionBrandId(null);
                         setDropdownAnchorEl(null);
                       }}
-                      className={`px-3 py-1 flex items-center justify-between cursor-pointer transition-colors text-xs border-t ${'border-[#E5E0DB]'} ${
-                        isSelected
-                          ?'bg-[rgba(18,119,73,0.1)] text-[#127749]':'hover:bg-[rgba(160,120,75,0.18)] text-[#0A0A0A]'}`}
+                      className={`px-3 py-1 flex items-center justify-between cursor-pointer transition-colors text-xs border-t ${'border-[#E5E0DB]'} ${isSelected
+                          ? 'bg-[rgba(18,119,73,0.1)] text-[#127749]' : 'hover:bg-[rgba(160,120,75,0.18)] text-[#0A0A0A]'}`}
                     >
                       <div className="flex items-center gap-1.5 min-w-0 flex-1">
                         {isFinal && <Star size={11} className={'text-[#6B4D30] fill-[#6B4D30] shrink-0'} />}
                         <span className="font-medium truncate">Version {v.version}</span>
-                        <span className={`text-[9px] px-1 rounded ${
-                          v.status === 'APPROVED' ? 'bg-green-500/20 text-green-400' :
-                          v.status === 'SUBMITTED' ? 'bg-blue-500/20 text-blue-400' :
-                          v.status === 'REJECTED' ? 'bg-red-500/20 text-red-400' :'bg-[#E5E0DB] text-[#666]'}`}>{v.status}</span>
+                        <span className={`text-[9px] px-1 rounded ${v.status === 'APPROVED' ? 'bg-green-500/20 text-green-400' :
+                            v.status === 'SUBMITTED' ? 'bg-blue-500/20 text-blue-400' :
+                              v.status === 'REJECTED' ? 'bg-red-500/20 text-red-400' : 'bg-[#E5E0DB] text-[#666]'}`}>{v.status}</span>
                         {isFinal && <span className="px-1 py-px text-[8px] font-bold bg-[#D7B797] text-[#0A0A0A] rounded shrink-0">FINAL</span>}
                       </div>
                       <div className="flex items-center gap-1 shrink-0">

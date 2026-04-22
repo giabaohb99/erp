@@ -2,11 +2,11 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP requires a data access layer that:
+BaoERP requires a data access layer that:
 - Handles 970+ database models spanning 14+ modules
 - Supports multiple schema namespaces (accounting, crm, inventory, etc.)
 - Provides type-safe queries without runtime errors
@@ -15,7 +15,7 @@ VietERP requires a data access layer that:
 - Supports complex joins across 50,000+ daily transactions
 - Enables rapid schema evolution with generated types
 
-VietERP yêu cầu một lớp truy cập dữ liệu:
+BaoERP yêu cầu một lớp truy cập dữ liệu:
 - Xử lý 970+ mô hình cơ sở dữ liệu trên 14+ mô-đun
 - Hỗ trợ không gian tên lược đồ nhiều (kế toán, crm, hàng tồn kho, v.v.)
 - Cung cấp các truy vấn an toàn kiểu mà không có lỗi runtime
@@ -28,9 +28,9 @@ Prisma offers schema-as-code, type generation, and powerful migrations.
 
 ## Quyết định / Decision
 
-**Adopt Prisma ORM (v5.x)** as the primary data access and ORM solution for VietERP.
+**Adopt Prisma ORM (v5.x)** as the primary data access and ORM solution for BaoERP.
 
-Áp dụng **Prisma ORM (v5.x)** làm giải pháp truy cập dữ liệu và ORM chính cho VietERP.
+Áp dụng **Prisma ORM (v5.x)** làm giải pháp truy cập dữ liệu và ORM chính cho BaoERP.
 
 **Configuration**:
 - Prisma schema per module (or shared schema with namespaces)
@@ -58,7 +58,7 @@ Prisma offers schema-as-code, type generation, and powerful migrations.
 ### Drizzle
 - Pros: Lightweight, SQL builder, emerging ecosystem
 - Cons: Younger project, smaller community, fewer tools (no Studio equivalent)
-- **Rejected**: Prisma maturity and migrations essential for VietERP scale
+- **Rejected**: Prisma maturity and migrations essential for BaoERP scale
 
 ### Kysely
 - Pros: Type-safe SQL, composable queries, lightweight
@@ -68,7 +68,7 @@ Prisma offers schema-as-code, type generation, and powerful migrations.
 ### Raw SQL + Custom Query Builder
 - Pros: Maximum control, minimal abstraction
 - Cons: No type safety, SQL injection risk, manual migration tracking
-- **Rejected**: VietERP scale demands ORM features
+- **Rejected**: BaoERP scale demands ORM features
 
 ## Hệ quả / Consequences
 
@@ -106,7 +106,7 @@ Prisma offers schema-as-code, type generation, and powerful migrations.
 - [Prisma Schema Reference](https://www.prisma.io/docs/orm/reference/prisma-schema-reference)
 - [Prisma Client API](https://www.prisma.io/docs/orm/reference/prisma-client-reference)
 - [PostgreSQL Full-Text Search with Prisma](https://www.prisma.io/docs/orm/reference/prisma-schema-reference#fulltext-search)
-- VietERP Models: `apps/accounting/prisma`, `apps/crm/prisma`, etc.
+- BaoERP Models: `apps/accounting/prisma`, `apps/crm/prisma`, etc.
 
 ---
 

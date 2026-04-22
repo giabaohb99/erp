@@ -125,7 +125,7 @@ async function runTest(
 // Main function
 async function collectBaseline(): Promise<void> {
   console.log('═══════════════════════════════════════════════════════════════');
-  console.log('  VietERP MRP PERFORMANCE BASELINE COLLECTION');
+  console.log('  BaoERP MRP PERFORMANCE BASELINE COLLECTION');
   console.log('═══════════════════════════════════════════════════════════════');
   console.log(`  Server: ${BASE_URL}`);
   console.log(`  Time: ${new Date().toISOString()}`);

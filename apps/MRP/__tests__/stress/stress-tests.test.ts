@@ -1,12 +1,12 @@
 // =============================================================================
 // STRESS TESTS
-// VietERP MRP Test Suite
+// BaoERP MRP Test Suite
 // =============================================================================
 
 import { MLEngine } from '@/lib/ai/ml-engine';
 import { CustomerPortalEngine } from '@/lib/customer/customer-engine';
-import { 
-  generateTimeSeriesData, 
+import {
+  generateTimeSeriesData,
   generateBulkItems,
   generateBulkOrders,
   generateBulkEquipment,
@@ -14,9 +14,9 @@ import {
   generateRiskFactors,
   generateMaintenanceHistory
 } from '../mocks/data-generators';
-import { 
-  runStressTest, 
-  measurePerformance, 
+import {
+  runStressTest,
+  measurePerformance,
   expectPerformance,
   expectStressTestResult,
   StressTestResult,
@@ -33,18 +33,18 @@ const STRESS_TEST_CONFIG = {
   LOW_CONCURRENCY: 10,
   MEDIUM_CONCURRENCY: 50,
   HIGH_CONCURRENCY: 100,
-  
+
   // Duration (ms)
   SHORT_DURATION: 1000,
   MEDIUM_DURATION: 5000,
   LONG_DURATION: 10000,
-  
+
   // Data sizes
   SMALL_DATASET: 100,
   MEDIUM_DATASET: 1000,
   LARGE_DATASET: 10000,
   MASSIVE_DATASET: 100000,
-  
+
   // Thresholds
   MAX_ERROR_RATE: 1, // 1%
   MAX_AVG_RESPONSE_TIME: 100, // ms
@@ -60,7 +60,7 @@ describe('ML Engine Stress Tests', () => {
   describe('Forecasting Performance', () => {
     it('should handle high-frequency forecasting requests', async () => {
       const data = generateTimeSeriesData(365).map(d => d.value);
-      
+
       const result = await runStressTest(
         async () => {
           MLEngine.doubleExponentialSmoothing(data, 0.3, 0.1, 30);
@@ -71,7 +71,7 @@ describe('ML Engine Stress Tests', () => {
       );
 
       console.log('Forecasting Stress Test Results:', result);
-      
+
       expectStressTestResult(result, {
         maxErrorRate: 0,
         maxAvgResponseTime: 50,
@@ -80,14 +80,14 @@ describe('ML Engine Stress Tests', () => {
 
     it('should scale with increasing data size', async () => {
       const results: { size: number; metrics: PerformanceMetrics }[] = [];
-      
+
       for (const size of [100, 500, 1000, 5000]) {
         const data = generateTimeSeriesData(size).map(d => d.value);
-        
+
         const metrics = await measurePerformance(() => {
           MLEngine.doubleExponentialSmoothing(data, 0.3, 0.1, 30);
         }, 10);
-        
+
         results.push({ size, metrics });
       }
 
@@ -95,7 +95,7 @@ describe('ML Engine Stress Tests', () => {
       for (let i = 1; i < results.length; i++) {
         const timeRatio = results[i].metrics.executionTime / results[i - 1].metrics.executionTime;
         const sizeRatio = results[i].size / results[i - 1].size;
-        
+
         // Time should not grow faster than O(n^2)
         expect(timeRatio).toBeLessThan(sizeRatio * sizeRatio);
       }
@@ -111,7 +111,7 @@ describe('ML Engine Stress Tests', () => {
       const data = Array.from({ length: 100 }, (_, i) => 100 + i); // Linear trend
       let accuracySum = 0;
       let count = 0;
-      
+
       await runStressTest(
         async () => {
           const forecast = MLEngine.doubleExponentialSmoothing(data, 0.3, 0.1, 7);
@@ -144,7 +144,7 @@ describe('ML Engine Stress Tests', () => {
         const data = Array.from({ length: testCase.size }, () => Math.random() * 100);
         // Add some anomalies
         data[Math.floor(testCase.size / 2)] = 1000;
-        
+
         const metrics = await measurePerformance(() => {
           MLEngine.detectAnomaliesZScore(data, 2.5);
         }, 10);
@@ -160,7 +160,7 @@ describe('ML Engine Stress Tests', () => {
 
     it('should compare Z-Score vs IQR performance', async () => {
       const data = Array.from({ length: 10000 }, () => Math.random() * 100);
-      
+
       const zScoreMetrics = await measurePerformance(() => {
         MLEngine.detectAnomaliesZScore(data);
       }, 100);
@@ -193,7 +193,7 @@ describe('ML Engine Stress Tests', () => {
       );
 
       console.log('Health Calculation Stress Results:', result);
-      
+
       expectStressTestResult(result, {
         maxErrorRate: 0,
         minRequestsPerSecond: 500,
@@ -202,10 +202,10 @@ describe('ML Engine Stress Tests', () => {
 
     it('should scale with equipment count', async () => {
       const equipmentCounts = [10, 50, 100, 500];
-      
+
       for (const count of equipmentCounts) {
         const equipment = generateBulkEquipment(count);
-        
+
         const metrics = await measurePerformance(() => {
           equipment.forEach(() => {
             const sensors = generateSensorReadings(4);
@@ -231,7 +231,7 @@ describe('Customer Portal Stress Tests', () => {
   describe('Currency Formatting Performance', () => {
     it('should handle high-frequency currency formatting', async () => {
       const amounts = Array.from({ length: 1000 }, () => Math.random() * 10000000000);
-      
+
       const result = await runStressTest(
         async () => {
           amounts.forEach(amount => CustomerPortalEngine.formatCurrency(amount));
@@ -254,7 +254,7 @@ describe('Customer Portal Stress Tests', () => {
         tax: Math.random() * 10000000,
         total: Math.random() * 110000000,
       }));
-      
+
       const metrics = await measurePerformance(() => {
         invoices.forEach(inv => {
           CustomerPortalEngine.formatCurrency(inv.subtotal);
@@ -279,7 +279,7 @@ describe('Customer Portal Stress Tests', () => {
         const offset = (Math.random() - 0.3) * 30 * 86400000; // -9 to +21 days
         return new Date(Date.now() + offset).toISOString();
       });
-      
+
       const metrics = await measurePerformance(() => {
         dates.forEach(date => CustomerPortalEngine.getDaysUntilDue(date));
       }, 10);
@@ -301,7 +301,7 @@ describe('Customer Portal Stress Tests', () => {
           producedQty: Math.floor(Math.random() * 100),
         })),
       }));
-      
+
       const metrics = await measurePerformance(() => {
         orders.forEach(order => CustomerPortalEngine.calculateOrderProgress(order.items as any));
       }, 10);
@@ -325,7 +325,7 @@ describe('Memory Stress Tests', () => {
   describe('Large Dataset Memory Usage', () => {
     it('should not leak memory during repeated operations', async () => {
       const initialMemory = process.memoryUsage().heapUsed;
-      
+
       // Perform many operations
       for (let i = 0; i < 100; i++) {
         const data = generateTimeSeriesData(1000).map(d => d.value);
@@ -343,7 +343,7 @@ describe('Memory Stress Tests', () => {
       const memoryGrowth = finalMemory - initialMemory;
 
       console.log('Memory Growth:', formatBytes(memoryGrowth));
-      
+
       // Memory should not grow excessively (< 50MB for 100 iterations)
       expect(memoryGrowth).toBeLessThan(50 * 1024 * 1024);
     });
@@ -351,7 +351,7 @@ describe('Memory Stress Tests', () => {
     it('should handle massive time series data', async () => {
       const massiveData = generateTimeSeriesData(365 * 5); // 5 years of daily data
       const values = massiveData.map(d => d.value);
-      
+
       const metrics = await measurePerformance(() => {
         MLEngine.doubleExponentialSmoothing(values, 0.3, 0.1, 90);
       }, 5);
@@ -370,7 +370,7 @@ describe('Memory Stress Tests', () => {
   describe('Concurrent Memory Usage', () => {
     it('should handle concurrent calculations without memory issues', async () => {
       const initialMemory = process.memoryUsage().heapUsed;
-      
+
       const promises = Array.from({ length: 100 }, async () => {
         const data = generateTimeSeriesData(500).map(d => d.value);
         MLEngine.doubleExponentialSmoothing(data, 0.3, 0.1, 14);
@@ -383,7 +383,7 @@ describe('Memory Stress Tests', () => {
       const memoryGrowth = finalMemory - initialMemory;
 
       console.log('Concurrent Memory Usage:', formatBytes(memoryGrowth));
-      
+
       // Memory should stay reasonable
       expect(memoryGrowth).toBeLessThan(100 * 1024 * 1024);
     });
@@ -409,7 +409,7 @@ describe('Performance Benchmarks', () => {
 
   it('Benchmark: Moving Average (1000 points)', async () => {
     const data = generateTimeSeriesData(1000).map(d => d.value);
-    
+
     const metrics = await measurePerformance(() => {
       MLEngine.movingAverage(data, 7);
     }, 1000);
@@ -424,7 +424,7 @@ describe('Performance Benchmarks', () => {
 
   it('Benchmark: EMA (1000 points)', async () => {
     const data = generateTimeSeriesData(1000).map(d => d.value);
-    
+
     const metrics = await measurePerformance(() => {
       MLEngine.exponentialMovingAverage(data, 0.3);
     }, 1000);
@@ -439,7 +439,7 @@ describe('Performance Benchmarks', () => {
 
   it('Benchmark: Double Exponential Smoothing (365 days)', async () => {
     const data = generateTimeSeriesData(365).map(d => d.value);
-    
+
     const metrics = await measurePerformance(() => {
       MLEngine.doubleExponentialSmoothing(data, 0.3, 0.1, 30);
     }, 100);
@@ -454,7 +454,7 @@ describe('Performance Benchmarks', () => {
 
   it('Benchmark: Seasonality Detection', async () => {
     const data = generateTimeSeriesData(365).map(d => d.value);
-    
+
     const metrics = await measurePerformance(() => {
       MLEngine.detectSeasonality(data, 7);
     }, 100);
@@ -484,7 +484,7 @@ describe('Performance Benchmarks', () => {
 
   it('Benchmark: Z-Score Anomaly Detection (10000 points)', async () => {
     const data = Array.from({ length: 10000 }, () => Math.random() * 100);
-    
+
     const metrics = await measurePerformance(() => {
       MLEngine.detectAnomaliesZScore(data);
     }, 100);
@@ -499,7 +499,7 @@ describe('Performance Benchmarks', () => {
 
   it('Benchmark: Currency Formatting (10000 amounts)', async () => {
     const amounts = Array.from({ length: 10000 }, () => Math.random() * 10000000000);
-    
+
     const metrics = await measurePerformance(() => {
       amounts.forEach(a => CustomerPortalEngine.formatCurrency(a));
     }, 10);

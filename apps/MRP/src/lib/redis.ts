@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - REDIS CONNECTION
+// BaoERP MRP - REDIS CONNECTION
 // Disabled - using in-memory alternatives for Render compatibility
 // =============================================================================
 
@@ -27,12 +27,12 @@ export const redis = {
   },
   keys: async () => [],
   pipeline: () => ({
-    incr: function() { return this; },
-    ttl: function() { return this; },
-    expire: function() { return this; },
-    zremrangebyscore: function() { return this; },
-    zcard: function() { return this; },
-    zadd: function() { return this; },
+    incr: function () { return this; },
+    ttl: function () { return this; },
+    expire: function () { return this; },
+    zremrangebyscore: function () { return this; },
+    zcard: function () { return this; },
+    zadd: function () { return this; },
     exec: async () => [[null, 1], [null, -1]],
   }),
   multi: () => ({

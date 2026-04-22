@@ -1,7 +1,7 @@
-# BAO CAO NGHIEM THU DU AN VietERP MRP
+# BAO CAO NGHIEM THU DU AN BaoERP MRP
 ## Trinh CEO — Cap nhat 11/03/2026
 
-> **Du an:** VietERP MRP (Material Requirements Planning)
+> **Du an:** BaoERP MRP (Material Requirements Planning)
 > **Don vi phat trien:** RTRobotics / Team Prismy
 > **Domain:** https://mrp.prismy.in
 > **Thoi gian phat trien:** 27/12/2025 - 11/03/2026 (11 tuan)
@@ -10,7 +10,7 @@
 
 ## 1. TOM TAT DIEU HANH (EXECUTIVE SUMMARY)
 
-VietERP MRP la he thong **Hoach Dinh Nhu Cau Vat Tu & San Xuat Thong Minh** cap doanh nghiep, tich hop AI/ML. He thong phu toan bo vong doi san xuat tu don hang den giao hang.
+BaoERP MRP la he thong **Hoach Dinh Nhu Cau Vat Tu & San Xuat Thong Minh** cap doanh nghiep, tich hop AI/ML. He thong phu toan bo vong doi san xuat tu don hang den giao hang.
 
 ### Ket qua dat duoc
 
@@ -329,7 +329,7 @@ Tuan 11  (06/03 - 11/03): Cost Optimization Module (Sprint A-E) + Seed Data + Te
 
 ## 10. SO SANH VOI THI TRUONG
 
-| Tinh nang | VietERP MRP | SAP B1 | Odoo MRP | NetSuite |
+| Tinh nang | BaoERP MRP | SAP B1 | Odoo MRP | NetSuite |
 |-----------|:-------:|:------:|:--------:|:--------:|
 | MRP Engine | YES | YES | YES | YES |
 | AI Copilot | YES | NO | NO | NO |
@@ -386,7 +386,7 @@ Tuan 11  (06/03 - 11/03): Cost Optimization Module (Sprint A-E) + Seed Data + Te
 
 ### Ket luan
 
-Du an VietERP MRP da dat **87/100 diem tong the**, voi **19/23 module core san sang production**. He thong co kien truc enterprise-grade, tich hop AI sau, va cac tinh nang MRP toan dien ma cac doi thu canh tranh khong co (AI Copilot, Monte Carlo, Tet Calendar, MISA Export, **Cost Optimization voi AI Advisor**).
+Du an BaoERP MRP da dat **87/100 diem tong the**, voi **19/23 module core san sang production**. He thong co kien truc enterprise-grade, tich hop AI sau, va cac tinh nang MRP toan dien ma cac doi thu canh tranh khong co (AI Copilot, Monte Carlo, Tet Calendar, MISA Export, **Cost Optimization voi AI Advisor**).
 
 Trong 11 tuan phat trien, du an da dat:
 - **~391,900 dong code**, **2,170 source files**

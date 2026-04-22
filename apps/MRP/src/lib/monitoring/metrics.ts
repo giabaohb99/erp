@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - PROMETHEUS METRICS
+// BaoERP MRP - PROMETHEUS METRICS
 // Application metrics for monitoring
 // NOTE: Install prom-client: npm install prom-client
 // =============================================================================
@@ -242,7 +242,7 @@ export function measureHttpRequest(
   tenant?: string
 ): void {
   const labels = { method, path, status: String(status), tenant: tenant || 'system' };
-  
+
   httpRequestsTotal.inc(labels);
   httpRequestDuration.observe(labels, durationMs / 1000);
 }

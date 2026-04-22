@@ -1,8 +1,8 @@
 # REVERSE REQUIREMENTS INTERVIEW (RRI)
-# VietERP MRP Project Investigation Report
+# BaoERP MRP Project Investigation Report
 
 **Date:** 2026-02-18
-**Project:** VietERP MRP (Manufacturing Resource Planning)
+**Project:** BaoERP MRP (Manufacturing Resource Planning)
 **Version:** 0.1.0
 **Codebase:** 310K+ LOC | 1,162 files | 154 Prisma models | 273 API routes
 
@@ -347,7 +347,7 @@ Week 5:
 EMPATHY x STRUCTURE x EXHAUSTIVENESS
 (3 Personas)   (6 Agents)   (147 Issues Found)
 =
-COMPLETE REQUIREMENTS for Production-Ready VietERP MRP
+COMPLETE REQUIREMENTS for Production-Ready BaoERP MRP
 ```
 
 **Investigation by:** Claude RRI Framework

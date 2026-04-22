@@ -403,7 +403,7 @@ model PickListLine {
 
 ```
 ┌─────────────────────────────────────────┐
-│  ≡  VietERP MRP Mobile            👤 John   │
+│  ≡  BaoERP MRP Mobile            👤 John   │
 ├─────────────────────────────────────────┤
 │                                         │
 │  ┌─────────────────────────────────┐   │
@@ -1458,9 +1458,9 @@ export async function getScanHistory(limit: number = 10): Promise<ScanHistoryEnt
 // public/manifest.json
 
 {
-  "name": "VietERP MRP Mobile",
-  "short_name": "VietERP MRP",
-  "description": "Mobile interface for VietERP MRP System",
+  "name": "BaoERP MRP Mobile",
+  "short_name": "BaoERP MRP",
+  "description": "Mobile interface for BaoERP MRP System",
   "start_url": "/m",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -1645,7 +1645,7 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    self.registration.showNotification(data.title || 'VietERP MRP', options)
+    self.registration.showNotification(data.title || 'BaoERP MRP', options)
   );
 });
 
@@ -1900,7 +1900,7 @@ npm install -D @types/qrcode
 ### ✅ SAU KHI HOÀN THÀNH
 
 ```
-✅ Đã thêm Phase 12 Mobile & Barcode vào project VietERP MRP System
+✅ Đã thêm Phase 12 Mobile & Barcode vào project BaoERP MRP System
 
 New Capabilities:
 ├── 📱 PWA (Progressive Web App)
@@ -1973,7 +1973,7 @@ Database: +6 new models
 
 ```
 ╔════════════════════════════════════════════════════════════════════╗
-║           VietERP MRP SYSTEM - POST PHASE 12                          ║
+║           BaoERP MRP SYSTEM - POST PHASE 12                          ║
 ╠════════════════════════════════════════════════════════════════════╣
 ║                                                                    ║
 ║  Integration:          4.0/10 → 6.5/10 (+2.5) 🚀🚀                ║

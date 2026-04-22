@@ -1,7 +1,7 @@
 'use client';
 
 // =============================================================================
-// VietERP MRP - AUTH CONTEXT & HOOKS
+// BaoERP MRP - AUTH CONTEXT & HOOKS
 // Authentication state management with React Context
 // =============================================================================
 

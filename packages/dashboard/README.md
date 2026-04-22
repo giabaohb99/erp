@@ -1,14 +1,14 @@
 # @vierp/dashboard
 
-**VietERP Unified Dashboard Package**
+**BaoERP Unified Dashboard Package**
 
-Unified dashboard package with KPI widgets that aggregate data across all VietERP modules. Provides reusable React components, hooks, and preset configurations for building dashboards with real-time insights.
+Unified dashboard package with KPI widgets that aggregate data across all BaoERP modules. Provides reusable React components, hooks, and preset configurations for building dashboards with real-time insights.
 
 ---
 
 **Package Tiếng Việt:**
 
-Gói Dashboard thống nhất VietERP với các widget KPI tổng hợp dữ liệu từ tất cả các mô-đun VietERP. Cung cấp các thành phần React có thể tái sử dụng, hook và cấu hình preset để xây dựng bảng điều khiển với những hiểu biết sâu sắc thực tế.
+Gói Dashboard thống nhất BaoERP với các widget KPI tổng hợp dữ liệu từ tất cả các mô-đun BaoERP. Cung cấp các thành phần React có thể tái sử dụng, hook và cấu hình preset để xây dựng bảng điều khiển với những hiểu biết sâu sắc thực tế.
 
 ## Features | Tính Năng
 
@@ -485,11 +485,11 @@ Fully typed with strict TypeScript support. No `@ts-ignore` needed.
 
 ## License | Giấy Phép
 
-Proprietary — VietERP Project
+Proprietary — BaoERP Project
 
 ## Contributing | Đóng Góp
 
-Report issues or suggest improvements in the VietERP monorepo.
+Report issues or suggest improvements in the BaoERP monorepo.
 
 ---
 

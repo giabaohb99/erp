@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - TENANT CONTEXT & MIDDLEWARE
+// BaoERP MRP - TENANT CONTEXT & MIDDLEWARE
 // Automatic tenant isolation for multi-tenancy
 // =============================================================================
 

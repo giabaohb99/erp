@@ -3,10 +3,10 @@ import { PortalLayoutClient } from './portal-layout-client';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | VietERP MRP',
+    template: '%s | BaoERP MRP',
     default: 'Cổng khách hàng',
   },
-  description: 'Cổng thông tin khách hàng và nhà cung cấp VietERP MRP',
+  description: 'Cổng thông tin khách hàng và nhà cung cấp BaoERP MRP',
 };
 
 export default function PortalLayout({ children }: { children: React.ReactNode }) {

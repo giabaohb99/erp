@@ -1,7 +1,7 @@
 /**
  * Packing List PDF Document Generator
  * Generates a packing list for shipments based on Sales Orders.
- * VietERP MRP System
+ * BaoERP MRP System
  */
 
 import {

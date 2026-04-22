@@ -1,4 +1,4 @@
-# 🏢 VietERP MRP ENTERPRISE TOOLS v1.1
+# 🏢 BaoERP MRP ENTERPRISE TOOLS v1.1
 ## Công cụ kiểm tra năng lực cho doanh nghiệp quy mô lớn
 
 ---
@@ -205,7 +205,7 @@ curl https://your-app.com/api/enterprise/health | jq '.metrics.database'
 - ✅ Part schema: Uses `partName` field (accepts `name` as alias)
 - ✅ Inventory schema: Uses `onHand` field (accepts `quantity` as alias)
 - ✅ Inventory: Single inventory per part (partId unique)
-- ✅ API endpoints: Match actual VietERP MRP routes
+- ✅ API endpoints: Match actual BaoERP MRP routes
 
 ### Additions
 - ➕ Test data generator (100K - 5M records)
@@ -222,4 +222,4 @@ curl https://your-app.com/api/enterprise/health | jq '.metrics.database'
 
 ---
 
-*VietERP MRP Enterprise Tools v1.1 - Production Ready*
+*BaoERP MRP Enterprise Tools v1.1 - Production Ready*

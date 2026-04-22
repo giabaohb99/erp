@@ -1,5 +1,5 @@
 # .github/workflows/cd-production.yml
-# Continuous Deployment to Production for VietERP MRP System
+# Continuous Deployment to Production for BaoERP MRP System
 
 name: CD Production
 

@@ -78,7 +78,7 @@ Storage abstraction layer with two implementations:
 - Scalable to millions of notifications
 
 ### 5. **src/templates.ts** (6.8 KB)
-Bilingual notification templates for common VietERP events:
+Bilingual notification templates for common BaoERP events:
 
 **Pre-built Templates** (all with vi/en locale support):
 1. `invoiceCreated(invoice)` → "Hoá đơn mới #INV-001 — 5,000,000 VNĐ"
@@ -203,7 +203,7 @@ const { notifications, unreadCount, markRead } = useNotifications(client);
 
 1. Install dependencies: `npm install ws`
 2. Build TypeScript: `npm run build`
-3. Integrate with existing VietERP apps via the package exports
+3. Integrate with existing BaoERP apps via the package exports
 4. Configure JWT verifier function
 5. Choose storage backend (InMemory for dev, Redis for production)
 6. Use templates or NotificationBuilder to send notifications

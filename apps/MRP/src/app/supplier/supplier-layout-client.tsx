@@ -88,8 +88,8 @@ export function SupplierLayoutClient({ children }: { children: React.ReactNode }
   const displayEmail = supplier?.contactEmail || '';
   const displayRating = supplier?.rating != null
     ? (typeof supplier.rating === 'number'
-        ? (supplier.rating >= 4 ? 'A' : supplier.rating >= 3 ? 'B' : 'C')
-        : String(supplier.rating))
+      ? (supplier.rating >= 4 ? 'A' : supplier.rating >= 3 ? 'B' : 'C')
+      : String(supplier.rating))
     : '--';
 
   return (
@@ -111,7 +111,7 @@ export function SupplierLayoutClient({ children }: { children: React.ReactNode }
               </div>
               <div className="hidden sm:block">
                 <p className="font-bold text-gray-900 dark:text-white">Supplier Portal</p>
-                <p className="text-xs text-gray-500">VietERP MRP</p>
+                <p className="text-xs text-gray-500">BaoERP MRP</p>
               </div>
             </Link>
           </div>

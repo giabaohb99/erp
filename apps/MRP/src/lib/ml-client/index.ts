@@ -1,5 +1,5 @@
 // src/lib/ml-client/index.ts
-// ML Service client for VietERP MRP System
+// ML Service client for BaoERP MRP System
 
 const ML_SERVICE_URL = process.env.ML_SERVICE_URL || "http://localhost:8000";
 

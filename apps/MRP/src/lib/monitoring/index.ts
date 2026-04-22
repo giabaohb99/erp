@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - MONITORING MODULE
+// BaoERP MRP - MONITORING MODULE
 // Export all monitoring utilities
 // =============================================================================
 

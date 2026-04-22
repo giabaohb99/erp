@@ -1,5 +1,5 @@
 # ============================================================
-# VietERP Monitoring Stack (TIP-005)
+# BaoERP Monitoring Stack (TIP-005)
 # Services: Prometheus, Grafana, Loki
 # Usage: docker compose -f docker-compose.monitoring.yml up -d
 # ============================================================

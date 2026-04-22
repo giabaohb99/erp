@@ -398,4 +398,4 @@ Sau khi fix xong từng chức năng, sẽ báo để cùng verify:
 ---
 
 *Báo cáo phân tích - 2026-01-09*
-*VietERP MRP Customer Issue Response*
+*BaoERP MRP Customer Issue Response*

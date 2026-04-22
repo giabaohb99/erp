@@ -13,10 +13,10 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
-      // ===== VietERP BRAND COLORS =====
+      // ===== BaoERP BRAND COLORS =====
       colors: {
         // Brand Colors
-        vietErp: {
+        BaoERP: {
           gold: {
             DEFAULT: '#D7B797',
             light: '#E8D4C0',

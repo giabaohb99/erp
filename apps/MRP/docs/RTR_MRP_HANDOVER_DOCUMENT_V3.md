@@ -1,6 +1,6 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 #
-#                    VietERP MRP PROJECT HANDOVER DOCUMENT
+#                    BaoERP MRP PROJECT HANDOVER DOCUMENT
 #                    BẢN CHUYỂN GIAO DỰ ÁN CHI TIẾT
 #
 #                    Version: 3.0 (Comprehensive Update)
@@ -44,7 +44,7 @@
 
 | Thuộc tính | Giá trị |
 |------------|---------|
-| **Tên dự án** | VietERP MRP (VietERP Unified Intelligent Platform) |
+| **Tên dự án** | BaoERP MRP (BaoERP Unified Intelligent Platform) |
 | **Loại** | Enterprise Manufacturing Resource Planning (MRP) |
 | **Mục tiêu** | AI-Native MRP cho SMB Manufacturing Việt Nam |
 | **Trạng thái** | Production-Ready |
@@ -94,7 +94,7 @@
 
 ```
 ┌──────────────────────┬─────────┬────────────┬──────────────────┐
-│ Feature              │ VietERP MRP │ SAP/Oracle │ Assessment       │
+│ Feature              │ BaoERP MRP │ SAP/Oracle │ Assessment       │
 ├──────────────────────┼─────────┼────────────┼──────────────────┤
 │ Core MRP             │   85%   │    100%    │ Gap: APS nâng cao│
 │ Financial Integration│   40%   │    100%    │ Gap: Full GL     │

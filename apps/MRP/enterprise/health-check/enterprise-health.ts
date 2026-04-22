@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP ENTERPRISE HEALTH CHECK & DIAGNOSTICS
+// BaoERP MRP ENTERPRISE HEALTH CHECK & DIAGNOSTICS
 // Comprehensive system health monitoring for production
 // =============================================================================
 
@@ -82,11 +82,11 @@ interface ResourceMetrics {
 
 async function checkDatabase(): Promise<HealthCheck> {
   const start = Date.now();
-  
+
   try {
     await prisma.$queryRaw`SELECT 1`;
     const latency = Date.now() - start;
-    
+
     return {
       name: 'database',
       status: latency < 100 ? 'pass' : latency < 500 ? 'warn' : 'fail',
@@ -118,14 +118,14 @@ async function checkDatabaseCapacity(): Promise<HealthCheck> {
     `;
 
     // Check for high dead tuple ratio
-    const highDeadTuples = tableStats.filter(t => 
+    const highDeadTuples = tableStats.filter(t =>
       t.row_count > 0 && (t.dead_tuples / t.row_count) > 0.1
     );
 
     return {
       name: 'database_capacity',
       status: highDeadTuples.length === 0 ? 'pass' : 'warn',
-      message: highDeadTuples.length > 0 
+      message: highDeadTuples.length > 0
         ? `${highDeadTuples.length} tables need vacuuming`
         : 'Database capacity healthy',
       details: {
@@ -220,8 +220,8 @@ async function checkIndexHealth(): Promise<HealthCheck> {
     return {
       name: 'index_health',
       status: issues === 0 ? 'pass' : issues < 5 ? 'warn' : 'fail',
-      message: issues === 0 
-        ? 'Indexes healthy' 
+      message: issues === 0
+        ? 'Indexes healthy'
         : `${issues} index issues found`,
       details: {
         tablesNeedingIndexes: sequentialScans,
@@ -417,7 +417,7 @@ export async function runHealthCheck(): Promise<HealthStatus> {
   // Determine overall status
   const failedChecks = checks.filter(c => c.status === 'fail');
   const warnChecks = checks.filter(c => c.status === 'warn');
-  
+
   let status: HealthStatus['status'] = 'healthy';
   if (failedChecks.length > 0) {
     status = 'unhealthy';
@@ -487,11 +487,11 @@ export async function runHealthCheck(): Promise<HealthStatus> {
 export async function GET(request: Request) {
   try {
     const health = await runHealthCheck();
-    
-    const statusCode = 
+
+    const statusCode =
       health.status === 'healthy' ? 200 :
-      health.status === 'degraded' ? 200 :
-      503;
+        health.status === 'degraded' ? 200 :
+          503;
 
     return new Response(JSON.stringify(health, null, 2), {
       status: statusCode,

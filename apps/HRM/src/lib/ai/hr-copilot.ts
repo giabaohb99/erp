@@ -1,6 +1,6 @@
 import type { Tool } from "@anthropic-ai/sdk/resources/messages"
 
-export const HR_COPILOT_SYSTEM = `Bạn là AI HR Copilot của Công ty Cổ phần VietERP Việt Nam.
+export const HR_COPILOT_SYSTEM = `Bạn là AI HR Copilot của Công ty Cổ phần BaoERP Việt Nam.
 Bạn có thể tra cứu thông tin nhân sự thực tế và trả lời câu hỏi bằng tiếng Việt.
 
 Khả năng của bạn:

@@ -2,11 +2,11 @@
 
 **Trạng thái / Status**: Accepted
 **Ngày / Date**: 2026-03-29
-**Người quyết định / Deciders**: VietERP Core Team
+**Người quyết định / Deciders**: BaoERP Core Team
 
 ## Bối cảnh / Context
 
-VietERP backend services require a unified API gateway to:
+BaoERP backend services require a unified API gateway to:
 - Route requests across 14+ internal services and external APIs
 - Rate limiting (1000 req/min per API key, burst handling)
 - Request authentication and token validation
@@ -19,7 +19,7 @@ VietERP backend services require a unified API gateway to:
 - Traffic shaping and circuit breaking
 - CORS and HTTPS termination
 
-Các dịch vụ backend VietERP yêu cầu bộ điều phối API thống nhất:
+Các dịch vụ backend BaoERP yêu cầu bộ điều phối API thống nhất:
 - Định tuyến yêu cầu trên 14+ dịch vụ nội bộ và API bên ngoài
 - Giới hạn tỷ lệ (1000 yêu cầu/phút cho mỗi khóa API)
 - Xác thực yêu cầu và xác thực mã thông báo
@@ -36,9 +36,9 @@ Kong provides extensible plugin ecosystem and performance at scale.
 
 ## Quyết định / Decision
 
-**Adopt Kong Gateway** as the unified API gateway for VietERP backend services.
+**Adopt Kong Gateway** as the unified API gateway for BaoERP backend services.
 
-Áp dụng **Kong Gateway** làm bộ điều phối API thống nhất cho các dịch vụ backend VietERP.
+Áp dụng **Kong Gateway** làm bộ điều phối API thống nhất cho các dịch vụ backend BaoERP.
 
 **Configuration**:
 - Kong 3.4+ (latest stable)
@@ -75,7 +75,7 @@ Kong provides extensible plugin ecosystem and performance at scale.
 ### AWS API Gateway
 - Pros: Managed, scalable, AWS integrations
 - Cons: Vendor lock-in, cost per request, limited customization
-- **Rejected**: VietERP multi-cloud strategy requires self-hosted
+- **Rejected**: BaoERP multi-cloud strategy requires self-hosted
 
 ### Envoy / Service Mesh (Istio)
 - Pros: Advanced traffic management, observability
@@ -103,7 +103,7 @@ Kong provides extensible plugin ecosystem and performance at scale.
 
 1. **Another Service to Operate**: Kong requires monitoring, backups, upgrades
    - Dịch vụ khác để hoạt động: Kong yêu cầu giám sát, sao lưu, nâng cấp
-2. **Latency Addition**: Extra hop adds ~5-10ms (acceptable for VietERP)
+2. **Latency Addition**: Extra hop adds ~5-10ms (acceptable for BaoERP)
    - Độ trễ bổ sung: Hop thêm thêm ~5-10ms
 3. **Plugin Complexity**: Custom plugins require Lua or JavaScript knowledge
    - Độ phức tạp của plugin: Plugin tùy chỉnh yêu cầu kiến thức Lua
@@ -118,7 +118,7 @@ Kong provides extensible plugin ecosystem and performance at scale.
 - [Kong Admin API](https://docs.konghq.com/gateway/latest/admin-api/)
 - [Kong Plugins Hub](https://docs.konghq.com/hub)
 - [Kong Kubernetes Ingress Controller](https://docs.konghq.com/kubernetes-ingress-controller)
-- VietERP Services: `accounts-service`, `crm-service`, `inventory-service`, etc.
+- BaoERP Services: `accounts-service`, `crm-service`, `inventory-service`, etc.
 
 ---
 

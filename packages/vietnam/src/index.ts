@@ -1,5 +1,5 @@
 /**
- * @vierp/vietnam - Vietnamese Market Features for VietERP
+ * @vierp/vietnam - Vietnamese Market Features for BaoERP
  * Version 1.0.0
  *
  * Comprehensive Vietnamese compliance and market-specific functionality:
@@ -52,7 +52,7 @@ export default {
 /**
  * Quick reference exports for common operations
  */
-export const VietERP = {
+export const BaoERP = {
   // Tax calculations
   tax: (tax as any).default ?? tax,
 

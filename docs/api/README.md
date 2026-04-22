@@ -2,7 +2,7 @@
 
 **Tham chiếu API / API Reference Overview**
 
-Complete API reference for the VietERP Platform. All modules provide RESTful JSON APIs with comprehensive authentication and error handling.
+Complete API reference for the BaoERP Platform. All modules provide RESTful JSON APIs with comprehensive authentication and error handling.
 
 ## Base URLs / URL cơ sở
 
@@ -35,7 +35,7 @@ https://api.vierp.vn/api/v1
 
 ## Authentication / Xác thực
 
-VietERP supports two authentication methods:
+BaoERP supports two authentication methods:
 
 ### 1. JWT Bearer Token / Token JWT Bearer
 
@@ -359,7 +359,7 @@ try {
 
 ## Webhooks / Webhook
 
-VietERP can send real-time notifications to your application:
+BaoERP can send real-time notifications to your application:
 
 ```bash
 # Register webhook
@@ -486,7 +486,7 @@ Features:
 
 Current API version: **v1**
 
-VietERP follows semantic versioning:
+BaoERP follows semantic versioning:
 - Breaking changes → Major version (v2, v3)
 - New features → Minor version (v1.1, v1.2)
 - Bug fixes → Patch version (v1.0.1, v1.0.2)

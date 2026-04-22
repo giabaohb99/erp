@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: 'Dashboard | VietERP MRP',
-  description: 'VietERP MRP manufacturing dashboard overview - Tổng quan bảng điều khiển sản xuất VietERP MRP',
+  title: 'Dashboard | BaoERP MRP',
+  description: 'BaoERP MRP manufacturing dashboard overview - Tổng quan bảng điều khiển sản xuất BaoERP MRP',
 };
 
 // Redirect to main dashboard

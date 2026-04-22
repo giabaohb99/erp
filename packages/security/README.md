@@ -1,6 +1,6 @@
 # @erp/security — Security Headers, CORS, CSRF, Sanitization
 
-Comprehensive security package for VietERP with native Next.js/Express integration. Implements TIP-015 security hardening across the monorepo.
+Comprehensive security package for BaoERP with native Next.js/Express integration. Implements TIP-015 security hardening across the monorepo.
 
 **[English](#english) | [Tiếng Việt](#tiếng-việt)**
 
@@ -564,4 +564,4 @@ NODE_ENV=production
 
 ## License
 
-MIT — VietERP Project
+MIT — BaoERP Project

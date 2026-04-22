@@ -1,4 +1,4 @@
-# 🔄 VietERP MRP PROJECT HANDOVER
+# 🔄 BaoERP MRP PROJECT HANDOVER
 ## Document di cư ngữ cảnh dự án - Version 2026-01-06
 
 ---
@@ -7,7 +7,7 @@
 
 | Attribute | Value |
 |-----------|-------|
-| **Project** | VietERP MRP (Real-Time Resource - Material Requirements Planning) |
+| **Project** | BaoERP MRP (Real-Time Resource - Material Requirements Planning) |
 | **Stack** | Next.js 14 + TypeScript + Prisma + PostgreSQL + Redis + AI (Gemini/OpenAI) |
 | **Repo Location** | `/Users/mac/AnhQuocLuong/vierp-mrp` |
 | **Status** | ✅ Production Ready - Enterprise Scale + AI Maturity 80% |
@@ -361,7 +361,7 @@ k6 run enterprise/capacity-test/capacity-test.js --env BASE_URL=https://app.com
 ### So sánh thị trường
 
 ```
-VietERP MRP positioning: Mid-market ERP (tương đương Odoo, ERPNext)
+BaoERP MRP positioning: Mid-market ERP (tương đương Odoo, ERPNext)
 - Smaller than: SAP B1, NetSuite
 - Similar to: Odoo MRP, ERPNext
 - Larger than: Fishbowl, Zoho Inventory
@@ -510,6 +510,6 @@ Chi tiết đầy đủ các session trước:
 
 ---
 
-*VietERP MRP Handover Document v3.1*
+*BaoERP MRP Handover Document v3.1*
 *Updated: 2026-01-19 - Phase 3 Complete, AI Maturity 80%*
 *Status: Production Ready + Enterprise Tools v1.3 + Full AI Suite*

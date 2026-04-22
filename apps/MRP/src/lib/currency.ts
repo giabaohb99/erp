@@ -1,6 +1,6 @@
 /**
  * Centralized Currency Formatting Utility
- * VietERP MRP System
+ * BaoERP MRP System
  */
 
 export type Currency = 'USD' | 'VND' | 'EUR';

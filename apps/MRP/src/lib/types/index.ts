@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - COMPREHENSIVE TYPE DEFINITIONS
+// BaoERP MRP - COMPREHENSIVE TYPE DEFINITIONS
 // Shared types to eliminate 'any' usage across the codebase
 // =============================================================================
 
@@ -198,14 +198,14 @@ export interface SalesOrder {
   lines?: SalesOrderLine[];
 }
 
-export type SalesOrderStatus = 
-  | 'DRAFT' 
-  | 'PENDING' 
-  | 'CONFIRMED' 
-  | 'IN_PROGRESS' 
-  | 'SHIPPED' 
-  | 'DELIVERED' 
-  | 'COMPLETED' 
+export type SalesOrderStatus =
+  | 'DRAFT'
+  | 'PENDING'
+  | 'CONFIRMED'
+  | 'IN_PROGRESS'
+  | 'SHIPPED'
+  | 'DELIVERED'
+  | 'COMPLETED'
   | 'CANCELLED';
 
 export type Priority = 'low' | 'normal' | 'high' | 'urgent';
@@ -240,13 +240,13 @@ export interface WorkOrder {
   operations?: WorkOrderOperation[];
 }
 
-export type WorkOrderStatus = 
-  | 'DRAFT' 
-  | 'RELEASED' 
-  | 'IN_PROGRESS' 
-  | 'ON_HOLD' 
-  | 'COMPLETED' 
-  | 'CLOSED' 
+export type WorkOrderStatus =
+  | 'DRAFT'
+  | 'RELEASED'
+  | 'IN_PROGRESS'
+  | 'ON_HOLD'
+  | 'COMPLETED'
+  | 'CLOSED'
   | 'CANCELLED';
 
 export interface WorkOrderOperation {
@@ -294,15 +294,15 @@ export interface PurchaseOrder {
   lines?: PurchaseOrderLine[];
 }
 
-export type PurchaseOrderStatus = 
-  | 'DRAFT' 
-  | 'PENDING' 
-  | 'APPROVED' 
-  | 'SENT' 
-  | 'CONFIRMED' 
-  | 'PARTIAL' 
-  | 'RECEIVED' 
-  | 'CLOSED' 
+export type PurchaseOrderStatus =
+  | 'DRAFT'
+  | 'PENDING'
+  | 'APPROVED'
+  | 'SENT'
+  | 'CONFIRMED'
+  | 'PARTIAL'
+  | 'RECEIVED'
+  | 'CLOSED'
   | 'CANCELLED';
 
 export interface PurchaseOrderLine {
@@ -355,12 +355,12 @@ export interface MRPSuggestion {
   part?: Part;
 }
 
-export type MRPSuggestionType = 
-  | 'PURCHASE' 
-  | 'MANUFACTURE' 
-  | 'RESCHEDULE_IN' 
-  | 'RESCHEDULE_OUT' 
-  | 'CANCEL' 
+export type MRPSuggestionType =
+  | 'PURCHASE'
+  | 'MANUFACTURE'
+  | 'RESCHEDULE_IN'
+  | 'RESCHEDULE_OUT'
+  | 'CANCEL'
   | 'EXPEDITE';
 
 export type MRPSuggestionStatus = 'PENDING' | 'ACCEPTED' | 'REJECTED' | 'PROCESSED';
@@ -517,12 +517,12 @@ export interface AppEvent {
   timestamp: Date;
 }
 
-export type EventType = 
-  | 'CREATE' 
-  | 'UPDATE' 
-  | 'DELETE' 
-  | 'STATUS_CHANGE' 
-  | 'ALERT' 
+export type EventType =
+  | 'CREATE'
+  | 'UPDATE'
+  | 'DELETE'
+  | 'STATUS_CHANGE'
+  | 'ALERT'
   | 'SYSTEM';
 
 export interface Notification {

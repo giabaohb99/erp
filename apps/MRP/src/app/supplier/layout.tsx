@@ -3,10 +3,10 @@ import { SupplierLayoutClient } from './supplier-layout-client';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | VietERP MRP',
+    template: '%s | BaoERP MRP',
     default: 'Cổng nhà cung cấp',
   },
-  description: 'Cổng thông tin nhà cung cấp VietERP MRP - Quản lý đơn hàng, giao hàng và hóa đơn',
+  description: 'Cổng thông tin nhà cung cấp BaoERP MRP - Quản lý đơn hàng, giao hàng và hóa đơn',
 };
 
 export default function SupplierLayout({ children }: { children: React.ReactNode }) {

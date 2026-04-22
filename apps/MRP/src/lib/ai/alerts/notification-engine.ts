@@ -61,7 +61,7 @@ export class NotificationEngine {
   private digestSchedules: Map<string, DigestSchedule> = new Map();
   private sentNotifications: Set<string> = new Set();
 
-  private constructor() {}
+  private constructor() { }
 
   static getInstance(): NotificationEngine {
     if (!NotificationEngine.instance) {
@@ -124,11 +124,11 @@ export class NotificationEngine {
     // Merge quietHours only if either exists
     const quietHours = (current.quietHours || updates.quietHours)
       ? {
-          enabled: updates.quietHours?.enabled ?? current.quietHours?.enabled ?? false,
-          start: updates.quietHours?.start ?? current.quietHours?.start ?? '22:00',
-          end: updates.quietHours?.end ?? current.quietHours?.end ?? '07:00',
-          exceptCritical: updates.quietHours?.exceptCritical ?? current.quietHours?.exceptCritical ?? true,
-        }
+        enabled: updates.quietHours?.enabled ?? current.quietHours?.enabled ?? false,
+        start: updates.quietHours?.start ?? current.quietHours?.start ?? '22:00',
+        end: updates.quietHours?.end ?? current.quietHours?.end ?? '07:00',
+        exceptCritical: updates.quietHours?.exceptCritical ?? current.quietHours?.exceptCritical ?? true,
+      }
       : undefined;
 
     const updated: NotificationPreferences = {
@@ -330,7 +330,7 @@ export class NotificationEngine {
 
   private buildEmailContent(alert: Alert): { subject: string; body: string } {
     const priorityEmoji = this.getPriorityEmoji(alert.priority);
-    const subject = `${priorityEmoji} [VietERP MRP] ${alert.title}`;
+    const subject = `${priorityEmoji} [BaoERP MRP] ${alert.title}`;
 
     const body = `
       <h2>${alert.title}</h2>
@@ -446,7 +446,7 @@ export class NotificationEngine {
       }
 
       const period = digest.period === 'daily' ? 'Hàng ngày' : 'Hàng tuần';
-      const subject = `📊 [VietERP MRP] Báo cáo Alerts ${period} - ${new Date().toLocaleDateString('vi-VN')}`;
+      const subject = `📊 [BaoERP MRP] Báo cáo Alerts ${period} - ${new Date().toLocaleDateString('vi-VN')}`;
 
       const body = `
         <h2>📊 Báo cáo Alerts ${period}</h2>

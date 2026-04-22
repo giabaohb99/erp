@@ -6,7 +6,7 @@
 apiVersion: 1
 
 providers:
-  - name: VietERP Dashboards
+  - name: BaoERP Dashboards
     orgId: 1
     folder: ""
     type: file

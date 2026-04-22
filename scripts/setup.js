@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * VietERP — Cross-platform Development Setup Script
+ * BaoERP — Cross-platform Development Setup Script
  * Works on Windows (PowerShell/CMD), macOS, and Linux
  *
  * Usage: node scripts/setup.js
@@ -49,7 +49,7 @@ function commandExists(cmd) {
 
 // ─── Main ───────────────────────────────────────────────────
 
-console.log(`\n${BLUE}=== VietERP — Development Environment Setup ===${NC}\n`);
+console.log(`\n${BLUE}=== BaoERP — Development Environment Setup ===${NC}\n`);
 console.log(`${BLUE}Platform: ${process.platform} | Node: ${process.version}${NC}\n`);
 
 let hasErrors = false;

@@ -1,6 +1,6 @@
 # @vierp/metrics
 
-Prometheus metrics package for VietERP applications. Provides out-of-the-box metrics collection for HTTP requests, database queries, NATS events, and cache operations.
+Prometheus metrics package for BaoERP applications. Provides out-of-the-box metrics collection for HTTP requests, database queries, NATS events, and cache operations.
 
 ---
 

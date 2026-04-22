@@ -2,7 +2,7 @@
 
 **Tham chiếu API thương mại điện tử / E-commerce API Reference**
 
-Complete API reference for the VietERP E-commerce module supporting B2B and B2C sales.
+Complete API reference for the BaoERP E-commerce module supporting B2B and B2C sales.
 
 ## Base URL / URL cơ sở
 
@@ -59,7 +59,7 @@ POST /ecommerce/products
     "storage": "512GB SSD"
   },
   "metaData": {
-    "title": "Laptop Pro 15 | VietERP",
+    "title": "Laptop Pro 15 | BaoERP",
     "description": "Buy Laptop Pro 15 online"
   }
 }

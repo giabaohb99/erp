@@ -16,60 +16,69 @@ const COLUMNS = [
   { id: 'REJECTED', labelKey: 'kanban.rejected', icon: XCircle },
 ];
 
-// Map column id to VietERP-style colors
+// Map column id to BaoERP-style colors
 const COLUMN_COLORS: any = {
   DRAFT: {
     header: ['bg-[rgba(102,102,102,0.15)]', 'bg-gray-100'],
     icon: ['text-[#999999]', 'text-gray-600'],
     count: ['bg-[rgba(102,102,102,0.25)] text-[#999999]', 'bg-gray-200 text-gray-600'],
     bg: ['bg-[#0A0A0A]/50', 'bg-gray-50'],
-    border: ['border-[#2E2E2E]', 'border-gray-300']},
+    border: ['border-[#2E2E2E]', 'border-gray-300']
+  },
   SUBMITTED: {
     header: ['bg-[rgba(210,153,34,0.12)]', 'bg-amber-50'],
     icon: ['text-[#E3B341]', 'text-amber-600'],
     count: ['bg-[rgba(210,153,34,0.25)] text-[#E3B341]', 'bg-amber-200 text-amber-700'],
     bg: ['bg-[rgba(210,153,34,0.04)]', 'bg-amber-50/50'],
-    border: ['border-[rgba(210,153,34,0.2)]', 'border-amber-200']},
+    border: ['border-[rgba(210,153,34,0.2)]', 'border-amber-200']
+  },
   LEVEL1_APPROVED: {
     header: ['bg-[rgba(163,113,247,0.12)]', 'bg-purple-50'],
     icon: ['text-[#A371F7]', 'text-purple-600'],
     count: ['bg-[rgba(163,113,247,0.25)] text-[#A371F7]', 'bg-purple-200 text-purple-700'],
     bg: ['bg-[rgba(163,113,247,0.04)]', 'bg-purple-50/50'],
-    border: ['border-[rgba(163,113,247,0.2)]', 'border-purple-200']},
+    border: ['border-[rgba(163,113,247,0.2)]', 'border-purple-200']
+  },
   LEVEL2_APPROVED: {
     header: ['bg-[rgba(59,130,246,0.12)]', 'bg-blue-50'],
     icon: ['text-[#60A5FA]', 'text-blue-600'],
     count: ['bg-[rgba(59,130,246,0.25)] text-[#60A5FA]', 'bg-blue-200 text-blue-700'],
     bg: ['bg-[rgba(59,130,246,0.04)]', 'bg-blue-50/50'],
-    border: ['border-[rgba(59,130,246,0.2)]', 'border-blue-200']},
+    border: ['border-[rgba(59,130,246,0.2)]', 'border-blue-200']
+  },
   APPROVED: {
     header: ['bg-[rgba(18,119,73,0.12)]', 'bg-emerald-50'],
     icon: ['text-[#2A9E6A]', 'text-emerald-600'],
     count: ['bg-[rgba(18,119,73,0.25)] text-[#2A9E6A]', 'bg-emerald-200 text-emerald-700'],
     bg: ['bg-[rgba(18,119,73,0.04)]', 'bg-emerald-50/50'],
-    border: ['border-[rgba(18,119,73,0.2)]', 'border-emerald-200']},
+    border: ['border-[rgba(18,119,73,0.2)]', 'border-emerald-200']
+  },
   FINAL: {
     header: ['bg-[rgba(215,183,151,0.12)]', 'bg-[rgba(215,183,151,0.15)]'],
     icon: ['text-[#D7B797]', 'text-[#6B4D30]'],
     count: ['bg-[rgba(215,183,151,0.25)] text-[#D7B797]', 'bg-[rgba(215,183,151,0.3)] text-[#6B4D30]'],
     bg: ['bg-[rgba(215,183,151,0.04)]', 'bg-[rgba(215,183,151,0.05)]'],
-    border: ['border-[rgba(215,183,151,0.2)]', 'border-[rgba(215,183,151,0.3)]']},
+    border: ['border-[rgba(215,183,151,0.2)]', 'border-[rgba(215,183,151,0.3)]']
+  },
   REJECTED: {
     header: ['bg-[rgba(248,81,73,0.12)]', 'bg-red-50'],
     icon: ['text-[#FF7B72]', 'text-red-600'],
     count: ['bg-[rgba(248,81,73,0.25)] text-[#FF7B72]', 'bg-red-200 text-red-700'],
     bg: ['bg-[rgba(248,81,73,0.04)]', 'bg-red-50/50'],
-    border: ['border-[rgba(248,81,73,0.2)]', 'border-red-200']}};
+    border: ['border-[rgba(248,81,73,0.2)]', 'border-red-200']
+  }
+};
 
 // Entity type badge styles
 const ENTITY_COLORS: any = {
   budget: ['bg-[rgba(215,183,151,0.15)] text-[#D7B797]', 'bg-[rgba(215,183,151,0.2)] text-[#6B4D30]'],
   planning: ['bg-[rgba(59,130,246,0.15)] text-[#60A5FA]', 'bg-blue-100 text-blue-700'],
-  proposal: ['bg-[rgba(16,185,129,0.15)] text-[#34D399]', 'bg-emerald-100 text-emerald-700']};
+  proposal: ['bg-[rgba(16,185,129,0.15)] text-[#34D399]', 'bg-emerald-100 text-emerald-700']
+};
 
 const TicketKanbanBoard = ({ tickets = [], onTicketClick }: any) => {
   const { t } = useLanguage();
-  const d =1; // index into color arrays
+  const d = 1; // index into color arrays
 
   // Group tickets by status — merge LEVEL1_REJECTED/LEVEL2_REJECTED into REJECTED
   const ticketsByStatus: any = COLUMNS.reduce((acc: any, col: any) => {
@@ -122,14 +131,14 @@ const TicketKanbanBoard = ({ tickets = [], onTicketClick }: any) => {
                     onClick={() => onTicketClick?.(ticket)}
                     className={`rounded-lg border p-3 cursor-pointer transition-all duration-150 ${'border-gray-300 hover:border-[#D7B797] hover:shadow-md'}`}
                     style={{
-                      background:'linear-gradient(135deg, #ffffff 0%, rgba(215,183,151,0.04) 35%, rgba(215,183,151,0.10) 100%)',
-                      boxShadow: `inset 0 -1px 0 ${'rgba(215,183,151,0.04)'}`}}
+                      background: 'linear-gradient(135deg, #ffffff 0%, rgba(215,183,151,0.04) 35%, rgba(215,183,151,0.10) 100%)',
+                      boxShadow: `inset 0 -1px 0 ${'rgba(215,183,151,0.04)'}`
+                    }}
                   >
                     {/* Entity Type + Date */}
                     <div className="flex items-center justify-between mb-2">
-                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider ${
-                        ENTITY_COLORS[ticket.entityType]?.[d] || ENTITY_COLORS.budget[d]
-                      }`}>
+                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider ${ENTITY_COLORS[ticket.entityType]?.[d] || ENTITY_COLORS.budget[d]
+                        }`}>
                         {ticket.entityType}
                       </span>
                       <span className={`text-[10px] font-['JetBrains_Mono'] ${'text-gray-500'}`}>

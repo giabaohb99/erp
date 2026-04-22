@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - UI COMPONENTS INDEX
+// BaoERP MRP - UI COMPONENTS INDEX
 // Export all UI components for easy importing
 // =============================================================================
 

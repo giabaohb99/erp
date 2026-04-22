@@ -131,8 +131,8 @@ resource "kubernetes_service_account" "cloudsql_proxy" {
 
 resource "google_project_iam_custom_role" "vierp_operator" {
   role_id     = "vierp${local.environment}operator"
-  title       = "VietERP ${upper(local.environment)} Operator"
-  description = "Custom role for VietERP ${local.environment} environment operations"
+  title       = "BaoERP ${upper(local.environment)} Operator"
+  description = "Custom role for BaoERP ${local.environment} environment operations"
 
   permissions = [
     "compute.instances.list",

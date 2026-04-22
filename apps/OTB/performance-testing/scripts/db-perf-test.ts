@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 // Database Query Performance Testing
-// VietERP OTB Platform — Measures Prisma query performance
+// BaoERP OTB Platform — Measures Prisma query performance
 //
 // Run from backend/: npx ts-node ../performance-testing/scripts/db-perf-test.ts
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -44,7 +44,7 @@ async function measureQuery<T>(
 
 async function runTests() {
   console.log('═══════════════════════════════════════════════════════════════');
-  console.log('  VietERP OTB — Database Query Performance Test');
+  console.log('  BaoERP OTB — Database Query Performance Test');
   console.log('═══════════════════════════════════════════════════════════════\n');
 
   try {

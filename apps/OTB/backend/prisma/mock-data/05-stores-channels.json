@@ -172,8 +172,8 @@
       "id": "store-007",
       "channelId": "channel-003",
       "code": "ONLINE-VN",
-      "name": "VietERP Online Vietnam",
-      "nameVi": "VietERP Trực tuyến Việt Nam",
+      "name": "BaoERP Online Vietnam",
+      "nameVi": "BaoERP Trực tuyến Việt Nam",
       "address": "Online",
       "city": "Vietnam",
       "country": "Vietnam",
@@ -191,28 +191,40 @@
       "code": "HCM",
       "name": "Ho Chi Minh City Stores",
       "nameVi": "Cửa hàng TP.HCM",
-      "storeIds": ["store-001", "store-002"]
+      "storeIds": [
+        "store-001",
+        "store-002"
+      ]
     },
     {
       "id": "sg-hn",
       "code": "HN",
       "name": "Hanoi Stores",
       "nameVi": "Cửa hàng Hà Nội",
-      "storeIds": ["store-004", "store-005"]
+      "storeIds": [
+        "store-004",
+        "store-005"
+      ]
     },
     {
       "id": "sg-other",
       "code": "OTHER",
       "name": "Other Cities",
       "nameVi": "Các thành phố khác",
-      "storeIds": ["store-003", "store-006"]
+      "storeIds": [
+        "store-003",
+        "store-006"
+      ]
     },
     {
       "id": "sg-flagship",
       "code": "FLAGSHIP",
       "name": "Flagship Stores",
       "nameVi": "Cửa hàng chính",
-      "storeIds": ["store-001", "store-004"]
+      "storeIds": [
+        "store-001",
+        "store-004"
+      ]
     }
   ],
   "metadata": {

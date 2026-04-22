@@ -1,4 +1,4 @@
-# VietERP MRP - Huong Dan Su Dung
+# BaoERP MRP - Huong Dan Su Dung
 
 ## Muc Luc
 

@@ -1,5 +1,5 @@
 // src/lib/security/rate-limiter.ts
-// Rate limiting utility for VietERP MRP System
+// Rate limiting utility for BaoERP MRP System
 // Uses in-memory store (Redis disabled for Render compatibility)
 
 import { NextRequest, NextResponse } from "next/server";
@@ -8,9 +8,9 @@ import { logger } from "@/lib/monitoring/logger";
 // Check if running in test environment
 function isTestEnvironment(): boolean {
   return process.env.NODE_ENV === 'test' ||
-         process.env.PLAYWRIGHT_TEST === 'true' ||
-         process.env.E2E_TEST === 'true' ||
-         process.env.SKIP_RATE_LIMIT === 'true';
+    process.env.PLAYWRIGHT_TEST === 'true' ||
+    process.env.E2E_TEST === 'true' ||
+    process.env.SKIP_RATE_LIMIT === 'true';
 }
 
 interface RateLimitConfig {

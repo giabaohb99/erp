@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - AUTH MIDDLEWARE WRAPPERS
+// BaoERP MRP - AUTH MIDDLEWARE WRAPPERS
 // Reusable higher-order functions that eliminate duplicated inline auth checks
 // in API route handlers. Wraps Next.js App Router handler signatures.
 // =============================================================================

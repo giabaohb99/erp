@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - PWA CONFIGURATION
+// BaoERP MRP - PWA CONFIGURATION
 // Progressive Web App setup with offline support
 // =============================================================================
 
@@ -8,8 +8,8 @@
 // =============================================================================
 
 export const pwaManifest = {
-  name: 'VietERP MRP System',
-  short_name: 'VietERP MRP',
+  name: 'BaoERP MRP System',
+  short_name: 'BaoERP MRP',
   description: 'Hệ thống quản lý sản xuất và hoạch định nhu cầu vật tư',
   start_url: '/',
   display: 'standalone',
@@ -195,7 +195,7 @@ export function isOnline(): boolean {
 }
 
 export function setupOnlineListener(callback: (online: boolean) => void): () => void {
-  if (typeof window === 'undefined') return () => {};
+  if (typeof window === 'undefined') return () => { };
 
   const handleOnline = () => callback(true);
   const handleOffline = () => callback(false);
@@ -276,7 +276,7 @@ export async function getCacheSize(): Promise<number> {
   for (const name of cacheNames) {
     const cache = await caches.open(name);
     const keys = await cache.keys();
-    
+
     for (const request of keys) {
       const response = await cache.match(request);
       if (response) {

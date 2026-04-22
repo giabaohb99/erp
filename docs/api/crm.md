@@ -2,7 +2,7 @@
 
 **Tham chiếu API quản lý khách hàng / CRM API Reference**
 
-Complete API reference for the VietERP Customer Relationship Management module.
+Complete API reference for the BaoERP Customer Relationship Management module.
 
 ## Base URL / URL cơ sở
 
@@ -686,7 +686,7 @@ const lead = await client.crm.leads.create({
 // 2. Track interactions
 await client.crm.activities.create({
   type: 'email',
-  subject: 'Welcome to VietERP',
+  subject: 'Welcome to BaoERP',
   relatedTo: { type: 'lead', id: lead.id },
 });
 

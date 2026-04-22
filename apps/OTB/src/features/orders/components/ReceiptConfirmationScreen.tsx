@@ -23,7 +23,8 @@ const RECEIPT_STATUS: any = {
   PENDING: { color: '#D29922', bg: 'rgba(210,153,34,0.12)', label: 'Pending' },
   CONFIRMED: { color: '#2A9E6A', bg: 'rgba(42,158,106,0.12)', label: 'Confirmed' },
   DISCREPANCY: { color: '#F85149', bg: 'rgba(248,81,73,0.12)', label: 'Discrepancy' },
-  PARTIAL: { color: '#A371F7', bg: 'rgba(163,113,247,0.12)', label: 'Partial' }};
+  PARTIAL: { color: '#A371F7', bg: 'rgba(163,113,247,0.12)', label: 'Partial' }
+};
 
 /* ═══════════════════════════════════════════════
    SIZING TABLE
@@ -81,10 +82,10 @@ const ReceiptDetailPanel = ({ receipt }: any) => {
   const [expandedSku, setExpandedSku] = useState<string | null>(null);
   const products = receipt.products || [];
 
-  const border ='border-gray-300';
-  const textPrimary ='text-gray-900';
-  const textSecondary ='text-gray-700';
-  const textMuted ='text-gray-600';
+  const border = 'border-gray-300';
+  const textPrimary = 'text-gray-900';
+  const textSecondary = 'text-gray-700';
+  const textMuted = 'text-gray-600';
 
   if (products.length === 0) {
     return (
@@ -212,7 +213,7 @@ const ReceiptDetailPanel = ({ receipt }: any) => {
 /* ═══════════════════════════════════════════════
    MAIN SCREEN
 ═══════════════════════════════════════════════ */
-const ReceiptConfirmationScreen = ({  }: any) => {
+const ReceiptConfirmationScreen = ({ }: any) => {
   const { user } = useAuth();
   const { t } = useLanguage();
   const { isMobile } = useIsMobile();
@@ -267,7 +268,9 @@ const ReceiptConfirmationScreen = ({  }: any) => {
           ttp: prod.allocations?.find((a: any) => a.store?.name?.includes('TTP'))?.quantity || prod.ttpQty || 3,
           orderedQty: prod.totalQuantity || 7,
           receivedQty: prod.receivedQuantity || 6,
-          sizes: prod.sizes || null}))}));
+          sizes: prod.sizes || null
+        }))
+      }));
       setReceipts(mapped);
     } catch (err: any) {
       console.error('Failed to fetch receipts:', err);
@@ -344,15 +347,16 @@ const ReceiptConfirmationScreen = ({  }: any) => {
         { label: t('receiptConfirm.statusConfirmed'), value: confirmed, color: '#2A9E6A' },
         { label: t('receiptConfirm.statusDiscrepancy'), value: discrepancy, color: '#F85149' },
         { label: t('receiptConfirm.statusPartial'), value: partial, color: '#A371F7' },
-      ].filter((b: any) => b.value > 0)};
+      ].filter((b: any) => b.value > 0)
+    };
   }, [receipts, t]);
 
-  const bg ='bg-[#F8F7F4]';
-  const cardBg ='bg-white';
-  const border ='border-gray-300';
-  const textPrimary ='text-gray-900';
-  const textSecondary ='text-gray-700';
-  const textMuted ='text-gray-600';
+  const bg = 'bg-[#F8F7F4]';
+  const cardBg = 'bg-white';
+  const border = 'border-gray-300';
+  const textPrimary = 'text-gray-900';
+  const textSecondary = 'text-gray-700';
+  const textMuted = 'text-gray-600';
 
   return (
     <div className={`min-h-full ${bg}`}>
@@ -360,15 +364,16 @@ const ReceiptConfirmationScreen = ({  }: any) => {
       <div
         className="sticky top-0 z-20 px-3 md:px-6 pb-3 pt-2"
         style={{
-          background:'#F8F7F4',
-          boxShadow: '0 1px 0 ' + ('rgba(0,0,0,0.06)')}}
+          background: '#F8F7F4',
+          boxShadow: '0 1px 0 ' + ('rgba(0,0,0,0.06)')
+        }}
       >
         {/* Top row: Logo + Stats + Search */}
         <div className="flex items-center justify-between gap-3 mb-2.5">
           <div className="flex items-center gap-3 md:gap-5">
             <div className="flex items-center gap-1.5">
-              <img src="/vietErp-logo.png" alt="VietERP" className="h-5 w-auto" />
-              <span className="text-sm font-semibold font-['Cormorant_Garamond'] text-[#C4A77D] tracking-wider hidden md:inline">VietERP</span>
+              <img src="/BaoERP-logo.png" alt="BaoERP" className="h-5 w-auto" />
+              <span className="text-sm font-semibold font-['Cormorant_Garamond'] text-[#C4A77D] tracking-wider hidden md:inline">BaoERP</span>
             </div>
             <div className={`hidden md:block w-px h-7 ${'bg-gray-300'}`} />
             <div>
@@ -399,7 +404,7 @@ const ReceiptConfirmationScreen = ({  }: any) => {
               {searchTerm && <button onClick={() => setSearchTerm('')}><X size={12} className={textMuted} /></button>}
             </div>
             <button onClick={fetchReceipts} className={`p-1.5 rounded-lg border ${border} transition-all ${'hover:bg-gray-50 text-gray-500'}`} title={t('common.refresh')}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" /></svg>
             </button>
           </div>
         </div>
@@ -418,9 +423,8 @@ const ReceiptConfirmationScreen = ({  }: any) => {
               <button
                 key={step.key}
                 onClick={() => setStatusFilter(isActive ? 'all' : step.key)}
-                className={`flex-1 relative rounded-xl border px-3 py-2.5 transition-all duration-200 ${
-                  isActive
-                    ?'border-[#D7B797]/60 bg-[rgba(215,183,151,0.08)]':'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'}`}
+                className={`flex-1 relative rounded-xl border px-3 py-2.5 transition-all duration-200 ${isActive
+                    ? 'border-[#D7B797]/60 bg-[rgba(215,183,151,0.08)]' : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'}`}
               >
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: `${step.color}18` }}>
@@ -440,190 +444,191 @@ const ReceiptConfirmationScreen = ({  }: any) => {
 
       {/* ── Content with padding ── */}
       <div className="px-3 md:px-6 pb-3 md:pb-6">
-      {/* Table */}
-      <div className={`border ${border} rounded-xl overflow-hidden mt-3`} style={{
-        background:'linear-gradient(135deg, #ffffff 0%, rgba(215,183,151,0.03) 35%, rgba(215,183,151,0.08) 100%)'}}>
-        {loading ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <Loader2 size={32} className={`animate-spin ${'text-[#6B4D30]'}`} />
-            <p className={`text-sm mt-3 ${textSecondary}`}>{t('receiptConfirm.loadingReceipts')}</p>
-          </div>
-        ) : error ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <AlertTriangle size={32} className="text-[#F85149]" />
-            <p className={`text-sm mt-3 ${textSecondary}`}>{error}</p>
-            <button onClick={fetchReceipts} className="mt-3 px-4 py-0.5 rounded-xl bg-[#D7B797] text-black text-sm font-medium font-['Montserrat']">{t('common.tryAgain')}</button>
-          </div>
-        ) : filtered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <ClipboardCheck size={48} className={textMuted} />
-            <p className={`text-base font-semibold mt-4 font-['Montserrat'] ${textPrimary}`}>{t('receiptConfirm.noReceipts')}</p>
-            <p className={`text-sm mt-1 ${textSecondary}`}>{t('receiptConfirm.noReceiptsDesc')}</p>
-          </div>
-        ) : isMobile ? (
-          <PullToRefresh onRefresh={fetchReceipts}>
-          <div className="p-3 space-y-2">
-            {filtered.map((receipt: any, idx: any) => {
-              const sc = RECEIPT_STATUS[receipt.status] || RECEIPT_STATUS.PENDING;
-              const statusColorMap: any = { CONFIRMED: 'success', DISCREPANCY: 'critical', PENDING: 'warning', PARTIAL: 'neutral' };
-              const dateStr = receipt.receivedDate ? new Date(receipt.receivedDate).toLocaleDateString('vi-VN') : receipt.createdAt ? new Date(receipt.createdAt).toLocaleDateString('vi-VN') : '-';
-              return (
-                <div key={receipt.id || idx}>
-                  <MobileDataCard
-                    title={receipt.receiptNumber}
-                    subtitle={`${receipt.poReference} - ${receipt.brandName}`}
-                    status={sc.label}
-                    statusColor={statusColorMap[receipt.status] || 'neutral'}
-                    metrics={[
-                      { label: t('receiptConfirm.colItems'), value: receipt.itemCount || receipt.products?.length || 0 },
-                      { label: t('receiptConfirm.colDate'), value: dateStr },
-                    ]}
-                    actions={[
-                      ...(receipt.status === 'PENDING' ? [
-                        { label: t('common.confirm'), primary: true, onClick: () => { setConfirmModal({ receipt, action: 'confirm' }); setDiscrepancyNote(''); setEditReceivedQty(receipt.orderedQty); } },
-                        { label: t('receiptConfirm.flag'), onClick: () => { setConfirmModal({ receipt, action: 'discrepancy' }); setDiscrepancyNote(''); } },
-                      ] : []),
-                      { label: expandedReceiptId === receipt.id ? 'Hide SKUs' : `View ${receipt.itemCount || receipt.products?.length || 0} SKUs`, onClick: () => setExpandedReceiptId(expandedReceiptId === receipt.id ? null : receipt.id) },
-                    ]}
-                  />
-                  {expandedReceiptId === receipt.id && <ReceiptDetailPanel receipt={receipt} />}
-                </div>
-              );
-            })}
-          </div>
-          </PullToRefresh>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className={`${'bg-gray-50'} border-b ${border}`}>
-                  {['', t('receiptConfirm.colReceipt'), t('receiptConfirm.colPORef'), t('receiptConfirm.colBrand'), t('receiptConfirm.colItems'), t('receiptConfirm.colStatus'), t('receiptConfirm.colDate'), t('common.actions')].map((h: any, i: number) => (
-                    <th key={`${h}-${i}`} className={`px-3 py-0.5 text-left text-[10px] font-semibold uppercase tracking-wider font-['Montserrat'] ${textMuted} ${i === 0 ? `w-8 sticky left-0 z-10 ${'bg-gray-50'}` : ''}`}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
+        {/* Table */}
+        <div className={`border ${border} rounded-xl overflow-hidden mt-3`} style={{
+          background: 'linear-gradient(135deg, #ffffff 0%, rgba(215,183,151,0.03) 35%, rgba(215,183,151,0.08) 100%)'
+        }}>
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-20">
+              <Loader2 size={32} className={`animate-spin ${'text-[#6B4D30]'}`} />
+              <p className={`text-sm mt-3 ${textSecondary}`}>{t('receiptConfirm.loadingReceipts')}</p>
+            </div>
+          ) : error ? (
+            <div className="flex flex-col items-center justify-center py-20">
+              <AlertTriangle size={32} className="text-[#F85149]" />
+              <p className={`text-sm mt-3 ${textSecondary}`}>{error}</p>
+              <button onClick={fetchReceipts} className="mt-3 px-4 py-0.5 rounded-xl bg-[#D7B797] text-black text-sm font-medium font-['Montserrat']">{t('common.tryAgain')}</button>
+            </div>
+          ) : filtered.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20">
+              <ClipboardCheck size={48} className={textMuted} />
+              <p className={`text-base font-semibold mt-4 font-['Montserrat'] ${textPrimary}`}>{t('receiptConfirm.noReceipts')}</p>
+              <p className={`text-sm mt-1 ${textSecondary}`}>{t('receiptConfirm.noReceiptsDesc')}</p>
+            </div>
+          ) : isMobile ? (
+            <PullToRefresh onRefresh={fetchReceipts}>
+              <div className="p-3 space-y-2">
                 {filtered.map((receipt: any, idx: any) => {
                   const sc = RECEIPT_STATUS[receipt.status] || RECEIPT_STATUS.PENDING;
-                  const isExpanded = expandedReceiptId === receipt.id;
+                  const statusColorMap: any = { CONFIRMED: 'success', DISCREPANCY: 'critical', PENDING: 'warning', PARTIAL: 'neutral' };
+                  const dateStr = receipt.receivedDate ? new Date(receipt.receivedDate).toLocaleDateString('vi-VN') : receipt.createdAt ? new Date(receipt.createdAt).toLocaleDateString('vi-VN') : '-';
                   return (
-                    <Fragment key={receipt.id || idx}>
-                      <tr
-                        className={`border-b ${border} transition-colors cursor-pointer ${isExpanded ? ('bg-[rgba(215,183,151,0.06)]') : ('hover:bg-gray-50')}`}
-                        onClick={() => setExpandedReceiptId(isExpanded ? null : receipt.id)}
-                      >
-                        <td className={`px-3 py-0.5 sticky left-0 z-10 ${'bg-white'}`}>
-                          <ChevronRight size={14} className={`transition-transform ${isExpanded ? 'rotate-90' : ''} ${'text-[#6B4D30]'}`} />
-                        </td>
-                        <td className="px-3 py-0.5"><span className={`text-sm font-semibold font-['JetBrains_Mono'] ${textPrimary}`}>{receipt.receiptNumber}</span></td>
-                        <td className="px-3 py-0.5"><span className={`text-sm font-['JetBrains_Mono'] ${textSecondary}`}>{receipt.poReference}</span></td>
-                        <td className="px-3 py-0.5"><span className={`text-sm font-['Montserrat'] ${textPrimary}`}>{receipt.brandName}</span></td>
-                        <td className="px-3 py-0.5"><span className={`text-sm font-['JetBrains_Mono'] ${textPrimary}`}>{receipt.itemCount || receipt.products?.length || 0}</span></td>
-                        <td className="px-3 py-0.5">
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold font-['JetBrains_Mono']" style={{ color: sc.color, backgroundColor: sc.bg }}>
-                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: sc.color }} />
-                            {sc.label}
-                          </span>
-                        </td>
-                        <td className="px-3 py-0.5">
-                          <span className={`text-xs font-['JetBrains_Mono'] ${textMuted}`}>
-                            {receipt.receivedDate ? new Date(receipt.receivedDate).toLocaleDateString('vi-VN') : receipt.createdAt ? new Date(receipt.createdAt).toLocaleDateString('vi-VN') : '-'}
-                          </span>
-                        </td>
-                        <td className="px-3 py-0.5" onClick={(e) => e.stopPropagation()}>
-                          {receipt.status === 'PENDING' && (
-                            <div className="flex items-center gap-2">
-                              <button onClick={() => { setConfirmModal({ receipt, action: 'confirm' }); setDiscrepancyNote(''); setEditReceivedQty(receipt.orderedQty); }} className="flex items-center gap-1 px-3 py-0.5 rounded-lg text-xs font-semibold font-['Montserrat'] transition-all bg-[rgba(42,158,106,0.12)] text-[#2A9E6A] hover:bg-[rgba(42,158,106,0.2)]">
-                                <CheckCircle size={13} /> {t('common.confirm')}
-                              </button>
-                              <button onClick={() => { setConfirmModal({ receipt, action: 'discrepancy' }); setDiscrepancyNote(''); }} className="flex items-center gap-1 px-3 py-0.5 rounded-lg text-xs font-semibold font-['Montserrat'] transition-all bg-[rgba(248,81,73,0.1)] text-[#F85149] hover:bg-[rgba(248,81,73,0.18)]">
-                                <AlertCircle size={13} /> {t('receiptConfirm.flag')}
-                              </button>
-                            </div>
-                          )}
-                          {receipt.status === 'CONFIRMED' && <span className={`text-xs font-['Montserrat'] ${'text-green-600'}`}><CheckCircle size={14} className="inline mr-1" />{t('receiptConfirm.verified')}</span>}
-                          {receipt.status === 'DISCREPANCY' && <span className={`text-xs font-['Montserrat'] ${'text-red-600'}`}><AlertCircle size={14} className="inline mr-1" />{t('receiptConfirm.underReview')}</span>}
-                        </td>
-                      </tr>
-                      {isExpanded && (
-                        <tr>
-                          <td colSpan={8} className="p-0">
-                            <ReceiptDetailPanel receipt={receipt} />
-                          </td>
-                        </tr>
-                      )}
-                    </Fragment>
+                    <div key={receipt.id || idx}>
+                      <MobileDataCard
+                        title={receipt.receiptNumber}
+                        subtitle={`${receipt.poReference} - ${receipt.brandName}`}
+                        status={sc.label}
+                        statusColor={statusColorMap[receipt.status] || 'neutral'}
+                        metrics={[
+                          { label: t('receiptConfirm.colItems'), value: receipt.itemCount || receipt.products?.length || 0 },
+                          { label: t('receiptConfirm.colDate'), value: dateStr },
+                        ]}
+                        actions={[
+                          ...(receipt.status === 'PENDING' ? [
+                            { label: t('common.confirm'), primary: true, onClick: () => { setConfirmModal({ receipt, action: 'confirm' }); setDiscrepancyNote(''); setEditReceivedQty(receipt.orderedQty); } },
+                            { label: t('receiptConfirm.flag'), onClick: () => { setConfirmModal({ receipt, action: 'discrepancy' }); setDiscrepancyNote(''); } },
+                          ] : []),
+                          { label: expandedReceiptId === receipt.id ? 'Hide SKUs' : `View ${receipt.itemCount || receipt.products?.length || 0} SKUs`, onClick: () => setExpandedReceiptId(expandedReceiptId === receipt.id ? null : receipt.id) },
+                        ]}
+                      />
+                      {expandedReceiptId === receipt.id && <ReceiptDetailPanel receipt={receipt} />}
+                    </div>
                   );
                 })}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
-
-      {/* Modal */}
-      {confirmModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className={`w-full max-w-md mx-4 rounded-2xl border ${border} ${cardBg} shadow-2xl`}>
-            <div className={`p-5 border-b ${border}`}>
-              <div className="flex items-center justify-between">
-                <h3 className={`text-lg font-bold font-['Montserrat'] ${textPrimary}`}>
-                  {confirmModal.action === 'confirm' ? t('receiptConfirm.confirmReceipt') : t('receiptConfirm.flagDiscrepancy')}
-                </h3>
-                <button onClick={() => setConfirmModal(null)} className={`p-1.5 rounded-lg ${'hover:bg-gray-100'}`}><X size={18} className={textMuted} /></button>
               </div>
+            </PullToRefresh>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className={`${'bg-gray-50'} border-b ${border}`}>
+                    {['', t('receiptConfirm.colReceipt'), t('receiptConfirm.colPORef'), t('receiptConfirm.colBrand'), t('receiptConfirm.colItems'), t('receiptConfirm.colStatus'), t('receiptConfirm.colDate'), t('common.actions')].map((h: any, i: number) => (
+                      <th key={`${h}-${i}`} className={`px-3 py-0.5 text-left text-[10px] font-semibold uppercase tracking-wider font-['Montserrat'] ${textMuted} ${i === 0 ? `w-8 sticky left-0 z-10 ${'bg-gray-50'}` : ''}`}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {filtered.map((receipt: any, idx: any) => {
+                    const sc = RECEIPT_STATUS[receipt.status] || RECEIPT_STATUS.PENDING;
+                    const isExpanded = expandedReceiptId === receipt.id;
+                    return (
+                      <Fragment key={receipt.id || idx}>
+                        <tr
+                          className={`border-b ${border} transition-colors cursor-pointer ${isExpanded ? ('bg-[rgba(215,183,151,0.06)]') : ('hover:bg-gray-50')}`}
+                          onClick={() => setExpandedReceiptId(isExpanded ? null : receipt.id)}
+                        >
+                          <td className={`px-3 py-0.5 sticky left-0 z-10 ${'bg-white'}`}>
+                            <ChevronRight size={14} className={`transition-transform ${isExpanded ? 'rotate-90' : ''} ${'text-[#6B4D30]'}`} />
+                          </td>
+                          <td className="px-3 py-0.5"><span className={`text-sm font-semibold font-['JetBrains_Mono'] ${textPrimary}`}>{receipt.receiptNumber}</span></td>
+                          <td className="px-3 py-0.5"><span className={`text-sm font-['JetBrains_Mono'] ${textSecondary}`}>{receipt.poReference}</span></td>
+                          <td className="px-3 py-0.5"><span className={`text-sm font-['Montserrat'] ${textPrimary}`}>{receipt.brandName}</span></td>
+                          <td className="px-3 py-0.5"><span className={`text-sm font-['JetBrains_Mono'] ${textPrimary}`}>{receipt.itemCount || receipt.products?.length || 0}</span></td>
+                          <td className="px-3 py-0.5">
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold font-['JetBrains_Mono']" style={{ color: sc.color, backgroundColor: sc.bg }}>
+                              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: sc.color }} />
+                              {sc.label}
+                            </span>
+                          </td>
+                          <td className="px-3 py-0.5">
+                            <span className={`text-xs font-['JetBrains_Mono'] ${textMuted}`}>
+                              {receipt.receivedDate ? new Date(receipt.receivedDate).toLocaleDateString('vi-VN') : receipt.createdAt ? new Date(receipt.createdAt).toLocaleDateString('vi-VN') : '-'}
+                            </span>
+                          </td>
+                          <td className="px-3 py-0.5" onClick={(e) => e.stopPropagation()}>
+                            {receipt.status === 'PENDING' && (
+                              <div className="flex items-center gap-2">
+                                <button onClick={() => { setConfirmModal({ receipt, action: 'confirm' }); setDiscrepancyNote(''); setEditReceivedQty(receipt.orderedQty); }} className="flex items-center gap-1 px-3 py-0.5 rounded-lg text-xs font-semibold font-['Montserrat'] transition-all bg-[rgba(42,158,106,0.12)] text-[#2A9E6A] hover:bg-[rgba(42,158,106,0.2)]">
+                                  <CheckCircle size={13} /> {t('common.confirm')}
+                                </button>
+                                <button onClick={() => { setConfirmModal({ receipt, action: 'discrepancy' }); setDiscrepancyNote(''); }} className="flex items-center gap-1 px-3 py-0.5 rounded-lg text-xs font-semibold font-['Montserrat'] transition-all bg-[rgba(248,81,73,0.1)] text-[#F85149] hover:bg-[rgba(248,81,73,0.18)]">
+                                  <AlertCircle size={13} /> {t('receiptConfirm.flag')}
+                                </button>
+                              </div>
+                            )}
+                            {receipt.status === 'CONFIRMED' && <span className={`text-xs font-['Montserrat'] ${'text-green-600'}`}><CheckCircle size={14} className="inline mr-1" />{t('receiptConfirm.verified')}</span>}
+                            {receipt.status === 'DISCREPANCY' && <span className={`text-xs font-['Montserrat'] ${'text-red-600'}`}><AlertCircle size={14} className="inline mr-1" />{t('receiptConfirm.underReview')}</span>}
+                          </td>
+                        </tr>
+                        {isExpanded && (
+                          <tr>
+                            <td colSpan={8} className="p-0">
+                              <ReceiptDetailPanel receipt={receipt} />
+                            </td>
+                          </tr>
+                        )}
+                      </Fragment>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
-            <div className="p-5">
-              <div className={`rounded-xl border ${border} p-4 ${'bg-gray-50'}`}>
-                <div className="space-y-2">
-                  <div className="flex justify-between"><span className={`text-xs ${textMuted}`}>{t('receiptConfirm.colReceipt')}</span><span className={`text-sm font-semibold font-['JetBrains_Mono'] ${textPrimary}`}>{confirmModal.receipt.receiptNumber}</span></div>
-                  <div className="flex justify-between"><span className={`text-xs ${textMuted}`}>{t('receiptConfirm.colPORef')}</span><span className={`text-sm font-['JetBrains_Mono'] ${textSecondary}`}>{confirmModal.receipt.poReference}</span></div>
-                  <div className="flex justify-between"><span className={`text-xs ${textMuted}`}>{t('receiptConfirm.colBrand')}</span><span className={`text-sm font-['Montserrat'] ${textPrimary}`}>{confirmModal.receipt.brandName}</span></div>
+          )}
+        </div>
+
+        {/* Modal */}
+        {confirmModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+            <div className={`w-full max-w-md mx-4 rounded-2xl border ${border} ${cardBg} shadow-2xl`}>
+              <div className={`p-5 border-b ${border}`}>
+                <div className="flex items-center justify-between">
+                  <h3 className={`text-lg font-bold font-['Montserrat'] ${textPrimary}`}>
+                    {confirmModal.action === 'confirm' ? t('receiptConfirm.confirmReceipt') : t('receiptConfirm.flagDiscrepancy')}
+                  </h3>
+                  <button onClick={() => setConfirmModal(null)} className={`p-1.5 rounded-lg ${'hover:bg-gray-100'}`}><X size={18} className={textMuted} /></button>
                 </div>
               </div>
-              {confirmModal.action === 'confirm' && (
-                <div className="mt-4">
-                  <label className={`block text-xs font-semibold uppercase tracking-wider mb-2 ${textMuted}`}>{t('receiptConfirm.receivedQuantity') || 'Received Quantity'}</label>
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="number"
-                      min={0}
-                      max={confirmModal.receipt.orderedQty * 2}
-                      value={editReceivedQty}
-                      onChange={(e: any) => setEditReceivedQty(Math.max(0, parseInt(e.target.value) || 0))}
-                      className={`w-28 px-3 py-2 rounded-xl border ${border} ${'bg-gray-50'} text-sm font-semibold font-['JetBrains_Mono'] ${textPrimary} outline-none focus:border-[#D7B797] text-center`}
-                    />
-                    <span className={`text-xs ${textMuted}`}>/ {confirmModal.receipt.orderedQty} {t('receiptConfirm.ordered') || 'ordered'}</span>
-                    {editReceivedQty !== confirmModal.receipt.orderedQty && (
-                      <span className="text-xs text-[#F85149] font-medium">
-                        {editReceivedQty < confirmModal.receipt.orderedQty
-                          ? `(-${confirmModal.receipt.orderedQty - editReceivedQty})`
-                          : `(+${editReceivedQty - confirmModal.receipt.orderedQty})`}
-                      </span>
-                    )}
+              <div className="p-5">
+                <div className={`rounded-xl border ${border} p-4 ${'bg-gray-50'}`}>
+                  <div className="space-y-2">
+                    <div className="flex justify-between"><span className={`text-xs ${textMuted}`}>{t('receiptConfirm.colReceipt')}</span><span className={`text-sm font-semibold font-['JetBrains_Mono'] ${textPrimary}`}>{confirmModal.receipt.receiptNumber}</span></div>
+                    <div className="flex justify-between"><span className={`text-xs ${textMuted}`}>{t('receiptConfirm.colPORef')}</span><span className={`text-sm font-['JetBrains_Mono'] ${textSecondary}`}>{confirmModal.receipt.poReference}</span></div>
+                    <div className="flex justify-between"><span className={`text-xs ${textMuted}`}>{t('receiptConfirm.colBrand')}</span><span className={`text-sm font-['Montserrat'] ${textPrimary}`}>{confirmModal.receipt.brandName}</span></div>
                   </div>
                 </div>
-              )}
-              {confirmModal.action === 'discrepancy' && (
-                <div className="mt-4">
-                  <label className={`block text-xs font-semibold uppercase tracking-wider mb-2 ${textMuted}`}>{t('receiptConfirm.discrepancyNote')}</label>
-                  <textarea value={discrepancyNote} onChange={(e: any) => setDiscrepancyNote(e.target.value)} rows={3} className={`w-full px-3 py-0.5 rounded-xl border ${border} ${'bg-gray-50'} text-sm font-['Montserrat'] ${textPrimary} outline-none resize-none focus:border-[#D7B797]`} placeholder={t('receiptConfirm.discrepancyPlaceholder')} />
-                </div>
-              )}
-            </div>
-            <div className={`p-5 border-t ${border} flex justify-end gap-3`}>
-              <button onClick={() => setConfirmModal(null)} className={`px-4 py-0.5 rounded-xl border ${border} text-sm font-medium font-['Montserrat'] ${textSecondary} transition-all ${'hover:bg-gray-100'}`}>{t('common.back')}</button>
-              <button
-                onClick={() => confirmModal.action === 'confirm' ? handleConfirmReceipt(confirmModal.receipt) : handleFlagDiscrepancy(confirmModal.receipt)}
-                disabled={processing || (confirmModal.action === 'discrepancy' && !discrepancyNote.trim())}
-                className={`px-5 py-0.5 rounded-xl text-sm font-semibold font-['Montserrat'] transition-all disabled:opacity-50 ${confirmModal.action === 'confirm' ? 'bg-[#2A9E6A] text-white hover:bg-[#238a5a]' : 'bg-[#F85149] text-white hover:bg-[#e04440]'}`}
-              >
-                {processing ? <Loader2 size={16} className="animate-spin mx-auto" /> : confirmModal.action === 'confirm' ? t('common.confirm') : t('receiptConfirm.submitFlag')}
-              </button>
+                {confirmModal.action === 'confirm' && (
+                  <div className="mt-4">
+                    <label className={`block text-xs font-semibold uppercase tracking-wider mb-2 ${textMuted}`}>{t('receiptConfirm.receivedQuantity') || 'Received Quantity'}</label>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="number"
+                        min={0}
+                        max={confirmModal.receipt.orderedQty * 2}
+                        value={editReceivedQty}
+                        onChange={(e: any) => setEditReceivedQty(Math.max(0, parseInt(e.target.value) || 0))}
+                        className={`w-28 px-3 py-2 rounded-xl border ${border} ${'bg-gray-50'} text-sm font-semibold font-['JetBrains_Mono'] ${textPrimary} outline-none focus:border-[#D7B797] text-center`}
+                      />
+                      <span className={`text-xs ${textMuted}`}>/ {confirmModal.receipt.orderedQty} {t('receiptConfirm.ordered') || 'ordered'}</span>
+                      {editReceivedQty !== confirmModal.receipt.orderedQty && (
+                        <span className="text-xs text-[#F85149] font-medium">
+                          {editReceivedQty < confirmModal.receipt.orderedQty
+                            ? `(-${confirmModal.receipt.orderedQty - editReceivedQty})`
+                            : `(+${editReceivedQty - confirmModal.receipt.orderedQty})`}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+                {confirmModal.action === 'discrepancy' && (
+                  <div className="mt-4">
+                    <label className={`block text-xs font-semibold uppercase tracking-wider mb-2 ${textMuted}`}>{t('receiptConfirm.discrepancyNote')}</label>
+                    <textarea value={discrepancyNote} onChange={(e: any) => setDiscrepancyNote(e.target.value)} rows={3} className={`w-full px-3 py-0.5 rounded-xl border ${border} ${'bg-gray-50'} text-sm font-['Montserrat'] ${textPrimary} outline-none resize-none focus:border-[#D7B797]`} placeholder={t('receiptConfirm.discrepancyPlaceholder')} />
+                  </div>
+                )}
+              </div>
+              <div className={`p-5 border-t ${border} flex justify-end gap-3`}>
+                <button onClick={() => setConfirmModal(null)} className={`px-4 py-0.5 rounded-xl border ${border} text-sm font-medium font-['Montserrat'] ${textSecondary} transition-all ${'hover:bg-gray-100'}`}>{t('common.back')}</button>
+                <button
+                  onClick={() => confirmModal.action === 'confirm' ? handleConfirmReceipt(confirmModal.receipt) : handleFlagDiscrepancy(confirmModal.receipt)}
+                  disabled={processing || (confirmModal.action === 'discrepancy' && !discrepancyNote.trim())}
+                  className={`px-5 py-0.5 rounded-xl text-sm font-semibold font-['Montserrat'] transition-all disabled:opacity-50 ${confirmModal.action === 'confirm' ? 'bg-[#2A9E6A] text-white hover:bg-[#238a5a]' : 'bg-[#F85149] text-white hover:bg-[#e04440]'}`}
+                >
+                  {processing ? <Loader2 size={16} className="animate-spin mx-auto" /> : confirmModal.action === 'confirm' ? t('common.confirm') : t('receiptConfirm.submitFlag')}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
       </div>{/* close content padding wrapper */}
     </div>
   );

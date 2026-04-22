@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - QUERY OPTIMIZATION UTILITIES
+// BaoERP MRP - QUERY OPTIMIZATION UTILITIES
 // Prisma query patterns for optimal performance
 // =============================================================================
 
@@ -46,7 +46,7 @@ export function getPaginationParams(options: PaginationOptions) {
   const { page, pageSize } = options;
   const skip = (page - 1) * pageSize;
   const take = pageSize;
-  
+
   return { skip, take };
 }
 
@@ -60,7 +60,7 @@ export function createPaginatedResult<T>(
 ): PaginatedResult<T> {
   const { page, pageSize } = options;
   const totalPages = Math.ceil(total / pageSize);
-  
+
   return {
     items,
     total,
@@ -87,15 +87,15 @@ export function buildSelect<T extends string>(
   if (!fields || fields.length === 0) {
     return undefined;
   }
-  
+
   const select: Record<string, true> = {};
-  
+
   for (const field of fields) {
     if (allowedFields.includes(field)) {
       select[field] = true;
     }
   }
-  
+
   return Object.keys(select).length > 0 ? select as Record<T, true> : undefined;
 }
 
@@ -134,7 +134,7 @@ export const DEFAULT_SELECTS = {
       updatedAt: true,
     },
   },
-  
+
   workOrder: {
     list: {
       id: true,
@@ -154,7 +154,7 @@ export const DEFAULT_SELECTS = {
     },
     detail: true, // Full detail
   },
-  
+
   inventory: {
     list: {
       id: true,
@@ -201,39 +201,39 @@ export async function batchQueries<T extends Prisma.PrismaPromise<unknown>[]>(
 export class BatchLoader<T> {
   private batchMap = new Map<string, Promise<Map<string, T>>>();
   private batchTimeout = 10; // ms
-  
+
   constructor(
     private loadFn: (ids: string[]) => Promise<T[]>,
     private getKey: (item: T) => string
-  ) {}
-  
+  ) { }
+
   async load(id: string): Promise<T | null> {
     const batchKey = Math.floor(Date.now() / this.batchTimeout).toString();
-    
+
     if (!this.batchMap.has(batchKey)) {
       const pendingIds: string[] = [];
-      
+
       const promise = new Promise<Map<string, T>>((resolve) => {
         setTimeout(async () => {
           const items = await this.loadFn(pendingIds);
           const map = new Map<string, T>();
-          
+
           for (const item of items) {
             map.set(this.getKey(item), item);
           }
-          
+
           resolve(map);
           this.batchMap.delete(batchKey);
         }, this.batchTimeout);
       });
-      
+
       this.batchMap.set(batchKey, promise);
     }
-    
+
     const map = await this.batchMap.get(batchKey)!;
     return map.get(id) || null;
   }
-  
+
   async loadMany(ids: string[]): Promise<(T | null)[]> {
     return Promise.all(ids.map(id => this.load(id)));
   }
@@ -265,7 +265,7 @@ export function buildCursorPagination(
   cursorField: string = 'id'
 ) {
   const { cursor, take, direction = 'forward' } = options;
-  
+
   return {
     take: direction === 'forward' ? take + 1 : -(take + 1),
     ...(cursor && {
@@ -282,11 +282,11 @@ export function processCursorResult<T extends { id: string }>(
 ): CursorPaginatedResult<T> {
   const hasMore = items.length > take;
   const resultItems = hasMore ? items.slice(0, take) : items;
-  
+
   if (direction === 'backward') {
     resultItems.reverse();
   }
-  
+
   return {
     items: resultItems,
     nextCursor: resultItems.length > 0 ? resultItems[resultItems.length - 1].id : null,
@@ -310,13 +310,13 @@ export function buildSearchConditions(
   if (!search || search.trim().length === 0) {
     return undefined;
   }
-  
+
   const searchTerm = search.trim();
-  
+
   // For short searches, use startsWith (index-friendly)
   // For longer searches, use contains
   const mode = searchTerm.length <= 3 ? 'startsWith' : 'contains';
-  
+
   return {
     OR: fields.map(field => ({
       [field]: {
@@ -338,14 +338,14 @@ export function buildFullTextSearch(
   if (!search || search.trim().length === 0) {
     return undefined;
   }
-  
+
   // Convert to tsquery format
   const tsQuery = search
     .trim()
     .split(/\s+/)
     .map(word => `${word}:*`)
     .join(' & ');
-  
+
   return {
     [field]: {
       search: tsQuery,
@@ -450,13 +450,13 @@ export async function chunkOperation<T, R>(
   operation: (chunk: T[]) => Promise<R[]>
 ): Promise<R[]> {
   const results: R[] = [];
-  
+
   for (let i = 0; i < items.length; i += chunkSize) {
     const chunk = items.slice(i, i + chunkSize);
     const chunkResults = await operation(chunk);
     results.push(...chunkResults);
   }
-  
+
   return results;
 }
 

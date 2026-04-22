@@ -1,6 +1,6 @@
-# VietERP OTB Platform — Full-Stack
+# BaoERP OTB Platform — Full-Stack
 
-He thong quan ly Open-To-Buy (OTB) cho VietERP. **Frontend** (Next.js 16) + **Backend** (NestJS) trong cung 1 repo.
+He thong quan ly Open-To-Buy (OTB) cho BaoERP. **Frontend** (Next.js 16) + **Backend** (NestJS) trong cung 1 repo.
 
 ## Tech Stack
 

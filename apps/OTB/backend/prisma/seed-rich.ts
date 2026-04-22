@@ -1,5 +1,5 @@
 // ============================================================================
-// VietERP OTB Planning — Rich Data Seed
+// BaoERP OTB Planning — Rich Data Seed
 // Populates ALL tables with realistic luxury fashion retail data
 // Run: npx ts-node prisma/seed-rich.ts
 // ============================================================================
@@ -39,7 +39,7 @@ function daysAgo(n: number): Date {
 async function main() {
   console.log('');
   console.log('==========================================================');
-  console.log('  VietERP OTB — Rich Data Seeder');
+  console.log('  BaoERP OTB — Rich Data Seeder');
   console.log('  Populating all tables with luxury fashion retail data');
   console.log('==========================================================');
   console.log('');
@@ -56,29 +56,29 @@ async function main() {
   const brandPRA = await prisma.groupBrand.findUniqueOrThrow({ where: { code: 'PRA' } });
 
   const collCarryOver = await prisma.seasonType.findUniqueOrThrow({ where: { name: 'Carry Over' } });
-  const collSeasonal  = await prisma.seasonType.findUniqueOrThrow({ where: { name: 'Seasonal' } });
+  const collSeasonal = await prisma.seasonType.findUniqueOrThrow({ where: { name: 'Seasonal' } });
   const genderF = await prisma.gender.findUniqueOrThrow({ where: { name: 'Female' } });
   const genderM = await prisma.gender.findUniqueOrThrow({ where: { name: 'Male' } });
 
-  const catWomenRtw    = await prisma.category.findFirstOrThrow({ where: { id: 'women_rtw' } });
+  const catWomenRtw = await prisma.category.findFirstOrThrow({ where: { id: 'women_rtw' } });
   const catWomenHardAcc = await prisma.category.findFirstOrThrow({ where: { id: 'women_hard_acc' } });
   const catWomenOthers = await prisma.category.findFirstOrThrow({ where: { id: 'women_others' } });
-  const catMenRtw      = await prisma.category.findFirstOrThrow({ where: { id: 'men_rtw' } });
-  const catMenAcc      = await prisma.category.findFirstOrThrow({ where: { id: 'men_acc' } });
+  const catMenRtw = await prisma.category.findFirstOrThrow({ where: { id: 'men_rtw' } });
+  const catMenAcc = await prisma.category.findFirstOrThrow({ where: { id: 'men_acc' } });
 
   const subW_outerwear = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_outerwear' } });
-  const subW_tops      = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_tops' } });
-  const subW_dresses   = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_dresses' } });
-  const subW_bags      = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_bags' } });
-  const subW_slg       = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_slg' } });
-  const subW_shoes     = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_shoes' } });
+  const subW_tops = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_tops' } });
+  const subW_dresses = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_dresses' } });
+  const subW_bags = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_bags' } });
+  const subW_slg = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_slg' } });
+  const subW_shoes = await prisma.subCategory.findFirstOrThrow({ where: { id: 'w_shoes' } });
   const subM_outerwear = await prisma.subCategory.findFirstOrThrow({ where: { id: 'm_outerwear' } });
-  const subM_tops      = await prisma.subCategory.findFirstOrThrow({ where: { id: 'm_tops' } });
-  const subM_bags      = await prisma.subCategory.findFirstOrThrow({ where: { id: 'm_bags' } });
-  const subM_slg       = await prisma.subCategory.findFirstOrThrow({ where: { id: 'm_slg' } });
+  const subM_tops = await prisma.subCategory.findFirstOrThrow({ where: { id: 'm_tops' } });
+  const subM_bags = await prisma.subCategory.findFirstOrThrow({ where: { id: 'm_bags' } });
+  const subM_slg = await prisma.subCategory.findFirstOrThrow({ where: { id: 'm_slg' } });
 
-  const userMerch   = await prisma.user.findUniqueOrThrow({ where: { email: 'merch@your-domain.com' } });
-  const userBuyer   = await prisma.user.findUniqueOrThrow({ where: { email: 'buyer@your-domain.com' } });
+  const userMerch = await prisma.user.findUniqueOrThrow({ where: { email: 'merch@your-domain.com' } });
+  const userBuyer = await prisma.user.findUniqueOrThrow({ where: { email: 'buyer@your-domain.com' } });
   const userManager = await prisma.user.findUniqueOrThrow({ where: { email: 'manager@your-domain.com' } });
   const userFinance = await prisma.user.findUniqueOrThrow({ where: { email: 'finance@your-domain.com' } });
 
@@ -182,12 +182,12 @@ async function main() {
   console.log('💰 Creating budgets...');
 
   const budgetDefs = [
-    { budgetCode: 'BUD-FER-SS-Pre-2026',  groupBrandId: brandFER.id, seasonGroupId: 'SS', seasonType: 'pre',  fiscalYear: 2026, totalBudget: 5_000_000_000,  status: 'APPROVED' as const },
-    { budgetCode: 'BUD-FER-SS-Main-2026', groupBrandId: brandFER.id, seasonGroupId: 'SS', seasonType: 'main', fiscalYear: 2026, totalBudget: 8_500_000_000,  status: 'APPROVED' as const },
-    { budgetCode: 'BUD-BUR-FW-Pre-2026',  groupBrandId: brandBUR.id, seasonGroupId: 'FW', seasonType: 'pre',  fiscalYear: 2026, totalBudget: 6_200_000_000,  status: 'APPROVED' as const },
-    { budgetCode: 'BUD-GUC-SS-Pre-2026',  groupBrandId: brandGUC.id, seasonGroupId: 'SS', seasonType: 'pre',  fiscalYear: 2026, totalBudget: 12_000_000_000, status: 'LEVEL1_APPROVED' as const },
-    { budgetCode: 'BUD-PRA-FW-Main-2026', groupBrandId: brandPRA.id, seasonGroupId: 'FW', seasonType: 'main', fiscalYear: 2026, totalBudget: 7_800_000_000,  status: 'SUBMITTED' as const },
-    { budgetCode: 'BUD-FER-FW-Pre-2026',  groupBrandId: brandFER.id, seasonGroupId: 'FW', seasonType: 'pre',  fiscalYear: 2026, totalBudget: 4_500_000_000,  status: 'APPROVED' as const },
+    { budgetCode: 'BUD-FER-SS-Pre-2026', groupBrandId: brandFER.id, seasonGroupId: 'SS', seasonType: 'pre', fiscalYear: 2026, totalBudget: 5_000_000_000, status: 'APPROVED' as const },
+    { budgetCode: 'BUD-FER-SS-Main-2026', groupBrandId: brandFER.id, seasonGroupId: 'SS', seasonType: 'main', fiscalYear: 2026, totalBudget: 8_500_000_000, status: 'APPROVED' as const },
+    { budgetCode: 'BUD-BUR-FW-Pre-2026', groupBrandId: brandBUR.id, seasonGroupId: 'FW', seasonType: 'pre', fiscalYear: 2026, totalBudget: 6_200_000_000, status: 'APPROVED' as const },
+    { budgetCode: 'BUD-GUC-SS-Pre-2026', groupBrandId: brandGUC.id, seasonGroupId: 'SS', seasonType: 'pre', fiscalYear: 2026, totalBudget: 12_000_000_000, status: 'LEVEL1_APPROVED' as const },
+    { budgetCode: 'BUD-PRA-FW-Main-2026', groupBrandId: brandPRA.id, seasonGroupId: 'FW', seasonType: 'main', fiscalYear: 2026, totalBudget: 7_800_000_000, status: 'SUBMITTED' as const },
+    { budgetCode: 'BUD-FER-FW-Pre-2026', groupBrandId: brandFER.id, seasonGroupId: 'FW', seasonType: 'pre', fiscalYear: 2026, totalBudget: 4_500_000_000, status: 'APPROVED' as const },
   ];
 
   const budgets: Record<string, any> = {};

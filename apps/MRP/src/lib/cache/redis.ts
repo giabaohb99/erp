@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - CACHE LAYER
+// BaoERP MRP - CACHE LAYER
 // Uses in-memory cache (Redis disabled for Render compatibility)
 // =============================================================================
 

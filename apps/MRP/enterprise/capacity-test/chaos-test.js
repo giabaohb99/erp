@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP CHAOS TESTING SUITE
+// BaoERP MRP CHAOS TESTING SUITE
 // Test system resilience, failure recovery, and fault tolerance
 // =============================================================================
 
@@ -555,14 +555,14 @@ export function memoryPressureTest() {
 // DEFAULT & LIFECYCLE
 // =============================================================================
 
-export default function() {
+export default function () {
   errorInjectionTest();
 }
 
 export function setup() {
   console.log(`
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                     VietERP MRP CHAOS TESTING SUITE                            ║
+║                     BaoERP MRP CHAOS TESTING SUITE                            ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║  Testing system resilience, failure recovery, and fault tolerance          ║
 ║  Target: ${BASE_URL.padEnd(64)}║
@@ -624,7 +624,7 @@ function generateChaosReport(data) {
 
   return `
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                     VietERP MRP CHAOS TEST REPORT                              ║
+║                     BaoERP MRP CHAOS TEST REPORT                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 📊 OVERALL METRICS
@@ -633,7 +633,7 @@ Total Chaos Requests:    ${m.chaos_requests_total?.values?.count || 0}
 Successful:              ${m.chaos_requests_successful?.values?.count || 0}
 Failed:                  ${m.chaos_requests_failed?.values?.count || 0}
 Success Rate:            ${((m.chaos_requests_successful?.values?.count || 0) /
-                           (m.chaos_requests_total?.values?.count || 1) * 100).toFixed(1)}%
+      (m.chaos_requests_total?.values?.count || 1) * 100).toFixed(1)}%
 
 ⏱️  RECOVERY METRICS
 ────────────────────────────────────────────────────────────────────────────────
@@ -656,8 +656,8 @@ Degraded Responses:      ${m.degraded_responses?.values?.count || 0}
 ✅ THRESHOLD RESULTS
 ────────────────────────────────────────────────────────────────────────────────
 ${Object.entries(data.thresholds || {}).map(([name, result]) =>
-  `${result.ok ? '✓' : '✗'} ${name}: ${result.ok ? 'PASS' : 'FAIL'}`
-).join('\n')}
+        `${result.ok ? '✓' : '✗'} ${name}: ${result.ok ? 'PASS' : 'FAIL'}`
+      ).join('\n')}
 
 🎯 VERDICT
 ────────────────────────────────────────────────────────────────────────────────

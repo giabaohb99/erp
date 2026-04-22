@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - STRUCTURED LOGGING
+// BaoERP MRP - STRUCTURED LOGGING
 // Production-ready logging with JSON format and log levels
 // =============================================================================
 
@@ -147,7 +147,7 @@ class Logger {
    * Output log entry
    */
   private output(entry: LogEntry): void {
-    const output = config.format === 'pretty' 
+    const output = config.format === 'pretty'
       ? this.formatPretty(entry)
       : JSON.stringify(entry);
 
@@ -247,7 +247,7 @@ class Logger {
     userAgent?: string;
   }): void {
     const level = req.status >= 500 ? 'error' : req.status >= 400 ? 'warn' : 'info';
-    
+
     this[level](`HTTP ${req.method} ${req.url}`, {
       http: {
         method: req.method,
@@ -270,7 +270,7 @@ class Logger {
     success: boolean;
   }): void {
     const level = query.success ? 'debug' : 'error';
-    
+
     this[level](`DB ${query.operation} ${query.model}`, {
       db: query,
       duration: query.duration,
@@ -289,7 +289,7 @@ class Logger {
     error?: Error;
   }): void {
     const level = job.status === 'failed' ? 'error' : 'info';
-    
+
     this[level](`Job ${job.status}: ${job.queue}/${job.name}`, {
       job: {
         queue: job.queue,
@@ -313,7 +313,7 @@ class Logger {
     details?: string;
   }): void {
     const level = event.type === 'suspicious' || event.type === 'access_denied' ? 'warn' : 'info';
-    
+
     this[level](`Security: ${event.type}`, {
       security: event,
     });
@@ -339,7 +339,7 @@ class Logger {
    */
   time(label: string): () => void {
     const start = Date.now();
-    
+
     return () => {
       const duration = Date.now() - start;
       this.debug(`Timer: ${label}`, { duration });
@@ -364,7 +364,7 @@ export function createRequestLogger(req: {
   headers?: Record<string, string | string[] | undefined>;
   query?: Record<string, string | string[] | undefined>;
 }): Logger {
-  const requestId = 
+  const requestId =
     req.headers?.['x-request-id'] as string ||
     req.headers?.['x-correlation-id'] as string ||
     generateRequestId();

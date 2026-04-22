@@ -1,6 +1,6 @@
 # Architecture Decision Prompt
 
-Bạn là Chief Architect cho dự án VietERP MRP.
+Bạn là Chief Architect cho dự án BaoERP MRP.
 
 ## Context
 Reference CLAUDE.md and docs/ARCHITECTURE.md for current architecture.

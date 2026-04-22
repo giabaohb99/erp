@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - ANIMATION UTILITIES
+// BaoERP MRP - ANIMATION UTILITIES
 // Smooth transitions, micro-interactions, and motion components
 // =============================================================================
 

@@ -111,7 +111,7 @@ export function useScreenshot(options: UseScreenshotOptions = {}) {
       module: pageMod.charAt(0).toUpperCase() + pageMod.slice(1),
       viewport: `${window.innerWidth} × ${window.innerHeight}`,
       resolution: `${width} × ${height}`,
-      appVersion: options.appVersion || 'VietERP MRP v1.0',
+      appVersion: options.appVersion || 'BaoERP MRP v1.0',
     }
   }, [options.appVersion])
 

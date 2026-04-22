@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# VietERP Platform — GitHub Setup Script
+# BaoERP Platform — GitHub Setup Script
 # ============================================================
 # Script này sẽ:
 # 1. Xóa .git con trong các apps (gom thành 1 monorepo)
@@ -24,7 +24,7 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 echo -e "${BLUE}╔══════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║   VietERP Platform — GitHub Setup               ║${NC}"
+echo -e "${BLUE}║   BaoERP Platform — GitHub Setup               ║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════╝${NC}"
 echo ""
 
@@ -104,7 +104,7 @@ else
       -H "Accept: application/vnd.github+json" \
       /user/orgs \
       -f login="$ORG" \
-      -f name="VietERP Open-Source Platform" \
+      -f name="BaoERP Open-Source Platform" \
       -f description="Nền tảng ERP mã nguồn mở cho doanh nghiệp Việt Nam" \
       -f blog="https://github.com/Viet-ERP" 2>/dev/null || {
         echo -e "${YELLOW}   Không thể tạo org tự động. Sẽ push lên nclamvn/$REPO${NC}"
@@ -118,7 +118,7 @@ if gh repo view "$ORG/$REPO" &> /dev/null; then
 else
     gh repo create "$ORG/$REPO" \
         --public \
-        --description "VietERP Platform — Nền tảng ERP mã nguồn mở cho doanh nghiệp Việt Nam / Open-source ERP for Vietnamese enterprises" \
+        --description "BaoERP Platform — Nền tảng ERP mã nguồn mở cho doanh nghiệp Việt Nam / Open-source ERP for Vietnamese enterprises" \
         --homepage "https://github.com/$ORG" \
         --license mit \
         || {
@@ -146,7 +146,7 @@ echo ""
 echo -e "${YELLOW}[5/6] Commit...${NC}"
 
 git commit -m "$(cat <<'EOF'
-feat: VietERP Platform v1.0.0 — Open-source ERP ecosystem
+feat: BaoERP Platform v1.0.0 — Open-source ERP ecosystem
 
 Nền tảng ERP mã nguồn mở toàn diện cho doanh nghiệp Việt Nam.
 Comprehensive open-source ERP platform for Vietnamese enterprises.

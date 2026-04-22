@@ -1,10 +1,10 @@
 # @vierp/vietnam
 
-Vietnamese Market Features for VietERP - Compliance with TT200, NĐ123, Insurance and Banking Regulations
+Vietnamese Market Features for BaoERP - Compliance with TT200, NĐ123, Insurance and Banking Regulations
 
 ## Overview
 
-`@vierp/vietnam` is a comprehensive TypeScript package providing Vietnamese enterprise compliance features for the VietERP monorepo. It implements strict requirements for Vietnamese regulatory standards including tax declarations, e-invoicing, insurance calculations, and banking integrations.
+`@vierp/vietnam` is a comprehensive TypeScript package providing Vietnamese enterprise compliance features for the BaoERP monorepo. It implements strict requirements for Vietnamese regulatory standards including tax declarations, e-invoicing, insurance calculations, and banking integrations.
 
 **Version:** 1.0.0
 
@@ -316,7 +316,7 @@ See individual module documentation:
 
 ## License
 
-Proprietary - VietERP Project
+Proprietary - BaoERP Project
 
 ## Support
 

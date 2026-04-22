@@ -1,7 +1,7 @@
 version: '3.8'
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# VietERP MRP - DOCKER COMPOSE CONFIGURATION
+# BaoERP MRP - DOCKER COMPOSE CONFIGURATION
 # Cấu hình triển khai trên Windows 10 với Docker Desktop
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -31,7 +31,7 @@ services:
       - rtr-network
 
   # ═══════════════════════════════════════════════════════════════════════════
-  # VietERP MRP Application
+  # BaoERP MRP Application
   # ═══════════════════════════════════════════════════════════════════════════
   app:
     build:

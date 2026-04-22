@@ -562,7 +562,7 @@ function EmailTab({ initial, isAdmin, onSuccess }: { initial?: EmailSettings; is
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
             <Label className="text-[var(--crm-text-secondary)] text-xs">Tên người gửi</Label>
-            <Input value={form.fromName} onChange={(e) => update('fromName', e.target.value)} className={inputCls} placeholder="VietERP CRM" />
+            <Input value={form.fromName} onChange={(e) => update('fromName', e.target.value)} className={inputCls} placeholder="BaoERP CRM" />
           </div>
           <div className="space-y-1.5">
             <Label className="text-[var(--crm-text-secondary)] text-xs">{t('settings.fromEmail')}</Label>
@@ -702,11 +702,10 @@ function SupportTab({ isAdmin, onSuccess }: { isAdmin: boolean; onSuccess: () =>
             {STRATEGY_OPTIONS.map((opt) => (
               <label
                 key={opt.value}
-                className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${
-                  strategy === opt.value
+                className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${strategy === opt.value
                     ? 'border-[#10B981] bg-[#10B981]/5'
                     : 'border-[var(--crm-border)] hover:bg-[var(--crm-bg-subtle)]'
-                }`}
+                  }`}
               >
                 <input
                   type="radio"
@@ -716,9 +715,8 @@ function SupportTab({ isAdmin, onSuccess }: { isAdmin: boolean; onSuccess: () =>
                   onChange={(e) => setStrategy(e.target.value)}
                   className="sr-only"
                 />
-                <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                  strategy === opt.value ? 'border-[#10B981]' : 'border-[var(--crm-border)]'
-                }`}>
+                <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${strategy === opt.value ? 'border-[#10B981]' : 'border-[var(--crm-border)]'
+                  }`}>
                   {strategy === opt.value && <div className="w-2 h-2 rounded-full bg-[#10B981]" />}
                 </div>
                 <div>
@@ -1244,7 +1242,7 @@ function WebhookRow({ webhook, onView, onEdit }: { webhook: WebhookListItem; onV
           <Badge className={`text-[10px] px-1.5 py-0 ${webhook.active
             ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'
             : 'bg-red-500/10 text-red-500 border-red-500/20'
-          }`}>
+            }`}>
             {webhook.active ? t('webhooks.active' as any) : t('webhooks.inactive' as any)}
           </Badge>
         </div>
@@ -1417,9 +1415,8 @@ function WebhookFormDialog({ open, onClose, mode, webhook }: {
                 {ALL_EVENTS.map((ev) => (
                   <label
                     key={ev}
-                    className={`flex items-center gap-2 px-2 py-1.5 rounded cursor-pointer text-xs transition-colors ${
-                      events.includes(ev) ? 'bg-[#10B981]/10 text-[#10B981]' : 'text-[var(--crm-text-muted)] hover:bg-[var(--crm-bg-subtle)]'
-                    }`}
+                    className={`flex items-center gap-2 px-2 py-1.5 rounded cursor-pointer text-xs transition-colors ${events.includes(ev) ? 'bg-[#10B981]/10 text-[#10B981]' : 'text-[var(--crm-text-muted)] hover:bg-[var(--crm-bg-subtle)]'
+                      }`}
                   >
                     <input
                       type="checkbox"
@@ -1427,9 +1424,8 @@ function WebhookFormDialog({ open, onClose, mode, webhook }: {
                       onChange={() => toggleEvent(ev)}
                       className="sr-only"
                     />
-                    <div className={`w-3 h-3 rounded border flex items-center justify-center shrink-0 ${
-                      events.includes(ev) ? 'bg-[#10B981] border-[#10B981]' : 'border-[var(--crm-border)]'
-                    }`}>
+                    <div className={`w-3 h-3 rounded border flex items-center justify-center shrink-0 ${events.includes(ev) ? 'bg-[#10B981] border-[#10B981]' : 'border-[var(--crm-border)]'
+                      }`}>
                       {events.includes(ev) && <CheckCircle2 className="w-2.5 h-2.5 text-white" />}
                     </div>
                     <span className="truncate">{t(`webhooks.event.${ev}` as any)}</span>
@@ -1512,7 +1508,7 @@ function WebhookDetailView({ id, onBack }: { id: string; onBack: () => void }) {
             <Badge className={`text-[10px] px-1.5 py-0 ${wh.active
               ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'
               : 'bg-red-500/10 text-red-500 border-red-500/20'
-            }`}>
+              }`}>
               {wh.active ? t('webhooks.active' as any) : t('webhooks.inactive' as any)}
             </Badge>
           </div>

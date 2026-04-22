@@ -23,7 +23,7 @@ import AddSKUModal from './AddSKUModal';
 
 // Season groups & seasons are now loaded from API (masterDataService.getSeasonGroups)
 
-// VietERP Design System card backgrounds - warm gold tints
+// BaoERP Design System card backgrounds - warm gold tints
 const CARD_BG_CLASSES = [
   { light: 'bg-[rgba(160,120,75,0.12)] border-[rgba(215,183,151,0.3)]', dark: 'bg-[rgba(215,183,151,0.08)] border-[rgba(215,183,151,0.2)]' },
   { light: 'bg-[rgba(160,120,75,0.18)] border-[rgba(215,183,151,0.35)]', dark: 'bg-[rgba(215,183,151,0.1)] border-[rgba(215,183,151,0.25)]' },
@@ -151,7 +151,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
         if (isGenderHierarchy) {
           const flatCats = rawCategories.flatMap((g: any) => (g.categories || []).map((c: any) => ({
             ...c,
-            genderName: g.name})));
+            genderName: g.name
+          })));
           setMasterCategories(flatCats);
         } else {
           setMasterCategories(rawCategories);
@@ -242,7 +243,9 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
           isFinal: ah.is_final_version || ah.isFinalVersion || false,
           budgetAllocates: (ah.budget_allocates || ah.budgetAllocates || []).map((ba: any) => ({
             seasonGroupName: ba.season_group?.name || ba.seasonGroup?.name || '',
-            seasonName: ba.season?.name || ba.season?.name || ''}))}));
+            seasonName: ba.season?.name || ba.season?.name || ''
+          }))
+        }));
         return {
           id: budget.id,
           fiscalYear: Number(budget.fiscal_year ?? budget.fiscalYear) || undefined,
@@ -252,7 +255,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
           totalBudget: Number(budget.amount) || Number(budget.totalBudget) || Number(budget.totalAmount) || 0,
           budgetName: budget.name || budget.budgetCode || budget.budgetName || `Budget #${budget.id}`,
           status: (budget.status || 'DRAFT').toLowerCase(),
-          allocateHeaders};
+          allocateHeaders
+        };
       });
       setApiBudgets(budgetList);
     } catch (err: any) {
@@ -551,7 +555,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
         if (updated[brandId]) {
           updated[brandId] = updated[brandId].map((h: any) => ({
             ...h,
-            isFinal: String(h.id) === String(headerId)}));
+            isFinal: String(h.id) === String(headerId)
+          }));
         }
         return updated;
       });
@@ -570,7 +575,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
         if (updated[brandId]) {
           updated[brandId] = updated[brandId].map((h: any) => ({
             ...h,
-            isFinal: String(h.id) === String(headerId)}));
+            isFinal: String(h.id) === String(headerId)
+          }));
         }
         return updated;
       });
@@ -921,7 +927,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
           id: String(v.id),
           version: v.version,
           status: v.status || 'DRAFT',
-          isFinal: v.is_final_version || false}));
+          isFinal: v.is_final_version || false
+        }));
         setBrandPlanningHeaders(prev => ({ ...prev, [brandId]: mapped }));
       } catch (err: any) {
         console.error(`[SKU] Failed to fetch planning headers for brand ${brandId}:`, err?.response?.data || err?.message);
@@ -1017,7 +1024,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
             gender: path.gender,
             category: path.category,
             subCategory: path.subCategory,
-            items: []});
+            items: []
+          });
         }
       });
       // Also include any skuBlocks for this brand that aren't covered by masterCategories
@@ -1126,7 +1134,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
             [brandId]: [
               { id: newId, version: newHeader.version || 1, status: 'DRAFT', isFinal: false },
               ...(prev[brandId] || []),
-            ]}));
+            ]
+          }));
           setBrandSkuVersion(prev => ({ ...prev, [brandId]: newId }));
           // Update sizing headers from the response (now at header level)
           const detail = await proposalService.getOne(newId);
@@ -1159,7 +1168,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
             [brandId]: [
               { id: newId, version: newHeader.version, status: 'DRAFT', isFinal: false },
               ...(prev[brandId] || []),
-            ]}));
+            ]
+          }));
           setBrandSkuVersion(prev => ({ ...prev, [brandId]: newId }));
         }
         toast.success('Saved as new version');
@@ -1231,7 +1241,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
         color: item.color || '',
         srp: item.srp || 0,
         orderQty: item.order || 0,
-        totalValue: item.ttlValue || 0}))
+        totalValue: item.ttlValue || 0
+      }))
     );
 
     if (rows.length === 0) {
@@ -1416,7 +1427,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
           gender: blockInfo.gender || '',
           category: blockInfo.category || '',
           subCategory: blockInfo.subCategory || '',
-          items: [{ ...newItem, division: blockInfo.category || '', productType: blockInfo.subCategory || '' }]}];
+          items: [{ ...newItem, division: blockInfo.category || '', productType: blockInfo.subCategory || '' }]
+        }];
       }
       return prev;
     });
@@ -1486,7 +1498,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
       storeQty: sku.storeQty || {},
       ttlValue: sku.ttlValue || 0,
       customerTarget: sku.customerTarget || 'New',
-      isNew: false}));
+      isNew: false
+    }));
     setSkuBlocks((prev: any) => {
       const existingBlock = prev.find((block: any) => buildBlockKey(block) === blockKey);
       if (existingBlock) {
@@ -1502,7 +1515,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
           gender: blockInfo.gender || '',
           category: blockInfo.category || '',
           subCategory: blockInfo.subCategory || '',
-          items: newItems}];
+          items: newItems
+        }];
       }
       return prev;
     });
@@ -1514,7 +1528,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
       message: t('common.confirmDelete'),
       confirmLabel: t('common.delete'),
       variant: 'danger',
-      onConfirm: () => doDeleteSkuRow(blockKey, itemIdx)});
+      onConfirm: () => doDeleteSkuRow(blockKey, itemIdx)
+    });
   };
   const doDeleteSkuRow = (blockKey: any, itemIdx: any) => {
     setSkuBlocks((prev: any) => prev.map((block: any) => {
@@ -1549,237 +1564,235 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
 
         {/* ===== FILTER CONTENT ===== */}
         <div>
-        <div>
-        <div className="p-2 md:p-3">
-        {/* Mobile Filter Button */}
-        {isMobile && (
-          <div className="mb-2">
-            <button
-              onClick={openFilter}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium border ${'bg-[rgba(160,120,75,0.12)] border-[rgba(215,183,151,0.4)] text-[#6B4D30]'}`}
-            >
-              <SlidersHorizontal size={16} />
-              {t('common.filters')}
-            </button>
-          </div>
-        )}
-
-        {!isMobile && <>
-          {/* ── Group 1: Global Context Filters ── */}
-          <div className="-mx-2 md:-mx-3 px-3 md:px-6 py-1.5">
-            <div className="flex items-end gap-1.5">
-              <FilterSelect
-                label="FY"
-                icon={Clock}
-                value={fyFilter}
-                options={fyOptions}
-                onChange={(v: string) => { setFyFilter(v); setBudgetFilter('all'); }}
-                placeholder="All FY"
-              />
-              {/* Budget Dropdown — matches BudgetAllocate design */}
-              <div className="relative min-w-0" ref={budgetDropdownRef}>
-                <label className="block text-[10px] uppercase tracking-[0.06em] font-bold mb-0.5 text-[#8A6340]">
-                  Budget
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setIsBudgetDropdownOpen(!isBudgetDropdownOpen)}
-                  className={`w-full px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center justify-between text-xs transition-all ${selectedBudget
-                    ? 'bg-[rgba(18,119,73,0.1)] border-[#127749] text-[#127749] hover:border-[#2A9E6A]'
-                    : 'bg-white border-[#C4B5A5] text-[#0A0A0A] hover:border-[rgba(215,183,151,0.4)] hover:bg-[rgba(160,120,75,0.18)]'}`}
-                >
-                  <div className="flex items-center gap-1.5 truncate">
-                    <FileText size={12} className={selectedBudget ? 'text-[#127749]' : 'text-[#666666]'} />
-                    <span className="truncate">{selectedBudget?.budgetName || t('planning.selectBudget')}</span>
-                  </div>
-                  <ChevronDown size={12} className={`flex-shrink-0 transition-transform duration-200 ${isBudgetDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {isBudgetDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-1 border rounded-xl shadow-xl z-[9999] overflow-hidden whitespace-nowrap w-max min-w-full animate-slideDown bg-white border-[#C4B5A5]">
-                    <div className="max-h-72 overflow-y-auto py-0.5">
-                      {loadingBudgets && (
-                        <div className="px-4 py-6 flex items-center justify-center">
-                          <div className="w-5 h-5 border-2 border-[#D7B797]/30 border-t-[#D7B797] rounded-full animate-spin" />
-                          <span className="ml-2 text-sm text-[#666666]">{t('common.loading')}...</span>
-                        </div>
-                      )}
-                      {!loadingBudgets && filteredBudgets.length === 0 && (
-                        <div className="px-4 py-6 text-center text-sm text-[#666666]">
-                          {t('budget.noMatchingBudgets')}
-                        </div>
-                      )}
-                      {!loadingBudgets && filteredBudgets.length > 0 && (
-                        <div
-                          onClick={() => { setBudgetFilter('all'); setIsBudgetDropdownOpen(false); }}
-                          className={`px-4 py-0.5 flex items-center justify-between cursor-pointer text-sm transition-colors ${budgetFilter === 'all'
-                            ? 'bg-[rgba(18,119,73,0.1)] text-[#127749]' : 'hover:bg-[rgba(160,120,75,0.18)] text-[#666666]'}`}
-                        >
-                          <span className="font-medium">{t('planning.selectBudget')}</span>
-                          {budgetFilter === 'all' && <Check size={14} className="text-[#127749]" />}
-                        </div>
-                      )}
-                      {!loadingBudgets && filteredBudgets.map((budget: any) => (
-                        <div
-                          key={budget.id}
-                          onClick={() => {
-                            setBudgetFilter(budget.id);
-                            if (budget.fiscalYear) setFyFilter(String(budget.fiscalYear));
-                            setIsBudgetDropdownOpen(false);
-                          }}
-                          className={`px-4 py-0.5 cursor-pointer transition-colors border-t border-[#D4C8BB] ${budgetFilter === budget.id
-                            ? 'bg-[rgba(18,119,73,0.1)]' : 'hover:bg-[rgba(160,120,75,0.18)]'}`}
-                        >
-                          <div className="flex items-start justify-between">
-                            <div className="min-w-0 flex-1">
-                              <div className={`font-semibold text-sm font-['Montserrat'] ${budgetFilter === budget.id ? 'text-[#127749]' : 'text-[#0A0A0A]'}`}>
-                                {budget.budgetName}
-                              </div>
-                              <div className="flex items-center gap-2 mt-1">
-                                <span className="text-xs font-['JetBrains_Mono'] text-[#666666]">FY{budget.fiscalYear}</span>
-                                <span className="text-[#2E2E2E]/30">&bull;</span>
-                                <span className="text-xs font-medium font-['JetBrains_Mono'] text-[#127749]">{formatCurrency(budget.totalBudget)}</span>
-                              </div>
-                            </div>
-                            {budgetFilter === budget.id && (
-                              <div className="w-5 h-5 rounded-full bg-[#127749] flex items-center justify-center flex-shrink-0 ml-2">
-                                <Check size={12} className="text-white" strokeWidth={3} />
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-              <FilterSelect
-                label={t('budget.brand') || 'Brand'}
-                icon={Tag}
-                value={brandFilter}
-                options={brandOptions}
-                onChange={setBrandFilter}
-                placeholder={t('budget.allBrands') || 'All Brands'}
-              />
-              <FilterSelect
-                label={t('budget.seasonGroup') || 'Season Group'}
-                icon={Layers}
-                value={seasonGroupFilter}
-                options={seasonGroupOptions}
-                onChange={(v: string) => { setSeasonGroupFilter(v); setSeasonFilter('all'); }}
-                placeholder={t('budget.allSeasonGroups') || 'All Season Groups'}
-              />
-              <FilterSelect
-                label={t('budget.season') || 'Season'}
-                icon={Clock}
-                value={seasonFilter}
-                options={seasonOptions}
-                onChange={setSeasonFilter}
-                placeholder={t('budget.allSeasons') || 'All Seasons'}
-              />
-
-              {/* Separator */}
-              <div className="w-px self-stretch bg-[rgba(215,183,151,0.4)] shrink-0 mx-0.5" />
-
-              {/* SKU Data Filters */}
-              <FilterSelect
-                icon={Users}
-                label={t('common.gender') || 'Gender'}
-                value={genderFilter}
-                options={genderOptions}
-                onChange={(v: string) => { setGenderFilter(v); setCategoryFilter('all'); setSubCategoryFilter('all'); }}
-                placeholder={t('common.allGenders') || 'All Genders'}
-              />
-              <FilterSelect
-                icon={Tag}
-                label={t('common.category') || 'Category'}
-                value={categoryFilter}
-                options={categoryOptions}
-                onChange={(v: string) => { setCategoryFilter(v); setSubCategoryFilter('all'); }}
-                placeholder={t('common.allCategories') || 'All Categories'}
-              />
-              <FilterSelect
-                icon={Tag}
-                label={t('common.subCategory') || 'Sub Category'}
-                value={subCategoryFilter}
-                options={subCategoryOptions}
-                onChange={setSubCategoryFilter}
-                placeholder={t('common.allSubCategories') || 'All SubCategories'}
-              />
-
-              {hasActiveSkuFilter && (
-                <button
-                  type="button"
-                  onClick={() => { setGenderFilter('all'); setCategoryFilter('all'); setSubCategoryFilter('all'); }}
-                  className="shrink-0 p-1 rounded transition-colors text-[#666] hover:text-[#F85149] hover:bg-red-50"
-                  title="Clear all SKU filters"
-                >
-                  <X size={14} />
-                </button>
+          <div>
+            <div className="p-2 md:p-3">
+              {/* Mobile Filter Button */}
+              {isMobile && (
+                <div className="mb-2">
+                  <button
+                    onClick={openFilter}
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium border ${'bg-[rgba(160,120,75,0.12)] border-[rgba(215,183,151,0.4)] text-[#6B4D30]'}`}
+                  >
+                    <SlidersHorizontal size={16} />
+                    {t('common.filters')}
+                  </button>
+                </div>
               )}
 
-            </div>
-          </div>
-        </>}
+              {!isMobile && <>
+                {/* ── Group 1: Global Context Filters ── */}
+                <div className="-mx-2 md:-mx-3 px-3 md:px-6 py-1.5">
+                  <div className="flex items-end gap-1.5">
+                    <FilterSelect
+                      label="FY"
+                      icon={Clock}
+                      value={fyFilter}
+                      options={fyOptions}
+                      onChange={(v: string) => { setFyFilter(v); setBudgetFilter('all'); }}
+                      placeholder="All FY"
+                    />
+                    {/* Budget Dropdown — matches BudgetAllocate design */}
+                    <div className="relative min-w-0" ref={budgetDropdownRef}>
+                      <label className="block text-[10px] uppercase tracking-[0.06em] font-bold mb-0.5 text-[#8A6340]">
+                        Budget
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setIsBudgetDropdownOpen(!isBudgetDropdownOpen)}
+                        className={`w-full px-2 py-1 border rounded-md font-medium cursor-pointer flex items-center justify-between text-xs transition-all ${selectedBudget
+                          ? 'bg-[rgba(18,119,73,0.1)] border-[#127749] text-[#127749] hover:border-[#2A9E6A]'
+                          : 'bg-white border-[#C4B5A5] text-[#0A0A0A] hover:border-[rgba(215,183,151,0.4)] hover:bg-[rgba(160,120,75,0.18)]'}`}
+                      >
+                        <div className="flex items-center gap-1.5 truncate">
+                          <FileText size={12} className={selectedBudget ? 'text-[#127749]' : 'text-[#666666]'} />
+                          <span className="truncate">{selectedBudget?.budgetName || t('planning.selectBudget')}</span>
+                        </div>
+                        <ChevronDown size={12} className={`flex-shrink-0 transition-transform duration-200 ${isBudgetDropdownOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {isBudgetDropdownOpen && (
+                        <div className="absolute top-full left-0 mt-1 border rounded-xl shadow-xl z-[9999] overflow-hidden whitespace-nowrap w-max min-w-full animate-slideDown bg-white border-[#C4B5A5]">
+                          <div className="max-h-72 overflow-y-auto py-0.5">
+                            {loadingBudgets && (
+                              <div className="px-4 py-6 flex items-center justify-center">
+                                <div className="w-5 h-5 border-2 border-[#D7B797]/30 border-t-[#D7B797] rounded-full animate-spin" />
+                                <span className="ml-2 text-sm text-[#666666]">{t('common.loading')}...</span>
+                              </div>
+                            )}
+                            {!loadingBudgets && filteredBudgets.length === 0 && (
+                              <div className="px-4 py-6 text-center text-sm text-[#666666]">
+                                {t('budget.noMatchingBudgets')}
+                              </div>
+                            )}
+                            {!loadingBudgets && filteredBudgets.length > 0 && (
+                              <div
+                                onClick={() => { setBudgetFilter('all'); setIsBudgetDropdownOpen(false); }}
+                                className={`px-4 py-0.5 flex items-center justify-between cursor-pointer text-sm transition-colors ${budgetFilter === 'all'
+                                  ? 'bg-[rgba(18,119,73,0.1)] text-[#127749]' : 'hover:bg-[rgba(160,120,75,0.18)] text-[#666666]'}`}
+                              >
+                                <span className="font-medium">{t('planning.selectBudget')}</span>
+                                {budgetFilter === 'all' && <Check size={14} className="text-[#127749]" />}
+                              </div>
+                            )}
+                            {!loadingBudgets && filteredBudgets.map((budget: any) => (
+                              <div
+                                key={budget.id}
+                                onClick={() => {
+                                  setBudgetFilter(budget.id);
+                                  if (budget.fiscalYear) setFyFilter(String(budget.fiscalYear));
+                                  setIsBudgetDropdownOpen(false);
+                                }}
+                                className={`px-4 py-0.5 cursor-pointer transition-colors border-t border-[#D4C8BB] ${budgetFilter === budget.id
+                                  ? 'bg-[rgba(18,119,73,0.1)]' : 'hover:bg-[rgba(160,120,75,0.18)]'}`}
+                              >
+                                <div className="flex items-start justify-between">
+                                  <div className="min-w-0 flex-1">
+                                    <div className={`font-semibold text-sm font-['Montserrat'] ${budgetFilter === budget.id ? 'text-[#127749]' : 'text-[#0A0A0A]'}`}>
+                                      {budget.budgetName}
+                                    </div>
+                                    <div className="flex items-center gap-2 mt-1">
+                                      <span className="text-xs font-['JetBrains_Mono'] text-[#666666]">FY{budget.fiscalYear}</span>
+                                      <span className="text-[#2E2E2E]/30">&bull;</span>
+                                      <span className="text-xs font-medium font-['JetBrains_Mono'] text-[#127749]">{formatCurrency(budget.totalBudget)}</span>
+                                    </div>
+                                  </div>
+                                  {budgetFilter === budget.id && (
+                                    <div className="w-5 h-5 rounded-full bg-[#127749] flex items-center justify-center flex-shrink-0 ml-2">
+                                      <Check size={12} className="text-white" strokeWidth={3} />
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <FilterSelect
+                      label={t('budget.brand') || 'Brand'}
+                      icon={Tag}
+                      value={brandFilter}
+                      options={brandOptions}
+                      onChange={setBrandFilter}
+                      placeholder={t('budget.allBrands') || 'All Brands'}
+                    />
+                    <FilterSelect
+                      label={t('budget.seasonGroup') || 'Season Group'}
+                      icon={Layers}
+                      value={seasonGroupFilter}
+                      options={seasonGroupOptions}
+                      onChange={(v: string) => { setSeasonGroupFilter(v); setSeasonFilter('all'); }}
+                      placeholder={t('budget.allSeasonGroups') || 'All Season Groups'}
+                    />
+                    <FilterSelect
+                      label={t('budget.season') || 'Season'}
+                      icon={Clock}
+                      value={seasonFilter}
+                      options={seasonOptions}
+                      onChange={setSeasonFilter}
+                      placeholder={t('budget.allSeasons') || 'All Seasons'}
+                    />
 
-        {/* ── Rail Controls + Summary ── */}
-        {displayBrands.length > 0 && (
-          <div className="border-t border-[rgba(215,183,151,0.25)] -mx-2 md:-mx-3 -mb-2 md:-mb-3 px-3 md:px-6 py-1.5 flex items-center gap-1.5">
-            {/* Summary (left) */}
-            <span className="text-xs text-[#666]">{displayBrands.length} Brands &middot; {grandTotals.skuCount} SKUs</span>
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-[rgba(215,183,151,0.08)] border border-[rgba(215,183,151,0.15)]">
-              <span className="text-[10px] uppercase font-bold text-[#999] tracking-wide">Order</span>
-              <span className="text-xs font-bold text-[#6B4D30]">{grandTotals.order}</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-[rgba(18,119,73,0.06)] border border-[rgba(18,119,73,0.12)]">
-              <span className="text-[10px] uppercase font-bold text-[#127749]/60 tracking-wide">Value</span>
-              <span className="text-xs font-bold text-[#127749]">{formatCurrency(grandTotals.ttlValue)}</span>
-            </div>
+                    {/* Separator */}
+                    <div className="w-px self-stretch bg-[rgba(215,183,151,0.4)] shrink-0 mx-0.5" />
 
-            <div className="flex-1" />
+                    {/* SKU Data Filters */}
+                    <FilterSelect
+                      icon={Users}
+                      label={t('common.gender') || 'Gender'}
+                      value={genderFilter}
+                      options={genderOptions}
+                      onChange={(v: string) => { setGenderFilter(v); setCategoryFilter('all'); setSubCategoryFilter('all'); }}
+                      placeholder={t('common.allGenders') || 'All Genders'}
+                    />
+                    <FilterSelect
+                      icon={Tag}
+                      label={t('common.category') || 'Category'}
+                      value={categoryFilter}
+                      options={categoryOptions}
+                      onChange={(v: string) => { setCategoryFilter(v); setSubCategoryFilter('all'); }}
+                      placeholder={t('common.allCategories') || 'All Categories'}
+                    />
+                    <FilterSelect
+                      icon={Tag}
+                      label={t('common.subCategory') || 'Sub Category'}
+                      value={subCategoryFilter}
+                      options={subCategoryOptions}
+                      onChange={setSubCategoryFilter}
+                      placeholder={t('common.allSubCategories') || 'All SubCategories'}
+                    />
 
-            {/* Collapse/Expand (right) */}
-            <button
-              type="button"
-              onClick={() => {
-                const allCollapsedNow = displayBrands.every((b: any) => collapsedBrands[String(b.id)] === true);
-                const next: Record<string, boolean> = {};
-                displayBrands.forEach((b: any) => { next[String(b.id)] = !allCollapsedNow; });
-                setCollapsedBrands(next);
-              }}
-              className="flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-md border border-[#C4B5A5] text-[#6B4D30] hover:bg-[rgba(160,120,75,0.18)] transition-colors shrink-0"
-            >
-              <ChevronDown size={12} className={`transition-transform ${displayBrands.every((b: any) => collapsedBrands[String(b.id)] === true) ? '-rotate-90' : ''}`} />
-              {displayBrands.every((b: any) => collapsedBrands[String(b.id)] === true) ? 'Expand All' : 'Collapse All'}
-            </button>
+                    {hasActiveSkuFilter && (
+                      <button
+                        type="button"
+                        onClick={() => { setGenderFilter('all'); setCategoryFilter('all'); setSubCategoryFilter('all'); }}
+                        className="shrink-0 p-1 rounded transition-colors text-[#666] hover:text-[#F85149] hover:bg-red-50"
+                        title="Clear all SKU filters"
+                      >
+                        <X size={14} />
+                      </button>
+                    )}
 
-            {/* View Mode Toggle */}
-            <div className="flex items-center gap-0.5 rounded-md p-0.5 bg-[rgba(160,120,75,0.10)]">
-              <button
-                type="button"
-                onClick={() => setViewMode('table')}
-                title="Table view"
-                className={`p-1 rounded transition-colors ${
-                  viewMode === 'table'
-                    ? 'bg-white text-[#6B4D30] shadow-sm' : 'text-[#888] hover:text-[#6B4D30]'}`}
-              >
-                <List size={13} />
-              </button>
-              <button
-                type="button"
-                onClick={() => canShowCardView && setViewMode('card')}
-                disabled={!canShowCardView}
-                title={!canShowCardView ? 'Add SKUs to enable card view' : 'Card view'}
-                className={`p-1 rounded transition-colors ${
-                  viewMode === 'card'
-                    ? 'bg-white text-[#6B4D30] shadow-sm' : 'text-[#888] hover:text-[#6B4D30]'} ${!canShowCardView ? 'opacity-40 cursor-not-allowed' : ''}`}
-              >
-                <LayoutGrid size={13} />
-              </button>
-            </div>
-          </div>
-        )}
-        </div>{/* end p-2 md:p-3 */}
-        </div>{/* end overflow-hidden min-h-0 */}
+                  </div>
+                </div>
+              </>}
+
+              {/* ── Rail Controls + Summary ── */}
+              {displayBrands.length > 0 && (
+                <div className="border-t border-[rgba(215,183,151,0.25)] -mx-2 md:-mx-3 -mb-2 md:-mb-3 px-3 md:px-6 py-1.5 flex items-center gap-1.5">
+                  {/* Summary (left) */}
+                  <span className="text-xs text-[#666]">{displayBrands.length} Brands &middot; {grandTotals.skuCount} SKUs</span>
+                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-[rgba(215,183,151,0.08)] border border-[rgba(215,183,151,0.15)]">
+                    <span className="text-[10px] uppercase font-bold text-[#999] tracking-wide">Order</span>
+                    <span className="text-xs font-bold text-[#6B4D30]">{grandTotals.order}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-[rgba(18,119,73,0.06)] border border-[rgba(18,119,73,0.12)]">
+                    <span className="text-[10px] uppercase font-bold text-[#127749]/60 tracking-wide">Value</span>
+                    <span className="text-xs font-bold text-[#127749]">{formatCurrency(grandTotals.ttlValue)}</span>
+                  </div>
+
+                  <div className="flex-1" />
+
+                  {/* Collapse/Expand (right) */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const allCollapsedNow = displayBrands.every((b: any) => collapsedBrands[String(b.id)] === true);
+                      const next: Record<string, boolean> = {};
+                      displayBrands.forEach((b: any) => { next[String(b.id)] = !allCollapsedNow; });
+                      setCollapsedBrands(next);
+                    }}
+                    className="flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-md border border-[#C4B5A5] text-[#6B4D30] hover:bg-[rgba(160,120,75,0.18)] transition-colors shrink-0"
+                  >
+                    <ChevronDown size={12} className={`transition-transform ${displayBrands.every((b: any) => collapsedBrands[String(b.id)] === true) ? '-rotate-90' : ''}`} />
+                    {displayBrands.every((b: any) => collapsedBrands[String(b.id)] === true) ? 'Expand All' : 'Collapse All'}
+                  </button>
+
+                  {/* View Mode Toggle */}
+                  <div className="flex items-center gap-0.5 rounded-md p-0.5 bg-[rgba(160,120,75,0.10)]">
+                    <button
+                      type="button"
+                      onClick={() => setViewMode('table')}
+                      title="Table view"
+                      className={`p-1 rounded transition-colors ${viewMode === 'table'
+                          ? 'bg-white text-[#6B4D30] shadow-sm' : 'text-[#888] hover:text-[#6B4D30]'}`}
+                    >
+                      <List size={13} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => canShowCardView && setViewMode('card')}
+                      disabled={!canShowCardView}
+                      title={!canShowCardView ? 'Add SKUs to enable card view' : 'Card view'}
+                      className={`p-1 rounded transition-colors ${viewMode === 'card'
+                          ? 'bg-white text-[#6B4D30] shadow-sm' : 'text-[#888] hover:text-[#6B4D30]'} ${!canShowCardView ? 'opacity-40 cursor-not-allowed' : ''}`}
+                    >
+                      <LayoutGrid size={13} />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>{/* end p-2 md:p-3 */}
+          </div>{/* end overflow-hidden min-h-0 */}
         </div>{/* end grid animation wrapper */}
       </div>
 
@@ -1967,10 +1980,9 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                             if (isOpen) { setOpenDropdown(null); setDropdownAnchorEl(null); }
                             else { setOpenDropdown({ type: 'version', brandId }); setDropdownAnchorEl(e.currentTarget); }
                           }}
-                          className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium transition-colors ${
-                            curVer
+                          className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium transition-colors ${curVer
                               ? isFinal
-                                ?'bg-[rgba(215,183,151,0.25)] text-[#6B4D30]':'bg-[rgba(18,119,73,0.15)] text-[#127749]':'bg-[rgba(215,183,151,0.15)] text-[#666666] hover:text-[#333333]'}`}
+                                ? 'bg-[rgba(215,183,151,0.25)] text-[#6B4D30]' : 'bg-[rgba(18,119,73,0.15)] text-[#127749]' : 'bg-[rgba(215,183,151,0.15)] text-[#666666] hover:text-[#333333]'}`}
                         >
                           <ChevronDown size={11} className={`shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                           {curVer ? (
@@ -2002,10 +2014,9 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                             if (isOpen) { setOpenDropdown(null); setDropdownAnchorEl(null); }
                             else { setOpenDropdown({ type: 'choice', brandId }); setDropdownAnchorEl(e.currentTarget); }
                           }}
-                          className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium transition-colors ${
-                            curChoice
+                          className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium transition-colors ${curChoice
                               ? isFinal
-                                ?'bg-[rgba(215,183,151,0.25)] text-[#6B4D30]':'bg-[rgba(18,119,73,0.15)] text-[#127749]':'bg-[rgba(215,183,151,0.15)] text-[#666666] hover:text-[#333333]'}`}
+                                ? 'bg-[rgba(215,183,151,0.25)] text-[#6B4D30]' : 'bg-[rgba(18,119,73,0.15)] text-[#127749]' : 'bg-[rgba(215,183,151,0.15)] text-[#666666] hover:text-[#333333]'}`}
                         >
                           <ChevronDown size={11} className={`shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                           {curChoice ? (
@@ -2062,7 +2073,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                               groupBrandId,
                               brandId,
                               seasonGroupId: seasonGroupFilter !== 'all' ? seasonGroupFilter : null,
-                              seasonId: seasonFilter !== 'all' ? seasonFilter : null});
+                              seasonId: seasonFilter !== 'all' ? seasonFilter : null
+                            });
                             router.push('/planning');
                           }}
                           className="flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-semibold font-['Montserrat'] border border-[#D7B797]/50 text-[#6B4D30] hover:bg-[rgba(160,120,75,0.08)] transition-colors shrink-0"
@@ -2078,7 +2090,7 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                   if (isLoadingPlanning) {
                     return (
                       <div className={`flex items-center justify-center gap-2 px-4 py-6 border-t ${'border-[#C4B5A5]'}`}>
-                        <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" style={{ borderColor:'#6B4D30', borderTopColor: 'transparent' }} />
+                        <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" style={{ borderColor: '#6B4D30', borderTopColor: 'transparent' }} />
                         <span className={`text-xs font-['Montserrat'] ${'text-[#666666]'}`}>Loading planning data...</span>
                       </div>
                     );
@@ -2107,7 +2119,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                               brandId,
                               brandName: brand.name || brand.code || '',
                               seasonGroup: seasonGroupFilter,
-                              season: seasonFilter});
+                              season: seasonFilter
+                            });
                             router.push('/otb-analysis');
                           }}
                           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold font-['Montserrat'] border transition-all ${'bg-[#6B4D30] border-[#6B4D30] text-white hover:bg-[#5C4028] hover:border-[#5C4028]'}`}
@@ -2122,358 +2135,357 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                   // Case 5: All conditions met — show full content
                   const hasHistorical = brandBlocks.some((b: any) => b.isHistorical);
                   return (
-                  <div className="space-y-3 p-3">
-                    {/* Previous Year Template Banner */}
-                    {hasHistorical && (
-                      <div className={`flex items-center justify-between gap-3 px-4 py-2.5 rounded-lg border ${'bg-[rgba(107,77,48,0.06)] border-[rgba(215,183,151,0.4)]'}`}>
-                        <div className="flex items-center gap-2">
-                          <FileText size={14} className={'text-[#6B4D30]'} />
-                          <span className={`text-xs font-semibold font-['Montserrat'] ${'text-[#6B4D30]'}`}>
-                            Previous Year Template
-                          </span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded ${'bg-[rgba(215,183,151,0.3)] text-[#6B4D30]'}`}>
-                            Read-only
-                          </span>
-                        </div>
-                        <button
-                          onClick={() => {
-                            // Copy historical blocks as new draft (remove isHistorical flag)
-                            setSkuBlocks(prev => prev.map((b: any) =>
-                              b.brandId === brandId && b.isHistorical ? { ...b, isHistorical: false } : b
-                            ));
-                          }}
-                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold font-['Montserrat'] transition-all ${'bg-[#6B4D30] text-white hover:bg-[#5C4028]'}`}
-                        >
-                          <FilePlus size={12} />
-                          Use as Template
-                        </button>
-                      </div>
-                    )}
-                    {brandBlocks.length === 0 ? (
-                      <div className={`p-6 text-center ${'text-[#999999]'}`}>
-                        <p className="text-sm">No subcategories available for this brand</p>
-                      </div>
-                    ) : brandBlocks.map((block: any) => {
-                      const key = buildBlockKey(block);
-                      const isCollapsed = collapsed[key];
-                      const isEmpty = !block.items || block.items.length === 0;
-                      return (
-                        <div key={key} data-rail-card className={`rounded-xl border ${'bg-white border-[rgba(215,183,151,0.2)]'}`} style={{ overflow: 'clip' }}>
+                    <div className="space-y-3 p-3">
+                      {/* Previous Year Template Banner */}
+                      {hasHistorical && (
+                        <div className={`flex items-center justify-between gap-3 px-4 py-2.5 rounded-lg border ${'bg-[rgba(107,77,48,0.06)] border-[rgba(215,183,151,0.4)]'}`}>
+                          <div className="flex items-center gap-2">
+                            <FileText size={14} className={'text-[#6B4D30]'} />
+                            <span className={`text-xs font-semibold font-['Montserrat'] ${'text-[#6B4D30]'}`}>
+                              Previous Year Template
+                            </span>
+                            <span className={`text-[10px] px-1.5 py-0.5 rounded ${'bg-[rgba(215,183,151,0.3)] text-[#6B4D30]'}`}>
+                              Read-only
+                            </span>
+                          </div>
                           <button
-                            type="button"
-                            onClick={() => !isEmpty && handleToggle(key)}
-                            className={`w-full flex items-center gap-0 ${'bg-[rgba(215,183,151,0.18)] border-b border-[rgba(215,183,151,0.3)]'}`}
+                            onClick={() => {
+                              // Copy historical blocks as new draft (remove isHistorical flag)
+                              setSkuBlocks(prev => prev.map((b: any) =>
+                                b.brandId === brandId && b.isHistorical ? { ...b, isHistorical: false } : b
+                              ));
+                            }}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold font-['Montserrat'] transition-all ${'bg-[#6B4D30] text-white hover:bg-[#5C4028]'}`}
                           >
-                            <div className={`w-1.5 self-stretch rounded-l-xl ${'bg-[#8A6340]'}`} />
-                            <div className="flex items-center gap-3 px-4 py-2 flex-1">
-                              {!isEmpty && <ChevronDown size={14} className={`transition-transform ${isCollapsed ? '-rotate-90' : ''} ${'text-[#6B4D30]'}`} />}
-                              <div className="text-left flex-1">
-                                <div className="flex items-center gap-2">
-                                  <span className={`text-[10px] font-semibold uppercase tracking-wider font-['Montserrat'] ${'text-[#8A6340]'}`}>RAIL</span>
-                                  <span className={`font-semibold text-sm ${'text-[#6B4D30]'}`}>{block.subCategory}</span>
-                                  <span className={`text-xs px-2 py-0.5 rounded-full ${'bg-[rgba(160,120,75,0.12)] text-[#6B5B4D]'}`}>
-                                    {block.items?.length || 0} SKUs
-                                  </span>
-                                  {!isEmpty && (() => {
-                                    const { completed, total } = getSizingCount(key, block.items);
-                                    return completed > 0 ? (
-                                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold ${
-                                        completed === total
-                                          ? 'bg-[#127749]/15 text-[#2A9E6A]'
-                                          : 'bg-[#D97706]/15 text-[#D97706]'
-                                      }`}>
-                                        {completed}/{total} sized
-                                      </span>
-                                    ) : null;
-                                  })()}
-                                </div>
-                                <div className={`text-xs mt-0.5 ${'text-[#8A6340]'}`}>
-                                  {block.gender} • {block.category}
-                                </div>
-                              </div>
-                              {!isEmpty && (
-                                <div className={`hidden md:flex items-center gap-4 text-xs font-['JetBrains_Mono'] ${'text-[#6B5B4D]'}`}>
-                                  <div className="flex flex-col items-center">
-                                    <span className={`text-[10px] font-['Montserrat'] ${'text-[#999999]'}`}>Order</span>
-                                    <span className={`font-semibold ${'text-[#6B4D30]'}`}>{block.items.reduce((s: number, i: any) => s + (i.order || 0), 0)}</span>
-                                  </div>
-                                  {stores.map((st: any) => (
-                                    <div key={st.code} className="flex flex-col items-center">
-                                      <span className={`text-[10px] font-['Montserrat'] ${'text-[#999999]'}`}>{st.code}</span>
-                                      <span className="font-semibold">{block.items.reduce((s: number, i: any) => s + ((i.storeQty || {})[st.code] || 0), 0)}</span>
-                                    </div>
-                                  ))}
-                                  <div className={`h-6 w-px ${'bg-[rgba(215,183,151,0.4)]'}`} />
-                                  <div className="flex flex-col items-center">
-                                    <span className={`text-[10px] font-['Montserrat'] ${'text-[#999999]'}`}>Value</span>
-                                    <span className={`font-semibold ${'text-[#127749]'}`}>{formatCurrency(block.items.reduce((s: number, i: any) => s + ((i.order || 0) * (i.unitCost || 0)), 0))}</span>
-                                  </div>
-                                </div>
-                              )}
-                            </div>
+                            <FilePlus size={12} />
+                            Use as Template
                           </button>
-
-                {/* Empty block — show row headers + Add New column */}
-                {isEmpty && (
-                  <div className="overflow-x-auto" style={{ overflowY: 'clip' }}>
-                    {(() => {
-                      const labelCls = `px-3 py-1.5 font-semibold font-['Montserrat'] whitespace-nowrap sticky left-0 z-10 ${'bg-white text-[#6B4D30] !border-r-[rgba(160,120,75,0.4)]'}`;
-                      const emptyCls = `px-3 py-1.5 text-center min-w-[140px] ${'bg-white text-[#ccc]'}`;
-                      const rowLabels = ['Actions', 'Image', 'SKU', 'Name', 'Product Type (L3)', 'Theme', 'Color', 'Composition', 'Unit cost', 'SRP', 'Order', 'Customer Target', 'Comment'];
-                      return (
-                        <table className={`w-full text-xs border-separate border-spacing-0 ${'[&_td]:border-[rgba(215,183,151,0.2)]'} [&_td]:border`}>
-                          <tbody>
-                            {rowLabels.map((label, ri) => (
-                              <tr key={label}>
-                                <td className={labelCls}>{label}</td>
-                                <td className={`${emptyCls} ${label === 'Image' ? 'py-4' : ''}`}>
-                                  {label === 'Image' ? <span className="text-[11px] italic opacity-50">—</span> : <span className="opacity-30">—</span>}
-                                </td>
-                                {ri === 0 && (
-                                  <td rowSpan={999} className={`border-l-2 ${'bg-[rgba(215,183,151,0.04)] border-l-[rgba(215,183,151,0.35)]'}`} style={{ minWidth: 52, verticalAlign: 'middle' }}>
-                                    <div className="flex items-center justify-center h-full" style={{ minHeight: 200 }}>
-                                      <button
-                                        type="button"
-                                        onClick={() => setAddSkuModal({ open: true, blockKey: key, block })}
-                                        className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-lg transition-colors ${'text-[#6B4D30] hover:bg-[rgba(160,120,75,0.12)]'}`}
-                                        style={{ writingMode: 'vertical-lr' }}
-                                      >
-                                        <Plus size={14} />
-                                        <span className={`text-[10px] font-semibold font-['Montserrat'] uppercase tracking-wider`}>Add new</span>
-                                      </button>
-                                    </div>
-                                  </td>
-                                )}
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      );
-                    })()}
-                  </div>
-                )}
-
-                {/* Populated block — table + Add SKU button */}
-                {!isEmpty && !isCollapsed && (<>
-                  <div className="overflow-x-auto" data-table-wrapper style={{ overflowY: 'clip' }}>
-                    {(() => {
-                      const hlBg ='bg-[rgba(160,120,75,0.1)]';
-                      const hlLabel ='bg-[#ede4d8]';
-                      const normLabel ='bg-white';
-                      const labelBase = `px-3 py-1.5 font-semibold font-['Montserrat'] whitespace-nowrap sticky left-0 z-10 cursor-pointer select-none transition-colors`;
-                      const labelBorder ='!border-r-[rgba(160,120,75,0.4)]';
-                      const labelColor ='text-[#6B4D30]';
-                      const isHl = (rowId: string) => highlightedRow === `${key}_${rowId}`;
-                      const toggleHl = (rowId: string) => setHighlightedRow(prev => prev === `${key}_${rowId}` ? null : `${key}_${rowId}`);
-                      const trCls = (rowId: string, extra?: string) => `${isHl(rowId) ? hlBg : ''} ${extra || ''}`;
-                      const tdLabel = (rowId: string, extra?: string) => `${labelBase} ${labelColor} ${isHl(rowId) ? hlLabel : normLabel} ${labelBorder} ${extra || ''}`;
-                      return (
-                    <table className={`w-full text-xs border-separate border-spacing-0 ${'[&_td]:border-[rgba(215,183,151,0.2)]'} [&_td]:border`}>
-                      <tbody>
-                        {/* Image row (with actions in top-right corner) */}
-                        <tr className={trCls('image')}>
-                          <td className={tdLabel('image', 'py-2')} onClick={() => toggleHl('image')}>Image</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-2 min-w-[140px] ${'bg-white'}`} style={{ position: 'relative' }}>
-                              <div className="flex justify-end gap-0.5 absolute top-1 right-1">
-                                <button type="button" onClick={() => handleOpenLightbox(`${key}_${String(item.sku) || 'new'}_${idx}`, 'sizing', item, key, idx, block)} className={`p-1 rounded-md transition-colors relative ${'text-[#666666] hover:text-[#6B4D30] hover:bg-[rgba(160,120,75,0.18)]'}`} title="Sizing">
-                                  <Ruler size={14} />
-                                  {isSizingComplete(key, idx) && (
-                                    <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-[#2A9E6A] rounded-full flex items-center justify-center">
-                                      <Check size={8} className="text-white" />
-                                    </span>
-                                  )}
-                                </button>
-                                <button type="button" onClick={() => handleDeleteSkuRow(key, idx)} className={`p-1 rounded-md transition-colors ${'text-[#666666] hover:text-[#F85149] hover:bg-[rgba(248,81,73,0.1)]'}`} title={t('proposal.deleteSku')}><Trash2 size={14} /></button>
-                              </div>
-                              <div className="mx-auto w-fit pt-3">
-                                <ProductImage subCategory={block.subCategory} sku={item.sku} size={64} />
-                              </div>
-                            </td>
-                          ))}
-                          {/* Add New column */}
-                          <td rowSpan={999} className={`border-l-2 ${'bg-[rgba(215,183,151,0.04)] border-l-[rgba(215,183,151,0.35)]'}`} style={{ minWidth: 52, verticalAlign: 'middle' }}>
-                            <div className="flex items-center justify-center h-full" style={{ minHeight: 200 }}>
-                              <button
-                                type="button"
-                                onClick={() => setAddSkuModal({ open: true, blockKey: key, block })}
-                                className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-lg transition-colors ${'text-[#6B4D30] hover:bg-[rgba(160,120,75,0.12)]'}`}
-                                style={{ writingMode: 'vertical-lr' }}
-                              >
-                                <Plus size={14} />
-                                <span className={`text-[10px] font-semibold font-['Montserrat'] uppercase tracking-wider`}>Add new</span>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        {/* SKU row */}
-                        <tr className={trCls('sku')}>
-                          <td className={tdLabel('sku')} onClick={() => toggleHl('sku')}>SKU</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-semibold font-['JetBrains_Mono'] ${'text-[#333333]'}`}>
-                              {item.isNew ? (
-                                <select
-                                  value={item.sku}
-                                  onChange={(e) => handleSkuSelect(key, idx, e.target.value)}
-                                  className={`w-full px-1 py-0.5 rounded border text-xs font-['JetBrains_Mono'] ${'border-[#127749] bg-white text-[#333333]'}`}
-                                >
-                                  <option value="">{t('proposal.selectSku')}</option>
-                                  {skuCatalog.map((sku: any) => (
-                                    <option key={String(sku.sku)} value={sku.sku}>{sku.sku}</option>
-                                  ))}
-                                </select>
-                              ) : String(item.sku)}
-                            </td>
-                          ))}
-                        </tr>
-                        {/* Name row */}
-                        <tr className={trCls('name')}>
-                          <td className={tdLabel('name')} onClick={() => toggleHl('name')}>Name</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center ${'text-[#333333]'}`}>{item.name}</td>
-                          ))}
-                        </tr>
-                        {/* Product Type (L3) row */}
-                        <tr className={trCls('productType')}>
-                          <td className={tdLabel('productType')} onClick={() => toggleHl('productType')}>Product Type (L3)</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center ${'text-[#666666]'}`}>{item.productType}</td>
-                          ))}
-                        </tr>
-                        {/* Theme row */}
-                        <tr className={trCls('theme')}>
-                          <td className={tdLabel('theme')} onClick={() => toggleHl('theme')}>Theme</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center ${'text-[#666666]'}`}>{item.theme}</td>
-                          ))}
-                        </tr>
-                        {/* Color row */}
-                        <tr className={trCls('color')}>
-                          <td className={tdLabel('color')} onClick={() => toggleHl('color')}>Color</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center ${'text-[#666666]'}`}>{item.color}</td>
-                          ))}
-                        </tr>
-                        {/* Composition row */}
-                        <tr className={trCls('composition')}>
-                          <td className={tdLabel('composition')} onClick={() => toggleHl('composition')}>Composition</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center max-w-[160px] ${'text-[#666666]'}`} title={item.composition}>{item.composition}</td>
-                          ))}
-                        </tr>
-                        {/* Unit cost row */}
-                        <tr className={trCls('unitCost')}>
-                          <td className={tdLabel('unitCost')} onClick={() => toggleHl('unitCost')}>Unit cost</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] ${'text-[#333333]'}`}>{formatCurrency(item.unitCost)}</td>
-                          ))}
-                        </tr>
-                        {/* SRP row */}
-                        <tr className={trCls('srp')}>
-                          <td className={tdLabel('srp')} onClick={() => toggleHl('srp')}>SRP</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-medium font-['JetBrains_Mono'] ${'text-[#127749]'}`}>{formatCurrency(item.srp)}</td>
-                          ))}
-                        </tr>
-                        {/* Order row - always highlighted */}
-                        <tr className={trCls('order','bg-[rgba(160,120,75,0.06)]')}>
-                          <td className={`${labelBase} font-bold cursor-pointer select-none transition-colors ${labelBorder} ${'text-[#c0392b]'} ${isHl('order') ? hlLabel : ('bg-[#f5efe8]')}`} onClick={() => toggleHl('order')}>Order</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-bold font-['JetBrains_Mono'] ${'text-[#c0392b]'}`}>{item.order}</td>
-                          ))}
-                        </tr>
-                        {/* Dynamic store rows */}
-                        {stores.map((st: any) => (
-                          <tr key={st.code} className={trCls(`store_${st.code}`)}>
-                            <td className={tdLabel(`store_${st.code}`)} onClick={() => toggleHl(`store_${st.code}`)}>{st.code}</td>
-                            {block.items.map((item: any, idx: number) => {
-                              const storeKey = `${key}|${idx}|store_${st.code}`;
-                              const isEditingStore = editingCell === storeKey;
-                              const storeVal = (item.storeQty || {})[st.code] || 0;
-                              return (
-                                <td key={idx} className="px-3 py-1.5 text-center">
-                                  {isEditingStore ? (
-                                    <div className="relative group inline-block">
-                                      <input
-                                        type="number"
-                                        value={editValue}
-                                        onChange={(e) => setEditValue(e.target.value)}
-                                        onBlur={() => handleSaveEdit(storeKey)}
-                                        onKeyDown={(e) => handleKeyDown(e, storeKey)}
-                                        className={`w-14 pl-4 py-0.5 text-center border-2 rounded-md text-xs font-semibold font-['JetBrains_Mono'] ${'border-[#D7B797] bg-white text-[#333333]'}`}
-                                        autoFocus
-                                      />
-                                      <Pencil size={8} className="absolute left-1 top-1/2 -translate-y-1/2 pointer-events-none text-[#8A6340]/30" />
-                                    </div>
-                                  ) : (
-                                    <button
-                                      type="button"
-                                      onClick={() => handleStartEdit(storeKey, storeVal)}
-                                      className={`px-2 py-0.5 rounded-md font-['JetBrains_Mono'] transition-colors ${'text-[#333333] hover:bg-[rgba(160,120,75,0.12)]'}`}
-                                    >
-                                      {storeVal}
-                                    </button>
-                                  )}
-                                </td>
-                              );
-                            })}
-                          </tr>
-                        ))}
-                        {/* TTL value row - always highlighted */}
-                        <tr className={trCls('ttlValue','bg-[rgba(160,120,75,0.06)]')}>
-                          <td className={`${labelBase} font-bold cursor-pointer select-none transition-colors ${labelBorder} ${'text-[#6B4D30]'} ${isHl('ttlValue') ? hlLabel : ('bg-[#f5efe8]')}`} onClick={() => toggleHl('ttlValue')}>TTL value</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className={`px-3 py-1.5 text-center font-bold font-['JetBrains_Mono'] ${'text-[#127749]'}`}>{formatCurrency(item.order * (item.unitCost || 0))}</td>
-                          ))}
-                        </tr>
-                        {/* Customer Target row */}
-                        <tr className={trCls('customerTarget')}>
-                          <td className={tdLabel('customerTarget')} onClick={() => toggleHl('customerTarget')}>Customer Target</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className="px-3 py-1.5 text-center">
-                              <CreatableSelect
-                                value={item.customerTarget}
-                                options={customerTargetOptions}
-                                onChange={(val) => handleSelectChange(key, idx, 'customerTarget', val)}
-                                onCreateOption={(val) => setCustomerTargetOptions(prev => [...prev, val])}
-                                placeholder="Target..."
-                              />
-                            </td>
-                          ))}
-                        </tr>
-                        {/* Comment row — last row */}
-                        <tr className={trCls('comment')}>
-                          <td className={tdLabel('comment')} onClick={() => toggleHl('comment')}>Comment</td>
-                          {block.items.map((item: any, idx: number) => (
-                            <td key={idx} className="px-3 py-1.5 text-center">
-                              <div className="relative">
-                                <input
-                                  type="text"
-                                  value={item.comment || ''}
-                                  onChange={(e) => handleSelectChange(key, idx, 'comment', e.target.value)}
-                                  onClick={(e) => {
-                                    if (item.comment) {
-                                      const rect = e.currentTarget.getBoundingClientRect();
-                                      setCommentPopup({ text: item.comment, blockKey: key, idx, rect });
-                                    }
-                                  }}
-                                  placeholder="..."
-                                  className={`w-full min-w-[80px] px-2 py-1 text-xs text-center border rounded-md outline-none transition-colors truncate ${'bg-transparent border-[rgba(215,183,151,0.3)] text-[#333333] placeholder-[#aaa] focus:border-[#C4A77D]'}`}
-                                />
-                              </div>
-                            </td>
-                          ))}
-                        </tr>
-                      </tbody>
-                    </table>
-                      );
-                    })()}
-                  </div>
-                </>)}
                         </div>
-                      );
-                    })}
-                  </div>
+                      )}
+                      {brandBlocks.length === 0 ? (
+                        <div className={`p-6 text-center ${'text-[#999999]'}`}>
+                          <p className="text-sm">No subcategories available for this brand</p>
+                        </div>
+                      ) : brandBlocks.map((block: any) => {
+                        const key = buildBlockKey(block);
+                        const isCollapsed = collapsed[key];
+                        const isEmpty = !block.items || block.items.length === 0;
+                        return (
+                          <div key={key} data-rail-card className={`rounded-xl border ${'bg-white border-[rgba(215,183,151,0.2)]'}`} style={{ overflow: 'clip' }}>
+                            <button
+                              type="button"
+                              onClick={() => !isEmpty && handleToggle(key)}
+                              className={`w-full flex items-center gap-0 ${'bg-[rgba(215,183,151,0.18)] border-b border-[rgba(215,183,151,0.3)]'}`}
+                            >
+                              <div className={`w-1.5 self-stretch rounded-l-xl ${'bg-[#8A6340]'}`} />
+                              <div className="flex items-center gap-3 px-4 py-2 flex-1">
+                                {!isEmpty && <ChevronDown size={14} className={`transition-transform ${isCollapsed ? '-rotate-90' : ''} ${'text-[#6B4D30]'}`} />}
+                                <div className="text-left flex-1">
+                                  <div className="flex items-center gap-2">
+                                    <span className={`text-[10px] font-semibold uppercase tracking-wider font-['Montserrat'] ${'text-[#8A6340]'}`}>RAIL</span>
+                                    <span className={`font-semibold text-sm ${'text-[#6B4D30]'}`}>{block.subCategory}</span>
+                                    <span className={`text-xs px-2 py-0.5 rounded-full ${'bg-[rgba(160,120,75,0.12)] text-[#6B5B4D]'}`}>
+                                      {block.items?.length || 0} SKUs
+                                    </span>
+                                    {!isEmpty && (() => {
+                                      const { completed, total } = getSizingCount(key, block.items);
+                                      return completed > 0 ? (
+                                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold ${completed === total
+                                            ? 'bg-[#127749]/15 text-[#2A9E6A]'
+                                            : 'bg-[#D97706]/15 text-[#D97706]'
+                                          }`}>
+                                          {completed}/{total} sized
+                                        </span>
+                                      ) : null;
+                                    })()}
+                                  </div>
+                                  <div className={`text-xs mt-0.5 ${'text-[#8A6340]'}`}>
+                                    {block.gender} • {block.category}
+                                  </div>
+                                </div>
+                                {!isEmpty && (
+                                  <div className={`hidden md:flex items-center gap-4 text-xs font-['JetBrains_Mono'] ${'text-[#6B5B4D]'}`}>
+                                    <div className="flex flex-col items-center">
+                                      <span className={`text-[10px] font-['Montserrat'] ${'text-[#999999]'}`}>Order</span>
+                                      <span className={`font-semibold ${'text-[#6B4D30]'}`}>{block.items.reduce((s: number, i: any) => s + (i.order || 0), 0)}</span>
+                                    </div>
+                                    {stores.map((st: any) => (
+                                      <div key={st.code} className="flex flex-col items-center">
+                                        <span className={`text-[10px] font-['Montserrat'] ${'text-[#999999]'}`}>{st.code}</span>
+                                        <span className="font-semibold">{block.items.reduce((s: number, i: any) => s + ((i.storeQty || {})[st.code] || 0), 0)}</span>
+                                      </div>
+                                    ))}
+                                    <div className={`h-6 w-px ${'bg-[rgba(215,183,151,0.4)]'}`} />
+                                    <div className="flex flex-col items-center">
+                                      <span className={`text-[10px] font-['Montserrat'] ${'text-[#999999]'}`}>Value</span>
+                                      <span className={`font-semibold ${'text-[#127749]'}`}>{formatCurrency(block.items.reduce((s: number, i: any) => s + ((i.order || 0) * (i.unitCost || 0)), 0))}</span>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </button>
+
+                            {/* Empty block — show row headers + Add New column */}
+                            {isEmpty && (
+                              <div className="overflow-x-auto" style={{ overflowY: 'clip' }}>
+                                {(() => {
+                                  const labelCls = `px-3 py-1.5 font-semibold font-['Montserrat'] whitespace-nowrap sticky left-0 z-10 ${'bg-white text-[#6B4D30] !border-r-[rgba(160,120,75,0.4)]'}`;
+                                  const emptyCls = `px-3 py-1.5 text-center min-w-[140px] ${'bg-white text-[#ccc]'}`;
+                                  const rowLabels = ['Actions', 'Image', 'SKU', 'Name', 'Product Type (L3)', 'Theme', 'Color', 'Composition', 'Unit cost', 'SRP', 'Order', 'Customer Target', 'Comment'];
+                                  return (
+                                    <table className={`w-full text-xs border-separate border-spacing-0 ${'[&_td]:border-[rgba(215,183,151,0.2)]'} [&_td]:border`}>
+                                      <tbody>
+                                        {rowLabels.map((label, ri) => (
+                                          <tr key={label}>
+                                            <td className={labelCls}>{label}</td>
+                                            <td className={`${emptyCls} ${label === 'Image' ? 'py-4' : ''}`}>
+                                              {label === 'Image' ? <span className="text-[11px] italic opacity-50">—</span> : <span className="opacity-30">—</span>}
+                                            </td>
+                                            {ri === 0 && (
+                                              <td rowSpan={999} className={`border-l-2 ${'bg-[rgba(215,183,151,0.04)] border-l-[rgba(215,183,151,0.35)]'}`} style={{ minWidth: 52, verticalAlign: 'middle' }}>
+                                                <div className="flex items-center justify-center h-full" style={{ minHeight: 200 }}>
+                                                  <button
+                                                    type="button"
+                                                    onClick={() => setAddSkuModal({ open: true, blockKey: key, block })}
+                                                    className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-lg transition-colors ${'text-[#6B4D30] hover:bg-[rgba(160,120,75,0.12)]'}`}
+                                                    style={{ writingMode: 'vertical-lr' }}
+                                                  >
+                                                    <Plus size={14} />
+                                                    <span className={`text-[10px] font-semibold font-['Montserrat'] uppercase tracking-wider`}>Add new</span>
+                                                  </button>
+                                                </div>
+                                              </td>
+                                            )}
+                                          </tr>
+                                        ))}
+                                      </tbody>
+                                    </table>
+                                  );
+                                })()}
+                              </div>
+                            )}
+
+                            {/* Populated block — table + Add SKU button */}
+                            {!isEmpty && !isCollapsed && (<>
+                              <div className="overflow-x-auto" data-table-wrapper style={{ overflowY: 'clip' }}>
+                                {(() => {
+                                  const hlBg = 'bg-[rgba(160,120,75,0.1)]';
+                                  const hlLabel = 'bg-[#ede4d8]';
+                                  const normLabel = 'bg-white';
+                                  const labelBase = `px-3 py-1.5 font-semibold font-['Montserrat'] whitespace-nowrap sticky left-0 z-10 cursor-pointer select-none transition-colors`;
+                                  const labelBorder = '!border-r-[rgba(160,120,75,0.4)]';
+                                  const labelColor = 'text-[#6B4D30]';
+                                  const isHl = (rowId: string) => highlightedRow === `${key}_${rowId}`;
+                                  const toggleHl = (rowId: string) => setHighlightedRow(prev => prev === `${key}_${rowId}` ? null : `${key}_${rowId}`);
+                                  const trCls = (rowId: string, extra?: string) => `${isHl(rowId) ? hlBg : ''} ${extra || ''}`;
+                                  const tdLabel = (rowId: string, extra?: string) => `${labelBase} ${labelColor} ${isHl(rowId) ? hlLabel : normLabel} ${labelBorder} ${extra || ''}`;
+                                  return (
+                                    <table className={`w-full text-xs border-separate border-spacing-0 ${'[&_td]:border-[rgba(215,183,151,0.2)]'} [&_td]:border`}>
+                                      <tbody>
+                                        {/* Image row (with actions in top-right corner) */}
+                                        <tr className={trCls('image')}>
+                                          <td className={tdLabel('image', 'py-2')} onClick={() => toggleHl('image')}>Image</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-2 min-w-[140px] ${'bg-white'}`} style={{ position: 'relative' }}>
+                                              <div className="flex justify-end gap-0.5 absolute top-1 right-1">
+                                                <button type="button" onClick={() => handleOpenLightbox(`${key}_${String(item.sku) || 'new'}_${idx}`, 'sizing', item, key, idx, block)} className={`p-1 rounded-md transition-colors relative ${'text-[#666666] hover:text-[#6B4D30] hover:bg-[rgba(160,120,75,0.18)]'}`} title="Sizing">
+                                                  <Ruler size={14} />
+                                                  {isSizingComplete(key, idx) && (
+                                                    <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-[#2A9E6A] rounded-full flex items-center justify-center">
+                                                      <Check size={8} className="text-white" />
+                                                    </span>
+                                                  )}
+                                                </button>
+                                                <button type="button" onClick={() => handleDeleteSkuRow(key, idx)} className={`p-1 rounded-md transition-colors ${'text-[#666666] hover:text-[#F85149] hover:bg-[rgba(248,81,73,0.1)]'}`} title={t('proposal.deleteSku')}><Trash2 size={14} /></button>
+                                              </div>
+                                              <div className="mx-auto w-fit pt-3">
+                                                <ProductImage subCategory={block.subCategory} sku={item.sku} size={64} />
+                                              </div>
+                                            </td>
+                                          ))}
+                                          {/* Add New column */}
+                                          <td rowSpan={999} className={`border-l-2 ${'bg-[rgba(215,183,151,0.04)] border-l-[rgba(215,183,151,0.35)]'}`} style={{ minWidth: 52, verticalAlign: 'middle' }}>
+                                            <div className="flex items-center justify-center h-full" style={{ minHeight: 200 }}>
+                                              <button
+                                                type="button"
+                                                onClick={() => setAddSkuModal({ open: true, blockKey: key, block })}
+                                                className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-lg transition-colors ${'text-[#6B4D30] hover:bg-[rgba(160,120,75,0.12)]'}`}
+                                                style={{ writingMode: 'vertical-lr' }}
+                                              >
+                                                <Plus size={14} />
+                                                <span className={`text-[10px] font-semibold font-['Montserrat'] uppercase tracking-wider`}>Add new</span>
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        {/* SKU row */}
+                                        <tr className={trCls('sku')}>
+                                          <td className={tdLabel('sku')} onClick={() => toggleHl('sku')}>SKU</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center font-semibold font-['JetBrains_Mono'] ${'text-[#333333]'}`}>
+                                              {item.isNew ? (
+                                                <select
+                                                  value={item.sku}
+                                                  onChange={(e) => handleSkuSelect(key, idx, e.target.value)}
+                                                  className={`w-full px-1 py-0.5 rounded border text-xs font-['JetBrains_Mono'] ${'border-[#127749] bg-white text-[#333333]'}`}
+                                                >
+                                                  <option value="">{t('proposal.selectSku')}</option>
+                                                  {skuCatalog.map((sku: any) => (
+                                                    <option key={String(sku.sku)} value={sku.sku}>{sku.sku}</option>
+                                                  ))}
+                                                </select>
+                                              ) : String(item.sku)}
+                                            </td>
+                                          ))}
+                                        </tr>
+                                        {/* Name row */}
+                                        <tr className={trCls('name')}>
+                                          <td className={tdLabel('name')} onClick={() => toggleHl('name')}>Name</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center ${'text-[#333333]'}`}>{item.name}</td>
+                                          ))}
+                                        </tr>
+                                        {/* Product Type (L3) row */}
+                                        <tr className={trCls('productType')}>
+                                          <td className={tdLabel('productType')} onClick={() => toggleHl('productType')}>Product Type (L3)</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center ${'text-[#666666]'}`}>{item.productType}</td>
+                                          ))}
+                                        </tr>
+                                        {/* Theme row */}
+                                        <tr className={trCls('theme')}>
+                                          <td className={tdLabel('theme')} onClick={() => toggleHl('theme')}>Theme</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center ${'text-[#666666]'}`}>{item.theme}</td>
+                                          ))}
+                                        </tr>
+                                        {/* Color row */}
+                                        <tr className={trCls('color')}>
+                                          <td className={tdLabel('color')} onClick={() => toggleHl('color')}>Color</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center ${'text-[#666666]'}`}>{item.color}</td>
+                                          ))}
+                                        </tr>
+                                        {/* Composition row */}
+                                        <tr className={trCls('composition')}>
+                                          <td className={tdLabel('composition')} onClick={() => toggleHl('composition')}>Composition</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center max-w-[160px] ${'text-[#666666]'}`} title={item.composition}>{item.composition}</td>
+                                          ))}
+                                        </tr>
+                                        {/* Unit cost row */}
+                                        <tr className={trCls('unitCost')}>
+                                          <td className={tdLabel('unitCost')} onClick={() => toggleHl('unitCost')}>Unit cost</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center font-['JetBrains_Mono'] ${'text-[#333333]'}`}>{formatCurrency(item.unitCost)}</td>
+                                          ))}
+                                        </tr>
+                                        {/* SRP row */}
+                                        <tr className={trCls('srp')}>
+                                          <td className={tdLabel('srp')} onClick={() => toggleHl('srp')}>SRP</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center font-medium font-['JetBrains_Mono'] ${'text-[#127749]'}`}>{formatCurrency(item.srp)}</td>
+                                          ))}
+                                        </tr>
+                                        {/* Order row - always highlighted */}
+                                        <tr className={trCls('order', 'bg-[rgba(160,120,75,0.06)]')}>
+                                          <td className={`${labelBase} font-bold cursor-pointer select-none transition-colors ${labelBorder} ${'text-[#c0392b]'} ${isHl('order') ? hlLabel : ('bg-[#f5efe8]')}`} onClick={() => toggleHl('order')}>Order</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center font-bold font-['JetBrains_Mono'] ${'text-[#c0392b]'}`}>{item.order}</td>
+                                          ))}
+                                        </tr>
+                                        {/* Dynamic store rows */}
+                                        {stores.map((st: any) => (
+                                          <tr key={st.code} className={trCls(`store_${st.code}`)}>
+                                            <td className={tdLabel(`store_${st.code}`)} onClick={() => toggleHl(`store_${st.code}`)}>{st.code}</td>
+                                            {block.items.map((item: any, idx: number) => {
+                                              const storeKey = `${key}|${idx}|store_${st.code}`;
+                                              const isEditingStore = editingCell === storeKey;
+                                              const storeVal = (item.storeQty || {})[st.code] || 0;
+                                              return (
+                                                <td key={idx} className="px-3 py-1.5 text-center">
+                                                  {isEditingStore ? (
+                                                    <div className="relative group inline-block">
+                                                      <input
+                                                        type="number"
+                                                        value={editValue}
+                                                        onChange={(e) => setEditValue(e.target.value)}
+                                                        onBlur={() => handleSaveEdit(storeKey)}
+                                                        onKeyDown={(e) => handleKeyDown(e, storeKey)}
+                                                        className={`w-14 pl-4 py-0.5 text-center border-2 rounded-md text-xs font-semibold font-['JetBrains_Mono'] ${'border-[#D7B797] bg-white text-[#333333]'}`}
+                                                        autoFocus
+                                                      />
+                                                      <Pencil size={8} className="absolute left-1 top-1/2 -translate-y-1/2 pointer-events-none text-[#8A6340]/30" />
+                                                    </div>
+                                                  ) : (
+                                                    <button
+                                                      type="button"
+                                                      onClick={() => handleStartEdit(storeKey, storeVal)}
+                                                      className={`px-2 py-0.5 rounded-md font-['JetBrains_Mono'] transition-colors ${'text-[#333333] hover:bg-[rgba(160,120,75,0.12)]'}`}
+                                                    >
+                                                      {storeVal}
+                                                    </button>
+                                                  )}
+                                                </td>
+                                              );
+                                            })}
+                                          </tr>
+                                        ))}
+                                        {/* TTL value row - always highlighted */}
+                                        <tr className={trCls('ttlValue', 'bg-[rgba(160,120,75,0.06)]')}>
+                                          <td className={`${labelBase} font-bold cursor-pointer select-none transition-colors ${labelBorder} ${'text-[#6B4D30]'} ${isHl('ttlValue') ? hlLabel : ('bg-[#f5efe8]')}`} onClick={() => toggleHl('ttlValue')}>TTL value</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className={`px-3 py-1.5 text-center font-bold font-['JetBrains_Mono'] ${'text-[#127749]'}`}>{formatCurrency(item.order * (item.unitCost || 0))}</td>
+                                          ))}
+                                        </tr>
+                                        {/* Customer Target row */}
+                                        <tr className={trCls('customerTarget')}>
+                                          <td className={tdLabel('customerTarget')} onClick={() => toggleHl('customerTarget')}>Customer Target</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className="px-3 py-1.5 text-center">
+                                              <CreatableSelect
+                                                value={item.customerTarget}
+                                                options={customerTargetOptions}
+                                                onChange={(val) => handleSelectChange(key, idx, 'customerTarget', val)}
+                                                onCreateOption={(val) => setCustomerTargetOptions(prev => [...prev, val])}
+                                                placeholder="Target..."
+                                              />
+                                            </td>
+                                          ))}
+                                        </tr>
+                                        {/* Comment row — last row */}
+                                        <tr className={trCls('comment')}>
+                                          <td className={tdLabel('comment')} onClick={() => toggleHl('comment')}>Comment</td>
+                                          {block.items.map((item: any, idx: number) => (
+                                            <td key={idx} className="px-3 py-1.5 text-center">
+                                              <div className="relative">
+                                                <input
+                                                  type="text"
+                                                  value={item.comment || ''}
+                                                  onChange={(e) => handleSelectChange(key, idx, 'comment', e.target.value)}
+                                                  onClick={(e) => {
+                                                    if (item.comment) {
+                                                      const rect = e.currentTarget.getBoundingClientRect();
+                                                      setCommentPopup({ text: item.comment, blockKey: key, idx, rect });
+                                                    }
+                                                  }}
+                                                  placeholder="..."
+                                                  className={`w-full min-w-[80px] px-2 py-1 text-xs text-center border rounded-md outline-none transition-colors truncate ${'bg-transparent border-[rgba(215,183,151,0.3)] text-[#333333] placeholder-[#aaa] focus:border-[#C4A77D]'}`}
+                                                />
+                                              </div>
+                                            </td>
+                                          ))}
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  );
+                                })()}
+                              </div>
+                            </>)}
+                          </div>
+                        );
+                      })}
+                    </div>
                   );
                 })()}
 
@@ -2547,16 +2559,16 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                               const sizing = getSizing(blockKey, idx, bId);
                               const choiceSizing = sizing[choiceKey] || {};
                               return { ...item, sizing: choiceSizing };
-                            })}));
+                            })
+                          }));
                           onSubmitTicket({ budgetId: budgetFilter !== 'all' ? budgetFilter : '', skuBlocks: enrichedBlocks, grandTotals, stores });
                         } else {
                           router.push(`/tickets?source=proposal&budgetId=${budgetFilter !== 'all' ? budgetFilter : ''}`);
                         }
                       }}
                       disabled={grandTotals.order === 0}
-                      className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold font-['Montserrat'] transition-colors ${
-                        grandTotals.order > 0
-                          ?'bg-[#C4A77D] text-white hover:bg-[#B8956D]':'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
+                      className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold font-['Montserrat'] transition-colors ${grandTotals.order > 0
+                          ? 'bg-[#C4A77D] text-white hover:bg-[#B8956D]' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
                     >
                       <Send size={16} />
                       Submit Ticket
@@ -2586,7 +2598,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
               right: overflowRight ? Math.max(8, window.innerWidth - rect.right) : undefined,
               left: overflowRight ? undefined : rect.left,
               zIndex: 99999,
-              minWidth: dropdownW}}
+              minWidth: dropdownW
+            }}
           >
             <div className={`border rounded-lg shadow-xl overflow-hidden ${'bg-white border-[#C4B5A5]'}`}>
               <div className={`px-2 py-1 border-b ${'border-[#D4C8BB] bg-[rgba(160,120,75,0.08)]'}`}>
@@ -2612,18 +2625,16 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                         setOpenDropdown(null);
                         setDropdownAnchorEl(null);
                       }}
-                      className={`px-3 py-1.5 flex items-center justify-between cursor-pointer transition-colors text-xs border-t ${'border-[#E5E0DB]'} ${
-                        isSelected
-                          ?'bg-[rgba(18,119,73,0.1)] text-[#127749]':'hover:bg-[rgba(160,120,75,0.18)] text-[#0A0A0A]'}`}
+                      className={`px-3 py-1.5 flex items-center justify-between cursor-pointer transition-colors text-xs border-t ${'border-[#E5E0DB]'} ${isSelected
+                          ? 'bg-[rgba(18,119,73,0.1)] text-[#127749]' : 'hover:bg-[rgba(160,120,75,0.18)] text-[#0A0A0A]'}`}
                     >
                       <div className="flex items-center gap-1.5 min-w-0 flex-1">
                         {isFinal && <Star size={11} className={'text-[#6B4D30] fill-[#6B4D30] shrink-0'} />}
                         <span className="font-medium truncate">{isVersion ? `Version ${item.version}` : `Choice ${item.version}`}</span>
                         {isVersion && item.status && (
-                          <span className={`text-[9px] px-1 rounded ${
-                            item.status === 'APPROVED' ? 'bg-green-500/20 text-green-400' :
-                            item.status === 'SUBMITTED' ? 'bg-blue-500/20 text-blue-400' :
-                            item.status === 'REJECTED' ? 'bg-red-500/20 text-red-400' :'bg-[#E5E0DB] text-[#666]'}`}>{item.status}</span>
+                          <span className={`text-[9px] px-1 rounded ${item.status === 'APPROVED' ? 'bg-green-500/20 text-green-400' :
+                              item.status === 'SUBMITTED' ? 'bg-blue-500/20 text-blue-400' :
+                                item.status === 'REJECTED' ? 'bg-red-500/20 text-red-400' : 'bg-[#E5E0DB] text-[#666]'}`}>{item.status}</span>
                         )}
                         {isFinal && <span className="px-1 py-px text-[8px] font-bold bg-[#D7B797] text-[#0A0A0A] rounded shrink-0">FINAL</span>}
                       </div>
@@ -2687,9 +2698,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                   key={tabId}
                   type="button"
                   onClick={() => setLightbox(prev => prev ? { ...prev, tab: tabId as 'details' | 'storeOrder' | 'sizing' } : null)}
-                  className={`flex-1 px-4 py-2.5 text-xs font-semibold font-['Montserrat'] transition-colors relative ${
-                    lightbox.tab === tabId
-                      ?'text-[#6B4D30]':'text-[#999999] hover:text-[#666666]'}`}
+                  className={`flex-1 px-4 py-2.5 text-xs font-semibold font-['Montserrat'] transition-colors relative ${lightbox.tab === tabId
+                      ? 'text-[#6B4D30]' : 'text-[#999999] hover:text-[#666666]'}`}
                 >
                   {label}
                   {lightbox.tab === tabId && (
@@ -2852,11 +2862,10 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
                                   min="0"
                                   value={choiceData[size] ?? 0}
                                   onChange={(e) => updateSizing(lightbox.blockKey, lightbox.idx, choiceKey, size, e.target.value, lbBrandId)}
-                                  className={`w-14 text-center font-['JetBrains_Mono'] text-sm rounded border py-0.5 focus:outline-none focus:ring-2 focus:ring-[rgba(215,183,151,0.4)] ${
-                                    isFirst
+                                  className={`w-14 text-center font-['JetBrains_Mono'] text-sm rounded border py-0.5 focus:outline-none focus:ring-2 focus:ring-[rgba(215,183,151,0.4)] ${isFirst
                                       ? ('bg-emerald-50 border-emerald-200 text-[#6B4D30]')
                                       : ('bg-emerald-50 border-emerald-200 text-[#127749]')
-                                  }`}
+                                    }`}
                                 />
                               </td>
                             ))}
@@ -2899,27 +2908,32 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
             key: 'fy',
             label: 'FY',
             type: 'single',
-            options: fyOptions.filter((o: any) => o.value !== 'all').map((o: any) => ({ label: o.label, value: o.value }))},
+            options: fyOptions.filter((o: any) => o.value !== 'all').map((o: any) => ({ label: o.label, value: o.value }))
+          },
           {
             key: 'budget',
             label: t('skuProposal.budget') || 'Budget',
             type: 'single',
-            options: filteredBudgets.map((b: any) => ({ label: b.budgetName, value: b.id }))},
+            options: filteredBudgets.map((b: any) => ({ label: b.budgetName, value: b.id }))
+          },
           {
             key: 'brand',
             label: 'Brand',
             type: 'single',
-            options: brandOptions.filter((b: any) => b.value !== 'all').map((b: any) => ({ label: b.label, value: b.value }))},
+            options: brandOptions.filter((b: any) => b.value !== 'all').map((b: any) => ({ label: b.label, value: b.value }))
+          },
           {
             key: 'seasonGroup',
             label: t('otbAnalysis.seasonGroup'),
             type: 'single',
-            options: seasonGroupOptions.filter((s: any) => s.value !== 'all').map((s: any) => ({ label: s.label, value: s.value }))},
+            options: seasonGroupOptions.filter((s: any) => s.value !== 'all').map((s: any) => ({ label: s.label, value: s.value }))
+          },
           {
             key: 'season',
             label: t('otbAnalysis.season') || 'Season',
             type: 'single',
-            options: seasonOptions.filter((s: any) => s.value !== 'all').map((s: any) => ({ label: s.label, value: s.value }))},
+            options: seasonOptions.filter((s: any) => s.value !== 'all').map((s: any) => ({ label: s.label, value: s.value }))
+          },
         ]}
         values={mobileFilterValues}
         onChange={(key, value) => setMobileFilterValues(prev => ({ ...prev, [key]: value }))}
@@ -2974,7 +2988,8 @@ const SKUProposalScreen = ({ skuContext, onContextUsed, onSubmitTicket }: any) =
               top: commentPopup.rect.top - 8,
               left: commentPopup.rect.left + commentPopup.rect.width / 2,
               transform: 'translate(-50%, -100%)',
-              boxShadow:'0 8px 24px rgba(0,0,0,0.12)'}}
+              boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className={`text-[10px] uppercase tracking-wider font-semibold mb-1 font-['Montserrat'] ${'text-[#6B4D30]'}`}>Comment</div>

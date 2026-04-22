@@ -1,8 +1,8 @@
-// ═══ VietERP Project Manager — Translations ═══
+// ═══ BaoERP Project Manager — Translations ═══
 export const LANG = {
   vi: {
-    appName: "VietERP Project Manager",
-    appSub: "VietERP • Quản lý Dự án",
+    appName: "BaoERP Project Manager",
+    appSub: "BaoERP • Quản lý Dự án",
     tabs: { tower: "Bảng Điều Khiển", issues: "Vấn Đề", gates: "Cổng Phase", impact: "Bản Đồ Ảnh Hưởng", team: "Đội Ngũ", review: "Duyệt", audit: "Nhật Ký", bom: "BOM & NCC", testing: "Test & QĐ", orders: "Đơn Hàng", production: "Sản Xuất", inventory: "Tồn Kho", finance: "Tài Chính", intelligence: "Trí Tuệ", settings: "Cài Đặt" },
     importExport: { import: "Nhập", export: "Xuất", exportExcel: "Xuất Excel", exportPdf: "Xuất PDF", exportSlides: "Slide Tổng Quan", importData: "Nhập Dữ Liệu" },
     email: { preferences: "Cài đặt Email", eventType: "Loại sự kiện", emailNotif: "Email", inApp: "Trong ứng dụng", frequency: "Tần suất", save: "Lưu cài đặt", preview: "Xem trước", realtime: "Thời gian thực", daily: "Hàng ngày", weekly: "Hàng tuần" },
@@ -30,8 +30,8 @@ export const LANG = {
     intel: { title: "Trí tuệ Dự án", overview: "Tổng quan", convergence: "Hội tụ", anomaly: "Bất thường", freshness: "Độ tươi", signals: "tín hiệu", signalTypes: "loại", events: "sự kiện", signalCount: "Tín hiệu", convergenceCount: "Hội tụ", anomalyCount: "Bất thường", dataFreshness: "Độ tươi", projectHealth: "Sức khỏe Dự án (PHI)", recentConvergences: "Hội tụ gần đây", noConvergences: "Không phát hiện hội tụ", noConvergencesSub: "Hệ thống sẽ cảnh báo khi nhiều tín hiệu xuất hiện cùng lúc", noAnomalies: "Không có bất thường", noAnomaliesSub: "Cần thêm dữ liệu baseline", observed: "Thực tế", expected: "Dự kiến", contributingSignals: "Tín hiệu đóng góp", freshSources: "Tươi", staleSources: "Cũ", errorSources: "Lỗi", coverage: "Phủ", degradedDecisions: "Quyết định suy giảm", modifiersActive: "Modifier đang hoạt động", levels: { healthy: "Khỏe", attention: "Chú ý", warning: "Cảnh báo", critical: "Nghiêm trọng", unknown: "Chưa rõ" }, convergenceDetected: "Phát hiện hội tụ", anomalyDetected: "Phát hiện bất thường", healthCritical: "Sức khỏe nghiêm trọng" },
   },
   en: {
-    appName: "VietERP Project Manager",
-    appSub: "VietERP • Project Management",
+    appName: "BaoERP Project Manager",
+    appSub: "BaoERP • Project Management",
     tabs: { tower: "Control Tower", issues: "Issues", gates: "Phase Gates", impact: "Impact Map", team: "Team", review: "Review", audit: "Audit Log", bom: "BOM & Suppliers", testing: "Testing & Decisions", orders: "Orders", production: "Production", inventory: "Inventory", finance: "Finance", intelligence: "Intelligence", settings: "Settings" },
     importExport: { import: "Import", export: "Export", exportExcel: "Export Excel", exportPdf: "Export PDF", exportSlides: "Executive Slides", importData: "Import Data" },
     email: { preferences: "Email Preferences", eventType: "Event Type", emailNotif: "Email", inApp: "In-App", frequency: "Frequency", save: "Save Preferences", preview: "Preview", realtime: "Realtime", daily: "Daily Digest", weekly: "Weekly" },

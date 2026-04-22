@@ -1,4 +1,4 @@
-# VietERP Project Manager — Handover Document
+# BaoERP Project Manager — Handover Document
 
 **Version**: 1.1.0
 **Date**: 2026-02-25
@@ -8,7 +8,7 @@
 
 ## 1. Project Overview
 
-**VietERP Project Manager** is a module program management dashboard for VietERP, built to track 5 module projects across the CONCEPT > EVT > DVT > PVT > MP lifecycle.
+**BaoERP Project Manager** is a module program management dashboard for BaoERP, built to track 5 module projects across the CONCEPT > EVT > DVT > PVT > MP lifecycle.
 
 | Metric | Value |
 |--------|-------|

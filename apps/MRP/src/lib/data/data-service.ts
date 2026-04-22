@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - DATA SERVICE LAYER
+// BaoERP MRP - DATA SERVICE LAYER
 // Abstraction layer for database operations
 // Can switch between mock data and Prisma
 // =============================================================================
@@ -8,39 +8,39 @@
 // TYPES (matching Prisma schema)
 // =============================================================================
 
-export type PartCategory = 
-  | 'FINISHED_GOOD' 
-  | 'SEMI_FINISHED' 
-  | 'COMPONENT' 
-  | 'RAW_MATERIAL' 
-  | 'CONSUMABLE' 
+export type PartCategory =
+  | 'FINISHED_GOOD'
+  | 'SEMI_FINISHED'
+  | 'COMPONENT'
+  | 'RAW_MATERIAL'
+  | 'CONSUMABLE'
   | 'PACKAGING';
 
-export type SalesOrderStatus = 
-  | 'DRAFT' 
-  | 'PENDING' 
-  | 'CONFIRMED' 
-  | 'IN_PRODUCTION' 
-  | 'READY_TO_SHIP' 
-  | 'SHIPPED' 
-  | 'DELIVERED' 
+export type SalesOrderStatus =
+  | 'DRAFT'
+  | 'PENDING'
+  | 'CONFIRMED'
+  | 'IN_PRODUCTION'
+  | 'READY_TO_SHIP'
+  | 'SHIPPED'
+  | 'DELIVERED'
   | 'CANCELLED';
 
-export type PurchaseOrderStatus = 
-  | 'DRAFT' 
-  | 'PENDING_APPROVAL' 
-  | 'APPROVED' 
-  | 'SENT' 
-  | 'PARTIALLY_RECEIVED' 
-  | 'RECEIVED' 
+export type PurchaseOrderStatus =
+  | 'DRAFT'
+  | 'PENDING_APPROVAL'
+  | 'APPROVED'
+  | 'SENT'
+  | 'PARTIALLY_RECEIVED'
+  | 'RECEIVED'
   | 'CANCELLED';
 
-export type WorkOrderStatus = 
-  | 'PLANNED' 
-  | 'RELEASED' 
-  | 'IN_PROGRESS' 
-  | 'ON_HOLD' 
-  | 'COMPLETED' 
+export type WorkOrderStatus =
+  | 'PLANNED'
+  | 'RELEASED'
+  | 'IN_PROGRESS'
+  | 'ON_HOLD'
+  | 'COMPLETED'
   | 'CANCELLED';
 
 export type Priority = 'URGENT' | 'HIGH' | 'NORMAL' | 'LOW';
@@ -338,7 +338,7 @@ export const mockParts: Part[] = [
   { id: 'fg1', partNumber: 'FG-PRD-A1', partName: 'Sản phẩm Model A1', category: 'FINISHED_GOOD', unit: 'pcs', unitCost: 12000000, sellingPrice: 15000000, leadTime: 7, minOrderQty: 1, isActive: true, createdAt: oneMonthAgo, updatedAt: now },
   { id: 'fg2', partNumber: 'FG-PRD-A2', partName: 'Sản phẩm Model A2', category: 'FINISHED_GOOD', unit: 'pcs', unitCost: 15000000, sellingPrice: 18500000, leadTime: 10, minOrderQty: 1, isActive: true, createdAt: oneMonthAgo, updatedAt: now },
   { id: 'fg3', partNumber: 'FG-PRD-B1', partName: 'Sản phẩm Model B1', category: 'FINISHED_GOOD', unit: 'pcs', unitCost: 9500000, sellingPrice: 12000000, leadTime: 5, minOrderQty: 1, isActive: true, createdAt: oneMonthAgo, updatedAt: now },
-  
+
   // Components
   { id: 'p1', partNumber: 'CMP-BRG-002', partName: 'Bạc đạn bi 6201-2RS', category: 'COMPONENT', unit: 'pcs', unitCost: 42000, leadTime: 7, minOrderQty: 10, supplierId: 's1', isActive: true, createdAt: oneMonthAgo, updatedAt: now },
   { id: 'p2', partNumber: 'CMP-MOT-001', partName: 'Motor DC 12V 50W', category: 'COMPONENT', unit: 'pcs', unitCost: 250000, leadTime: 14, minOrderQty: 5, supplierId: 's2', isActive: true, createdAt: oneMonthAgo, updatedAt: now },
@@ -346,7 +346,7 @@ export const mockParts: Part[] = [
   { id: 'p4', partNumber: 'CMP-SCR-001', partName: 'Vít lục giác M4x10 inox', category: 'COMPONENT', unit: 'pcs', unitCost: 500, leadTime: 3, minOrderQty: 100, supplierId: 's4', isActive: true, createdAt: oneMonthAgo, updatedAt: now },
   { id: 'p5', partNumber: 'CMP-NUT-001', partName: 'Đai ốc M4 inox', category: 'COMPONENT', unit: 'pcs', unitCost: 300, leadTime: 3, minOrderQty: 100, supplierId: 's4', isActive: true, createdAt: oneMonthAgo, updatedAt: now },
   { id: 'p6', partNumber: 'CMP-WSH-001', partName: 'Vòng đệm M4 inox', category: 'COMPONENT', unit: 'pcs', unitCost: 200, leadTime: 3, minOrderQty: 100, supplierId: 's4', isActive: true, createdAt: oneMonthAgo, updatedAt: now },
-  
+
   // Raw Materials
   { id: 'rm1', partNumber: 'RM-STL-002', partName: 'Thép tấm carbon 3mm', category: 'RAW_MATERIAL', unit: 'kg', unitCost: 26000, leadTime: 7, minOrderQty: 50, supplierId: 's3', isActive: true, createdAt: oneMonthAgo, updatedAt: now },
   { id: 'rm2', partNumber: 'RM-ALU-001', partName: 'Nhôm tấm 1.5mm', category: 'RAW_MATERIAL', unit: 'kg', unitCost: 85000, leadTime: 10, minOrderQty: 20, supplierId: 's5', isActive: true, createdAt: oneMonthAgo, updatedAt: now },
@@ -362,7 +362,7 @@ export const mockBOMItems: BOMItem[] = [
   { id: 'bom4', parentPartId: 'fg1', childPartId: 'p4', quantity: 20, unit: 'pcs', scrapRate: 0.05 },
   { id: 'bom5', parentPartId: 'fg1', childPartId: 'rm1', quantity: 5, unit: 'kg', scrapRate: 0.1 },
   { id: 'bom6', parentPartId: 'fg1', childPartId: 'rm2', quantity: 2, unit: 'kg', scrapRate: 0.08 },
-  
+
   // FG-PRD-A2 BOM
   { id: 'bom7', parentPartId: 'fg2', childPartId: 'p1', quantity: 4, unit: 'pcs', scrapRate: 0.02 },
   { id: 'bom8', parentPartId: 'fg2', childPartId: 'p2', quantity: 2, unit: 'pcs', scrapRate: 0 },
@@ -370,7 +370,7 @@ export const mockBOMItems: BOMItem[] = [
   { id: 'bom10', parentPartId: 'fg2', childPartId: 'p4', quantity: 30, unit: 'pcs', scrapRate: 0.05 },
   { id: 'bom11', parentPartId: 'fg2', childPartId: 'rm1', quantity: 8, unit: 'kg', scrapRate: 0.1 },
   { id: 'bom12', parentPartId: 'fg2', childPartId: 'rm2', quantity: 3, unit: 'kg', scrapRate: 0.08 },
-  
+
   // FG-PRD-B1 BOM
   { id: 'bom13', parentPartId: 'fg3', childPartId: 'p1', quantity: 2, unit: 'pcs', scrapRate: 0.02 },
   { id: 'bom14', parentPartId: 'fg3', childPartId: 'p2', quantity: 1, unit: 'pcs', scrapRate: 0 },

@@ -251,7 +251,7 @@ export default function AnalyticsDashboard() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900 dark:text-white">Analytics Dashboard</h1>
-                <p className="text-xs text-gray-500 dark:text-neutral-400">VietERP MRP Insights</p>
+                <p className="text-xs text-gray-500 dark:text-neutral-400">BaoERP MRP Insights</p>
               </div>
             </div>
 
@@ -293,11 +293,10 @@ export default function AnalyticsDashboard() {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key as 'overview' | 'inventory' | 'sales' | 'production' | 'quality')}
-                className={`flex items-center px-4 py-2 rounded-t-lg text-sm font-medium transition-colors ${
-                  activeTab === tab.key
+                className={`flex items-center px-4 py-2 rounded-t-lg text-sm font-medium transition-colors ${activeTab === tab.key
                     ? 'bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 border-b-2 border-primary-600'
                     : 'text-gray-500 dark:text-neutral-400 hover:text-gray-700 dark:hover:text-neutral-200 hover:bg-gray-50 dark:hover:bg-neutral-700'
-                }`}
+                  }`}
               >
                 <tab.icon className="h-4 w-4 mr-2" />
                 {tab.label}

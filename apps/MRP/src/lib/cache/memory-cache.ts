@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - IN-MEMORY CACHE
+// BaoERP MRP - IN-MEMORY CACHE
 // Drop-in replacement for Redis cache when Redis is not available
 // =============================================================================
 

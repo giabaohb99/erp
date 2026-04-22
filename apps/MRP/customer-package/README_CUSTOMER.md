@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-# VietERP MRP SYSTEM - GÓI TÀI LIỆU CHO KHÁCH HÀNG
+# BaoERP MRP SYSTEM - GÓI TÀI LIỆU CHO KHÁCH HÀNG
 # Customer Delivery Package
 # ═══════════════════════════════════════════════════════════════════════════════
 

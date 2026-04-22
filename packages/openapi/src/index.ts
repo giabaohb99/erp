@@ -2,7 +2,7 @@
  * @vierp/openapi — OpenAPI Specification Generator & Swagger UI
  *
  * Complete OpenAPI 3.1 specification builder and Swagger UI integration
- * for VietERP applications.
+ * for BaoERP applications.
  */
 
 // Re-export spec utilities

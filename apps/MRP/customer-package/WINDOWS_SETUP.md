@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-# VietERP MRP - HƯỚNG DẪN CÀI ĐẶT TRÊN WINDOWS 10
+# BaoERP MRP - HƯỚNG DẪN CÀI ĐẶT TRÊN WINDOWS 10
 # Windows 10 Local Installation Guide
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -111,7 +111,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # VietERP MRP Application
+  # BaoERP MRP Application
   app:
     build: .
     container_name: vierp-mrp-app
@@ -358,7 +358,7 @@ Tạo file `start-mrp.bat` trên Desktop:
 
 ```batch
 @echo off
-echo Starting VietERP MRP System...
+echo Starting BaoERP MRP System...
 cd C:\Projects\vierp-mrp
 npm start
 pause
@@ -477,4 +477,4 @@ Nếu gặp vấn đề:
 
 **Version**: 1.0  
 **Last Updated**: 2025-12-31  
-**Author**: VietERP MRP Team
+**Author**: BaoERP MRP Team

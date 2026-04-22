@@ -131,7 +131,8 @@ const PlanningDetailPage = ({
               totalAmount: bd.budgetAmount || budget.totalBudget || 0,
               storeName: store.name || '',
               storeCode: store.code || '',
-              budget: budget});
+              budget: budget
+            });
             setFetchedPlanningData(planning);
           }
         } catch (err: any) {
@@ -148,18 +149,18 @@ const PlanningDetailPage = ({
   const planningDetailData = planningDetailDataProp || fetchedPlanningData;
 
   // Theme helpers
-  const bgPage ='bg-white';
-  const cardBg ='bg-white';
-  const borderColor ='border-[#E8DFD3]';
-  const textPrimary ='text-slate-800';
-  const textSecondary ='text-slate-600';
-  const textMuted ='text-slate-600';
-  const headerBg ='bg-gradient-to-r from-[#8B6F47] to-[#A67C52]';
-  const headerText ='text-white';
-  const subtleBg ='bg-[#FAF7F2]';
-  const accentText ='text-[#8B6F47]';
-  const btnPrimary ='bg-[#8B6F47] text-white hover:bg-[#6B4D30]';
-  const hoverBg ='hover:bg-[#FAF7F2]';
+  const bgPage = 'bg-white';
+  const cardBg = 'bg-white';
+  const borderColor = 'border-[#E8DFD3]';
+  const textPrimary = 'text-slate-800';
+  const textSecondary = 'text-slate-600';
+  const textMuted = 'text-slate-600';
+  const headerBg = 'bg-gradient-to-r from-[#8B6F47] to-[#A67C52]';
+  const headerText = 'text-white';
+  const subtleBg = 'bg-[#FAF7F2]';
+  const accentText = 'text-[#8B6F47]';
+  const btnPrimary = 'bg-[#8B6F47] text-white hover:bg-[#6B4D30]';
+  const hoverBg = 'hover:bg-[#FAF7F2]';
 
   // API data states
   const [categoryStructure, setCategoryStructure] = useState<any[]>([]);
@@ -370,7 +371,8 @@ const PlanningDetailPage = ({
               otbProposed: item.otbValue ?? item.otbProposed ?? 0,
               varPct: item.variancePct ?? item.varPct ?? 0,
               otbSubmitted: item.otbSubmitted ?? item.otbValue ?? 0,
-              buyActual: item.buyActual ?? item.buyPct ?? 0};
+              buyActual: item.buyActual ?? item.buyPct ?? 0
+            };
           }
         });
       }
@@ -406,7 +408,8 @@ const PlanningDetailPage = ({
     if (!Object.keys(initialData).some(k => k.startsWith('collection_'))) {
       const collectionDemo: Record<string, Record<string, number>> = {
         carryover: { rex: 22, ttp: 16 },
-        seasonal: { rex: 35, ttp: 26 }};
+        seasonal: { rex: 35, ttp: 26 }
+      };
       COLLECTION_SECTIONS.forEach((section: any) => {
         STORES.forEach((store: any) => {
           const key = `collection_${section.id}_${store.id}`;
@@ -420,7 +423,8 @@ const PlanningDetailPage = ({
     if (!Object.keys(initialData).some(k => k.startsWith('gender_'))) {
       const genderDemo: Record<string, Record<string, number>> = {
         gen1: { rex: 36, ttp: 25 },
-        gen2: { rex: 22, ttp: 17 }};
+        gen2: { rex: 22, ttp: 17 }
+      };
       GENDERS.forEach((gender: any) => {
         STORES.forEach((store: any) => {
           const key = `gender_${gender.id}_${store.id}`;
@@ -526,7 +530,8 @@ const PlanningDetailPage = ({
       // Step 1: Save current data to backend before submitting
       const savePayload = {
         budgetDetailId: selectedBudgetDetail?.id,
-        data: JSON.parse(JSON.stringify(localData))};
+        data: JSON.parse(JSON.stringify(localData))
+      };
 
       let planningId = entityId;
 
@@ -699,15 +704,15 @@ const PlanningDetailPage = ({
     return { buyPct, salesPct, userBuyPct, otbValue };
   }, [planningDetailData]);
 
-  // Common table styles - VietERP Design System warm beige
-  const headerClass ="bg-gradient-to-r from-[rgba(160,120,75,0.35)] to-[rgba(160,120,75,0.22)] text-[#5C4A32]";
+  // Common table styles - BaoERP Design System warm beige
+  const headerClass = "bg-gradient-to-r from-[rgba(160,120,75,0.35)] to-[rgba(160,120,75,0.22)] text-[#5C4A32]";
   const headerCellClass = "px-3 py-2 text-center text-[10px] font-semibold uppercase tracking-wider";
-  const groupRowClass ="bg-[#F5EDE0] border-l-3 border-[#8B6F47]";
-  const sumRowClass ="bg-[#EDE2D0] text-[#5C4A32] font-semibold";
-  const tableRowClass =`border-b border-[#F5EDE0] hover:bg-[#FAF7F2] transition-colors`;
-  const tableCellText ='text-[#5C4A32]';
-  const tableCellTextBold ='text-[#4A3D2E]';
-  const groupLabelText ='text-[#5C4A32]';
+  const groupRowClass = "bg-[#F5EDE0] border-l-3 border-[#8B6F47]";
+  const sumRowClass = "bg-[#EDE2D0] text-[#5C4A32] font-semibold";
+  const tableRowClass = `border-b border-[#F5EDE0] hover:bg-[#FAF7F2] transition-colors`;
+  const tableCellText = 'text-[#5C4A32]';
+  const tableCellTextBold = 'text-[#4A3D2E]';
+  const groupLabelText = 'text-[#5C4A32]';
   // Helper: dim zero values
   const dimZero = (val: number | string, suffix = '%') => {
     const num = typeof val === 'string' ? parseFloat(val) : val;
@@ -802,9 +807,8 @@ const PlanningDetailPage = ({
                         />
                       </td>
                       <td className={`px-3 py-1.5 text-center text-xs font-medium ${tableCellTextBold}`}>{formatCurrency(storeRow.otbValue)}</td>
-                      <td className={`px-3 py-1.5 text-center text-xs font-medium ${
-                        variance < 0 ? 'text-red-500' : variance > 0 ? 'text-emerald-600' : tableCellText
-                      }`}>
+                      <td className={`px-3 py-1.5 text-center text-xs font-medium ${variance < 0 ? 'text-red-500' : variance > 0 ? 'text-emerald-600' : tableCellText
+                        }`}>
                         {variance > 0 ? '+' : ''}{variance.toFixed(0)}%
                       </td>
                     </tr>
@@ -911,9 +915,8 @@ const PlanningDetailPage = ({
                         />
                       </td>
                       <td className={`px-3 py-1.5 text-center text-xs font-medium ${tableCellTextBold}`}>{formatCurrency(storeRow.otbValue)}</td>
-                      <td className={`px-3 py-1.5 text-center text-xs font-medium ${
-                        variance < 0 ? 'text-red-500' : variance > 0 ? 'text-emerald-600' : tableCellText
-                      }`}>
+                      <td className={`px-3 py-1.5 text-center text-xs font-medium ${variance < 0 ? 'text-red-500' : variance > 0 ? 'text-emerald-600' : tableCellText
+                        }`}>
                         {variance > 0 ? '+' : ''}{variance.toFixed(0)}%
                       </td>
                     </tr>
@@ -1135,11 +1138,10 @@ const PlanningDetailPage = ({
               {/* Gender Header - Level 1 */}
               <div
                 onClick={() => toggleGenderExpanded(genderGroup.gender.id)}
-                className={`flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3 px-3 md:px-4 py-0.5 md:py-1 cursor-pointer transition-all ${
-                  isFemale
+                className={`flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3 px-3 md:px-4 py-0.5 md:py-1 cursor-pointer transition-all ${isFemale
                     ? 'bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600'
                     : 'bg-gradient-to-r from-[#8B7355] to-[#7A6347] hover:from-[#7A6347] hover:to-[#6B553A]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-2 md:gap-3 w-full md:w-auto">
                   <button className="p-1 bg-white/20 rounded-lg hover:bg-white/30 transition-colors">
@@ -1174,21 +1176,18 @@ const PlanningDetailPage = ({
                         {/* Category Header - Level 2 */}
                         <div
                           onClick={() => toggleCategoryExpanded(genderGroup.gender.id, cat.id)}
-                          className={`flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3 px-3 md:px-4 py-0.5 md:py-1 cursor-pointer transition-all ${
-                            catIdx % 2 === 0
+                          className={`flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3 px-3 md:px-4 py-0.5 md:py-1 cursor-pointer transition-all ${catIdx % 2 === 0
                               ? 'bg-gradient-to-r from-[#F5EDE0] to-[#FAF7F2] hover:from-[#EDE2D0] hover:to-[#F5EDE0]'
                               : 'bg-gradient-to-r from-amber-100 to-orange-50 hover:from-amber-200 hover:to-orange-100'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center gap-2 md:gap-3 w-full md:w-auto">
-                            <button className={`p-1 rounded-lg transition-colors ${
-                              catIdx % 2 === 0 ? 'bg-[#E8DFD3]/50 hover:bg-[#E8DFD3]' : 'bg-amber-200/50 hover:bg-amber-200'
-                            }`}>
+                            <button className={`p-1 rounded-lg transition-colors ${catIdx % 2 === 0 ? 'bg-[#E8DFD3]/50 hover:bg-[#E8DFD3]' : 'bg-amber-200/50 hover:bg-amber-200'
+                              }`}>
                               <ChevronDown
                                 size={16}
-                                className={`transition-transform duration-200 ${
-                                  catIdx % 2 === 0 ? 'text-[#8B6F47]' : 'text-amber-600'
-                                } ${isCatExpanded ? '' : '-rotate-90'}`}
+                                className={`transition-transform duration-200 ${catIdx % 2 === 0 ? 'text-[#8B6F47]' : 'text-amber-600'
+                                  } ${isCatExpanded ? '' : '-rotate-90'}`}
                               />
                             </button>
                             <Tag size={16} className={catIdx % 2 === 0 ? 'text-[#8B6F47]' : 'text-amber-600'} />
@@ -1232,9 +1231,8 @@ const PlanningDetailPage = ({
                                   return (
                                     <tr
                                       key={subCat.id}
-                                      className={`${'border-b border-slate-100 hover:bg-slate-50'} transition-colors ${
-                                        subIdx % 2 === 0 ? ('bg-white') : ('bg-slate-50/50')
-                                      }`}
+                                      className={`${'border-b border-slate-100 hover:bg-slate-50'} transition-colors ${subIdx % 2 === 0 ? ('bg-white') : ('bg-slate-50/50')
+                                        }`}
                                     >
                                       <td className="px-4 py-0.5">
                                         <div className="flex items-center gap-2">
@@ -1261,9 +1259,8 @@ const PlanningDetailPage = ({
                                       <td className={`px-3 py-0.5 text-center ${tableCellTextBold} font-medium`}>
                                         {(rowData.otbProposed || 0).toLocaleString()}
                                       </td>
-                                      <td className={`px-3 py-0.5 text-center font-medium ${
-                                        (rowData.varPct || 0) < 0 ? 'text-red-600' : 'text-emerald-600'
-                                      }`}>
+                                      <td className={`px-3 py-0.5 text-center font-medium ${(rowData.varPct || 0) < 0 ? 'text-red-600' : 'text-emerald-600'
+                                        }`}>
                                         {(rowData.varPct || 0) > 0 ? '+' : ''}{rowData.varPct || 0}%
                                       </td>
                                       <td className={`px-3 py-0.5 text-center ${tableCellText}`}>
@@ -1281,9 +1278,8 @@ const PlanningDetailPage = ({
                                   <td className="px-3 py-0.5 text-center text-[#5C4A32]">{catTotals.stPct}%</td>
                                   <td className="px-3 py-0.5 text-center text-[#6B4D30] bg-[rgba(160,120,75,0.22)] font-bold">{catTotals.buyProposed}%</td>
                                   <td className="px-3 py-0.5 text-center text-[#5C4A32] font-bold">{catTotals.otbProposed.toLocaleString()}</td>
-                                  <td className={`px-3 py-0.5 text-center font-bold ${
-                                    catTotals.varPct < 0 ? 'text-red-600' : 'text-[#5C4A32]'
-                                  }`}>
+                                  <td className={`px-3 py-0.5 text-center font-bold ${catTotals.varPct < 0 ? 'text-red-600' : 'text-[#5C4A32]'
+                                    }`}>
                                     {catTotals.varPct > 0 ? '+' : ''}{catTotals.varPct}%
                                   </td>
                                   <td className="px-3 py-0.5 text-center text-[#5C4A32]">{catTotals.otbSubmitted.toLocaleString()}</td>
@@ -1298,11 +1294,10 @@ const PlanningDetailPage = ({
                   })}
 
                   {/* Gender Total */}
-                  <div className={`rounded-xl p-2 md:p-3 ${
-                    isFemale
+                  <div className={`rounded-xl p-2 md:p-3 ${isFemale
                       ? 'bg-gradient-to-r from-pink-100 to-rose-100 border border-pink-200'
                       : 'bg-gradient-to-r from-[#F5EDE0] to-[#FAF7F2] border border-[#E8DFD3]'
-                  }`}>
+                    }`}>
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-0">
                       <span className={`font-semibold text-xs uppercase tracking-wide ${isFemale ? 'text-pink-800' : 'text-[#5C4A32]'}`}>
                         {t('planningDetail.total')} {genderGroup.gender.name.toUpperCase()}
@@ -1517,205 +1512,201 @@ const PlanningDetailPage = ({
 
       {/* Sticky Header + Tabs Block */}
       <div className="sticky top-0 z-40">
-      {/* Header */}
-      <div className={`${headerBg} px-3 md:px-6 py-2 md:py-3 shadow-lg`}>
-        <div className="relative flex items-center gap-3 md:gap-4">
-          {/* Back */}
-          <button
-            onClick={onBack}
-            className={`p-1.5 rounded-lg transition-all ${'hover:bg-white/20 text-white'}`}
-          >
-            <ArrowLeft size={18} />
-          </button>
-
-          {/* Title + Subtitle */}
-          <div className="flex items-center gap-2 min-w-0">
-            <TrendingUp size={18} className={headerText} />
-            <h1 className={`text-sm md:text-base font-semibold ${headerText} truncate`}>
-              {t('planningDetail.title')}
-            </h1>
-            <span className={`hidden md:inline text-xs ${'text-white/80'}`}>
-              {selectedBudgetDetail.budget?.groupBrandName && `· ${selectedBudgetDetail.budget.groupBrandName}`}
-              {selectedBudgetDetail.budget?.seasonName && ` · ${selectedBudgetDetail.budget.seasonName}`}
-            </span>
-          </div>
-
-          {/* Budget Metrics — inline pills */}
-          <div className="hidden md:flex items-center gap-1.5 ml-auto">
-            <div className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs ${'bg-white/15'}`}>
-              <DollarSign size={12} className={'text-white/70'} />
-              <span className={'text-white/80'}>{t('planningDetail.totalBudget')}</span>
-              <span className={`font-bold ${headerText}`}>
-                {formatCurrency(selectedBudgetDetail.budget?.totalBudget || selectedBudgetDetail.totalAmount || 0)}
-              </span>
-            </div>
-            <div className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs ${'bg-white/15'}`}>
-              <TrendingUp size={12} className={'text-white/70'} />
-              <span className={'text-white/80'}>{t('planningDetail.allocated')}</span>
-              <span className="font-bold text-emerald-300">
-                {formatCurrency(grandTotals.otbValue)}
-              </span>
-            </div>
-          </div>
-
-          {/* Version Dropdown */}
-          <div className={`relative ${isMobile ? 'ml-auto' : ''}`} ref={versionDropdownRef}>
+        {/* Header */}
+        <div className={`${headerBg} px-3 md:px-6 py-2 md:py-3 shadow-lg`}>
+          <div className="relative flex items-center gap-3 md:gap-4">
+            {/* Back */}
             <button
-              type="button"
-              onClick={() => setIsVersionDropdownOpen(!isVersionDropdownOpen)}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
-                selectedVersion === 'draft'
-                  ? 'bg-amber-400/90 text-amber-900 hover:bg-amber-300'
-                  : 'bg-emerald-400/90 text-emerald-900 hover:bg-emerald-300'
-              }`}
+              onClick={onBack}
+              className={`p-1.5 rounded-lg transition-all ${'hover:bg-white/20 text-white'}`}
             >
-              {selectedVersion === 'draft' ? (
-                <Sparkles size={13} />
-              ) : (
-                <CheckCircle2 size={13} />
-              )}
-              <span>{selectedVersion === 'draft' ? t('planningDetail.draftEditing') : `${t('common.version')} ${versions.find((v: any) => v.id === selectedVersion)?.versionNumber}`}</span>
-              <ChevronDown size={13} className={`transition-transform ${isVersionDropdownOpen ? 'rotate-180' : ''}`} />
+              <ArrowLeft size={18} />
             </button>
 
-            {isVersionDropdownOpen && (
-              <div className={`absolute top-full right-0 mt-1.5 w-72 border rounded-lg shadow-2xl z-[99999] overflow-hidden ${'bg-white border-[#E8DFD3]'}`}>
-                {/* Draft Option */}
-                <div
-                  onClick={() => { setSelectedVersion('draft'); setIsVersionDropdownOpen(false); }}
-                  className={`px-3 py-2 flex items-center gap-2.5 cursor-pointer transition-all ${
-                    selectedVersion === 'draft'
-                      ? ('bg-amber-50 border-l-3 border-amber-400')
-                      : hoverBg
+            {/* Title + Subtitle */}
+            <div className="flex items-center gap-2 min-w-0">
+              <TrendingUp size={18} className={headerText} />
+              <h1 className={`text-sm md:text-base font-semibold ${headerText} truncate`}>
+                {t('planningDetail.title')}
+              </h1>
+              <span className={`hidden md:inline text-xs ${'text-white/80'}`}>
+                {selectedBudgetDetail.budget?.groupBrandName && `· ${selectedBudgetDetail.budget.groupBrandName}`}
+                {selectedBudgetDetail.budget?.seasonName && ` · ${selectedBudgetDetail.budget.seasonName}`}
+              </span>
+            </div>
+
+            {/* Budget Metrics — inline pills */}
+            <div className="hidden md:flex items-center gap-1.5 ml-auto">
+              <div className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs ${'bg-white/15'}`}>
+                <DollarSign size={12} className={'text-white/70'} />
+                <span className={'text-white/80'}>{t('planningDetail.totalBudget')}</span>
+                <span className={`font-bold ${headerText}`}>
+                  {formatCurrency(selectedBudgetDetail.budget?.totalBudget || selectedBudgetDetail.totalAmount || 0)}
+                </span>
+              </div>
+              <div className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs ${'bg-white/15'}`}>
+                <TrendingUp size={12} className={'text-white/70'} />
+                <span className={'text-white/80'}>{t('planningDetail.allocated')}</span>
+                <span className="font-bold text-emerald-300">
+                  {formatCurrency(grandTotals.otbValue)}
+                </span>
+              </div>
+            </div>
+
+            {/* Version Dropdown */}
+            <div className={`relative ${isMobile ? 'ml-auto' : ''}`} ref={versionDropdownRef}>
+              <button
+                type="button"
+                onClick={() => setIsVersionDropdownOpen(!isVersionDropdownOpen)}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all ${selectedVersion === 'draft'
+                    ? 'bg-amber-400/90 text-amber-900 hover:bg-amber-300'
+                    : 'bg-emerald-400/90 text-emerald-900 hover:bg-emerald-300'
                   }`}
-                >
-                  <div className={`p-1.5 rounded-md ${selectedVersion === 'draft' ? 'bg-amber-100' : ('bg-[#FAF7F2]')}`}>
-                    <Sparkles size={14} className={selectedVersion === 'draft' ? 'text-amber-600' : textMuted} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className={`text-sm font-medium ${selectedVersion === 'draft' ? 'text-amber-700' : tableCellTextBold}`}>
-                      {t('planningDetail.draftCurrent')}
-                    </div>
-                    <div className={`text-[10px] ${textMuted}`}>{t('planningDetail.editableVersion')}</div>
-                  </div>
-                  {selectedVersion === 'draft' && <Check size={16} className="text-amber-500" />}
-                </div>
-
-                {/* Divider */}
-                {versions.length > 0 && (
-                  <div className={`px-3 py-1 border-y ${'bg-[#FAF7F2] border-[#E8DFD3]'}`}>
-                    <span className={`text-[10px] font-semibold ${textMuted} uppercase tracking-wide flex items-center gap-1.5`}>
-                      <History size={11} />
-                      {t('planningDetail.approvedVersions')} ({versions.length})
-                    </span>
-                  </div>
+              >
+                {selectedVersion === 'draft' ? (
+                  <Sparkles size={13} />
+                ) : (
+                  <CheckCircle2 size={13} />
                 )}
+                <span>{selectedVersion === 'draft' ? t('planningDetail.draftEditing') : `${t('common.version')} ${versions.find((v: any) => v.id === selectedVersion)?.versionNumber}`}</span>
+                <ChevronDown size={13} className={`transition-transform ${isVersionDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
 
-                {/* Version List */}
-                <div className="max-h-[200px] overflow-y-auto">
-                  {versions.length === 0 ? (
-                    <div className={`px-3 py-6 text-center ${textMuted}`}>
-                      <Clock size={24} className="mx-auto mb-1.5 opacity-50" />
-                      <p className="text-xs">{t('planningDetail.noApprovedVersions')}</p>
+              {isVersionDropdownOpen && (
+                <div className={`absolute top-full right-0 mt-1.5 w-72 border rounded-lg shadow-2xl z-[99999] overflow-hidden ${'bg-white border-[#E8DFD3]'}`}>
+                  {/* Draft Option */}
+                  <div
+                    onClick={() => { setSelectedVersion('draft'); setIsVersionDropdownOpen(false); }}
+                    className={`px-3 py-2 flex items-center gap-2.5 cursor-pointer transition-all ${selectedVersion === 'draft'
+                        ? ('bg-amber-50 border-l-3 border-amber-400')
+                        : hoverBg
+                      }`}
+                  >
+                    <div className={`p-1.5 rounded-md ${selectedVersion === 'draft' ? 'bg-amber-100' : ('bg-[#FAF7F2]')}`}>
+                      <Sparkles size={14} className={selectedVersion === 'draft' ? 'text-amber-600' : textMuted} />
                     </div>
-                  ) : (
-                    versions.slice().reverse().map((version: any, idx: any) => (
-                      <div
-                        key={version.id}
-                        onClick={() => { setSelectedVersion(version.id); setIsVersionDropdownOpen(false); }}
-                        className={`px-3 py-2 flex items-center gap-2.5 cursor-pointer transition-all ${
-                          selectedVersion === version.id
-                            ? ('bg-emerald-50 border-l-3 border-emerald-400')
-                            : hoverBg
-                        }`}
-                      >
-                        <div className={`p-1.5 rounded-md ${selectedVersion === version.id ? 'bg-emerald-100' : ('bg-[#FAF7F2]')}`}>
-                          <CheckCircle2 size={14} className={selectedVersion === version.id ? 'text-emerald-600' : textMuted} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className={`text-sm font-medium ${selectedVersion === version.id ? 'text-emerald-700' : tableCellTextBold}`}>
-                            {t('common.version')} {version.versionNumber}
-                          </div>
-                          <div className={`text-[10px] ${textMuted} flex items-center gap-1`}>
-                            <Clock size={10} />
-                            {formatDate(version.createdAt)}
-                          </div>
-                        </div>
-                        {selectedVersion === version.id && <Check size={16} className="text-emerald-500" />}
+                    <div className="flex-1 min-w-0">
+                      <div className={`text-sm font-medium ${selectedVersion === 'draft' ? 'text-amber-700' : tableCellTextBold}`}>
+                        {t('planningDetail.draftCurrent')}
                       </div>
-                    ))
+                      <div className={`text-[10px] ${textMuted}`}>{t('planningDetail.editableVersion')}</div>
+                    </div>
+                    {selectedVersion === 'draft' && <Check size={16} className="text-amber-500" />}
+                  </div>
+
+                  {/* Divider */}
+                  {versions.length > 0 && (
+                    <div className={`px-3 py-1 border-y ${'bg-[#FAF7F2] border-[#E8DFD3]'}`}>
+                      <span className={`text-[10px] font-semibold ${textMuted} uppercase tracking-wide flex items-center gap-1.5`}>
+                        <History size={11} />
+                        {t('planningDetail.approvedVersions')} ({versions.length})
+                      </span>
+                    </div>
                   )}
+
+                  {/* Version List */}
+                  <div className="max-h-[200px] overflow-y-auto">
+                    {versions.length === 0 ? (
+                      <div className={`px-3 py-6 text-center ${textMuted}`}>
+                        <Clock size={24} className="mx-auto mb-1.5 opacity-50" />
+                        <p className="text-xs">{t('planningDetail.noApprovedVersions')}</p>
+                      </div>
+                    ) : (
+                      versions.slice().reverse().map((version: any, idx: any) => (
+                        <div
+                          key={version.id}
+                          onClick={() => { setSelectedVersion(version.id); setIsVersionDropdownOpen(false); }}
+                          className={`px-3 py-2 flex items-center gap-2.5 cursor-pointer transition-all ${selectedVersion === version.id
+                              ? ('bg-emerald-50 border-l-3 border-emerald-400')
+                              : hoverBg
+                            }`}
+                        >
+                          <div className={`p-1.5 rounded-md ${selectedVersion === version.id ? 'bg-emerald-100' : ('bg-[#FAF7F2]')}`}>
+                            <CheckCircle2 size={14} className={selectedVersion === version.id ? 'text-emerald-600' : textMuted} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className={`text-sm font-medium ${selectedVersion === version.id ? 'text-emerald-700' : tableCellTextBold}`}>
+                              {t('common.version')} {version.versionNumber}
+                            </div>
+                            <div className={`text-[10px] ${textMuted} flex items-center gap-1`}>
+                              <Clock size={10} />
+                              {formatDate(version.createdAt)}
+                            </div>
+                          </div>
+                          {selectedVersion === version.id && <Check size={16} className="text-emerald-500" />}
+                        </div>
+                      ))
+                    )}
+                  </div>
                 </div>
+              )}
+            </div>
+          </div>
+
+          {/* Mobile budget metrics row */}
+          {isMobile && (
+            <div className="flex items-center gap-2 mt-1.5">
+              <div className={`flex-1 flex items-center justify-center gap-1 px-2 py-0.5 rounded text-[10px] ${'bg-white/15'}`}>
+                <span className={'text-white/80'}>{t('planningDetail.totalBudget')}</span>
+                <span className={`font-bold ${headerText}`}>
+                  {formatCurrency(selectedBudgetDetail.budget?.totalBudget || selectedBudgetDetail.totalAmount || 0)}
+                </span>
+              </div>
+              <div className={`flex-1 flex items-center justify-center gap-1 px-2 py-0.5 rounded text-[10px] ${'bg-white/15'}`}>
+                <span className={'text-white/80'}>{t('planningDetail.allocated')}</span>
+                <span className="font-bold text-emerald-300">
+                  {formatCurrency(grandTotals.otbValue)}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Read-only indicator */}
+        {isReadOnly && (
+          <div className="px-3 md:px-6 py-1 bg-emerald-500 text-white flex items-center justify-center gap-2 text-xs font-medium">
+            <CheckCircle2 size={13} />
+            <span>{t('planningDetail.viewingApprovedVersion').replace('{{version}}', versions.find((v: any) => v.id === selectedVersion)?.versionNumber)}</span>
+            <button
+              onClick={() => setSelectedVersion('draft')}
+              className="ml-3 px-2.5 py-0.5 rounded text-[11px] bg-white/20 hover:bg-white/30 transition-all"
+            >
+              {t('planningDetail.switchToDraft')}
+            </button>
+          </div>
+        )}
+
+        {/* Tabs — inside sticky block */}
+        <div className={`border-b px-3 md:px-6 ${'border-[#E8DFD3] bg-white'}`}>
+          <div className="flex items-center gap-0">
+            <div className="flex gap-0.5">
+              {TABS.map((tab: any) => {
+                const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-3 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium flex items-center gap-1.5 border-b-2 transition-all ${isActive
+                        ? ('border-[#8B6F47] text-[#8B6F47]')
+                        : ('border-transparent text-slate-500 hover:text-slate-700')
+                      }`}
+                  >
+                    <Icon size={14} />
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+            {/* Inline edit hint */}
+            {!isReadOnly && (
+              <div className={`ml-auto flex items-center gap-1.5 text-[11px] ${'text-[#6B4D30]'}`}>
+                <Pencil size={10} />
+                <span>{t('planningDetail.editHint')}</span>
               </div>
             )}
           </div>
         </div>
-
-        {/* Mobile budget metrics row */}
-        {isMobile && (
-          <div className="flex items-center gap-2 mt-1.5">
-            <div className={`flex-1 flex items-center justify-center gap-1 px-2 py-0.5 rounded text-[10px] ${'bg-white/15'}`}>
-              <span className={'text-white/80'}>{t('planningDetail.totalBudget')}</span>
-              <span className={`font-bold ${headerText}`}>
-                {formatCurrency(selectedBudgetDetail.budget?.totalBudget || selectedBudgetDetail.totalAmount || 0)}
-              </span>
-            </div>
-            <div className={`flex-1 flex items-center justify-center gap-1 px-2 py-0.5 rounded text-[10px] ${'bg-white/15'}`}>
-              <span className={'text-white/80'}>{t('planningDetail.allocated')}</span>
-              <span className="font-bold text-emerald-300">
-                {formatCurrency(grandTotals.otbValue)}
-              </span>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Read-only indicator */}
-      {isReadOnly && (
-        <div className="px-3 md:px-6 py-1 bg-emerald-500 text-white flex items-center justify-center gap-2 text-xs font-medium">
-          <CheckCircle2 size={13} />
-          <span>{t('planningDetail.viewingApprovedVersion').replace('{{version}}', versions.find((v: any) => v.id === selectedVersion)?.versionNumber)}</span>
-          <button
-            onClick={() => setSelectedVersion('draft')}
-            className="ml-3 px-2.5 py-0.5 rounded text-[11px] bg-white/20 hover:bg-white/30 transition-all"
-          >
-            {t('planningDetail.switchToDraft')}
-          </button>
-        </div>
-      )}
-
-      {/* Tabs — inside sticky block */}
-      <div className={`border-b px-3 md:px-6 ${'border-[#E8DFD3] bg-white'}`}>
-        <div className="flex items-center gap-0">
-          <div className="flex gap-0.5">
-            {TABS.map((tab: any) => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-3 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium flex items-center gap-1.5 border-b-2 transition-all ${
-                    isActive
-                      ? ('border-[#8B6F47] text-[#8B6F47]')
-                      : ('border-transparent text-slate-500 hover:text-slate-700')
-                  }`}
-                >
-                  <Icon size={14} />
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
-          {/* Inline edit hint */}
-          {!isReadOnly && (
-            <div className={`ml-auto flex items-center gap-1.5 text-[11px] ${'text-[#6B4D30]'}`}>
-              <Pencil size={10} />
-              <span>{t('planningDetail.editHint')}</span>
-            </div>
-          )}
-        </div>
-      </div>
       </div>{/* end sticky header+tabs block */}
 
       {/* Main Content */}
@@ -1744,11 +1735,10 @@ const PlanningDetailPage = ({
                 <button
                   onClick={handleApprove}
                   disabled={approveAnimation}
-                  className={`px-3 md:px-4 py-1.5 rounded-lg font-medium transition-all flex items-center justify-center gap-1.5 text-xs md:text-sm ${
-                    approveAnimation
+                  className={`px-3 md:px-4 py-1.5 rounded-lg font-medium transition-all flex items-center justify-center gap-1.5 text-xs md:text-sm ${approveAnimation
                       ? ('bg-[#8B6F47] text-white')
                       : ('bg-[#8B6F47] text-white hover:bg-[#6B4D30]')
-                  }`}
+                    }`}
                 >
                   {approveAnimation ? (
                     <>
@@ -1770,7 +1760,8 @@ const PlanningDetailPage = ({
                   try {
                     const savePayload = {
                       budgetDetailId: selectedBudgetDetail?.id,
-                      data: JSON.parse(JSON.stringify(localData))};
+                      data: JSON.parse(JSON.stringify(localData))
+                    };
 
                     if (entityId) {
                       // Update existing planning
@@ -1795,11 +1786,10 @@ const PlanningDetailPage = ({
                   }
                 }}
                 disabled={isReadOnly || saveLoading}
-                className={`px-3 md:px-4 py-1.5 rounded-lg font-medium transition-all flex items-center justify-center gap-1.5 text-xs md:text-sm ${
-                  isReadOnly || saveLoading
+                className={`px-3 md:px-4 py-1.5 rounded-lg font-medium transition-all flex items-center justify-center gap-1.5 text-xs md:text-sm ${isReadOnly || saveLoading
                     ? ('bg-slate-200 text-slate-500 cursor-not-allowed')
                     : ('bg-[#8B6F47] text-white hover:bg-[#6B4D30]')
-                }`}
+                  }`}
               >
                 <Save size={14} className={saveLoading ? 'animate-spin' : ''} />
                 {saveLoading ? (t('common.saving') || 'Saving...') : t('planningDetail.savePlanning')}

@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP ENTERPRISE DATA MIGRATION TOOL
+// BaoERP MRP ENTERPRISE DATA MIGRATION TOOL
 // Handle millions of records with streaming and batch processing
 // =============================================================================
 
@@ -124,7 +124,7 @@ class MigrationTracker {
     const remaining = this.stats.totalRecords - this.stats.processedRecords;
     const eta = remaining > 0 ? remaining / rate : 0;
 
-    const percent = this.stats.totalRecords > 0 
+    const percent = this.stats.totalRecords > 0
       ? ((this.stats.processedRecords / this.stats.totalRecords) * 100).toFixed(1)
       : '0';
 
@@ -238,7 +238,7 @@ function validateRecord(
 // ENTITY MIGRATORS
 // =============================================================================
 
-// Parts Migration - Matches VietERP MRP Prisma schema
+// Parts Migration - Matches BaoERP MRP Prisma schema
 const PART_RULES: ValidationRule[] = [
   { field: 'partNumber', required: true, maxLength: 50, transform: (v) => String(v).toUpperCase().trim() },
   { field: 'partName', required: true, maxLength: 200, transform: (v) => String(v).trim() },
@@ -261,14 +261,14 @@ async function migrateParts(
 
   for (const record of records) {
     const { valid, errors, transformed } = validateRecord(record, PART_RULES);
-    
+
     // Handle name/partName alias
     const partName = transformed.partName || transformed.name;
     if (!partName) {
       tracker.recordError(tracker.getStats().processedRecords + 1, 'partName or name is required', record);
       continue;
     }
-    
+
     if (!valid && !partName) {
       tracker.recordError(tracker.getStats().processedRecords + 1, errors.join('; '), record);
       continue;
@@ -277,7 +277,7 @@ async function migrateParts(
     // Map category to valid enum values
     const categoryMap: Record<string, string> = {
       'COMPONENT': 'COMPONENT',
-      'ASSEMBLY': 'ASSEMBLY', 
+      'ASSEMBLY': 'ASSEMBLY',
       'RAW': 'RAW_MATERIAL',
       'RAW_MATERIAL': 'RAW_MATERIAL',
       'FINISHED': 'FINISHED_GOOD',
@@ -348,7 +348,7 @@ async function migrateCustomers(
 
   for (const record of records) {
     const { valid, errors, transformed } = validateRecord(record, CUSTOMER_RULES);
-    
+
     if (!valid) {
       tracker.recordError(tracker.getStats().processedRecords + 1, errors.join('; '), record);
       continue;
@@ -411,7 +411,7 @@ async function migrateSuppliers(
 
   for (const record of records) {
     const { valid, errors, transformed } = validateRecord(record, SUPPLIER_RULES);
-    
+
     if (!valid) {
       tracker.recordError(tracker.getStats().processedRecords + 1, errors.join('; '), record);
       continue;
@@ -457,8 +457,8 @@ async function migrateSuppliers(
   }
 }
 
-// Inventory Migration - Matches VietERP MRP Prisma schema
-// Note: VietERP MRP uses single inventory per part (partId is unique)
+// Inventory Migration - Matches BaoERP MRP Prisma schema
+// Note: BaoERP MRP uses single inventory per part (partId is unique)
 const INVENTORY_RULES: ValidationRule[] = [
   { field: 'partNumber', required: true },
   { field: 'onHand', type: 'number', transform: (v) => parseFloat(v) || 0 },
@@ -481,7 +481,7 @@ async function migrateInventory(
 ): Promise<void> {
   for (const record of records) {
     const { valid, errors, transformed } = validateRecord(record, INVENTORY_RULES);
-    
+
     if (!valid) {
       tracker.recordError(tracker.getStats().processedRecords + 1, errors.join('; '), record);
       continue;
@@ -586,7 +586,7 @@ async function processCSVStream(
 
   for await (const record of parser) {
     lineNumber++;
-    
+
     if (config.resumeFrom && lineNumber < config.resumeFrom) {
       continue;
     }
@@ -704,10 +704,10 @@ async function runMigration(
 
       try {
         await processCSVStream(job.filePath, processor, tracker, config);
-        
+
         console.log('\n');
         console.log(tracker.getProgress());
-        
+
         const stats = tracker.getStats();
         results.set(job.entity, stats);
 
@@ -737,11 +737,11 @@ async function runMigration(
 
 async function main() {
   const args = process.argv.slice(2);
-  
+
   if (args.length < 2) {
     console.log(`
 ╔════════════════════════════════════════════════════════════════╗
-║  VietERP MRP ENTERPRISE DATA MIGRATION TOOL                       ║
+║  BaoERP MRP ENTERPRISE DATA MIGRATION TOOL                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 Usage: npx ts-node enterprise/migration/migrate.ts <entity> <file> [options]
@@ -789,7 +789,7 @@ File Format (CSV):
 
   console.log(`
 ╔════════════════════════════════════════════════════════════════╗
-║  VietERP MRP ENTERPRISE DATA MIGRATION                            ║
+║  BaoERP MRP ENTERPRISE DATA MIGRATION                            ║
 ╚════════════════════════════════════════════════════════════════╝
 `);
   console.log(`Entity:     ${entity}`);
@@ -803,7 +803,7 @@ File Format (CSV):
   // Print summary
   console.log('\n📊 MIGRATION SUMMARY');
   console.log('═'.repeat(60));
-  
+
   for (const [entityName, stats] of results) {
     const duration = ((stats.endTime || Date.now()) - stats.startTime) / 1000;
     console.log(`

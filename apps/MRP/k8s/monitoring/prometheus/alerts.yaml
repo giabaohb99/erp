@@ -1,5 +1,5 @@
 # =============================================================================
-# VietERP MRP - PROMETHEUS ALERTING RULES
+# BaoERP MRP - PROMETHEUS ALERTING RULES
 # =============================================================================
 
 groups:
@@ -52,7 +52,7 @@ groups:
           severity: critical
           team: platform
         annotations:
-          summary: "VietERP MRP application is down"
+          summary: "BaoERP MRP application is down"
           description: "Instance {{ $labels.instance }} has been down for more than 1 minute"
 
   # ===========================================================================

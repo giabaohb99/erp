@@ -1,10 +1,10 @@
-# VietERP Terraform AWS Infrastructure
+# BaoERP Terraform AWS Infrastructure
 
 ## English
 
 ### Overview
 
-This Terraform configuration creates a production-ready AWS infrastructure for VietERP deployment with:
+This Terraform configuration creates a production-ready AWS infrastructure for BaoERP deployment with:
 
 - **VPC & Networking**: Multi-AZ setup with public and private subnets, NAT Gateway, and VPC Flow Logs
 - **EKS Kubernetes**: Managed Kubernetes cluster with auto-scaling node groups and OIDC provider for IRSA
@@ -168,7 +168,7 @@ kubectl create secret generic rds-credentials \
   --namespace vierp
 ```
 
-#### 2. Deploy VietERP Helm Chart
+#### 2. Deploy BaoERP Helm Chart
 
 ```bash
 # Add Helm repository (if applicable)
@@ -306,7 +306,7 @@ terraform destroy
 
 ### Tổng Quan
 
-Cấu hình Terraform này tạo ra cơ sở hạ tầng AWS sẵn sàng cho sản xuất cho VietERP với:
+Cấu hình Terraform này tạo ra cơ sở hạ tầng AWS sẵn sàng cho sản xuất cho BaoERP với:
 
 - **VPC & Mạng**: Thiết lập Multi-AZ với public/private subnets, NAT Gateway, và VPC Flow Logs
 - **EKS Kubernetes**: Cụm Kubernetes được quản lý với auto-scaling node groups và OIDC provider cho IRSA
@@ -470,7 +470,7 @@ kubectl create secret generic rds-credentials \
   --namespace vierp
 ```
 
-#### 2. Triển Khai VietERP Helm Chart
+#### 2. Triển Khai BaoERP Helm Chart
 
 ```bash
 # Thêm Helm repository (nếu có)
@@ -615,4 +615,4 @@ terraform destroy
 
 ## License
 
-This Terraform configuration is part of VietERP project and follows the project's license.
+This Terraform configuration is part of BaoERP project and follows the project's license.

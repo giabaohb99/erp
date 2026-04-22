@@ -1,6 +1,6 @@
 /**
  * @vierp/rate-limit
- * Rate limiting package for VietERP using Redis and flexible strategies
+ * Rate limiting package for BaoERP using Redis and flexible strategies
  */
 
 // Main exports

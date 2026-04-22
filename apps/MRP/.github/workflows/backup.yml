@@ -1,5 +1,5 @@
 # .github/workflows/backup.yml
-# Scheduled Database Backup for VietERP MRP System
+# Scheduled Database Backup for BaoERP MRP System
 
 name: Scheduled Backup
 

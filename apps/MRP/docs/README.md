@@ -1,4 +1,4 @@
-# VietERP MRP - Manufacturing Resource Planning System
+# BaoERP MRP - Manufacturing Resource Planning System
 
 <p align="center">
   <img src="/icons/icon.svg" alt="MRP Logo" width="96" height="96">
@@ -32,7 +32,7 @@
 
 ### English
 
-VietERP MRP is a comprehensive Manufacturing Resource Planning system designed for product manufacturing companies. It provides end-to-end management of inventory, sales orders, production, quality control, and analytics.
+BaoERP MRP is a comprehensive Manufacturing Resource Planning system designed for product manufacturing companies. It provides end-to-end management of inventory, sales orders, production, quality control, and analytics.
 
 **Key Capabilities:**
 - Real-time inventory tracking with multi-warehouse support
@@ -45,7 +45,7 @@ VietERP MRP is a comprehensive Manufacturing Resource Planning system designed f
 
 ### Tiếng Việt
 
-VietERP MRP là hệ thống Hoạch định Tài nguyên Sản xuất toàn diện được thiết kế cho các công ty sản xuất product. Hệ thống cung cấp quản lý đầu-cuối cho tồn kho, đơn hàng, sản xuất, kiểm soát chất lượng và phân tích.
+BaoERP MRP là hệ thống Hoạch định Tài nguyên Sản xuất toàn diện được thiết kế cho các công ty sản xuất product. Hệ thống cung cấp quản lý đầu-cuối cho tồn kho, đơn hàng, sản xuất, kiểm soát chất lượng và phân tích.
 
 **Khả năng chính:**
 - Theo dõi tồn kho thời gian thực với hỗ trợ đa kho

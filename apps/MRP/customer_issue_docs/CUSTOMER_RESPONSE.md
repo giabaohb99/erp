@@ -1,4 +1,4 @@
-# 📋 TRẢ LỜI KHÁCH HÀNG - VietERP MRP
+# 📋 TRẢ LỜI KHÁCH HÀNG - BaoERP MRP
 
 ---
 
@@ -111,5 +111,5 @@ Trân trọng,
 
 ---
 
-*VietERP MRP Development Team*
+*BaoERP MRP Development Team*
 *2026-01-09*

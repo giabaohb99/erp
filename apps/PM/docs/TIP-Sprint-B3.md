@@ -1,6 +1,6 @@
 # TIP Sprint B3 — Email + Deploy + Pilot
 
-> **VietERP Project Manager** | V1.1 Backend — Final Sprint
+> **BaoERP Project Manager** | V1.1 Backend — Final Sprint
 > Created: 2026-02-25 | Status: PLANNING
 
 ---
@@ -251,9 +251,9 @@ serve(async (req) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "VietERP Project Manager <noreply@rtr.vn>",
+      from: "BaoERP Project Manager <noreply@rtr.vn>",
       to: [profile.email],
-      subject: `[VietERP] ${record.title}`,
+      subject: `[BaoERP] ${record.title}`,
       html: buildEmailHtml(record, profile, APP_URL),
     }),
   });
@@ -287,7 +287,7 @@ function buildEmailHtml(notif, profile, appUrl) {
   return `
     <div style="font-family:'Outfit',sans-serif;max-width:560px;margin:0 auto;padding:24px;">
       <div style="background:${color};color:white;padding:12px 16px;border-radius:8px 8px 0 0;font-weight:600;">
-        VietERP Project Manager
+        BaoERP Project Manager
       </div>
       <div style="border:1px solid #e5e7eb;border-top:none;padding:20px;border-radius:0 0 8px 8px;">
         <p style="margin:0 0 8px;">Xin chào <strong>${profile.full_name}</strong>,</p>
@@ -299,7 +299,7 @@ function buildEmailHtml(notif, profile, appUrl) {
         </a>
       </div>
       <p style="color:#9ca3af;font-size:11px;text-align:center;margin-top:16px;">
-        VietERP Project Manager — Quản lý dự án Module
+        BaoERP Project Manager — Quản lý dự án Module
       </p>
     </div>
   `;
@@ -420,9 +420,9 @@ serve(async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "VietERP Project Manager <noreply@rtr.vn>",
+        from: "BaoERP Project Manager <noreply@rtr.vn>",
         to: [data.email],
-        subject: `[VietERP] Tổng hợp ${data.items.length} thông báo`,
+        subject: `[BaoERP] Tổng hợp ${data.items.length} thông báo`,
         html: buildDigestHtml(data, APP_URL),
       }),
     });
@@ -455,7 +455,7 @@ function buildDigestHtml(data, appUrl) {
   return `
     <div style="font-family:'Outfit',sans-serif;max-width:560px;margin:0 auto;padding:24px;">
       <div style="background:#1E293B;color:white;padding:12px 16px;border-radius:8px 8px 0 0;">
-        VietERP Daily Digest — ${data.items.length} thông báo
+        BaoERP Daily Digest — ${data.items.length} thông báo
       </div>
       <div style="border:1px solid #e5e7eb;border-top:none;padding:20px;border-radius:0 0 8px 8px;">
         <p>Xin chào <strong>${data.name}</strong>,</p>
@@ -638,7 +638,7 @@ vercel --prod
 | 14 | lehuong@rtr.vn | viewer | Lệ Hương |
 | 15 | thanhmai@rtr.vn | viewer | Thanh Mai |
 
-**Password cho tất cả**: `VietERP2026!pilot` (thay đổi sau pilot)
+**Password cho tất cả**: `BaoERP2026!pilot` (thay đổi sau pilot)
 
 ### Cách tạo:
 
@@ -668,7 +668,7 @@ for entry in "${USERS[@]}"; do
     -H "Content-Type: application/json" \
     -d "{
       \"email\": \"${EMAIL}\",
-      \"password\": \"VietERP2026!pilot\",
+      \"password\": \"BaoERP2026!pilot\",
       \"email_confirm\": true,
       \"user_metadata\": { \"full_name\": \"${NAME}\" }
     }"

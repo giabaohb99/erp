@@ -51,8 +51,8 @@ resource "aws_db_parameter_group" "main" {
   family = "postgres16"
   name   = "${local.rds_identifier}-params"
 
-  # Tuning parameters cho VietERP
-  # Tuning parameters for VietERP
+  # Tuning parameters cho BaoERP
+  # Tuning parameters for BaoERP
 
   # Log queries chậm (trên 5 giây)
   # Log slow queries (over 5 seconds)

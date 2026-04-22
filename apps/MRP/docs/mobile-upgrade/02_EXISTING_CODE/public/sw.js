@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - SERVICE WORKER
+// BaoERP MRP - SERVICE WORKER
 // Offline support, caching, and background sync
 // =============================================================================
 
@@ -34,12 +34,12 @@ const CACHE_STRATEGIES = {
     /\.(?:woff|woff2|ttf|otf)$/,
     /\.(?:css|js)$/,
   ],
-  
+
   // Network first, cache fallback (for API calls)
   networkFirst: [
     /\/api\//,
   ],
-  
+
   // Stale while revalidate (for pages)
   staleWhileRevalidate: [
     /\/v2\//,
@@ -52,7 +52,7 @@ const CACHE_STRATEGIES = {
 
 self.addEventListener('install', (event) => {
   console.log('[SW] Installing service worker...');
-  
+
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then((cache) => {
@@ -75,17 +75,17 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   console.log('[SW] Activating service worker...');
-  
+
   event.waitUntil(
     caches.keys()
       .then((cacheNames) => {
         return Promise.all(
           cacheNames
             .filter((name) => {
-              return name.startsWith('vierp-mrp-') && 
-                     name !== STATIC_CACHE && 
-                     name !== DYNAMIC_CACHE && 
-                     name !== API_CACHE;
+              return name.startsWith('vierp-mrp-') &&
+                name !== STATIC_CACHE &&
+                name !== DYNAMIC_CACHE &&
+                name !== API_CACHE;
             })
             .map((name) => {
               console.log('[SW] Deleting old cache:', name);
@@ -107,20 +107,20 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
-  
+
   // Skip non-GET requests
   if (request.method !== 'GET') {
     return;
   }
-  
+
   // Skip chrome-extension and other non-http(s) requests
   if (!url.protocol.startsWith('http')) {
     return;
   }
-  
+
   // Determine caching strategy
   const strategy = getCachingStrategy(url);
-  
+
   switch (strategy) {
     case 'cacheFirst':
       event.respondWith(cacheFirst(request));
@@ -142,44 +142,44 @@ self.addEventListener('fetch', (event) => {
 
 function getCachingStrategy(url) {
   const pathname = url.pathname;
-  
+
   for (const pattern of CACHE_STRATEGIES.cacheFirst) {
     if (pattern.test(pathname) || pattern.test(url.href)) {
       return 'cacheFirst';
     }
   }
-  
+
   for (const pattern of CACHE_STRATEGIES.networkFirst) {
     if (pattern.test(pathname)) {
       return 'networkFirst';
     }
   }
-  
+
   for (const pattern of CACHE_STRATEGIES.staleWhileRevalidate) {
     if (pattern.test(pathname)) {
       return 'staleWhileRevalidate';
     }
   }
-  
+
   return 'networkFirst';
 }
 
 // Cache First Strategy
 async function cacheFirst(request) {
   const cachedResponse = await caches.match(request);
-  
+
   if (cachedResponse) {
     return cachedResponse;
   }
-  
+
   try {
     const networkResponse = await fetch(request);
-    
+
     if (networkResponse.ok) {
       const cache = await caches.open(STATIC_CACHE);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     console.error('[SW] Cache first fetch failed:', error);
@@ -191,42 +191,42 @@ async function cacheFirst(request) {
 async function networkFirst(request) {
   try {
     const networkResponse = await fetch(request);
-    
+
     if (networkResponse.ok) {
       const cache = await caches.open(API_CACHE);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     console.log('[SW] Network first falling back to cache:', request.url);
-    
+
     const cachedResponse = await caches.match(request);
-    
+
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     // Return offline page for navigation requests
     if (request.mode === 'navigate') {
       return caches.match('/offline');
     }
-    
+
     // Return offline JSON for API requests
     if (request.url.includes('/api/')) {
       return new Response(
-        JSON.stringify({ 
-          success: false, 
+        JSON.stringify({
+          success: false,
           error: 'You are offline',
-          offline: true 
+          offline: true
         }),
-        { 
+        {
           status: 503,
           headers: { 'Content-Type': 'application/json' }
         }
       );
     }
-    
+
     throw error;
   }
 }
@@ -235,7 +235,7 @@ async function networkFirst(request) {
 async function staleWhileRevalidate(request) {
   const cache = await caches.open(DYNAMIC_CACHE);
   const cachedResponse = await cache.match(request);
-  
+
   const fetchPromise = fetch(request)
     .then((networkResponse) => {
       if (networkResponse.ok) {
@@ -247,7 +247,7 @@ async function staleWhileRevalidate(request) {
       console.log('[SW] Stale while revalidate fetch failed:', error);
       return null;
     });
-  
+
   return cachedResponse || fetchPromise || caches.match('/offline');
 }
 
@@ -257,7 +257,7 @@ async function staleWhileRevalidate(request) {
 
 self.addEventListener('sync', (event) => {
   console.log('[SW] Background sync:', event.tag);
-  
+
   if (event.tag === 'sync-pending-actions') {
     event.waitUntil(syncPendingActions());
   }
@@ -267,7 +267,7 @@ async function syncPendingActions() {
   try {
     // Get pending actions from IndexedDB
     const pendingActions = await getPendingActions();
-    
+
     for (const action of pendingActions) {
       try {
         const response = await fetch(action.url, {
@@ -275,7 +275,7 @@ async function syncPendingActions() {
           headers: action.headers,
           body: action.body,
         });
-        
+
         if (response.ok) {
           await removePendingAction(action.id);
           console.log('[SW] Synced action:', action.id);
@@ -305,16 +305,16 @@ async function removePendingAction(id) {
 
 self.addEventListener('push', (event) => {
   console.log('[SW] Push notification received');
-  
+
   let data = {
-    title: 'VietERP MRP',
+    title: 'BaoERP MRP',
     body: 'You have a new notification',
     icon: '/icons/icon-192x192.png',
     badge: '/icons/badge-72x72.png',
     tag: 'default',
     data: {},
   };
-  
+
   if (event.data) {
     try {
       data = { ...data, ...event.data.json() };
@@ -322,7 +322,7 @@ self.addEventListener('push', (event) => {
       data.body = event.data.text();
     }
   }
-  
+
   const options = {
     body: data.body,
     icon: data.icon,
@@ -336,7 +336,7 @@ self.addEventListener('push', (event) => {
     ],
     requireInteraction: data.requireInteraction || false,
   };
-  
+
   event.waitUntil(
     self.registration.showNotification(data.title, options)
   );
@@ -348,20 +348,20 @@ self.addEventListener('push', (event) => {
 
 self.addEventListener('notificationclick', (event) => {
   console.log('[SW] Notification clicked:', event.action);
-  
+
   event.notification.close();
-  
+
   const { data } = event.notification;
   let url = '/v2/dashboard';
-  
+
   if (event.action === 'view' && data?.url) {
     url = data.url;
   }
-  
+
   if (event.action === 'dismiss') {
     return;
   }
-  
+
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true })
       .then((clientList) => {
@@ -372,7 +372,7 @@ self.addEventListener('notificationclick', (event) => {
             return client.focus();
           }
         }
-        
+
         // Open new window
         if (clients.openWindow) {
           return clients.openWindow(url);
@@ -387,20 +387,20 @@ self.addEventListener('notificationclick', (event) => {
 
 self.addEventListener('message', (event) => {
   console.log('[SW] Message received:', event.data);
-  
+
   switch (event.data?.type) {
     case 'SKIP_WAITING':
       self.skipWaiting();
       break;
-      
+
     case 'CLEAR_CACHE':
       event.waitUntil(clearAllCaches());
       break;
-      
+
     case 'CACHE_URLS':
       event.waitUntil(cacheUrls(event.data.urls));
       break;
-      
+
     case 'GET_CACHE_SIZE':
       event.waitUntil(getCacheSize().then((size) => {
         event.ports[0].postMessage({ type: 'CACHE_SIZE', size });
@@ -424,11 +424,11 @@ async function cacheUrls(urls) {
 async function getCacheSize() {
   let totalSize = 0;
   const cacheNames = await caches.keys();
-  
+
   for (const name of cacheNames) {
     const cache = await caches.open(name);
     const keys = await cache.keys();
-    
+
     for (const request of keys) {
       const response = await cache.match(request);
       if (response) {
@@ -437,7 +437,7 @@ async function getCacheSize() {
       }
     }
   }
-  
+
   return totalSize;
 }
 
@@ -447,7 +447,7 @@ async function getCacheSize() {
 
 self.addEventListener('periodicsync', (event) => {
   console.log('[SW] Periodic sync:', event.tag);
-  
+
   if (event.tag === 'update-dashboard') {
     event.waitUntil(updateDashboardData());
   }

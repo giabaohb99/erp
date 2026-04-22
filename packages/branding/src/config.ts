@@ -98,12 +98,12 @@ export interface BrandConfig {
   };
 }
 
-// ─── Default: VietERP Platform (Open-Source) ─────────────────
+// ─── Default: BaoERP Platform (Open-Source) ─────────────────
 
 export const DEFAULT_BRAND: BrandConfig = {
   platform: {
-    name: 'VietERP Platform',
-    shortName: 'VietERP',
+    name: 'BaoERP Platform',
+    shortName: 'BaoERP',
     tagline: {
       vi: 'Nền tảng Quản trị Doanh nghiệp Toàn diện',
       en: 'Comprehensive Enterprise Resource Planning Platform',

@@ -1,4 +1,4 @@
-# VietERP MRP System - Operations Runbook
+# BaoERP MRP System - Operations Runbook
 
 ## Daily Operations
 

@@ -2,9 +2,9 @@
 
 ## Tổng quan / Overview
 
-VietERP Platform sử dụng **PostgreSQL 16** làm hệ thống quản lý cơ sở dữ liệu chính, với **Prisma ORM** làm lớp trích xuất dữ liệu. Kiến trúc cơ sở dữ liệu được thiết kế hỗ trợ đa tenant, đa module và mở rộng theo kiểu enterprise.
+BaoERP Platform sử dụng **PostgreSQL 16** làm hệ thống quản lý cơ sở dữ liệu chính, với **Prisma ORM** làm lớp trích xuất dữ liệu. Kiến trúc cơ sở dữ liệu được thiết kế hỗ trợ đa tenant, đa module và mở rộng theo kiểu enterprise.
 
-VietERP Platform uses **PostgreSQL 16** as the primary database management system, with **Prisma ORM** as the data abstraction layer. The database architecture is designed to support multi-tenancy, multiple modules, and enterprise-scale expansion.
+BaoERP Platform uses **PostgreSQL 16** as the primary database management system, with **Prisma ORM** as the data abstraction layer. The database architecture is designed to support multi-tenancy, multiple modules, and enterprise-scale expansion.
 
 ## Yêu cầu kỹ thuật / Technical Requirements
 
@@ -15,13 +15,13 @@ VietERP Platform uses **PostgreSQL 16** as the primary database management syste
 
 ## Kiến trúc đa Schema / Multi-Schema Architecture
 
-VietERP sử dụng mô hình **một schema cho một module**, cho phép:
+BaoERP sử dụng mô hình **một schema cho một module**, cho phép:
 - Tách biệt logic nghiệp vụ rõ ràng
 - Quản lý phiên bản schema độc lập
 - Giảm xung đột merge khi phát triển song song
 - Dễ dàng kiểm tra schema-specific
 
-VietERP uses a **one schema per module** model, enabling:
+BaoERP uses a **one schema per module** model, enabling:
 - Clear business logic separation
 - Independent schema versioning
 - Reduced merge conflicts in parallel development

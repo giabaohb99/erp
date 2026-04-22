@@ -1,6 +1,6 @@
 # Deploy ứng dụng lên VPS RTR — Hướng dẫn từng bước
 
-> Ghi lại đúng quy trình đã thực hiện khi deploy VietERP-HRM lên VPS.
+> Ghi lại đúng quy trình đã thực hiện khi deploy BaoERP-HRM lên VPS.
 > Lần sau deploy app mới, làm lại từ đầu theo thứ tự này.
 
 ---
@@ -195,7 +195,7 @@ ssh lam@171.244.40.23
 
 # Clone
 cd ~
-git clone git@github.com:Real-Time-Robotics/VietERP-HRM.git rtr-hrm
+git clone git@github.com:Real-Time-Robotics/BaoERP-HRM.git rtr-hrm
 cd rtr-hrm
 
 # Tạo .env (chỉnh theo app)

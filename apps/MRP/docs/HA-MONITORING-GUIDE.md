@@ -1,5 +1,5 @@
 # 🏢 HIGH AVAILABILITY & MONITORING
-## VietERP MRP Phase 4 - Enterprise Infrastructure
+## BaoERP MRP Phase 4 - Enterprise Infrastructure
 
 ---
 
@@ -180,4 +180,4 @@ docs/
 
 ---
 
-*VietERP MRP HA & Monitoring Guide v1.0*
+*BaoERP MRP HA & Monitoring Guide v1.0*

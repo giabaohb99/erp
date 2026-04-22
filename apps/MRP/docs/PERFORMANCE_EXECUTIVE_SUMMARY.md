@@ -1,6 +1,6 @@
-# BÁO CÁO TÓM TẮT: TĂNG CƯỜNG HIỆU SUẤT VietERP MRP
+# BÁO CÁO TÓM TẮT: TĂNG CƯỜNG HIỆU SUẤT BaoERP MRP
 
-**Ngày:** 01/01/2026 | **Dự án:** VietERP MRP
+**Ngày:** 01/01/2026 | **Dự án:** BaoERP MRP
 
 ---
 

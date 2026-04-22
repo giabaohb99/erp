@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - ANIMATED BUTTON
+// BaoERP MRP - ANIMATED BUTTON
 // Button with ripple effect and micro-interactions
 // =============================================================================
 

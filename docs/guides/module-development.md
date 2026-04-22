@@ -2,11 +2,11 @@
 
 **Hướng dẫn phát triển module / Module Development Guide**
 
-This guide explains how to create new modules within the VietERP ecosystem using the npm workspace structure, Turborepo, and shared packages.
+This guide explains how to create new modules within the BaoERP ecosystem using the npm workspace structure, Turborepo, and shared packages.
 
 ## Architecture Overview / Tổng quan kiến trúc
 
-VietERP uses:
+BaoERP uses:
 
 - **Monorepo** with npm workspaces (Node 20+)
 - **Turborepo** for build orchestration

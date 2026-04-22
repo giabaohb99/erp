@@ -2,7 +2,7 @@
 
 **Tham chiếu API quản lý nhân sự / HRM API Reference**
 
-Complete API reference for the VietERP Human Resource Management module.
+Complete API reference for the BaoERP Human Resource Management module.
 
 ## Base URL / URL cơ sở
 

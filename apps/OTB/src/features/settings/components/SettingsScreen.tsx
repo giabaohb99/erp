@@ -25,9 +25,11 @@ const SettingsScreen = ({ user }: any) => {
         return parsed;
       }
     } catch { /* ignore parse errors */ }
-    return { notifications: { email: true, push: true, desktop: false },
+    return {
+      notifications: { email: true, push: true, desktop: false },
       privacy: { showOnline: true, showActivity: true },
-      display: { compactMode: false, animationsEnabled: true }};
+      display: { compactMode: false, animationsEnabled: true }
+    };
   });
 
   // Persist settings to localStorage on change
@@ -55,8 +57,9 @@ const SettingsScreen = ({ user }: any) => {
 
   const SettingSection = ({ title, description, children }: any) => (
     <div className={`rounded-xl border overflow-hidden ${'border-gray-300'}`} style={{
-      background:'linear-gradient(135deg, #ffffff 0%, rgba(215,183,151,0.04) 35%, rgba(215,183,151,0.10) 100%)',
-      boxShadow: `inset 0 -1px 0 ${'rgba(215,183,151,0.04)'}`}}>
+      background: 'linear-gradient(135deg, #ffffff 0%, rgba(215,183,151,0.04) 35%, rgba(215,183,151,0.10) 100%)',
+      boxShadow: `inset 0 -1px 0 ${'rgba(215,183,151,0.04)'}`
+    }}>
       <div className={`px-5 py-4 border-b ${'border-gray-200'}`}>
         <h3 className={`text-base font-semibold font-['Montserrat'] ${'text-gray-900'}`}>
           {title}
@@ -76,9 +79,8 @@ const SettingsScreen = ({ user }: any) => {
   const SettingRow = ({ icon: Icon, label, description, children, onClick }: any) => (
     <div
       onClick={onClick}
-      className={`flex items-center gap-4 p-3 rounded-lg transition-all ${
-        onClick ? 'cursor-pointer' : ''
-      } ${'hover:bg-gray-50'}`}
+      className={`flex items-center gap-4 p-3 rounded-lg transition-all ${onClick ? 'cursor-pointer' : ''
+        } ${'hover:bg-gray-50'}`}
     >
       <div className={`p-2 rounded-lg ${'bg-gray-100'}`}>
         <Icon size={18} className={'text-[#6B4D30]'} />
@@ -100,14 +102,12 @@ const SettingsScreen = ({ user }: any) => {
   const Toggle = ({ enabled, onChange }: any) => (
     <button
       onClick={() => onChange(!enabled)}
-      className={`relative w-11 h-6 rounded-full transition-all duration-200 ${
-        enabled
+      className={`relative w-11 h-6 rounded-full transition-all duration-200 ${enabled
           ? 'bg-[#127749]'
-          :'bg-gray-300'}`}
+          : 'bg-gray-300'}`}
     >
-      <div className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 ${
-        enabled ? 'left-6' : 'left-1'
-      }`} />
+      <div className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 ${enabled ? 'left-6' : 'left-1'
+        }`} />
     </button>
   );
   return (
@@ -234,7 +234,8 @@ const SettingsScreen = ({ user }: any) => {
               message: t('settings.deleteConfirm'),
               confirmLabel: t('common.delete'),
               variant: 'danger',
-              onConfirm: () => { /* account deletion placeholder */ }});
+              onConfirm: () => { /* account deletion placeholder */ }
+            });
           }}
         >
           <span className={`text-xs font-medium px-2 py-1 rounded ${'bg-red-100 text-red-600'}`}>
@@ -247,8 +248,8 @@ const SettingsScreen = ({ user }: any) => {
       <div className={`rounded-xl border p-5 ${'bg-gray-50 border-gray-300'}`}>
         <div className="flex items-center gap-3">
           <img
-            src="/vietErp-logo.png"
-            alt="VietERP"
+            src="/BaoERP-logo.png"
+            alt="BaoERP"
             className="h-10 w-auto object-contain"
           />
           <div className="flex-1">

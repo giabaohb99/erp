@@ -1,5 +1,5 @@
 // ===================================================================
-// VietERP CONTROL TOWER V3 — Export Engine
+// BaoERP CONTROL TOWER V3 — Export Engine
 // Issues Excel, BOM Excel, Flight Test Excel, Project Summary PDF
 // ===================================================================
 import { useRef, useState } from "react";
@@ -35,7 +35,7 @@ export function exportIssuesExcel(issues, project, lang) {
   }));
   exportToExcel(
     [{ name: vi ? "Vấn Đề" : "Issues", data, columns }],
-    `${project?.name || "VietERP"}_Issues_${new Date().toISOString().split("T")[0]}`
+    `${project?.name || "BaoERP"}_Issues_${new Date().toISOString().split("T")[0]}`
   );
 }
 
@@ -78,10 +78,12 @@ export function exportBomExcel(bomParts, suppliers, lang) {
   exportToExcel(
     [
       { name: "BOM", data, columns },
-      { name: vi ? "Tóm tắt chi phí" : "Cost Summary", data: summaryData, columns: [
-        { key: "category", header: vi ? "Danh mục" : "Category", width: 15 },
-        { key: "cost", header: vi ? "Chi phí ($)" : "Cost ($)", width: 12 },
-      ]},
+      {
+        name: vi ? "Tóm tắt chi phí" : "Cost Summary", data: summaryData, columns: [
+          { key: "category", header: vi ? "Danh mục" : "Category", width: 15 },
+          { key: "cost", header: vi ? "Chi phí ($)" : "Cost ($)", width: 12 },
+        ]
+      },
     ],
     `BOM_${new Date().toISOString().split("T")[0]}`
   );
@@ -138,8 +140,8 @@ export function ProjectSummaryReport({ project, issues, lang, gateConfig, gateCh
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "2px solid #3B82F6", paddingBottom: 12, marginBottom: 20 }}>
         <div>
-          <div style={{ fontSize: 8, color: "#3B82F6", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>VietERP Project Manager</div>
-          <div style={{ fontSize: 6, color: "#64748B" }}>VietERP</div>
+          <div style={{ fontSize: 8, color: "#3B82F6", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>BaoERP Project Manager</div>
+          <div style={{ fontSize: 6, color: "#64748B" }}>BaoERP</div>
         </div>
         <div style={{ textAlign: "right" }}>
           <div style={{ fontSize: 11, fontWeight: 700 }}>{vi ? "Báo cáo Trạng thái Dự án" : "Project Status Report"}</div>
@@ -214,7 +216,7 @@ export function ProjectSummaryReport({ project, issues, lang, gateConfig, gateCh
 
       {/* Footer */}
       <div style={{ borderTop: "1px solid #1E2A3A", paddingTop: 8, fontSize: 7, color: "#475569", display: "flex", justifyContent: "space-between" }}>
-        <span>VietERP Project Manager | {vi ? "Tạo tự động" : "Auto-generated"}</span>
+        <span>BaoERP Project Manager | {vi ? "Tạo tự động" : "Auto-generated"}</span>
         <span>{new Date().toLocaleString(vi ? "vi-VN" : "en-US")}</span>
       </div>
     </div>
@@ -242,7 +244,7 @@ export function ExecutiveSlides({ project, issues, lang, flightTests: flightTest
       {/* Slide 1: Cover */}
       <div style={{ ...slideStyle, justifyContent: "center", alignItems: "center", textAlign: "center" }}>
         <div style={{ fontSize: 10, color: "#3B82F6", textTransform: "uppercase", letterSpacing: "0.2em", fontWeight: 700, marginBottom: 12 }}>
-          VietERP Project Manager
+          BaoERP Project Manager
         </div>
         <div style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>{project?.name}</div>
         <div style={{ fontSize: 12, color: "#64748B" }}>
@@ -368,9 +370,9 @@ export default function ExportModal({ type, project, issues, lang, onClose, bomP
       if (type === "slides") {
         const { generateSlidesPdf } = await import("../utils/importExport");
         const slideEls = el.querySelectorAll("[data-slide]");
-        await generateSlidesPdf([...slideEls], `${project?.name || "VietERP"}_Slides_${new Date().toISOString().split("T")[0]}`);
+        await generateSlidesPdf([...slideEls], `${project?.name || "BaoERP"}_Slides_${new Date().toISOString().split("T")[0]}`);
       } else {
-        await generatePdfFromElement(el, `${project?.name || "VietERP"}_Report_${new Date().toISOString().split("T")[0]}`);
+        await generatePdfFromElement(el, `${project?.name || "BaoERP"}_Report_${new Date().toISOString().split("T")[0]}`);
       }
     } catch (err) {
       console.error("PDF export error:", err);

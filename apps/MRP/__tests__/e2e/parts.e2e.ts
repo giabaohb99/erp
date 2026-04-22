@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 
 /**
- * VietERP MRP Parts Module E2E Tests
+ * BaoERP MRP Parts Module E2E Tests
  * Tests for critical bugs fixed in Parts module:
  * - Bug #1: Validation failed when creating Part
  * - Bug #2: Edit shows success but doesn't update
@@ -51,7 +51,7 @@ async function loginAndNavigate(page: Page) {
   await page.waitForLoadState('networkidle');
 
   // Wait for parts table to load
-  await page.waitForSelector('table, [role="table"], .data-table', { timeout: 15000 }).catch(() => {});
+  await page.waitForSelector('table, [role="table"], .data-table', { timeout: 15000 }).catch(() => { });
 }
 
 // Helper: Open Part creation modal

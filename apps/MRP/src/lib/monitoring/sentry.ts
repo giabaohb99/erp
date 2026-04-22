@@ -1,5 +1,5 @@
 // src/lib/monitoring/sentry.ts
-// Error tracking integration for VietERP MRP System
+// Error tracking integration for BaoERP MRP System
 // Uses Sentry when configured, falls back to console logging
 
 import { logger } from "./logger";

@@ -1,7 +1,7 @@
 const vi = {
   // App Branding
-  'app.name': 'VietERP CRM',
-  'app.company': 'VietERP',
+  'app.name': 'BaoERP CRM',
+  'app.company': 'BaoERP',
   'app.tagline': 'Quản Lý Quan Hệ Khách Hàng Cấp Quốc Phòng',
 
   // Navigation

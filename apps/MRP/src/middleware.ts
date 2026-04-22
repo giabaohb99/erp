@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - NEXT.JS MIDDLEWARE
+// BaoERP MRP - NEXT.JS MIDDLEWARE
 // Route protection, security headers, rate limiting, request ID tracking
 // =============================================================================
 
@@ -151,9 +151,9 @@ const RATE_LIMIT_MAX = 500; // requests per window
 // Check if running in test environment
 function isTestEnvironment(): boolean {
   return process.env.NODE_ENV === 'test' ||
-         process.env.PLAYWRIGHT_TEST === 'true' ||
-         process.env.E2E_TEST === 'true' ||
-         process.env.SKIP_RATE_LIMIT === 'true';
+    process.env.PLAYWRIGHT_TEST === 'true' ||
+    process.env.E2E_TEST === 'true' ||
+    process.env.SKIP_RATE_LIMIT === 'true';
 }
 
 function checkRateLimit(ip: string): boolean {

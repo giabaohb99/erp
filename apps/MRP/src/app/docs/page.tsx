@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - DOCUMENTATION PAGE (Medusa-style Design)
+// BaoERP MRP - DOCUMENTATION PAGE (Medusa-style Design)
 // Premium Vietnamese UI with modern minimalist aesthetics
 // =============================================================================
 
@@ -11,7 +11,7 @@ import { logger } from '@/lib/logger';
 
 export const metadata: Metadata = {
   title: 'Tài liệu',
-  description: 'Tài liệu hướng dẫn sử dụng hệ thống VietERP MRP',
+  description: 'Tài liệu hướng dẫn sử dụng hệ thống BaoERP MRP',
 };
 import {
   ChevronLeft,
@@ -144,14 +144,14 @@ function DocsHero() {
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 text-[14px] text-gray-600 mb-4">
             <BookOpen className="w-4 h-4" />
-            <span>Tài liệu VietERP MRP</span>
+            <span>Tài liệu BaoERP MRP</span>
           </div>
           <h1 className="text-[36px] lg:text-[48px] font-semibold leading-[1.1] tracking-[-0.02em] text-gray-900 mb-6">
             Tài liệu hướng dẫn
           </h1>
           <p className="text-[17px] text-gray-600 leading-relaxed mb-8">
             Hướng dẫn chi tiết giúp bạn cài đặt, tùy chỉnh và triển khai
-            hệ thống VietERP MRP.
+            hệ thống BaoERP MRP.
           </p>
 
           {/* Quick Start Cards */}
@@ -377,7 +377,7 @@ export default async function DocsPage() {
             <div className="w-6 h-6 bg-black dark:bg-white rounded flex items-center justify-center">
               <span className="text-[8px] font-bold text-white dark:text-gray-900 tracking-tight">RTR</span>
             </div>
-            <span className="text-[13px] text-gray-600">© 2024 VietERP MRP. Đã đăng ký bản quyền.</span>
+            <span className="text-[13px] text-gray-600">© 2024 BaoERP MRP. Đã đăng ký bản quyền.</span>
           </div>
           <div className="flex items-center gap-6">
             <a href="#" className="text-[13px] text-gray-600 hover:text-gray-900 transition-colors">

@@ -1,6 +1,6 @@
 // =============================================================================
 // E2E TESTS - CUSTOMER PORTAL
-// VietERP MRP Test Suite
+// BaoERP MRP Test Suite
 // =============================================================================
 
 import { test, expect, Page } from '@playwright/test';
@@ -23,7 +23,7 @@ test.describe('Customer Dashboard', () => {
   test('should display welcome banner with customer info', async ({ page }) => {
     // Check for welcome message
     await expect(page.getByText(/Xin chào/)).toBeVisible();
-    
+
     // Check for customer tier badge
     await expect(page.locator('[class*="GOLD"], [class*="SILVER"], [class*="PLATINUM"], [class*="STANDARD"]')).toBeVisible();
   });
@@ -54,10 +54,10 @@ test.describe('Customer Dashboard', () => {
 
   test('should be responsive on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    
+
     // Summary cards should still be visible
     await expect(page.getByText('Đơn hàng đang xử lý')).toBeVisible();
-    
+
     // Mobile menu should be available
     await expect(page.locator('button').filter({ has: page.locator('svg') })).toBeVisible();
   });
@@ -80,7 +80,7 @@ test.describe('Customer Orders', () => {
   test('should display filter controls', async ({ page }) => {
     // Search input
     await expect(page.getByPlaceholder(/Tìm theo mã SO/)).toBeVisible();
-    
+
     // Status filter buttons
     await expect(page.getByRole('button', { name: 'Tất cả' })).toBeVisible();
   });
@@ -88,10 +88,10 @@ test.describe('Customer Orders', () => {
   test('should filter orders by status', async ({ page }) => {
     // Click on status filter
     await page.getByRole('button', { name: 'Đã xác nhận' }).click();
-    
+
     // Wait for filtered results
     await page.waitForTimeout(500);
-    
+
     // Verify filter is active
     await expect(page.getByRole('button', { name: 'Đã xác nhận' })).toHaveClass(/bg-emerald/);
   });
@@ -99,7 +99,7 @@ test.describe('Customer Orders', () => {
   test('should search orders by keyword', async ({ page }) => {
     const searchInput = page.getByPlaceholder(/Tìm theo mã SO/);
     await searchInput.fill('SO-2025');
-    
+
     // Wait for search results
     await page.waitForTimeout(500);
   });
@@ -211,7 +211,7 @@ test.describe('Customer Support', () => {
 
   test('should have ticket form fields', async ({ page }) => {
     await page.getByText('Tạo ticket mới').click();
-    
+
     await expect(page.getByText('Danh mục')).toBeVisible();
     await expect(page.getByText('Độ ưu tiên')).toBeVisible();
     await expect(page.getByText('Tiêu đề')).toBeVisible();
@@ -220,7 +220,7 @@ test.describe('Customer Support', () => {
 
   test('should validate required fields', async ({ page }) => {
     await page.getByText('Tạo ticket mới').click();
-    
+
     // Submit button should be disabled when required fields are empty
     const submitButton = page.getByRole('button', { name: 'Gửi ticket' });
     await expect(submitButton).toBeDisabled();
@@ -230,10 +230,10 @@ test.describe('Customer Support', () => {
     // Check for ticket list or empty state
     const ticketList = page.locator('[class*="divide-y"]');
     const emptyState = page.getByText('Chưa có ticket nào');
-    
+
     const hasTickets = await ticketList.isVisible().catch(() => false);
     const isEmpty = await emptyState.isVisible().catch(() => false);
-    
+
     expect(hasTickets || isEmpty).toBe(true);
   });
 });
@@ -247,23 +247,23 @@ test.describe('Portal Navigation', () => {
     // Start at dashboard
     await page.goto('/customer');
     await expect(page).toHaveURL(/\/customer$/);
-    
+
     // Navigate to orders
     await page.getByText('Đơn hàng').first().click();
     await expect(page).toHaveURL(/\/customer\/orders/);
-    
+
     // Navigate to deliveries
     await page.getByText('Giao hàng').first().click();
     await expect(page).toHaveURL(/\/customer\/deliveries/);
-    
+
     // Navigate to invoices
     await page.getByText('Hóa đơn').first().click();
     await expect(page).toHaveURL(/\/customer\/invoices/);
-    
+
     // Navigate to support
     await page.getByText('Hỗ trợ').first().click();
     await expect(page).toHaveURL(/\/customer\/support/);
-    
+
     // Navigate back to dashboard
     await page.getByText('Tổng quan').first().click();
     await expect(page).toHaveURL(/\/customer$/);
@@ -271,7 +271,7 @@ test.describe('Portal Navigation', () => {
 
   test('should highlight active navigation item', async ({ page }) => {
     await page.goto('/customer/orders');
-    
+
     // Active nav item should have different styling
     const ordersNav = page.getByRole('link', { name: /Đơn hàng/ }).first();
     await expect(ordersNav).toHaveClass(/bg-emerald/);
@@ -288,7 +288,7 @@ test.describe('Performance', () => {
     await page.goto('/customer');
     await page.waitForLoadState('networkidle');
     const loadTime = Date.now() - startTime;
-    
+
     console.log(`Dashboard load time: ${loadTime}ms`);
     expect(loadTime).toBeLessThan(3000);
   });
@@ -298,21 +298,21 @@ test.describe('Performance', () => {
     await page.goto('/customer/orders');
     await page.waitForLoadState('networkidle');
     const loadTime = Date.now() - startTime;
-    
+
     console.log(`Orders page load time: ${loadTime}ms`);
     expect(loadTime).toBeLessThan(3000);
   });
 
   test('should not have memory leaks during navigation', async ({ page }) => {
     const pages = ['/customer', '/customer/orders', '/customer/deliveries', '/customer/invoices', '/customer/support'];
-    
+
     for (let i = 0; i < 3; i++) {
       for (const path of pages) {
         await page.goto(path);
         await page.waitForLoadState('domcontentloaded');
       }
     }
-    
+
     // If we got here without crashing, memory is managed properly
     expect(true).toBe(true);
   });
@@ -325,12 +325,12 @@ test.describe('Performance', () => {
 test.describe('Accessibility', () => {
   test('dashboard should be keyboard navigable', async ({ page }) => {
     await page.goto('/customer');
-    
+
     // Tab through elements
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    
+
     // Check if focus is visible
     const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
     expect(focusedElement).toBeDefined();
@@ -338,17 +338,17 @@ test.describe('Accessibility', () => {
 
   test('should have proper heading hierarchy', async ({ page }) => {
     await page.goto('/customer');
-    
+
     const h1Count = await page.locator('h1').count();
     expect(h1Count).toBeGreaterThanOrEqual(1);
   });
 
   test('buttons should have accessible names', async ({ page }) => {
     await page.goto('/customer');
-    
+
     const buttons = page.locator('button');
     const count = await buttons.count();
-    
+
     for (let i = 0; i < Math.min(count, 10); i++) {
       const button = buttons.nth(i);
       const name = await button.getAttribute('aria-label') || await button.textContent();

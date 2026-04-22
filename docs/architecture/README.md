@@ -1,16 +1,16 @@
-# VietERP System Architecture / Kiến trúc hệ thống VietERP
+# BaoERP System Architecture / Kiến trúc hệ thống BaoERP
 
-This directory contains comprehensive architecture documentation for VietERP, including system diagrams, data flow, deployment topology, and event-driven patterns.
+This directory contains comprehensive architecture documentation for BaoERP, including system diagrams, data flow, deployment topology, and event-driven patterns.
 
-Thư mục này chứa tài liệu kiến trúc toàn diện cho VietERP, bao gồm sơ đồ hệ thống, luồng dữ liệu, cấu trúc triển khai và các mẫu hướng sự kiện.
+Thư mục này chứa tài liệu kiến trúc toàn diện cho BaoERP, bao gồm sơ đồ hệ thống, luồng dữ liệu, cấu trúc triển khai và các mẫu hướng sự kiện.
 
 ---
 
 ## System Overview / Tổng quan hệ thống
 
-The VietERP system is built on a modern, cloud-native microservices architecture with the following key layers:
+The BaoERP system is built on a modern, cloud-native microservices architecture with the following key layers:
 
-Hệ thống VietERP được xây dựng dựa trên kiến trúc microservices hiện đại, hướng tới đám mây với các lớp chính sau:
+Hệ thống BaoERP được xây dựng dựa trên kiến trúc microservices hiện đại, hướng tới đám mây với các lớp chính sau:
 
 - **Client Layer**: Web apps (Next.js), mobile apps (React Native), desktop clients (Electron)
 - **API Gateway**: Kong for routing, rate limiting, authentication
@@ -55,9 +55,9 @@ See: [system-overview.mermaid](system-overview.mermaid)
 
 ## Module Dependencies / Phụ thuộc mô-đun
 
-VietERP consists of 14+ services and applications with carefully managed dependencies:
+BaoERP consists of 14+ services and applications with carefully managed dependencies:
 
-VietERP bao gồm 14+ dịch vụ và ứng dụng với các phụ thuộc được quản lý cẩn thận:
+BaoERP bao gồm 14+ dịch vụ và ứng dụng với các phụ thuộc được quản lý cẩn thận:
 
 **Applications (Những ứng dụng)**:
 - Admin Dashboard: Unified interface for system administration
@@ -139,9 +139,9 @@ See: [data-flow.mermaid](data-flow.mermaid)
 
 ## Deployment Architecture / Kiến trúc triển khai
 
-VietERP is deployed to Kubernetes clusters managed by Terraform:
+BaoERP is deployed to Kubernetes clusters managed by Terraform:
 
-VietERP được triển khai cho các cụm Kubernetes được quản lý bởi Terraform:
+BaoERP được triển khai cho các cụm Kubernetes được quản lý bởi Terraform:
 
 **Infrastructure Layers / Lớp cơ sở hạ tầng**:
 1. **Cloud Provider**: AWS, GCP, Azure, or on-premises
@@ -181,9 +181,9 @@ See: [deployment.mermaid](deployment.mermaid)
 
 ## Event-Driven Architecture / Kiến trúc hướng sự kiện
 
-VietERP uses NATS JetStream for event streaming between microservices:
+BaoERP uses NATS JetStream for event streaming between microservices:
 
-VietERP sử dụng NATS JetStream để phát trực tuyến sự kiện giữa các microservices:
+BaoERP sử dụng NATS JetStream để phát trực tuyến sự kiện giữa các microservices:
 
 **Event Categories / Danh mục sự kiện**:
 1. **Domain Events**: Business events (invoice.created, order.shipped)
@@ -334,5 +334,5 @@ Key ADRs:
 ---
 
 **Last Updated / Cập nhật cuối**: 2026-03-29
-**Maintained by / Được duy trì bởi**: VietERP Core Team
+**Maintained by / Được duy trì bởi**: BaoERP Core Team
 **Contact / Liên hệ**: architecture@viertp.dev

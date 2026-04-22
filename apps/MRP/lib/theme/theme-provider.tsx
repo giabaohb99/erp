@@ -12,7 +12,7 @@ import { Sun, Moon, Monitor, Palette, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // =============================================================================
-// VietERP MRP - THEME SYSTEM
+// BaoERP MRP - THEME SYSTEM
 // Dark mode, color schemes, and theme persistence
 // =============================================================================
 
@@ -22,7 +22,7 @@ import { cn } from '@/lib/utils';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 
-type ColorScheme = 
+type ColorScheme =
   | 'purple'   // Default
   | 'blue'
   | 'green'
@@ -125,14 +125,14 @@ const defaultTheme: ThemeConfig = {
 
 function loadTheme(): ThemeConfig {
   if (typeof window === 'undefined') return defaultTheme;
-  
+
   try {
     const stored = localStorage.getItem(THEME_STORAGE_KEY);
     if (stored) {
       return { ...defaultTheme, ...JSON.parse(stored) };
     }
-  } catch {}
-  
+  } catch { }
+
   return defaultTheme;
 }
 
@@ -175,7 +175,7 @@ export function ThemeProvider({
     mode: defaultMode || loadTheme().mode,
     colorScheme: defaultColorScheme || loadTheme().colorScheme,
   }));
-  
+
   const [systemDark, setSystemDark] = useState(false);
 
   // Detect system preference
@@ -191,27 +191,27 @@ export function ThemeProvider({
   // Apply theme to document
   useEffect(() => {
     const isDark = config.mode === 'dark' || (config.mode === 'system' && systemDark);
-    
+
     // Apply dark mode
     document.documentElement.classList.toggle('dark', isDark);
-    
+
     // Apply color scheme
     const scheme = colorSchemes[config.colorScheme];
     document.documentElement.style.setProperty('--color-primary', scheme.primary);
     document.documentElement.style.setProperty('--color-primary-hover', scheme.primaryHover);
     document.documentElement.style.setProperty('--color-primary-light', scheme.primaryLight);
-    
+
     // Apply font size
     const fontSizes = { sm: '14px', base: '16px', lg: '18px' };
     document.documentElement.style.setProperty('--font-size-base', fontSizes[config.fontSize]);
-    
+
     // Apply reduced motion
     if (config.reducedMotion) {
       document.documentElement.classList.add('reduce-motion');
     } else {
       document.documentElement.classList.remove('reduce-motion');
     }
-    
+
     // Save to storage
     saveTheme(config);
   }, [config, systemDark]);

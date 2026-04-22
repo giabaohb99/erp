@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - LOGGER UTILITY
+// BaoERP MRP - LOGGER UTILITY
 // Centralized logging to replace console.log
 // =============================================================================
 
@@ -181,7 +181,7 @@ class LoggerImpl {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(entry),
-      }).catch(() => {}); // Fire and forget
+      }).catch(() => { }); // Fire and forget
     } catch {
       // Swallow errors to prevent logging from crashing the app
     }

@@ -21,9 +21,8 @@ export default function MobileDataCard({
   return (
     <div
       onClick={onClick}
-      className={`rounded-xl border p-4 transition-all duration-200 ${
-        onClick ? 'cursor-pointer active:scale-[0.98]' : ''
-      } bg-white border-gray-200 hover:border-gray-300 shadow-sm`}
+      className={`rounded-xl border p-4 transition-all duration-200 ${onClick ? 'cursor-pointer active:scale-[0.98]' : ''
+        } bg-white border-gray-200 hover:border-gray-300 shadow-sm`}
     >
       {/* Header Row */}
       <div className="flex items-start justify-between gap-3">
@@ -38,9 +37,8 @@ export default function MobileDataCard({
           )}
         </div>
         {status && (
-          <span className={`flex-shrink-0 px-2.5 py-1 rounded-full text-[11px] font-semibold ${
-            statusColors[statusColor] || statusColors.neutral
-          }`}>
+          <span className={`flex-shrink-0 px-2.5 py-1 rounded-full text-[11px] font-semibold ${statusColors[statusColor] || statusColors.neutral
+            }`}>
             {status}
           </span>
         )}
@@ -54,9 +52,8 @@ export default function MobileDataCard({
               <div className={`text-[11px] text-gray-500`}>
                 {metric.label}
               </div>
-              <div className={`text-sm font-semibold font-['JetBrains_Mono'] ${
-                metric.color || 'text-gray-900'
-              }`}>
+              <div className={`text-sm font-semibold font-['JetBrains_Mono'] ${metric.color || 'text-gray-900'
+                }`}>
                 {metric.value}
               </div>
             </div>
@@ -74,11 +71,10 @@ export default function MobileDataCard({
             <button
               key={i}
               onClick={(e: any) => { e.stopPropagation(); action.onClick?.(); }}
-              className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold font-['Montserrat'] transition-colors ${
-                action.primary
-                  ? 'bg-vietErp-gold text-[#0A0A0A] active:bg-vietErp-gold-dark'
+              className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold font-['Montserrat'] transition-colors ${action.primary
+                  ? 'bg-BaoERP-gold text-[#0A0A0A] active:bg-BaoERP-gold-dark'
                   : 'bg-gray-100 text-gray-700 active:bg-gray-200'
-              }`}
+                }`}
             >
               {action.label}
             </button>

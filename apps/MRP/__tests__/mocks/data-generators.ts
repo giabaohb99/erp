@@ -1,31 +1,31 @@
 // =============================================================================
 // MOCK DATA GENERATORS
-// VietERP MRP Test Suite
+// BaoERP MRP Test Suite
 // =============================================================================
 
-import { 
-  DemandForecast, 
-  EquipmentHealth, 
+import {
+  DemandForecast,
+  EquipmentHealth,
   TimeSeriesDataPoint,
   SensorReading,
   RiskFactor,
-  MaintenanceEvent 
+  MaintenanceEvent
 } from '@/lib/ai/ml-engine';
 
 // =============================================================================
 // RANDOM GENERATORS
 // =============================================================================
 
-export const randomInt = (min: number, max: number): number => 
+export const randomInt = (min: number, max: number): number =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
-export const randomFloat = (min: number, max: number, decimals: number = 2): number => 
+export const randomFloat = (min: number, max: number, decimals: number = 2): number =>
   parseFloat((Math.random() * (max - min) + min).toFixed(decimals));
 
-export const randomChoice = <T>(array: T[]): T => 
+export const randomChoice = <T>(array: T[]): T =>
   array[Math.floor(Math.random() * array.length)];
 
-export const randomDate = (start: Date, end: Date): Date => 
+export const randomDate = (start: Date, end: Date): Date =>
   new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 
 export const randomString = (length: number): string => {
@@ -45,21 +45,21 @@ export const generateTimeSeriesData = (
 ): TimeSeriesDataPoint[] => {
   const data: TimeSeriesDataPoint[] = [];
   const now = new Date();
-  
+
   for (let i = days; i >= 0; i--) {
     const date = new Date(now);
     date.setDate(date.getDate() - i);
-    
+
     const trendValue = trend * (days - i);
     const noise = (Math.random() - 0.5) * variance;
     const value = Math.max(0, Math.round(baseValue + trendValue + noise));
-    
+
     data.push({
       date: date.toISOString().split('T')[0],
       value,
     });
   }
-  
+
   return data;
 };
 
@@ -71,21 +71,21 @@ export const generateSeasonalData = (
 ): TimeSeriesDataPoint[] => {
   const data: TimeSeriesDataPoint[] = [];
   const now = new Date();
-  
+
   for (let i = days; i >= 0; i--) {
     const date = new Date(now);
     date.setDate(date.getDate() - i);
-    
+
     const seasonal = Math.sin((2 * Math.PI * i) / period) * seasonalAmplitude;
     const noise = (Math.random() - 0.5) * 10;
     const value = Math.max(0, Math.round(baseValue + seasonal + noise));
-    
+
     data.push({
       date: date.toISOString().split('T')[0],
       value,
     });
   }
-  
+
   return data;
 };
 
@@ -101,11 +101,11 @@ export const generateSensorReadings = (count: number = 4): SensorReading[] => {
     { name: 'Áp suất dầu', unit: 'bar', min: 3, max: 7, normalMin: 4, normalMax: 6 },
     { name: 'Tốc độ trục', unit: 'RPM', min: 1000, max: 3000, normalMin: 1200, normalMax: 2800 },
   ];
-  
+
   return sensorTypes.slice(0, count).map((sensor, idx) => {
     const value = randomFloat(sensor.min, sensor.max);
     const isNormal = value >= sensor.normalMin && value <= sensor.normalMax;
-    
+
     return {
       sensorId: `sensor-${idx + 1}`,
       name: sensor.name,
@@ -121,11 +121,11 @@ export const generateSensorReadings = (count: number = 4): SensorReading[] => {
 export const generateMaintenanceHistory = (count: number = 5): MaintenanceEvent[] => {
   const events: MaintenanceEvent[] = [];
   const types: MaintenanceEvent['type'][] = ['PM', 'CM', 'INSPECTION'];
-  
+
   for (let i = 0; i < count; i++) {
     const date = new Date();
     date.setDate(date.getDate() - randomInt(1, 180));
-    
+
     events.push({
       id: `mh-${i + 1}`,
       type: randomChoice(types),
@@ -135,7 +135,7 @@ export const generateMaintenanceHistory = (count: number = 5): MaintenanceEvent[
       downtimeHours: randomInt(1, 8),
     });
   }
-  
+
   return events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
@@ -147,10 +147,10 @@ export const generateRiskFactors = (count: number = 3): RiskFactor[] => {
     { name: 'PM quá hạn', description: 'Đã quá hạn bảo trì định kỳ' },
     { name: 'Môi trường vận hành', description: 'Nhiệt độ/độ ẩm môi trường cao' },
   ];
-  
+
   const severities: RiskFactor['severity'][] = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
   const trends: RiskFactor['trend'][] = ['IMPROVING', 'STABLE', 'WORSENING'];
-  
+
   return riskTypes.slice(0, count).map((risk, idx) => ({
     id: `rf-${idx + 1}`,
     name: risk.name,
@@ -189,7 +189,7 @@ export const generateBulkOrders = (count: number): Array<{
   status: string;
 }> => {
   const statuses = ['PENDING', 'CONFIRMED', 'IN_PRODUCTION', 'SHIPPED', 'COMPLETED'];
-  
+
   return Array.from({ length: count }, (_, i) => ({
     id: `order-${i + 1}`,
     orderNumber: `SO-${new Date().getFullYear()}-${String(i + 1).padStart(4, '0')}`,
@@ -207,7 +207,7 @@ export const generateBulkEquipment = (count: number): Array<{
   status: string;
 }> => {
   const statuses = ['HEALTHY', 'DEGRADED', 'AT_RISK', 'CRITICAL'];
-  
+
   return Array.from({ length: count }, (_, i) => ({
     id: `eq-${i + 1}`,
     code: `EQ-${String(i + 1).padStart(3, '0')}`,
@@ -225,7 +225,7 @@ export const generateDemandForecastMock = (): DemandForecast => {
   const historicalData = generateTimeSeriesData(90, 100, 20, 0.5);
   const values = historicalData.map(d => d.value);
   const avgDailyDemand = Math.round(values.reduce((a, b) => a + b, 0) / values.length);
-  
+
   return {
     itemId: 'item-001',
     itemCode: 'BRG-6205-2RS',
@@ -254,10 +254,10 @@ export const generateDemandForecastMock = (): DemandForecast => {
 
 export const generateEquipmentHealthMock = (): EquipmentHealth => {
   const healthScore = randomInt(30, 100);
-  const status = healthScore >= 80 ? 'HEALTHY' 
-    : healthScore >= 60 ? 'DEGRADED' 
-    : healthScore >= 30 ? 'AT_RISK' : 'CRITICAL';
-  
+  const status = healthScore >= 80 ? 'HEALTHY'
+    : healthScore >= 60 ? 'DEGRADED'
+      : healthScore >= 30 ? 'AT_RISK' : 'CRITICAL';
+
   return {
     equipmentId: 'eq-001',
     equipmentCode: 'CNC-001',
@@ -265,7 +265,7 @@ export const generateEquipmentHealthMock = (): EquipmentHealth => {
     healthScore,
     status,
     failureProbability: randomInt(5, 50),
-    predictedFailureDate: healthScore < 50 
+    predictedFailureDate: healthScore < 50
       ? new Date(Date.now() + randomInt(7, 30) * 86400000).toISOString().split('T')[0]
       : undefined,
     daysUntilMaintenance: randomInt(0, 30),

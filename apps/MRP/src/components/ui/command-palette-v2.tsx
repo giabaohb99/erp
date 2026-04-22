@@ -59,27 +59,27 @@ interface CommandGroup {
 // =============================================================================
 
 const navigationCommands: CommandItem[] = [
-  { id: 'nav-dashboard', labelKey: 'command.dashboard', descriptionKey: 'command.dashboardDesc', icon: <LayoutDashboard className="w-4 h-4" />, action: () => {}, keywords: ['dashboard', 'home', 'trang chủ'], category: 'navigation' },
-  { id: 'nav-parts', labelKey: 'command.parts', descriptionKey: 'command.partsDesc', icon: <Package className="w-4 h-4" />, action: () => {}, keywords: ['parts', 'vật tư', 'linh kiện'], category: 'navigation' },
-  { id: 'nav-bom', labelKey: 'command.bom', descriptionKey: 'command.bomDesc', icon: <Layers className="w-4 h-4" />, action: () => {}, keywords: ['bom', 'định mức', 'công thức'], category: 'navigation' },
-  { id: 'nav-suppliers', labelKey: 'command.suppliers', descriptionKey: 'command.suppliersDesc', icon: <Building2 className="w-4 h-4" />, action: () => {}, keywords: ['suppliers', 'ncc', 'vendor'], category: 'navigation' },
-  { id: 'nav-sales', labelKey: 'command.sales', descriptionKey: 'command.salesDesc', icon: <ShoppingCart className="w-4 h-4" />, action: () => {}, keywords: ['sales', 'orders', 'đơn hàng'], category: 'navigation' },
-  { id: 'nav-inventory', labelKey: 'command.inventory', descriptionKey: 'command.inventoryDesc', icon: <ClipboardList className="w-4 h-4" />, action: () => {}, keywords: ['inventory', 'tồn kho', 'stock'], category: 'navigation' },
-  { id: 'nav-mrp', labelKey: 'command.mrp', descriptionKey: 'command.mrpDesc', icon: <Calculator className="w-4 h-4" />, action: () => {}, keywords: ['mrp', 'planning', 'hoạch định'], category: 'navigation' },
-  { id: 'nav-purchasing', labelKey: 'command.purchasing', descriptionKey: 'command.purchasingDesc', icon: <Truck className="w-4 h-4" />, action: () => {}, keywords: ['purchasing', 'po', 'mua hàng'], category: 'navigation' },
-  { id: 'nav-production', labelKey: 'command.production', descriptionKey: 'command.productionDesc', icon: <Factory className="w-4 h-4" />, action: () => {}, keywords: ['production', 'sản xuất', 'work order'], category: 'navigation' },
-  { id: 'nav-quality', labelKey: 'command.quality', descriptionKey: 'command.qualityDesc', icon: <CheckCircle className="w-4 h-4" />, action: () => {}, keywords: ['quality', 'qc', 'chất lượng', 'ncr'], category: 'navigation' },
-  { id: 'nav-analytics', labelKey: 'command.analytics', descriptionKey: 'command.analyticsDesc', icon: <BarChart3 className="w-4 h-4" />, action: () => {}, keywords: ['analytics', 'reports', 'báo cáo'], category: 'navigation' },
-  { id: 'nav-ai', labelKey: 'command.ai', descriptionKey: 'command.aiDesc', icon: <Sparkles className="w-4 h-4" />, action: () => {}, keywords: ['ai', 'assistant', 'trợ lý'], category: 'navigation' },
-  { id: 'nav-settings', labelKey: 'command.settings', descriptionKey: 'command.settingsDesc', icon: <Settings className="w-4 h-4" />, action: () => {}, keywords: ['settings', 'cài đặt', 'config'], category: 'navigation' },
+  { id: 'nav-dashboard', labelKey: 'command.dashboard', descriptionKey: 'command.dashboardDesc', icon: <LayoutDashboard className="w-4 h-4" />, action: () => { }, keywords: ['dashboard', 'home', 'trang chủ'], category: 'navigation' },
+  { id: 'nav-parts', labelKey: 'command.parts', descriptionKey: 'command.partsDesc', icon: <Package className="w-4 h-4" />, action: () => { }, keywords: ['parts', 'vật tư', 'linh kiện'], category: 'navigation' },
+  { id: 'nav-bom', labelKey: 'command.bom', descriptionKey: 'command.bomDesc', icon: <Layers className="w-4 h-4" />, action: () => { }, keywords: ['bom', 'định mức', 'công thức'], category: 'navigation' },
+  { id: 'nav-suppliers', labelKey: 'command.suppliers', descriptionKey: 'command.suppliersDesc', icon: <Building2 className="w-4 h-4" />, action: () => { }, keywords: ['suppliers', 'ncc', 'vendor'], category: 'navigation' },
+  { id: 'nav-sales', labelKey: 'command.sales', descriptionKey: 'command.salesDesc', icon: <ShoppingCart className="w-4 h-4" />, action: () => { }, keywords: ['sales', 'orders', 'đơn hàng'], category: 'navigation' },
+  { id: 'nav-inventory', labelKey: 'command.inventory', descriptionKey: 'command.inventoryDesc', icon: <ClipboardList className="w-4 h-4" />, action: () => { }, keywords: ['inventory', 'tồn kho', 'stock'], category: 'navigation' },
+  { id: 'nav-mrp', labelKey: 'command.mrp', descriptionKey: 'command.mrpDesc', icon: <Calculator className="w-4 h-4" />, action: () => { }, keywords: ['mrp', 'planning', 'hoạch định'], category: 'navigation' },
+  { id: 'nav-purchasing', labelKey: 'command.purchasing', descriptionKey: 'command.purchasingDesc', icon: <Truck className="w-4 h-4" />, action: () => { }, keywords: ['purchasing', 'po', 'mua hàng'], category: 'navigation' },
+  { id: 'nav-production', labelKey: 'command.production', descriptionKey: 'command.productionDesc', icon: <Factory className="w-4 h-4" />, action: () => { }, keywords: ['production', 'sản xuất', 'work order'], category: 'navigation' },
+  { id: 'nav-quality', labelKey: 'command.quality', descriptionKey: 'command.qualityDesc', icon: <CheckCircle className="w-4 h-4" />, action: () => { }, keywords: ['quality', 'qc', 'chất lượng', 'ncr'], category: 'navigation' },
+  { id: 'nav-analytics', labelKey: 'command.analytics', descriptionKey: 'command.analyticsDesc', icon: <BarChart3 className="w-4 h-4" />, action: () => { }, keywords: ['analytics', 'reports', 'báo cáo'], category: 'navigation' },
+  { id: 'nav-ai', labelKey: 'command.ai', descriptionKey: 'command.aiDesc', icon: <Sparkles className="w-4 h-4" />, action: () => { }, keywords: ['ai', 'assistant', 'trợ lý'], category: 'navigation' },
+  { id: 'nav-settings', labelKey: 'command.settings', descriptionKey: 'command.settingsDesc', icon: <Settings className="w-4 h-4" />, action: () => { }, keywords: ['settings', 'cài đặt', 'config'], category: 'navigation' },
 ];
 
 const actionCommands: CommandItem[] = [
-  { id: 'action-new-order', labelKey: 'command.newOrder', icon: <Plus className="w-4 h-4" />, action: () => {}, keywords: ['new order', 'tạo đơn'], shortcut: '⌘N', category: 'action' },
-  { id: 'action-new-part', labelKey: 'command.newPart', icon: <Plus className="w-4 h-4" />, action: () => {}, keywords: ['new part', 'thêm vật tư'], category: 'action' },
-  { id: 'action-run-mrp', labelKey: 'command.runMRP', icon: <Zap className="w-4 h-4" />, action: () => {}, keywords: ['run mrp', 'chạy mrp'], shortcut: '⌘M', category: 'action' },
-  { id: 'action-receive', labelKey: 'command.receive', icon: <Package className="w-4 h-4" />, action: () => {}, keywords: ['receive', 'nhập kho'], shortcut: '⌘I', category: 'action' },
-  { id: 'action-report', labelKey: 'command.exportReport', icon: <FileText className="w-4 h-4" />, action: () => {}, keywords: ['export', 'xuất', 'báo cáo'], shortcut: '⌘R', category: 'action' },
+  { id: 'action-new-order', labelKey: 'command.newOrder', icon: <Plus className="w-4 h-4" />, action: () => { }, keywords: ['new order', 'tạo đơn'], shortcut: '⌘N', category: 'action' },
+  { id: 'action-new-part', labelKey: 'command.newPart', icon: <Plus className="w-4 h-4" />, action: () => { }, keywords: ['new part', 'thêm vật tư'], category: 'action' },
+  { id: 'action-run-mrp', labelKey: 'command.runMRP', icon: <Zap className="w-4 h-4" />, action: () => { }, keywords: ['run mrp', 'chạy mrp'], shortcut: '⌘M', category: 'action' },
+  { id: 'action-receive', labelKey: 'command.receive', icon: <Package className="w-4 h-4" />, action: () => { }, keywords: ['receive', 'nhập kho'], shortcut: '⌘I', category: 'action' },
+  { id: 'action-report', labelKey: 'command.exportReport', icon: <FileText className="w-4 h-4" />, action: () => { }, keywords: ['export', 'xuất', 'báo cáo'], shortcut: '⌘R', category: 'action' },
 ];
 
 // =============================================================================
@@ -345,7 +345,7 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
               </span>
             </div>
             <span className="text-xs text-gray-400">
-              Powered by VietERP MRP
+              Powered by BaoERP MRP
             </span>
           </div>
         </div>

@@ -1,4 +1,4 @@
-# HANDOVER - VietERP MRP Development Session
+# HANDOVER - BaoERP MRP Development Session
 > **Last Updated:** 2026-02-19 (Vietnam Time)
 > **Session:** Sprint 28 — Runtime Bug Fixes (Webpack, React Warnings, API Contracts, Rate Limiting)
 > **Latest Commit:** `970623a` - fix: resolve duplicate lotNumber column key in warehouse detail page
@@ -12,7 +12,7 @@
 
 ### Tinh trang hien tai: Runtime Bug Fixes Complete
 
-Du an VietERP MRP da hoan thanh cac moc chinh sau:
+Du an BaoERP MRP da hoan thanh cac moc chinh sau:
 
 | Moc | Tinh trang | Ngay hoan thanh |
 |-----|------------|-----------------|
@@ -449,7 +449,7 @@ f7b4f71 feat: Warehouse management, receiving inspection pipeline & inventory tr
 ### Identity
 | Attribute | Value |
 |-----------|-------|
-| **Project** | VietERP MRP (Real-Time Resource - Material Requirements Planning) |
+| **Project** | BaoERP MRP (Real-Time Resource - Material Requirements Planning) |
 | **Purpose** | Manufacturing intelligence system for product companies (Vietnamese market) |
 | **Stack** | Next.js 14 + TypeScript 5 + Prisma 5.22 + PostgreSQL + Redis + AI |
 | **Status** | UAT Ready - Sprint 3 Complete + Warehouse Pipeline |
@@ -991,5 +991,5 @@ Sprint 5 dang trien khai — SWR migration + Approval Workflows.
 ---
 
 *Cap nhat lan cuoi: 2026-02-19 VN*
-*Du an: VietERP MRP - Material Requirements Planning System*
+*Du an: BaoERP MRP - Material Requirements Planning System*
 *Handover prepared by: Claude Opus 4.6*

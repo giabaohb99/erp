@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - EVENT SIMULATOR
+// BaoERP MRP - EVENT SIMULATOR
 // Simulates real-time events for development/demo
 // =============================================================================
 
@@ -53,7 +53,7 @@ class EventSimulator {
   private ncrCounter = 5;
 
   // Start simulation
-  start(options?: { 
+  start(options?: {
     dashboardInterval?: number;
     orderInterval?: number;
     inventoryInterval?: number;
@@ -227,7 +227,7 @@ class EventSimulator {
   }
 
   private emitLowStock(partId?: string) {
-    const part = partId 
+    const part = partId
       ? this.sampleParts.find(p => p.id === partId) || this.sampleParts[0]
       : this.sampleParts[Math.floor(Math.random() * this.sampleParts.length)];
 

@@ -2,9 +2,9 @@
 
 ## Overview / Tổng Quan
 
-VietERP Azure infrastructure as code using Terraform. Supports both AKS standard and flexible configurations for multi-cloud deployments.
+BaoERP Azure infrastructure as code using Terraform. Supports both AKS standard and flexible configurations for multi-cloud deployments.
 
-Cơ sở hạ tầng VietERP Azure dưới dạng code Terraform. Hỗ trợ cấu hình AKS tiêu chuẩn và linh hoạt cho triển khai multi-cloud.
+Cơ sở hạ tầng BaoERP Azure dưới dạng code Terraform. Hỗ trợ cấu hình AKS tiêu chuẩn và linh hoạt cho triển khai multi-cloud.
 
 ## Architecture / Kiến Trúc
 
@@ -380,5 +380,5 @@ terraform destroy
 
 ## License / Giấy phép
 
-This module is part of VietERP project.
-Mô-đun này là một phần của dự án VietERP.
+This module is part of BaoERP project.
+Mô-đun này là một phần của dự án BaoERP.

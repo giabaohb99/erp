@@ -2,7 +2,7 @@
   "name": "vierp-mrp-components",
   "version": "2.0.0",
   "private": true,
-  "description": "VietERP MRP UI Components - Industrial Precision Theme",
+  "description": "BaoERP MRP UI Components - Industrial Precision Theme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

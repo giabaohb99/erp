@@ -27,7 +27,7 @@ import {
 import { cn } from '@/lib/utils';
 
 // =============================================================================
-// VietERP MRP - FORM BUILDER
+// BaoERP MRP - FORM BUILDER
 // Dynamic form creation with drag-drop fields
 // =============================================================================
 
@@ -100,20 +100,20 @@ const fieldTypes: {
   icon: React.ReactNode;
   description: string;
 }[] = [
-  { type: 'text', label: 'Văn bản', icon: <Type className="w-4 h-4" />, description: 'Nhập văn bản ngắn' },
-  { type: 'number', label: 'Số', icon: <Hash className="w-4 h-4" />, description: 'Nhập số' },
-  { type: 'email', label: 'Email', icon: <Mail className="w-4 h-4" />, description: 'Địa chỉ email' },
-  { type: 'phone', label: 'Điện thoại', icon: <Phone className="w-4 h-4" />, description: 'Số điện thoại' },
-  { type: 'url', label: 'URL', icon: <Link className="w-4 h-4" />, description: 'Địa chỉ website' },
-  { type: 'textarea', label: 'Văn bản dài', icon: <AlignLeft className="w-4 h-4" />, description: 'Nhập văn bản nhiều dòng' },
-  { type: 'select', label: 'Chọn 1', icon: <List className="w-4 h-4" />, description: 'Chọn 1 từ danh sách' },
-  { type: 'multiselect', label: 'Chọn nhiều', icon: <List className="w-4 h-4" />, description: 'Chọn nhiều từ danh sách' },
-  { type: 'checkbox', label: 'Checkbox', icon: <ToggleLeft className="w-4 h-4" />, description: 'Đánh dấu có/không' },
-  { type: 'radio', label: 'Radio', icon: <List className="w-4 h-4" />, description: 'Chọn 1 từ nhóm' },
-  { type: 'date', label: 'Ngày', icon: <Calendar className="w-4 h-4" />, description: 'Chọn ngày' },
-  { type: 'datetime', label: 'Ngày giờ', icon: <Calendar className="w-4 h-4" />, description: 'Chọn ngày và giờ' },
-  { type: 'file', label: 'Tệp tin', icon: <Upload className="w-4 h-4" />, description: 'Upload file' },
-];
+    { type: 'text', label: 'Văn bản', icon: <Type className="w-4 h-4" />, description: 'Nhập văn bản ngắn' },
+    { type: 'number', label: 'Số', icon: <Hash className="w-4 h-4" />, description: 'Nhập số' },
+    { type: 'email', label: 'Email', icon: <Mail className="w-4 h-4" />, description: 'Địa chỉ email' },
+    { type: 'phone', label: 'Điện thoại', icon: <Phone className="w-4 h-4" />, description: 'Số điện thoại' },
+    { type: 'url', label: 'URL', icon: <Link className="w-4 h-4" />, description: 'Địa chỉ website' },
+    { type: 'textarea', label: 'Văn bản dài', icon: <AlignLeft className="w-4 h-4" />, description: 'Nhập văn bản nhiều dòng' },
+    { type: 'select', label: 'Chọn 1', icon: <List className="w-4 h-4" />, description: 'Chọn 1 từ danh sách' },
+    { type: 'multiselect', label: 'Chọn nhiều', icon: <List className="w-4 h-4" />, description: 'Chọn nhiều từ danh sách' },
+    { type: 'checkbox', label: 'Checkbox', icon: <ToggleLeft className="w-4 h-4" />, description: 'Đánh dấu có/không' },
+    { type: 'radio', label: 'Radio', icon: <List className="w-4 h-4" />, description: 'Chọn 1 từ nhóm' },
+    { type: 'date', label: 'Ngày', icon: <Calendar className="w-4 h-4" />, description: 'Chọn ngày' },
+    { type: 'datetime', label: 'Ngày giờ', icon: <Calendar className="w-4 h-4" />, description: 'Chọn ngày và giờ' },
+    { type: 'file', label: 'Tệp tin', icon: <Upload className="w-4 h-4" />, description: 'Upload file' },
+  ];
 
 // =============================================================================
 // FIELD EDITOR
@@ -400,7 +400,7 @@ function FormPreview({ fields, className }: FormPreviewProps) {
     switch (field.type) {
       case 'textarea':
         return <textarea className={baseInputClass} rows={3} placeholder={field.placeholder} disabled={field.disabled} />;
-      
+
       case 'select':
         return (
           <select className={baseInputClass} disabled={field.disabled}>
@@ -410,7 +410,7 @@ function FormPreview({ fields, className }: FormPreviewProps) {
             ))}
           </select>
         );
-      
+
       case 'checkbox':
         return (
           <label className="flex items-center gap-2">
@@ -418,7 +418,7 @@ function FormPreview({ fields, className }: FormPreviewProps) {
             <span className="text-sm text-gray-600 dark:text-gray-400">{field.placeholder || 'Đồng ý'}</span>
           </label>
         );
-      
+
       case 'radio':
         return (
           <div className="space-y-2">
@@ -430,7 +430,7 @@ function FormPreview({ fields, className }: FormPreviewProps) {
             ))}
           </div>
         );
-      
+
       case 'file':
         return (
           <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-6 text-center">
@@ -438,7 +438,7 @@ function FormPreview({ fields, className }: FormPreviewProps) {
             <p className="text-sm text-gray-500">Kéo thả file hoặc click để chọn</p>
           </div>
         );
-      
+
       default:
         return (
           <input

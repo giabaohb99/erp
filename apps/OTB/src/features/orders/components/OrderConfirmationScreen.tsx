@@ -24,7 +24,8 @@ const ORDER_STATUS: any = {
   CONFIRMED: { color: '#2A9E6A', bg: 'rgba(42,158,106,0.12)', label: 'Confirmed', icon: CheckCircle },
   SHIPPED: { color: '#58A6FF', bg: 'rgba(88,166,255,0.12)', label: 'Shipped', icon: Truck },
   CANCELLED: { color: '#F85149', bg: 'rgba(248,81,73,0.12)', label: 'Cancelled', icon: XCircle },
-  PARTIAL: { color: '#A371F7', bg: 'rgba(163,113,247,0.12)', label: 'Partial', icon: Package }};
+  PARTIAL: { color: '#A371F7', bg: 'rgba(163,113,247,0.12)', label: 'Partial', icon: Package }
+};
 
 /* ═══════════════════════════════════════════════
    STATUS PIPELINE COMPONENT
@@ -48,9 +49,8 @@ const StatusPipeline = ({ stats, statusFilter, setStatusFilter }: any) => {
           <button
             key={step.key}
             onClick={() => setStatusFilter(isActive ? 'all' : step.key)}
-            className={`flex-1 relative rounded-xl border px-3 py-2.5 transition-all duration-200 group ${
-              isActive
-                ?'border-[#D7B797]/60 bg-[rgba(215,183,151,0.08)]':'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'}`}
+            className={`flex-1 relative rounded-xl border px-3 py-2.5 transition-all duration-200 group ${isActive
+                ? 'border-[#D7B797]/60 bg-[rgba(215,183,151,0.08)]' : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'}`}
           >
             <div className="flex items-center gap-2">
               <div
@@ -85,9 +85,9 @@ const OrderDetailPanel = ({ order }: any) => {
   const [expandedSku, setExpandedSku] = useState<string | null>(null);
   const products = order.products || [];
 
-  const border ='border-gray-200';
-  const textPrimary ='text-gray-900';
-  const textMuted ='text-gray-500';
+  const border = 'border-gray-200';
+  const textPrimary = 'text-gray-900';
+  const textMuted = 'text-gray-500';
 
   if (products.length === 0) {
     return (
@@ -202,9 +202,9 @@ const OrderDetailPanel = ({ order }: any) => {
                                   </td>
                                   {sizeKeys.length > 0
                                     ? sizeKeys.map(s => {
-                                        const sizeQty = Math.round(store.qty * (sizes[s]?.salesMix || 0) / 100);
-                                        return <td key={s} className={`px-2 py-1.5 text-center font-['JetBrains_Mono'] ${textPrimary}`}>{sizeQty}</td>;
-                                      })
+                                      const sizeQty = Math.round(store.qty * (sizes[s]?.salesMix || 0) / 100);
+                                      return <td key={s} className={`px-2 py-1.5 text-center font-['JetBrains_Mono'] ${textPrimary}`}>{sizeQty}</td>;
+                                    })
                                     : <td className={`px-2 py-1.5 text-center font-['JetBrains_Mono'] ${textPrimary}`}>{store.qty}</td>
                                   }
                                   <td className={`px-3 py-1.5 text-center font-semibold font-['JetBrains_Mono'] ${textPrimary}`}>{store.qty}</td>
@@ -215,9 +215,9 @@ const OrderDetailPanel = ({ order }: any) => {
                                 <td className={`px-3.5 py-1.5 font-semibold ${'text-[#8B6914]'}`}>Total</td>
                                 {sizeKeys.length > 0
                                   ? sizeKeys.map(s => {
-                                      const totalSizeQty = storeRows.reduce((sum, st) => sum + Math.round(st.qty * (sizes[s]?.salesMix || 0) / 100), 0);
-                                      return <td key={s} className={`px-2 py-1.5 text-center font-bold font-['JetBrains_Mono'] ${textPrimary}`}>{totalSizeQty}</td>;
-                                    })
+                                    const totalSizeQty = storeRows.reduce((sum, st) => sum + Math.round(st.qty * (sizes[s]?.salesMix || 0) / 100), 0);
+                                    return <td key={s} className={`px-2 py-1.5 text-center font-bold font-['JetBrains_Mono'] ${textPrimary}`}>{totalSizeQty}</td>;
+                                  })
                                   : <td className={`px-2 py-1.5 text-center font-bold font-['JetBrains_Mono'] ${textPrimary}`}>{totalQty}</td>
                                 }
                                 <td className={`px-3 py-1.5 text-center font-bold font-['JetBrains_Mono'] ${textPrimary}`}>{totalQty}</td>
@@ -291,7 +291,7 @@ const OrderDetailPanel = ({ order }: any) => {
 /* ═══════════════════════════════════════════════
    MAIN SCREEN
 ═══════════════════════════════════════════════ */
-const OrderConfirmationScreen = ({  }: any) => {
+const OrderConfirmationScreen = ({ }: any) => {
   const { user } = useAuth();
   const { t } = useLanguage();
   const { isMobile } = useIsMobile();
@@ -346,7 +346,9 @@ const OrderConfirmationScreen = ({  }: any) => {
           srp: prod.srp || prod.retailPrice || prod.price || 0,
           rex: prod.allocations?.find((a: any) => a.store?.name?.includes('REX'))?.quantity || prod.rexQty || 4,
           ttp: prod.allocations?.find((a: any) => a.store?.name?.includes('TTP'))?.quantity || prod.ttpQty || 3,
-          sizes: prod.sizes || null}))}));
+          sizes: prod.sizes || null
+        }))
+      }));
       setOrders(mapped);
     } catch (err: any) {
       console.error('Failed to fetch orders:', err);
@@ -460,10 +462,10 @@ const OrderConfirmationScreen = ({  }: any) => {
     fetchOrders();
   }, [selectedIds, t]);
 
-  const border ='border-gray-200';
-  const textPrimary ='text-gray-900';
-  const textSecondary ='text-gray-600';
-  const textMuted ='text-gray-500';
+  const border = 'border-gray-200';
+  const textPrimary = 'text-gray-900';
+  const textSecondary = 'text-gray-600';
+  const textMuted = 'text-gray-500';
 
   return (
     <div className={`min-h-full ${'bg-[#F8F7F4]'}`}>
@@ -471,15 +473,16 @@ const OrderConfirmationScreen = ({  }: any) => {
       <div
         className="sticky top-0 z-20 px-3 md:px-6 pb-3 pt-2"
         style={{
-          background:'#F8F7F4',
-          boxShadow: '0 1px 0 ' + ('rgba(0,0,0,0.06)')}}
+          background: '#F8F7F4',
+          boxShadow: '0 1px 0 ' + ('rgba(0,0,0,0.06)')
+        }}
       >
         {/* Top row: Logo + Stats + Search */}
         <div className="flex items-center justify-between gap-3 mb-2.5">
           <div className="flex items-center gap-3 md:gap-5">
             <div className="flex items-center gap-1.5">
-              <img src="/vietErp-logo.png" alt="VietERP" className="h-5 w-auto" />
-              <span className="text-sm font-semibold font-['Cormorant_Garamond'] text-[#C4A77D] tracking-wider hidden md:inline">VietERP</span>
+              <img src="/BaoERP-logo.png" alt="BaoERP" className="h-5 w-auto" />
+              <span className="text-sm font-semibold font-['Cormorant_Garamond'] text-[#C4A77D] tracking-wider hidden md:inline">BaoERP</span>
             </div>
             <div className={`hidden md:block w-px h-7 ${'bg-gray-300'}`} />
             <div>
@@ -538,9 +541,10 @@ const OrderConfirmationScreen = ({  }: any) => {
 
       {/* ── Content with padding ── */}
       <div className="px-3 md:px-6 pb-3 md:pb-6">
-      {/* ── Orders Table / List ── */}
-      <div className={`border ${border} rounded-2xl overflow-hidden mt-3`} style={{
-          background:'linear-gradient(180deg, #ffffff 0%, #FDFCFA 100%)'}}>
+        {/* ── Orders Table / List ── */}
+        <div className={`border ${border} rounded-2xl overflow-hidden mt-3`} style={{
+          background: 'linear-gradient(180deg, #ffffff 0%, #FDFCFA 100%)'
+        }}>
           {/* Table header with count */}
           <div className={`px-4 py-2.5 flex items-center justify-between border-b ${border}`}>
             <div className="flex items-center gap-2">
@@ -615,84 +619,83 @@ const OrderConfirmationScreen = ({  }: any) => {
           ) : isMobile ? (
             /* ── Mobile Cards ── */
             <PullToRefresh onRefresh={fetchOrders}>
-            <div className="p-3 space-y-2">
-              {pendingFiltered.length > 0 && (
-                <button onClick={toggleSelectAll} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium font-['Montserrat'] ${'text-[#6B4D30]'}`}>
-                  {selectedIds.size === pendingFiltered.length && pendingFiltered.length > 0
-                    ? <CheckSquare size={16} className={'text-[#6B4D30]'} />
-                    : selectedIds.size > 0
-                      ? <MinusSquare size={16} className={'text-[#6B4D30]'} />
-                      : <Square size={16} />}
-                  {t('orderConfirm.selectAll')}
-                </button>
-              )}
-              {filtered.map((order: any, idx: any) => {
-                const sc = ORDER_STATUS[order.status] || ORDER_STATUS.PENDING;
-                const StatusIcon = sc.icon;
-                const isExpanded = expandedOrderId === order.id;
-                return (
-                  <div key={order.id || idx}>
-                    <div
-                      className={`rounded-xl border overflow-hidden transition-all ${border} ${
-                        isExpanded
-                          ?'bg-[rgba(215,183,151,0.04)]':'bg-white'}`}
-                    >
+              <div className="p-3 space-y-2">
+                {pendingFiltered.length > 0 && (
+                  <button onClick={toggleSelectAll} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium font-['Montserrat'] ${'text-[#6B4D30]'}`}>
+                    {selectedIds.size === pendingFiltered.length && pendingFiltered.length > 0
+                      ? <CheckSquare size={16} className={'text-[#6B4D30]'} />
+                      : selectedIds.size > 0
+                        ? <MinusSquare size={16} className={'text-[#6B4D30]'} />
+                        : <Square size={16} />}
+                    {t('orderConfirm.selectAll')}
+                  </button>
+                )}
+                {filtered.map((order: any, idx: any) => {
+                  const sc = ORDER_STATUS[order.status] || ORDER_STATUS.PENDING;
+                  const StatusIcon = sc.icon;
+                  const isExpanded = expandedOrderId === order.id;
+                  return (
+                    <div key={order.id || idx}>
                       <div
-                        className="px-3.5 py-3 cursor-pointer"
-                        onClick={() => setExpandedOrderId(isExpanded ? null : order.id)}
+                        className={`rounded-xl border overflow-hidden transition-all ${border} ${isExpanded
+                            ? 'bg-[rgba(215,183,151,0.04)]' : 'bg-white'}`}
                       >
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-2">
-                            <ChevronRight size={14} className={`transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''} ${'text-[#8B6914]'}`} />
-                            <span className={`text-sm font-bold font-['JetBrains_Mono'] ${textPrimary}`}>{order.poNumber}</span>
-                          </div>
-                          <span
-                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold font-['JetBrains_Mono']"
-                            style={{ color: sc.color, backgroundColor: sc.bg }}
-                          >
-                            <StatusIcon size={10} />
-                            {sc.label}
-                          </span>
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-2 mb-2">
-                          <div>
-                            <p className={`text-[10px] ${textMuted}`}>{t('orderConfirm.colBrand')}</p>
-                            <p className={`text-xs font-medium ${textPrimary}`}>{order.brandName}</p>
-                          </div>
-                          <div>
-                            <p className={`text-[10px] ${textMuted}`}>{t('orderConfirm.colSKUs')}</p>
-                            <p className={`text-xs font-semibold font-['JetBrains_Mono'] ${textPrimary}`}>{order.skuCount || order.products?.length || 0}</p>
-                          </div>
-                          <div className="text-right">
-                            <p className={`text-[10px] ${textMuted}`}>{t('orderConfirm.colValue')}</p>
-                            <p className={`text-xs font-bold font-['JetBrains_Mono'] ${'text-[#8B6914]'}`}>{formatCurrency(order.totalValue)}</p>
-                          </div>
-                        </div>
-
-                        {order.status === 'PENDING' && (
-                          <div className="flex gap-2 pt-1" onClick={(e) => e.stopPropagation()}>
-                            <button
-                              onClick={() => setConfirmModal({ order, action: 'confirm' })}
-                              className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold font-['Montserrat'] bg-[rgba(42,158,106,0.12)] text-[#2A9E6A] active:bg-[rgba(42,158,106,0.2)]"
+                        <div
+                          className="px-3.5 py-3 cursor-pointer"
+                          onClick={() => setExpandedOrderId(isExpanded ? null : order.id)}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <ChevronRight size={14} className={`transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''} ${'text-[#8B6914]'}`} />
+                              <span className={`text-sm font-bold font-['JetBrains_Mono'] ${textPrimary}`}>{order.poNumber}</span>
+                            </div>
+                            <span
+                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold font-['JetBrains_Mono']"
+                              style={{ color: sc.color, backgroundColor: sc.bg }}
                             >
-                              <CheckCircle size={13} /> {t('common.confirm')}
-                            </button>
-                            <button
-                              onClick={() => setConfirmModal({ order, action: 'cancel' })}
-                              className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold font-['Montserrat'] bg-[rgba(248,81,73,0.1)] text-[#F85149] active:bg-[rgba(248,81,73,0.18)]"
-                            >
-                              <XCircle size={13} /> {t('common.cancel')}
-                            </button>
+                              <StatusIcon size={10} />
+                              {sc.label}
+                            </span>
                           </div>
-                        )}
+
+                          <div className="grid grid-cols-3 gap-2 mb-2">
+                            <div>
+                              <p className={`text-[10px] ${textMuted}`}>{t('orderConfirm.colBrand')}</p>
+                              <p className={`text-xs font-medium ${textPrimary}`}>{order.brandName}</p>
+                            </div>
+                            <div>
+                              <p className={`text-[10px] ${textMuted}`}>{t('orderConfirm.colSKUs')}</p>
+                              <p className={`text-xs font-semibold font-['JetBrains_Mono'] ${textPrimary}`}>{order.skuCount || order.products?.length || 0}</p>
+                            </div>
+                            <div className="text-right">
+                              <p className={`text-[10px] ${textMuted}`}>{t('orderConfirm.colValue')}</p>
+                              <p className={`text-xs font-bold font-['JetBrains_Mono'] ${'text-[#8B6914]'}`}>{formatCurrency(order.totalValue)}</p>
+                            </div>
+                          </div>
+
+                          {order.status === 'PENDING' && (
+                            <div className="flex gap-2 pt-1" onClick={(e) => e.stopPropagation()}>
+                              <button
+                                onClick={() => setConfirmModal({ order, action: 'confirm' })}
+                                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold font-['Montserrat'] bg-[rgba(42,158,106,0.12)] text-[#2A9E6A] active:bg-[rgba(42,158,106,0.2)]"
+                              >
+                                <CheckCircle size={13} /> {t('common.confirm')}
+                              </button>
+                              <button
+                                onClick={() => setConfirmModal({ order, action: 'cancel' })}
+                                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold font-['Montserrat'] bg-[rgba(248,81,73,0.1)] text-[#F85149] active:bg-[rgba(248,81,73,0.18)]"
+                              >
+                                <XCircle size={13} /> {t('common.cancel')}
+                              </button>
+                            </div>
+                          )}
+                        </div>
                       </div>
+                      {isExpanded && <OrderDetailPanel order={order} />}
                     </div>
-                    {isExpanded && <OrderDetailPanel order={order} />}
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
             </PullToRefresh>
           ) : (
             /* ── Desktop Table ── */
@@ -715,9 +718,8 @@ const OrderConfirmationScreen = ({  }: any) => {
                     return (
                       <Fragment key={order.id || idx}>
                         <tr
-                          className={`border-b ${border} transition-colors cursor-pointer ${
-                            isExpanded
-                              ?'bg-[rgba(215,183,151,0.04)]':'hover:bg-[#FAFAF8]'}`}
+                          className={`border-b ${border} transition-colors cursor-pointer ${isExpanded
+                              ? 'bg-[rgba(215,183,151,0.04)]' : 'hover:bg-[#FAFAF8]'}`}
                           onClick={() => setExpandedOrderId(isExpanded ? null : order.id)}
                         >
                           <td className={`px-4 py-3 sticky left-0 z-10 ${'bg-white'}`}>
@@ -796,92 +798,93 @@ const OrderConfirmationScreen = ({  }: any) => {
           )}
         </div>
 
-      {/* ── Confirm Modal ── */}
-      {confirmModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setConfirmModal(null)}>
-          <div
-            className={`w-full max-w-md mx-4 rounded-2xl border ${border} shadow-2xl overflow-hidden ${'bg-white'}`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal header with color accent */}
-            <div className={`px-5 py-4 border-b ${border}`} style={{
-              background: confirmModal.action === 'confirm'
-                ? 'linear-gradient(135deg, rgba(42,158,106,0.08) 0%, transparent 100%)'
-                : 'linear-gradient(135deg, rgba(248,81,73,0.08) 0%, transparent 100%)'}}>
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{
-                    backgroundColor: confirmModal.action === 'confirm' ? 'rgba(42,158,106,0.12)' : 'rgba(248,81,73,0.12)'}}
-                >
-                  {confirmModal.action === 'confirm'
-                    ? <CheckCircle size={20} className="text-[#2A9E6A]" />
-                    : <XCircle size={20} className="text-[#F85149]" />
-                  }
-                </div>
-                <div>
-                  <h3 className={`text-base font-bold font-['Montserrat'] ${textPrimary}`}>
-                    {confirmModal.action === 'confirm' ? t('orderConfirm.confirmOrder') : t('orderConfirm.cancelOrder')}
-                  </h3>
-                  <p className={`text-xs ${textMuted}`}>{confirmModal.order.poNumber}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-5">
-              <div className={`rounded-xl border ${border} overflow-hidden`}>
-                {[
-                  { label: t('orderConfirm.colBrand'), value: confirmModal.order.brandName },
-                  { label: t('orderConfirm.colSeason'), value: confirmModal.order.season },
-                  { label: t('orderConfirm.colSKUs'), value: confirmModal.order.skuCount || confirmModal.order.products?.length || 0, mono: true },
-                  { label: t('orderConfirm.colValue'), value: formatCurrency(confirmModal.order.totalValue), mono: true, accent: true },
-                ].map((row, i) => (
-                  <div key={row.label} className={`flex items-center justify-between px-4 py-2.5 ${i > 0 ? `border-t ${border}` : ''} ${'bg-gray-50'}`}>
-                    <span className={`text-xs ${textMuted}`}>{row.label}</span>
-                    <span className={`text-sm font-semibold ${row.mono ? "font-['JetBrains_Mono']" : "font-['Montserrat']"} ${row.accent ? ('text-[#8B6914]') : textPrimary}`}>
-                      {row.value}
-                    </span>
+        {/* ── Confirm Modal ── */}
+        {confirmModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setConfirmModal(null)}>
+            <div
+              className={`w-full max-w-md mx-4 rounded-2xl border ${border} shadow-2xl overflow-hidden ${'bg-white'}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal header with color accent */}
+              <div className={`px-5 py-4 border-b ${border}`} style={{
+                background: confirmModal.action === 'confirm'
+                  ? 'linear-gradient(135deg, rgba(42,158,106,0.08) 0%, transparent 100%)'
+                  : 'linear-gradient(135deg, rgba(248,81,73,0.08) 0%, transparent 100%)'
+              }}>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{
+                      backgroundColor: confirmModal.action === 'confirm' ? 'rgba(42,158,106,0.12)' : 'rgba(248,81,73,0.12)'
+                    }}
+                  >
+                    {confirmModal.action === 'confirm'
+                      ? <CheckCircle size={20} className="text-[#2A9E6A]" />
+                      : <XCircle size={20} className="text-[#F85149]" />
+                    }
                   </div>
-                ))}
+                  <div>
+                    <h3 className={`text-base font-bold font-['Montserrat'] ${textPrimary}`}>
+                      {confirmModal.action === 'confirm' ? t('orderConfirm.confirmOrder') : t('orderConfirm.cancelOrder')}
+                    </h3>
+                    <p className={`text-xs ${textMuted}`}>{confirmModal.order.poNumber}</p>
+                  </div>
+                </div>
               </div>
 
-              {confirmModal.action === 'cancel' && (
-                <div className={`flex items-start gap-2 mt-4 p-3 rounded-xl ${'bg-red-50'}`}>
-                  <AlertTriangle size={14} className="text-[#F85149] mt-0.5 shrink-0" />
-                  <p className={`text-xs ${'text-red-600'}`}>
-                    {t('orderConfirm.cancelWarning')}
-                  </p>
+              <div className="p-5">
+                <div className={`rounded-xl border ${border} overflow-hidden`}>
+                  {[
+                    { label: t('orderConfirm.colBrand'), value: confirmModal.order.brandName },
+                    { label: t('orderConfirm.colSeason'), value: confirmModal.order.season },
+                    { label: t('orderConfirm.colSKUs'), value: confirmModal.order.skuCount || confirmModal.order.products?.length || 0, mono: true },
+                    { label: t('orderConfirm.colValue'), value: formatCurrency(confirmModal.order.totalValue), mono: true, accent: true },
+                  ].map((row, i) => (
+                    <div key={row.label} className={`flex items-center justify-between px-4 py-2.5 ${i > 0 ? `border-t ${border}` : ''} ${'bg-gray-50'}`}>
+                      <span className={`text-xs ${textMuted}`}>{row.label}</span>
+                      <span className={`text-sm font-semibold ${row.mono ? "font-['JetBrains_Mono']" : "font-['Montserrat']"} ${row.accent ? ('text-[#8B6914]') : textPrimary}`}>
+                        {row.value}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              )}
-            </div>
 
-            <div className={`px-5 py-4 border-t ${border} flex justify-end gap-3`}>
-              <button
-                onClick={() => setConfirmModal(null)}
-                className={`px-4 py-2 rounded-xl border ${border} text-xs font-medium font-['Montserrat'] ${textSecondary} transition-all ${'hover:bg-gray-100'}`}
-              >
-                {t('common.back')}
-              </button>
-              <button
-                onClick={() => confirmModal.action === 'confirm' ? handleConfirmOrder(confirmModal.order) : handleCancelOrder(confirmModal.order)}
-                disabled={processing}
-                className={`px-5 py-2 rounded-xl text-xs font-semibold font-['Montserrat'] transition-all disabled:opacity-50 flex items-center gap-1.5 ${
-                  confirmModal.action === 'confirm'
-                    ? 'bg-[#2A9E6A] text-white hover:bg-[#238a5a]'
-                    : 'bg-[#F85149] text-white hover:bg-[#e04440]'
-                }`}
-              >
-                {processing
-                  ? <Loader2 size={14} className="animate-spin" />
-                  : confirmModal.action === 'confirm'
-                    ? <><CheckCircle size={14} /> {t('common.confirm')}</>
-                    : <><XCircle size={14} /> {t('common.cancel')}</>
-                }
-              </button>
+                {confirmModal.action === 'cancel' && (
+                  <div className={`flex items-start gap-2 mt-4 p-3 rounded-xl ${'bg-red-50'}`}>
+                    <AlertTriangle size={14} className="text-[#F85149] mt-0.5 shrink-0" />
+                    <p className={`text-xs ${'text-red-600'}`}>
+                      {t('orderConfirm.cancelWarning')}
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              <div className={`px-5 py-4 border-t ${border} flex justify-end gap-3`}>
+                <button
+                  onClick={() => setConfirmModal(null)}
+                  className={`px-4 py-2 rounded-xl border ${border} text-xs font-medium font-['Montserrat'] ${textSecondary} transition-all ${'hover:bg-gray-100'}`}
+                >
+                  {t('common.back')}
+                </button>
+                <button
+                  onClick={() => confirmModal.action === 'confirm' ? handleConfirmOrder(confirmModal.order) : handleCancelOrder(confirmModal.order)}
+                  disabled={processing}
+                  className={`px-5 py-2 rounded-xl text-xs font-semibold font-['Montserrat'] transition-all disabled:opacity-50 flex items-center gap-1.5 ${confirmModal.action === 'confirm'
+                      ? 'bg-[#2A9E6A] text-white hover:bg-[#238a5a]'
+                      : 'bg-[#F85149] text-white hover:bg-[#e04440]'
+                    }`}
+                >
+                  {processing
+                    ? <Loader2 size={14} className="animate-spin" />
+                    : confirmModal.action === 'confirm'
+                      ? <><CheckCircle size={14} /> {t('common.confirm')}</>
+                      : <><XCircle size={14} /> {t('common.cancel')}</>
+                  }
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
       </div>{/* close content padding wrapper */}
     </div>
   );

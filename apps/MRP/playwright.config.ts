@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 /**
- * VietERP MRP Playwright E2E Test Configuration
+ * BaoERP MRP Playwright E2E Test Configuration
  * @see https://playwright.dev/docs/test-configuration
  *
  * Test Execution Commands:
@@ -24,17 +24,17 @@ export default defineConfig({
   // Enhanced reporter configuration for QA/QC workflow
   reporter: process.env.CI
     ? [
-        ['html', { outputFolder: 'e2e/reports/html', open: 'never' }],
-        ['json', { outputFile: 'e2e/reports/json/results.json' }],
-        ['./e2e/reporters/bug-reporter.ts', { outputFolder: 'e2e/reports/bugs' }],
-        ['github'],
-      ]
+      ['html', { outputFolder: 'e2e/reports/html', open: 'never' }],
+      ['json', { outputFile: 'e2e/reports/json/results.json' }],
+      ['./e2e/reporters/bug-reporter.ts', { outputFolder: 'e2e/reports/bugs' }],
+      ['github'],
+    ]
     : [
-        ['html', { outputFolder: 'e2e/reports/html' }],
-        ['json', { outputFile: 'e2e/reports/json/results.json' }],
-        ['./e2e/reporters/bug-reporter.ts', { outputFolder: 'e2e/reports/bugs' }],
-        ['list'],
-      ],
+      ['html', { outputFolder: 'e2e/reports/html' }],
+      ['json', { outputFile: 'e2e/reports/json/results.json' }],
+      ['./e2e/reporters/bug-reporter.ts', { outputFolder: 'e2e/reports/bugs' }],
+      ['list'],
+    ],
 
   // Global test metadata for filtering
   grep: process.env.TEST_GREP ? new RegExp(process.env.TEST_GREP) : undefined,

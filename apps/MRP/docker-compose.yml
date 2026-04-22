@@ -1,5 +1,5 @@
 # docker-compose.yml
-# VietERP MRP System - Quick Start
+# BaoERP MRP System - Quick Start
 #
 # Usage:
 #   Development:  docker compose -f docker-compose.yml -f docker/docker-compose.dev.yml up

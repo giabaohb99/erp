@@ -1,5 +1,5 @@
 # AI Kernel Test Suite
-# Kiểm chứng năng lực AI sau khi áp dụng VietERP MRP Kernel
+# Kiểm chứng năng lực AI sau khi áp dụng BaoERP MRP Kernel
 
 ## Test Categories
 

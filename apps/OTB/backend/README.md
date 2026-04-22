@@ -1,4 +1,4 @@
-# VietERP OTB Backend API
+# BaoERP OTB Backend API
 
 > NestJS + PostgreSQL + Prisma backend for the OTB Planning Management System
 

@@ -639,7 +639,7 @@ async function importNCRs(sheet: XLSX.WorkSheet): Promise<void> {
 // Main import function
 async function main() {
   console.log('═══════════════════════════════════════════════════════════');
-  console.log('🚀 VietERP MRP - STRESS TEST DATA IMPORT');
+  console.log('🚀 BaoERP MRP - STRESS TEST DATA IMPORT');
   console.log('═══════════════════════════════════════════════════════════');
   console.log(`📁 File: ${EXCEL_FILE}`);
   console.log(`⏰ Started: ${new Date().toISOString()}`);

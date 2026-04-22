@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - DESIGN SYSTEM THEME CONFIGURATION
+// BaoERP MRP - DESIGN SYSTEM THEME CONFIGURATION
 // Modern, Minimal, Premium, Data-First UI System
 // =============================================================================
 
@@ -166,18 +166,18 @@ export const statusColors = {
   completed: { bg: 'bg-success-50', text: 'text-success-700', dot: 'bg-success-500' },
   cancelled: { bg: 'bg-danger-50', text: 'text-danger-700', dot: 'bg-danger-500' },
   on_hold: { bg: 'bg-purple-50', text: 'text-purple-700', dot: 'bg-purple-500' },
-  
+
   // Stock Status
   in_stock: { bg: 'bg-success-50', text: 'text-success-700', dot: 'bg-success-500' },
   low_stock: { bg: 'bg-warning-50', text: 'text-warning-700', dot: 'bg-warning-500' },
   out_of_stock: { bg: 'bg-danger-50', text: 'text-danger-700', dot: 'bg-danger-500' },
-  
+
   // Priority
   critical: { bg: 'bg-danger-50', text: 'text-danger-700', dot: 'bg-danger-500' },
   high: { bg: 'bg-warning-50', text: 'text-warning-700', dot: 'bg-warning-500' },
   medium: { bg: 'bg-info-50', text: 'text-info-700', dot: 'bg-info-500' },
   low: { bg: 'bg-neutral-100', text: 'text-neutral-600', dot: 'bg-neutral-400' },
-  
+
   // Boolean
   active: { bg: 'bg-success-50', text: 'text-success-700', dot: 'bg-success-500' },
   inactive: { bg: 'bg-neutral-100', text: 'text-neutral-600', dot: 'bg-neutral-400' },

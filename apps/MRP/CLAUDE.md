@@ -1,6 +1,6 @@
-# CLAUDE.md - VietERP MRP AI Kernel Configuration
+# CLAUDE.md - BaoERP MRP AI Kernel Configuration
 
-> **This file configures Claude Code behavior for the VietERP MRP project.**
+> **This file configures Claude Code behavior for the BaoERP MRP project.**
 > **Version:** 1.0.0 | **Last Updated:** 01/01/2026
 
 ---
@@ -8,7 +8,7 @@
 ## 🎯 PROJECT IDENTITY
 
 ```yaml
-project: VietERP MRP (Material Requirements Planning)
+project: BaoERP MRP (Material Requirements Planning)
 type: Full-stack Manufacturing Intelligence System
 language: TypeScript
 framework: Next.js 15 (App Router)
@@ -207,4 +207,4 @@ export async function GET(request: NextRequest) {
 
 ---
 
-*This file is the source of truth for AI behavior in VietERP MRP. For detailed guidelines, see the full Master Prompt document.*
+*This file is the source of truth for AI behavior in BaoERP MRP. For detailed guidelines, see the full Master Prompt document.*

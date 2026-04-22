@@ -1,6 +1,6 @@
 /**
  * Cross-module integration layer
- * CRM can call other VietERP modules via REST API
+ * CRM can call other BaoERP modules via REST API
  * All calls have graceful fallback when modules are offline
  */
 

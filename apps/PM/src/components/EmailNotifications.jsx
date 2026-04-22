@@ -1,5 +1,5 @@
 // ===================================================================
-// VietERP CONTROL TOWER V3 — Email Notification System
+// BaoERP CONTROL TOWER V3 — Email Notification System
 // Preferences UI, mock sending, toast feedback, templates
 // ===================================================================
 import { useState, useEffect, useCallback } from "react";
@@ -348,10 +348,10 @@ function EmailPreview({ eventType, lang, currentUser, onClose }) {
           // Realtime template
           <>
             <div style={{ fontSize: 11, color: "var(--text-faint)", marginBottom: 8 }}>
-              Subject: {ev?.id === "CRITICAL_ISSUE_CREATED" ? "🔴" : ev?.id === "FLIGHT_TEST_FAIL" ? "✈" : "⚡"} [VietERP] {ev?.label} — RTR-X7
+              Subject: {ev?.id === "CRITICAL_ISSUE_CREATED" ? "🔴" : ev?.id === "FLIGHT_TEST_FAIL" ? "✈" : "⚡"} [BaoERP] {ev?.label} — RTR-X7
             </div>
             <div style={{ borderTop: "1px solid var(--border)", paddingTop: 12 }}>
-              <div style={{ fontSize: 13, color: "#3B82F6", fontWeight: 700, marginBottom: 8 }}>VietERP Project Manager</div>
+              <div style={{ fontSize: 13, color: "#3B82F6", fontWeight: 700, marginBottom: 8 }}>BaoERP Project Manager</div>
               <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>
                 {vi ? ev?.labelVi : ev?.label}
               </div>
@@ -369,10 +369,10 @@ function EmailPreview({ eventType, lang, currentUser, onClose }) {
           // Digest template
           <>
             <div style={{ fontSize: 11, color: "var(--text-faint)", marginBottom: 8 }}>
-              Subject: 📊 [VietERP] {vi ? "Tổng hợp hàng ngày" : "Daily Digest"} — {new Date().toLocaleDateString(vi ? "vi-VN" : "en-US")}
+              Subject: 📊 [BaoERP] {vi ? "Tổng hợp hàng ngày" : "Daily Digest"} — {new Date().toLocaleDateString(vi ? "vi-VN" : "en-US")}
             </div>
             <div style={{ borderTop: "1px solid var(--border)", paddingTop: 12 }}>
-              <div style={{ fontSize: 13, color: "#3B82F6", fontWeight: 700, marginBottom: 4 }}>VietERP Project Manager — {vi ? "Tổng hợp hàng ngày" : "Daily Digest"}</div>
+              <div style={{ fontSize: 13, color: "#3B82F6", fontWeight: 700, marginBottom: 4 }}>BaoERP Project Manager — {vi ? "Tổng hợp hàng ngày" : "Daily Digest"}</div>
               <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 10 }}>
                 {vi ? "Chào" : "Hello"} {currentUser?.name}, {vi ? "đây là tổng hợp 24 giờ qua" : "here's your 24h summary"}:
               </div>

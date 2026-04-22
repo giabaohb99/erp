@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - OPTIMIZED PARTS API
+// BaoERP MRP - OPTIMIZED PARTS API
 // Example demonstrating all performance optimizations
 // /api/v2/parts-optimized/route.ts
 // =============================================================================
@@ -61,9 +61,9 @@ const querySchema = z.object({
 // =============================================================================
 
 export const GET = withAuth(async (request, context, session) => {
-    // Rate limiting
-    const rateLimitResult = await checkReadEndpointLimit(request);
-    if (rateLimitResult) return rateLimitResult;
+  // Rate limiting
+  const rateLimitResult = await checkReadEndpointLimit(request);
+  if (rateLimitResult) return rateLimitResult;
 
   const startTime = performance.now();
 
@@ -71,23 +71,23 @@ export const GET = withAuth(async (request, context, session) => {
     // Parse and validate query params
     const { searchParams } = new URL(request.url);
     const params = querySchema.parse(Object.fromEntries(searchParams));
-    
+
     const { page, pageSize, search, category, isActive, sortBy, sortOrder, fields } = params;
-    
+
     // Get tenant ID (from auth context in production)
     const tenantId = request.headers.get('x-tenant-id') || 'default';
-    
+
     // Build cache key from filters
     const filterKey = filtersToKey({ search, category, isActive, page, pageSize, sortBy, sortOrder });
     const cacheKey = CacheKeys.partList(tenantId, filterKey);
-    
+
     // Cache-aside pattern
     const result = await cacheAside(
       cacheKey,
       async () => {
         // Build where clause
         const where: Prisma.PartWhereInput = {};
-        
+
         // Search optimization
         if (search) {
           const searchCondition = buildSearchConditions(search, ['partNumber', 'name', 'description']);
@@ -95,20 +95,20 @@ export const GET = withAuth(async (request, context, session) => {
             where.OR = searchCondition.OR as Prisma.PartWhereInput[];
           }
         }
-        
+
         // Category filter (index-friendly)
         if (category) {
           where.category = category;
         }
-        
+
         // Active filter (index-friendly) - Part uses status field
         if (isActive !== undefined) {
           where.status = isActive === 'true' ? 'active' : 'inactive';
         }
-        
+
         // Build select clause (sparse fieldsets)
         let select: Record<string, boolean> = DEFAULT_SELECTS.part.list;
-        
+
         if (fields) {
           const requestedFields = fields.split(',').map(f => f.trim());
           select = {};
@@ -120,7 +120,7 @@ export const GET = withAuth(async (request, context, session) => {
           // Always include id
           select.id = true;
         }
-        
+
         // Parallel count and data fetch
         const { items, total } = await findManyWithCount(prisma.part, {
           where,
@@ -128,7 +128,7 @@ export const GET = withAuth(async (request, context, session) => {
           orderBy: { [sortBy]: sortOrder },
           ...getPaginationParams({ page, pageSize }),
         });
-        
+
         return {
           items: items.map((item: Record<string, unknown>) => omitEmpty(item)),
           total,
@@ -139,7 +139,7 @@ export const GET = withAuth(async (request, context, session) => {
       },
       { ttl: CACHE_TTL.MEDIUM, tags: [`tenant:${tenantId}:parts`] }
     );
-    
+
     // Record profiling
     const duration = performance.now() - startTime;
     queryProfiler.record({
@@ -150,13 +150,13 @@ export const GET = withAuth(async (request, context, session) => {
       timestamp: new Date(),
       result: { rowCount: result.items.length, cached: duration < 10 },
     });
-    
+
     // Return optimized response with caching headers
     return paginatedResponse(result, request, {
       cache: CachePresets.publicShort,
       etag: true,
     });
-    
+
   } catch (error: unknown) {
     logger.logError(error instanceof Error ? error : new Error(String(error)), { context: '/api/v2/parts-optimized' });
 
@@ -173,14 +173,14 @@ export const GET = withAuth(async (request, context, session) => {
 // =============================================================================
 
 export const POST = withAuth(async (request, context, session) => {
-    // Rate limiting
-    const rateLimitResult = await checkWriteEndpointLimit(request);
-    if (rateLimitResult) return rateLimitResult;
+  // Rate limiting
+  const rateLimitResult = await checkWriteEndpointLimit(request);
+  if (rateLimitResult) return rateLimitResult;
 
   try {
     const body = await request.json();
     const tenantId = request.headers.get('x-tenant-id') || 'default';
-    
+
     // Create part
     const { result: part, duration } = await measureTime(
       () => prisma.part.create({
@@ -192,17 +192,17 @@ export const POST = withAuth(async (request, context, session) => {
       }),
       'parts.create'
     );
-    
+
     // Invalidate tenant cache
     await invalidateTenantCache(tenantId);
-    
+
     // Return response without caching (mutation)
     return optimizedResponse(
       { success: true, data: part },
       request,
       { status: 201, cache: CachePresets.noCache }
     );
-    
+
   } catch (error: unknown) {
     logger.logError(error instanceof Error ? error : new Error(String(error)), { context: '/api/v2/parts-optimized' });
 
@@ -221,7 +221,7 @@ export const POST = withAuth(async (request, context, session) => {
 async function _getPartById(id: string, request: NextRequest) {
   const tenantId = request.headers.get('x-tenant-id') || 'default';
   const cacheKey = CacheKeys.part(id);
-  
+
   const part = await cacheAside(
     cacheKey,
     async () => {
@@ -232,7 +232,7 @@ async function _getPartById(id: string, request: NextRequest) {
     },
     { ttl: CACHE_TTL.LONG }
   );
-  
+
   if (!part) {
     return optimizedResponse(
       { success: false, error: 'Part not found' },
@@ -240,7 +240,7 @@ async function _getPartById(id: string, request: NextRequest) {
       { status: 404, cache: CachePresets.noCache }
     );
   }
-  
+
   return optimizedResponse(
     { success: true, data: part },
     request,
@@ -250,7 +250,7 @@ async function _getPartById(id: string, request: NextRequest) {
 
 async function _batchGetParts(ids: string[], request: NextRequest) {
   const tenantId = request.headers.get('x-tenant-id') || 'default';
-  
+
   // Use IN clause instead of multiple queries
   const parts = await prisma.part.findMany({
     where: {
@@ -258,13 +258,13 @@ async function _batchGetParts(ids: string[], request: NextRequest) {
     },
     select: DEFAULT_SELECTS.part.list,
   });
-  
+
   // Create lookup map
   const partsMap = new Map(parts.map(p => [p.id, p]));
-  
+
   // Return in requested order
   const orderedParts = ids.map(id => partsMap.get(id) || null);
-  
+
   return optimizedResponse(
     { success: true, data: orderedParts },
     request,
@@ -275,7 +275,7 @@ async function _batchGetParts(ids: string[], request: NextRequest) {
 async function _getPartStats(request: NextRequest) {
   const tenantId = request.headers.get('x-tenant-id') || 'default';
   const cacheKey = `tenant:${tenantId}:parts:stats`;
-  
+
   const stats = await cacheAside(
     cacheKey,
     async () => {
@@ -308,7 +308,7 @@ async function _getPartStats(request: NextRequest) {
     },
     { ttl: CACHE_TTL.MEDIUM }
   );
-  
+
   return optimizedResponse(
     { success: true, data: stats },
     request,

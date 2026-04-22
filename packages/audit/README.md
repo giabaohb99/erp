@@ -1,6 +1,6 @@
 # @vierp/audit
 
-Comprehensive audit trail system for VietERP. Automatically tracks all data changes across all modules with detailed change history, user activity, and flexible query capabilities.
+Comprehensive audit trail system for BaoERP. Automatically tracks all data changes across all modules with detailed change history, user activity, and flexible query capabilities.
 
 ## Features
 
@@ -393,7 +393,7 @@ history.forEach((entry) => {
 
 ## License
 
-Part of VietERP ecosystem. All rights reserved.
+Part of BaoERP ecosystem. All rights reserved.
 
 ## Contributing
 

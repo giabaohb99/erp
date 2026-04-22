@@ -1,11 +1,11 @@
-# 🔬 VietERP MRP X-RAY AUDIT MASTER PROMPT
+# 🔬 BaoERP MRP X-RAY AUDIT MASTER PROMPT
 ## Chief Architect Request - Full Project Diagnostic
 
 ---
 
 ## 📋 MISSION BRIEFING
 
-Bạn là **Senior Technical Auditor** được giao nhiệm vụ thực hiện **X-ray toàn diện** dự án VietERP MRP. Dự án đang trong giai đoạn hoàn thiện nhưng có dấu hiệu:
+Bạn là **Senior Technical Auditor** được giao nhiệm vụ thực hiện **X-ray toàn diện** dự án BaoERP MRP. Dự án đang trong giai đoạn hoàn thiện nhưng có dấu hiệu:
 
 - ⚠️ **Context drift** - Mất đồng bộ giữa các phần
 - ⚠️ **Schema mismatch** - Field names không nhất quán
@@ -20,7 +20,7 @@ Bạn là **Senior Technical Auditor** được giao nhiệm vụ thực hiện 
 ## 🎯 PROJECT CONTEXT
 
 ```yaml
-Project: VietERP MRP (Real-Time Resource - Material Requirements Planning)
+Project: BaoERP MRP (Real-Time Resource - Material Requirements Planning)
 Location: /home/claude/vierp-mrp-app
 Stack: Next.js 14 + TypeScript + Prisma + PostgreSQL + Redis
 Status: Production Ready (claimed)
@@ -266,7 +266,7 @@ cat README.md
 Generate a comprehensive report in this format:
 
 ```markdown
-# 🔬 VietERP MRP X-RAY AUDIT REPORT
+# 🔬 BaoERP MRP X-RAY AUDIT REPORT
 ## Date: [DATE]
 ## Auditor: Claude (Technical Auditor)
 

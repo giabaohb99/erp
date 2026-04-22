@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 // K6 Load Testing Script — API Performance Under Load
-// VietERP OTB Platform — Tests all critical endpoints
+// BaoERP OTB Platform — Tests all critical endpoints
 //
 // Install: brew install k6 (Mac) or apt install k6 (Linux)
 // Run: k6 run --env API_URL=http://localhost:4000 api-load-test.js
@@ -294,7 +294,7 @@ export function handleSummary(data) {
 function textSummary(data) {
   return `
 ═══════════════════════════════════════════════════════════════════════════════
-                     VietERP OTB — API Load Test Results
+                     BaoERP OTB — API Load Test Results
 ═══════════════════════════════════════════════════════════════════════════════
 
   Total Requests:     ${data.metrics.http_reqs.values.count}

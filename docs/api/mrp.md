@@ -2,7 +2,7 @@
 
 **Tham chiếu API quản lý sản xuất / MRP API Reference**
 
-Complete API reference for the VietERP Manufacturing Resource Planning module.
+Complete API reference for the BaoERP Manufacturing Resource Planning module.
 
 ## Base URL / URL cơ sở
 

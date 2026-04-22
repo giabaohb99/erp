@@ -2,7 +2,7 @@
 
 ## Overview
 
-TIP-016 (Terraform AWS Module) has been successfully implemented for the VietERP project. All required files have been created in `/sessions/sleepy-funny-noether/mnt/erp/infrastructure/terraform/aws/`.
+TIP-016 (Terraform AWS Module) has been successfully implemented for the BaoERP project. All required files have been created in `/sessions/sleepy-funny-noether/mnt/erp/infrastructure/terraform/aws/`.
 
 ## Files Created
 
@@ -340,7 +340,7 @@ kubectl get nodes
 2. **Customize values**: Edit terraform.tfvars for your environment
 3. **Validate setup**: Run `./validate.sh`
 4. **Deploy infrastructure**: Run `terraform apply`
-5. **Configure applications**: Deploy VietERP Helm chart
+5. **Configure applications**: Deploy BaoERP Helm chart
 6. **Monitor deployment**: Watch CloudWatch logs and alarms
 
 ## Support & Troubleshooting

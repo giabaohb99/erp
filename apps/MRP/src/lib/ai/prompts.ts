@@ -1,6 +1,6 @@
 // =============================================================================
 // AI CONTEXT & PROMPT TEMPLATES
-// System prompts and context management for VietERP MRP AI Assistant
+// System prompts and context management for BaoERP MRP AI Assistant
 // =============================================================================
 
 import { AIMessage, createSystemMessage, createUserMessage } from './provider';
@@ -100,7 +100,7 @@ interface TrendDataPoint {
 // SYSTEM CONTEXT
 // =============================================================================
 
-export const MRP_SYSTEM_CONTEXT = `Bạn là Trợ lý AI thông minh của hệ thống VietERP MRP (Manufacturing Resource Planning).
+export const MRP_SYSTEM_CONTEXT = `Bạn là Trợ lý AI thông minh của hệ thống BaoERP MRP (Manufacturing Resource Planning).
 
 ## VAI TRÒ CỦA BẠN:
 - Hỗ trợ người dùng truy vấn và phân tích dữ liệu sản xuất, kho hàng, đơn hàng
@@ -133,7 +133,7 @@ export const MRP_SYSTEM_CONTEXT = `Bạn là Trợ lý AI thông minh của hệ
 // INTENT DETECTION
 // =============================================================================
 
-export type QueryIntent = 
+export type QueryIntent =
   | 'inventory_status'      // Hỏi về tồn kho
   | 'inventory_shortage'    // Vật tư thiếu
   | 'order_status'          // Tình trạng đơn hàng
@@ -338,26 +338,26 @@ function buildDataContext(intent: QueryIntent, data: Record<string, unknown>): s
     case 'inventory_status':
     case 'inventory_shortage':
       return formatInventoryData(data);
-    
+
     case 'order_status':
     case 'order_summary':
       return formatOrderData(data);
-    
+
     case 'production_status':
       return formatProductionData(data);
-    
+
     case 'mrp_calculation':
       return formatMRPData(data);
-    
+
     case 'purchase_suggestion':
       return formatPurchaseData(data);
-    
+
     case 'quality_report':
       return formatQualityData(data);
-    
+
     case 'analytics':
       return formatAnalyticsData(data);
-    
+
     default:
       return JSON.stringify(data, null, 2);
   }
@@ -586,7 +586,7 @@ Bạn có thể thử:
 • Hỏi câu hỏi đơn giản hơn
 • Liên hệ quản trị viên nếu lỗi tiếp tục`,
 
-  help: `Xin chào! Tôi là Trợ lý AI của hệ thống VietERP MRP.
+  help: `Xin chào! Tôi là Trợ lý AI của hệ thống BaoERP MRP.
 
 Tôi có thể giúp bạn:
 

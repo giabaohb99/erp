@@ -1,4 +1,4 @@
-# 🔧 VietERP MRP SCHEMA SYNC - ACTION PLAN
+# 🔧 BaoERP MRP SCHEMA SYNC - ACTION PLAN
 ## Dành cho Thợ - Thực hiện ngay
 
 ---

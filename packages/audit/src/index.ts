@@ -1,6 +1,6 @@
 /**
  * @vierp/audit v1.0.0
- * Comprehensive audit trail system for VietERP
+ * Comprehensive audit trail system for BaoERP
  *
  * Re-exports all audit trail functionality
  */

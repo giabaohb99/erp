@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-#                    VietERP MRP UI REDESIGN - INTEGRATION GUIDE
+#                    BaoERP MRP UI REDESIGN - INTEGRATION GUIDE
 #                    "Industrial Precision" Theme v2.0
 # ═══════════════════════════════════════════════════════════════════════════════
 

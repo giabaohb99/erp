@@ -1,6 +1,6 @@
-# VietERP OTB — Performance Testing Suite
+# BaoERP OTB — Performance Testing Suite
 
-Comprehensive performance testing toolkit for VietERP OTB Platform.
+Comprehensive performance testing toolkit for BaoERP OTB Platform.
 
 ## Prerequisites
 

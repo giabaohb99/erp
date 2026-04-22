@@ -2,7 +2,7 @@
 
 **Hướng dẫn triển khai / Deployment Guide**
 
-Complete guide for deploying VietERP to development, staging, and production environments.
+Complete guide for deploying BaoERP to development, staging, and production environments.
 
 ## Deployment Environments / Môi trường triển khai
 
@@ -396,7 +396,7 @@ monitoring:
 ```yaml
 # infrastructure/aws/vierp-stack.yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'VietERP Platform on AWS'
+Description: 'BaoERP Platform on AWS'
 
 Parameters:
   Environment:
@@ -437,7 +437,7 @@ Resources:
     Properties:
       Engine: redis
       EngineVersion: '7.0'
-      ReplicationGroupDescription: VietERP Cache
+      ReplicationGroupDescription: BaoERP Cache
       CacheNodeType: cache.r6g.xlarge
       NumCacheClusters: 3
       AutomaticFailover: Enabled

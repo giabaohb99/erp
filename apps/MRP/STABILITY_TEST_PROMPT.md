@@ -5,7 +5,7 @@
 
 ## 🎯 MỤC TIÊU
 
-Hệ thống VietERP MRP phải đạt tiêu chuẩn **"NEVER SHOW ERRORS"** để thay thế Excel.
+Hệ thống BaoERP MRP phải đạt tiêu chuẩn **"NEVER SHOW ERRORS"** để thay thế Excel.
 
 **Yêu cầu:**
 1. User KHÔNG BAO GIỜ thấy lỗi kỹ thuật
@@ -282,7 +282,7 @@ Monitor với DevTools Memory tab:
 ### Template báo cáo cho Architect:
 
 ```markdown
-# VietERP MRP STABILITY TEST REPORT
+# BaoERP MRP STABILITY TEST REPORT
 Date: 2026-01-09
 Tester: [Name]
 
@@ -355,4 +355,4 @@ Nếu phát hiện issues:
 
 *Stability Test Master Prompt v1.0*
 *Target: "Never Show Errors" Standard*
-*Project: VietERP MRP Production Readiness*
+*Project: BaoERP MRP Production Readiness*

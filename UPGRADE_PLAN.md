@@ -1,4 +1,4 @@
-# VietERP Platform — Kế hoạch Triển khai Chi tiết / Detailed Upgrade Plan
+# BaoERP Platform — Kế hoạch Triển khai Chi tiết / Detailed Upgrade Plan
 
 > Tài liệu kỹ thuật dành cho đội phát triển | Phiên bản 2.0 | 2026-03-28
 
@@ -201,7 +201,7 @@ jobs:
 ```bash
 #!/bin/bash
 set -e
-echo "🚀 VietERP — Thiết lập môi trường phát triển"
+echo "🚀 BaoERP — Thiết lập môi trường phát triển"
 
 # Kiểm tra prerequisites
 command -v node >/dev/null || { echo "❌ Node.js chưa cài"; exit 1; }
@@ -300,7 +300,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   const spec = await generateOpenAPISpec({
-    title: 'VietERP CRM API',
+    title: 'BaoERP CRM API',
     version: '1.0.0',
     basePath: '/api',
   });

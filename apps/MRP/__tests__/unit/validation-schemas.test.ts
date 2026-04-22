@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - VALIDATION SCHEMAS UNIT TESTS
+// BaoERP MRP - VALIDATION SCHEMAS UNIT TESTS
 // Tests for Zod validation schemas
 // =============================================================================
 

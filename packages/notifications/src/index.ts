@@ -1,6 +1,6 @@
 /**
  * @vierp/notifications
- * Real-time notification system for VietERP
+ * Real-time notification system for BaoERP
  */
 
 // Types

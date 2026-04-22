@@ -1,6 +1,6 @@
 // =============================================================================
 // DATABASE QUERY GENERATOR
-// Translates AI intents into database queries for VietERP MRP
+// Translates AI intents into database queries for BaoERP MRP
 // =============================================================================
 
 import { QueryIntent, DetectedIntent } from './prompts';
@@ -274,7 +274,7 @@ export class QueryExecutor {
 
   private async fetchPurchaseSuggestions(): Promise<Record<string, unknown>> {
     const suggestions = await this.dataFetcher.getPurchaseSuggestions();
-    
+
     const bySupplier: Record<string, { items: number; total: number }> = {};
     let totalValue = 0;
 

@@ -1,5 +1,5 @@
 // =============================================================================
-// VietERP MRP - PRODUCTION MONITORING MODULE
+// BaoERP MRP - PRODUCTION MONITORING MODULE
 // Metrics collection, alerting, performance tracking
 // =============================================================================
 
@@ -66,12 +66,12 @@ class MetricsCollector {
     const key = this.buildKey(name, tags);
     const values = this.histograms.get(key) || [];
     values.push(value);
-    
+
     // Keep only last N values
     if (values.length > this.maxHistorySize) {
       values.shift();
     }
-    
+
     this.histograms.set(key, values);
     this.record({ name, value, timestamp: Date.now(), tags, type: 'histogram' });
   }
@@ -80,13 +80,13 @@ class MetricsCollector {
   getPercentiles(name: string, percentiles: number[], tags?: Record<string, string>): Record<string, number> {
     const key = this.buildKey(name, tags);
     const values = this.histograms.get(key) || [];
-    
+
     if (values.length === 0) {
       return percentiles.reduce((acc, p) => ({ ...acc, [`p${p}`]: 0 }), {});
     }
-    
+
     const sorted = [...values].sort((a, b) => a - b);
-    
+
     return percentiles.reduce((acc, p) => {
       const index = Math.ceil((p / 100) * sorted.length) - 1;
       return { ...acc, [`p${p}`]: sorted[Math.max(0, index)] };
@@ -155,11 +155,11 @@ class MetricsCollector {
     const key = this.buildKey(metric.name, metric.tags);
     const history = this.metrics.get(key) || [];
     history.push(metric);
-    
+
     if (history.length > this.maxHistorySize) {
       history.shift();
     }
-    
+
     this.metrics.set(key, history);
   }
 }
@@ -281,7 +281,7 @@ class PerformanceTracker {
     };
 
     this.entries.push(fullEntry);
-    
+
     if (this.entries.length > this.maxEntries) {
       this.entries.shift();
     }
@@ -503,7 +503,7 @@ export function createMonitoringMiddleware() {
     const startTime = performance.now();
     const url = new URL(req.url);
     const operation = `${req.method} ${url.pathname}`;
-    
+
     let success = true;
     let status = 200;
 
@@ -518,7 +518,7 @@ export function createMonitoringMiddleware() {
       throw error;
     } finally {
       const duration = performance.now() - startTime;
-      
+
       performanceTracker.record({
         operation,
         duration,
